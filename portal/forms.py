@@ -9,10 +9,9 @@ from django.contrib.auth.models import User
 
 
 class SignUpPage(UserCreationForm):
-    DOB = forms.DateField(help_text='format-:yyyy-mm-dd')
     Gender = forms.CharField(max_length=10,required=False,help_text='optional.')
     Email = forms.EmailField(max_length=200,help_text='please enter valid email id')
 
     class Meta:
         model = User
-        fields = ('username','DOB','Gender','Email','password1','password2',)
+        fields = ('username','Gender','Email','password1','password2',)

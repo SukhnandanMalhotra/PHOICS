@@ -31,7 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'portal.apps.PollsConfig',
+    'portal',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -121,8 +121,8 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 
-LOGIN_URL ='login'
-LOGOUT_URL ='logout'
+LOGIN_URL = 'login'
+LOGOUT_URL = 'logout'
 LOGIN_REDIRECT_URL = 'home'
 
-EMAIL_BACKEND = 'django.polls.mail.backends.console.EmailBackend'
+EMAIL_BACKEND = 'django.portal.mail.backends.console.EmailBackend'
