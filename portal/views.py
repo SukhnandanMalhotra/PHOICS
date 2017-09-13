@@ -13,6 +13,10 @@ from django.template.loader import render_to_string
 from .forms import SignUpPage
 from .tokens import account_activation_token
 
+def front_page(request):
+    return render(request,'portal/front_page.html')
+
+
 
 @login_required
 def home(request):
