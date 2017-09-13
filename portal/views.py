@@ -2,6 +2,7 @@
 This is a doc string
 """
 from django.contrib.auth import login
+from django.core.mail import send_mail, BadHeaderError
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.contrib.sites.shortcuts import get_current_site
@@ -44,7 +45,9 @@ def signup(request):
                 'uid': urlsafe_base64_encode(force_bytes(user.pk)),
                 'token': account_activation_token.make_token(user),
             })
-            user.email_user(subject, message)
+            from_mail='phoics100@gmail.com'
+            to_mail=[user.email]
+            send_mail(subject, message,from_mail,to_mail,fail_silently=False)
 
             return redirect('account_activation_sent')
     else:
