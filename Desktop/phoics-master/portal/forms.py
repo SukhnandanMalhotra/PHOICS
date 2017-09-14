@@ -1,11 +1,12 @@
 from django import forms
+from datetime import datetime
 
+# from django.forms.widgets import RadioSelect
 from portal.models import Document
-
-STATUS_CHOICES = ((1, "Private"),(2, "public"),)
 
 class DocumentForm(forms.ModelForm):
     class Meta:
         model = Document
-        status = forms.ChoiceField(choices=STATUS_CHOICES, label="Choose private or public as you want your photo to be ", initial='', widget=forms.RadioSelect(), required=True)
+        status=forms.ModelChoiceField(queryset=Document.objects.filter(uploaded_at=datetime.now()),empty_label=None)
         fields = ( 'document','status')
+

@@ -8,11 +8,9 @@
   </ul>
   <ul>
       {% for obj in documents %}
-        <% if obj.status == 2 % >
-            <li>
-                <img src="{{ obj.document.url }}" style="height: 500px;width: 500px;">
-            </li>
-        <% endif %>
+         <li>
+             <img src="{{ obj.document.url }}" style="height: 500px;width: 500px;">
+         </li>
     {% endfor %}
   </ul>
 {% endblock %}
