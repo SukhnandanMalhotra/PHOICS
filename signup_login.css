@@ -57,9 +57,21 @@ p.button{
     background-color: #9eb25d;
     padding:1% 8% 1% 8%;
     font-family: Raleway;
-    box-shadow: 10px 5px 20px black ;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, .6); 
+   -webkit-transition: background-color 2s ease-out;
 }
-
+p.buttton:focus{
+	background-color:#273b09;
+}
+p.button:active{
+	background-color:#273b09;
+}
+p.oldUser{
+	position:absolute;
+	margin-left:50vw;
+	margin-top:87vh;
+	text-align:center;
+}
 div.lgBox{
 	position: relative;
     margin-left: 60vw;
@@ -69,4 +81,43 @@ form.lgEntry{
 	position:absolute;
 	top:30vh;
 	left:20vw;
+}
+@media only screen and (max-width: 350px){
+     p.button{
+     	margin-top:90vh;
+     }
+     p.oldUser{
+     	margin-top:95vh;
+     }
+}
+@media only screen and (max-height: 1400px){
+	p.button{
+		margin-top:50vh;
+	}
+	p.oldUser{
+		margin-top:55vh;
+	}
+@media only screen and (max-height: 1100px){
+	p.button{
+		margin-top:60vh;
+	}
+	p.oldUser{
+	margin-top:67vh;
+    }	
+}
+@media only screen and (max-height: 770px){
+	p.button{
+		margin-top:70vh;
+	}
+	p.oldUser{
+		margin-top:77vh;
+	}
+}
+@media only screen and (max-height: 680px){
+	p.button{
+		margin-top:90vh;
+	}
+	p.oldUser{
+		margin-top:97vh;
+	}
 }
