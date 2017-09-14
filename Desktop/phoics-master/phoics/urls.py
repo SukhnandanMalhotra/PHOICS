@@ -7,7 +7,7 @@ from portal import views
 
 
 urlpatterns = [
-    url(r'^$', views.home, name='home'),
+    url(r'^$', views.home, name='profile'),
     url(r'^uploads/form/$', views.model_form_upload, name='model_form_upload'),
     url(r'^admin/', admin.site.urls),
 ]

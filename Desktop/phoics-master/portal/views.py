@@ -8,7 +8,7 @@ from .forms import DocumentForm
 
 def home(request):
      documents = Document.objects.all()
-     return render(request,'portal/home.html', { 'documents': documents })
+     return render(request,'portal/profile.html', { 'documents': documents })
 
 
 def model_form_upload(request):
@@ -16,7 +16,7 @@ def model_form_upload(request):
         form = DocumentForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
-            return redirect('home')
+            return redirect('profile')
     else:
         form = DocumentForm()
     return render(request, 'portal/model_form_upload.html', {
