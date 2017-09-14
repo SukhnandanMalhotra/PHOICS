@@ -1,0 +1,110 @@
+@import url('https://fonts.googleapis.com/css?family=Josefin+Sans');
+@import url('https://fonts.googleapis.com/css?family=Raleway');
+
+body{
+	background-image: url("background (2).jpg");
+	background-repeat: no-repeat;
+	background-size: cover;
+    }
+h1{
+	text-align: center;
+	width:50%;
+	margin-left:15%;
+	font-family: 'Raleway', sans-serif;
+	color: white;	
+	font-size: 5em;
+	letter-spacing:50px;
+    }
+p{ 
+	margin-left: 25%;
+	width:50%;
+    color:white;
+    line-height: 110%;
+    padding: 10px;
+    text-align: center;
+    font-family:Raleway;
+    font-size:20px;
+    word-wrap: break-word;
+    }
+span{
+	font-size:25px;
+    }
+div.container{
+   border: 5px solid white;
+    margin:7%;
+	margin-left:20%;
+	margin-right:12%;
+	height:50%;
+	width:50vw;
+	padding: 5%;
+	float: center;
+	animation-name: box;
+	animation-duration: 6s;
+    }
+    
+@-webkit-keyframes box{
+	0%{ border:none; }
+	25%{border-top:5px solid white;}
+	50%{border-bottom:5px solid white;}
+    75%{border-right:5px solid white;}
+    100%{border-left:5px solid white;}
+}    
+
+li{
+	display: inline;
+	text-align: center;
+	border: 3px solid white;
+	color:white;
+	padding:2% 8% 2% 8%;
+	font-family: Raleway;
+	opacity: 0.8;
+	cursor: pointer;
+   
+    }
+ li.su{
+  -webkit-transition: padding-right 1s ease-out;	
+ }
+li.su:hover{
+	padding-right:20%;
+}
+li.li{
+	-webkit-transition: padding-left 1s ease-out;	
+}
+li.li:hover{
+	padding-left: 20%;
+}
+ul{
+	position: relative;
+	padding-left: 12%;
+	margin-bottom: 5%;
+	width:50%;
+	margin-left: 25%;
+	box-sizing: border-box;
+	}
+div.hline1{
+	width:25%;
+	height:1px;
+	background-color: white;
+	margin-left: 35%;
+	animation-name: expand;
+	animation-name: 2s;
+	animation-iteration-count: 3;
+    }
+   @-webkit-keyframes expand{
+   	from{width:0%;}
+   	to{width:25%;}
+   }
+div.hline2{
+	width:30%;
+	height:1px;
+	background-color: white;
+	margin-left:35%;
+    }
+    @media only screen and (max-width: 900px) {
+    li {
+        display:block;
+    }
+}
+/*li.login{
+	padding-right:15px;
+}*/	
