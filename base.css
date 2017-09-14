@@ -7,7 +7,7 @@ body{
 	background-size: cover;
     }
 h1{
-	text-align: center;
+	text-align: center;                      /* /////////// PHOICS HEADING//////////*/
 	width:50%;
 	margin-left:15%;
 	font-family: 'Raleway', sans-serif;
@@ -16,7 +16,7 @@ h1{
 	letter-spacing:50px;
     }
 p{ 
-	margin-left: 25%;
+	margin-left: 25%;                    /*//////////////paragraph in middle-"home to one's photos"////////*/
 	width:50%;
     color:white;
     line-height: 110%;
@@ -29,7 +29,7 @@ p{
 span{
 	font-size:25px;
     }
-div.container{
+div.container{                                       /*/////////////////boundary box////////////////////////*/
    border: 5px solid white;
     margin:7%;
 	margin-left:20%;
@@ -42,7 +42,7 @@ div.container{
 	animation-duration: 6s;
     }
     
-@-webkit-keyframes box{
+@-webkit-keyframes box{                              /*///////////////////animation to box////////////////////*/
 	0%{ border:none; }
 	25%{border-top:5px solid white;}
 	50%{border-bottom:5px solid white;}
@@ -50,7 +50,7 @@ div.container{
     100%{border-left:5px solid white;}
 }    
 
-li{
+li{                                                      /*//////////////////////buttons-login signup/////////////////*/
 	display: inline;
 	text-align: center;
 	border: 3px solid white;
@@ -62,13 +62,13 @@ li{
    
     }
  li.su{
-  -webkit-transition: padding-right 1s ease-out;	
+  -webkit-transition: padding-right 1s ease-out;	/*////////////////////////////////////////animation-signup button//////////////*/
  }
 li.su:hover{
 	padding-right:20%;
 }
 li.li{
-	-webkit-transition: padding-left 1s ease-out;	
+	-webkit-transition: padding-left 1s ease-out;	/*/////////////////////////animation-login button////////////*/
 }
 li.li:hover{
 	padding-left: 20%;
@@ -81,7 +81,7 @@ ul{
 	margin-left: 25%;
 	box-sizing: border-box;
 	}
-div.hline1{
+div.hline1{                                 /*//////////////top horizontal line ///////////////*/
 	width:25%;
 	height:1px;
 	background-color: white;
@@ -94,17 +94,44 @@ div.hline1{
    	from{width:0%;}
    	to{width:25%;}
    }
-div.hline2{
+div.hline2{                                     /*////////////////////bottom horizontal line/////////////////*/
 	width:30%;
 	height:1px;
 	background-color: white;
 	margin-left:35%;
     }
-    @media only screen and (max-width: 900px) {
+@media only screen and (max-width: 900px) {                    /*///////////////////////media query for buttons(to make responsive)//////////*/
     li {
         display:block;
     }
 }
-/*li.login{
-	padding-right:15px;
-}*/	
+@media only screen and (max-width:1280px){
+	h1{
+		letter-spacing:20px;
+		font-size:3.8em;
+	}
+}	
+@media only screen and (max-width:780px){
+	h1{
+		letter-spacing:15px;
+		font-size:3em;
+	}
+}
+@media only screen and (max-width:590px){                  /*////////////////////////media query for heading phoics (to make responsive)////////////*/
+	h1{
+		letter-spacing:10px;
+		font-size:2.5em;
+	}
+}
+@media only screen and (max-width:450px){
+	h1{
+		letter-spacing: 7px;
+		font-size:2em;
+	}
+}
+@media only screen and (max-width:350px){
+	h1{
+		letter-spacing: 5px;
+		font-size:1.5em;
+	}
+}
