@@ -1,10 +1,7 @@
 from django.conf.urls import url, include
 from django.contrib.auth import views as built_views
 from django.contrib import admin
-
 from portal import views
-
-
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -16,4 +13,6 @@ urlpatterns = [
     url(r'^activate/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$',
         views.activate, name='activate'),
     url(r'^phoics/$', views.front_page, name='front_page'),
+    # url(r'^forget_pass/$', views.forget_pass, name='forget_pass'),
+
 ]

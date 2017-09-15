@@ -1,3 +1,5 @@
+{% load staticfiles %}
+{% comment %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,7 +7,7 @@
     <title>Title</title>
 </head>
 <body>
-<header>
+
       <h1>phoics</h1>
       {% if user.is_authenticated %}
         <a href="{% url 'logout' %}">logout</a>
@@ -13,7 +15,35 @@
         <a href="{% url 'login' %}">login</a> / <a href="{% url 'signup' %}">signup</a>
       {% endif %}
       <hr>
-</header>
+
 <h2>WELCOME PHOICS</h2>
+</body>
+</html>{% endcomment %}
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>frontpage</title>
+<link rel="stylesheet" type="text/css" href="{% static 'portal/front_page.css'%}">
+</head>
+<body>
+
+<div class="container">
+
+<div class="hline1"></div>
+<h1>PHOICS</h1>
+
+<p><span>Home to one's best photos</span><br>
+   UPDATE  ,  EDIT  ,  SHARE</p>
+<ul>
+
+    <li class="su"><a href="{% url 'signup' %}"> sign up </a></li>
+    <li class="li"><a href="{% url 'login' %}"> login </a></li>
+</ul>
+<div class="hline2"></div>
+</div>
+
+
 </body>
 </html>

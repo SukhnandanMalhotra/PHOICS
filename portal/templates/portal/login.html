@@ -1,7 +1,7 @@
 {% extends 'portal/base.html' %}
 
 {% block content %}
-  <h2>Log in to My Site</h2>
+  <h2>Log in to PHOICS</h2>
   {% if form.errors %}
     <p style="color: red">Your username and password didn't match. Please try again.</p>
   {% endif %}
@@ -22,5 +22,8 @@
     {% endfor %}
     <button type="submit">Log in</button>
     <a href="{% url 'signup' %}">New to My Site? Sign up</a>
+      <h3>if you forget password click below</h3>
+       <a href="{% url 'forget_pass' %}">forget password</a>
+
   </form>
 {% endblock %}

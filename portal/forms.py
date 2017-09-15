@@ -9,3 +9,11 @@ class SignUpPage(UserCreationForm):
     class Meta:
         model = User
         fields = ('username', 'email', 'password1', 'password2', )
+
+
+
+class forget_password(forms.Form):
+    your_email = forms.EmailField(max_length=254,help_text='Required. Please enter a valid email address')
+
+
+

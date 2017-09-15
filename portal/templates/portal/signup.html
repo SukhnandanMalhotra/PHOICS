@@ -1,21 +1,60 @@
-{% extends 'portal/base.html' %}
+{% load staticfiles %}
+{#{% extends 'portal/base.html' %}#}
+{##}
+{#{% block content %}#}
+{#  <h2>Sign up</h2>#}
+{#  <form method="post">#}
+{#    {% csrf_token %}#}
+{#    {% for field in form %}#}
+{#      <p>#}
+{#        {{ field.label_tag }}<br>#}
+{#        {{ field }}#}
+{#        {% if field.help_text %}#}
+{#          <small style="color: grey">{{ field.help_text }}</small>#}
+{#        {% endif %}#}
+{#        {% for error in field.errors %}#}
+{#          <p style="color: red">{{ error }}</p>#}
+{#        {% endfor %}#}
+{#      </p>#}
+{#    {% endfor %}#}
+{#    <button type="submit">Sign up</button>#}
+{#  </form>#}
+{#{% endblock %}#}
 
-{% block content %}
-  <h2>Sign up</h2>
-  <form method="post">
-    {% csrf_token %}
-    {% for field in form %}
-      <p>
-        {{ field.label_tag }}<br>
-        {{ field }}
-        {% if field.help_text %}
-          <small style="color: grey">{{ field.help_text }}</small>
-        {% endif %}
-        {% for error in field.errors %}
-          <p style="color: red">{{ error }}</p>
-        {% endfor %}
-      </p>
-    {% endfor %}
-    <button type="submit">Sign up</button>
-  </form>
-{% endblock %}
+
+<html>
+<head>
+<title>signup</title>
+<link rel="stylesheet" type="text/css" href="{% static 'portal/signup_page.css' %}">
+</head>
+<body>
+<div class="back">
+<img src="{% static 'portal/images/background.jpg' %}">
+<p class="text"><span>PHOICS</span><br>
+UPDATE<br>
+EDIT<br>
+SHARE<br></p>
+
+</div>
+<div class="form">
+<h1>SIGN-UP</h1>
+<p>
+<form>
+<label for="name">Name:</label><br>
+<input type="text" id="name" name=""></br><br>
+<label for="e-mail">E-mail:</label><br>
+<input type="text" id="e-mail" name=""></br><br>
+<label for="psd">Password:</label><br>
+<input type="password" id="psd" name=""></br><br>
+<label for="cnf psd"> Confirm Password:</label><br>
+ <input type="password" id="cnf psd" name="">
+</p>
+</form>
+<p class="button">
+SUBMIT
+</p>
+<p class="ques">already have an account?login</p>
+</div>
+
+</body>
+</html>
