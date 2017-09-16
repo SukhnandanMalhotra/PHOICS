@@ -2,6 +2,9 @@
 {% extends 'portal/base.html' %}
 
 {% block content %}
+    {% if user.is_authenticated %}
+        <h3>first log out</h3>
+    {% else %}
   <h2>Sign up</h2>
   <form method="post">
     {% csrf_token %}
@@ -19,6 +22,7 @@
     {% endfor %}
     <button type="submit">Sign up</button>
   </form>
+    {% endif %}
 {% endblock %}
 
 
