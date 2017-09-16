@@ -1,8 +1,10 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
-
-
+"""
+UserCreationForm contain passward1 and password2(conf.password)
+it also check both password must be same
+"""
 class SignUpPage(UserCreationForm):
     email = forms.EmailField(max_length=254, help_text='Required. Inform a valid email address.')
 

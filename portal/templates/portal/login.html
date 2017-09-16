@@ -1,36 +1,42 @@
-{% extends 'portal/base.html' %}
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+<head>
+<title>login</title>
+<link rel="stylesheet" type="text/css" href="{% static 'portal/signup_page.css' %}">
+</head>
+<body>
+<div class="back">
+<img src="{% static 'portal/images/background.jpg' %}">
+<p class="text"><span>PHOICS</span><br>
+UPDATE<br>
+EDIT<br>
+SHARE<br></p>
 
-{% block content %}
-    <h2>Log in to PHOICS</h2>
-    {% if form.errors %}
-        <p style="color: red">Your username and password didn't match. Please try again.</p>
-    {% endif %}
-
-    {% if user.is_authenticated %}
-        <h3>firstly logout</h3>
-
-
-    {% else %}
-        <form method="post">
-            {% csrf_token %}
-            <input type="hidden" name="next" value="{{ next }}" />
-            {% for field in form %}
-                <p>
-                {{ field.label_tag }}<br>
-                {{ field }}<br>
-                {% for error in field.errors %}
-                    <p style="color: red">{{ error }}</p>
-                {% endfor %}
-                {% if field.help_text %}
-                    <p><small style="color: grey">{{ field.help_text }}</small></p>
-                {% endif %}
-                </p>
+</div>
+<div class="form">
+<h1>LOG-IN</h1>
+<p>
+{% if user.is_authenticated %}
+    <label>FIRST LOG OUT</label>
+    <a href="{% url 'logout' %}">logout</a>
+{% else %}
+    <form method="post">
+        {% csrf_token %}
+        {% for field in form %}
+            <label for="e-mail">{{ field.label_tag }}</label><br><br>
+            {{ field }}<br><br>
+            {% for error in field.errors %}
+                <label for="e-mail">{{ error }}</label><br><br>
             {% endfor %}
-            <button type="submit">Log in</button>
-            <a href="{% url 'signup' %}">New to My Site? Sign up</a>
-            <h3>if you forget password click below</h3>
-            <a href="{% url 'forget_pass' %}">forget password</a>
-
-        </form>
-    {% endif %}
-{% endblock %}
+        {% endfor %}
+        <p class="button">
+            <button type="submit">LOG-IN</button>
+        </p>
+        <p class="ques">Forgot password?<br>New User? <a href="{% url 'signup' %}">signup</a></p>
+    </form>
+{% endif %}
+</p>
+</div>
+</body>
+</html>

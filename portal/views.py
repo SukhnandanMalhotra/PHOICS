@@ -15,9 +15,16 @@ from .forms import SignUpPage
 from .forms import forget_password
 from .tokens import account_activation_token
 
+# front page function which return front page html
 def front_page(request):
     return render(request,'portal/front_page.html')
 
+
+"""
+ it will work when user is logged in
+ it will redirect to the user on login page 
+ having next parameter default have SETTING.LOGIN_URL
+"""
 @login_required
 def home(request):
     """
@@ -27,6 +34,7 @@ def home(request):
     """
     return render(request, 'portal/home.html')
 
+
 def signup(request):
     if request.method == 'POST':
         form = SignUpPage(request.POST)
@@ -35,10 +43,10 @@ def signup(request):
             if email in User.objects.all().values('email'):
                 raise form.ValidationError('this email user already exist')
             else:
-
                 user = form.save(commit=False)
                 user.is_active = False
                 user.save()
+                # get_current_site used to get the url of current page
                 current_site = get_current_site(request)
                 subject = 'Activate Your phoics Account'
                 message = render_to_string('portal/account_activation_email.html', {
@@ -79,7 +87,6 @@ def forget_pass(request):
     if request.method == 'POST':
         form = forget_password(request.POST)
         if form.is_valid():
-
             form.save(commit=False)
             your_email = form.cleaned_data.get('your_email')
             return redirect('front_page')

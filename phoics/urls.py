@@ -21,7 +21,7 @@ urlpatterns = [
         views.activate, name='activate'),
     # for front page "/front_page"
     url(r'^front_page/$', views.front_page, name='front_page'),
-    # if we 
+    # if user forget password then go "/forget_pass/"
     url(r'^forget_pass/$', views.forget_pass, name='forget_pass'),
 
 ]
