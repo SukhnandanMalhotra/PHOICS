@@ -12,6 +12,8 @@ class Profile(models.Model):
     email_confirmed = models.BooleanField(default=False)
 
 @receiver(post_save, sender=User)
+# here created is a boolean that tells new instance
+#  was created or an older instance was updated.
 def update_user_profile(sender, instance, created, **kwargs):
     if created:
         Profile.objects.create(user=instance)

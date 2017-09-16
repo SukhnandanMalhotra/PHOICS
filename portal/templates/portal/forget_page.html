@@ -5,11 +5,10 @@
     <title>Title</title>
 </head>
 <body>
-<form method="post">
-    <p>
-        Your email:<br>
-  <input type="text" name="your_email">
-        <button type="button">submit</button>
-  <br></p>
+<form action="{% url 'front_page' %}" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="button">submit</button>
+</form>
 </body>
 </html>

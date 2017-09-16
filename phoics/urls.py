@@ -12,7 +12,7 @@ urlpatterns = [
     url(r'^account_activation_sent/$', views.account_activation_sent, name='account_activation_sent'),
     url(r'^activate/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$',
         views.activate, name='activate'),
-    url(r'^phoics/$', views.front_page, name='front_page'),
-    # url(r'^forget_pass/$', views.forget_pass, name='forget_pass'),
+    url(r'^front_page/$', views.front_page, name='front_page'),
+    url(r'^forget_pass/$', views.forget_pass, name='forget_pass'),
 
 ]

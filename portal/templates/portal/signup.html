@@ -1,27 +1,28 @@
-{% load staticfiles %}
-{#{% extends 'portal/base.html' %}#}
-{##}
-{#{% block content %}#}
-{#  <h2>Sign up</h2>#}
-{#  <form method="post">#}
-{#    {% csrf_token %}#}
-{#    {% for field in form %}#}
-{#      <p>#}
-{#        {{ field.label_tag }}<br>#}
-{#        {{ field }}#}
-{#        {% if field.help_text %}#}
-{#          <small style="color: grey">{{ field.help_text }}</small>#}
-{#        {% endif %}#}
-{#        {% for error in field.errors %}#}
-{#          <p style="color: red">{{ error }}</p>#}
-{#        {% endfor %}#}
-{#      </p>#}
-{#    {% endfor %}#}
-{#    <button type="submit">Sign up</button>#}
-{#  </form>#}
-{#{% endblock %}#}
+{#{% load staticfiles %}#}
+{% extends 'portal/base.html' %}
+
+{% block content %}
+  <h2>Sign up</h2>
+  <form method="post">
+    {% csrf_token %}
+    {% for field in form %}
+      <p>
+        {{ field.label_tag }}<br>
+        {{ field }}
+        {% if field.help_text %}
+          <small style="color: grey">{{ field.help_text }}</small>
+        {% endif %}
+        {% for error in field.errors %}
+          <p style="color: red">{{ error }}</p>
+        {% endfor %}
+      </p>
+    {% endfor %}
+    <button type="submit">Sign up</button>
+  </form>
+{% endblock %}
 
 
+{% comment %}
 <html>
 <head>
 <title>signup</title>
@@ -39,7 +40,7 @@ SHARE<br></p>
 <div class="form">
 <h1>SIGN-UP</h1>
 <p>
-<form>
+<form method=''>
 <label for="name">Name:</label><br>
 <input type="text" id="name" name=""></br><br>
 <label for="e-mail">E-mail:</label><br>
@@ -57,4 +58,4 @@ SUBMIT
 </div>
 
 </body>
-</html>
+</html>{% endcomment %}
