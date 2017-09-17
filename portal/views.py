@@ -27,8 +27,8 @@ from .forms import DocumentForm
 """
 @login_required
 def home(request):
-     documents = Document.objects.all()
-     return render(request,'portal/profile.html', {'documents': documents})
+    documents = Document.objects.all()
+    return render(request,'portal/profile.html', {'documents': documents})
 
 # front page function which return front page html
 def front_page(request):
@@ -97,14 +97,14 @@ def model_form_upload(request):
         'form': form
     })
 
-# def forget_pass(request):
-#     if request.method == 'POST':
-#         form = forget_password(request.POST)
-#         if form.is_valid():
-#             form.save(commit=False)
-#             your_email = form.cleaned_data.get('your_email')
-#             return redirect('front_page')
-#
-#     else:
-#         form = forget_password()
-#     return render(request, 'portal/forget_page.html',{'form':form})
+def forget_pass(request):
+    if request.method == 'POST':
+        form = forget_password(request.POST)
+        if form.is_valid():
+            form.save(commit=False)
+            your_email = form.cleaned_data.get('your_email')
+            return redirect('front_page')
+
+    else:
+        form = forget_password()
+    return render(request, 'portal/forget_page.html',{'form': form})

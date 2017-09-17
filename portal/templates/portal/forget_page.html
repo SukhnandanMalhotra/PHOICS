@@ -5,7 +5,7 @@
     <title>Title</title>
 </head>
 <body>
-<form action="{% url 'front_page' %}" method="post">
+<form method="post">
     {% csrf_token %}
     {{ form.as_p }}
     <button type="button">submit</button>
