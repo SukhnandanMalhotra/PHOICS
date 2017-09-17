@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <ul>
+    <li>
+        <a href="{% url 'newsfeed' %}">NEWSFEED PAGE</a>
+        <a href="{% url 'model_form_upload' %}">UPLOAD PICTURE</a>
+{#        <a href="{% url 'profilepic' %}">UPLOAD profile pic</a>#}
+
+    </li>
+  </ul>
+  <ul>
+      {% for obj in documents %}
+          <li>
+              <img src="{{ obj.document.url }}" >
+          </li>
+      {% endfor %}
+  </ul>
+{% endblock %}

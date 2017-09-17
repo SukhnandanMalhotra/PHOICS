@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <ul>
+    <li>
+      <a href="{% url 'profile' %}">PROFILE PAGE</a>
+    </li>
+  </ul>
+  <ul>
+      {% for obj in documents %}
+         {% if obj.status == "PUBLIC" %}
+             <li>
+                 <img src="{{ obj.document.url }}>
+             </li>
+         {% endif %}
+      {% endfor %}
+  </ul>
+{% endblock %}
