@@ -1,5 +1,4 @@
 {% extends 'base_profile.html' %}
-
 {% block content %}
      <a href="{% url 'logout' %}">logout</a>
   <h2>Welcome, {{ user.get_full_name }} <small>{{ user.username }}</small>!</h2>
@@ -15,6 +14,7 @@
       {% for obj in documents %}
           <li>
               <img src="{{ obj.document.url }}" style="height: 500px;width: 500px;">
+{#              {% social_widget_render 'facebook/likebox.html' href='https://www.facebook.com/FacebookDevelopers' %}#}
           </li>
       {% endfor %}
   </ul>
