@@ -1,0 +1,23 @@
+{% extends 'base_profile.html' %}
+
+{% block content %}
+
+    {% if user.is_authenticated %}
+  <ul>
+    <li>
+      <a href="{% url 'profile' %}">PROFILE PAGE</a>
+    </li>
+  </ul>
+  <ul>
+      {% for obj in documents %}
+         {% if obj.status == "PUBLIC" %}
+             <li>
+                 <img src="{{ obj.document.url }}" style="height: 500px;width: 500px;">
+             </li>
+         {% endif %}
+      {% endfor %}
+  </ul>
+    {% else %}
+    <h3>you are not logged in first login</h3>
+    {% endif %}
+{% endblock %}

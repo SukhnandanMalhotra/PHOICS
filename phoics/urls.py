@@ -3,11 +3,18 @@ from django.contrib.auth import views as built_views
 from django.contrib import admin
 from portal import views
 
+from django.conf import settings
+from django.conf.urls.static import static
+
 urlpatterns = [
     # this url is for admin page "/admin/"
     url(r'^admin/', admin.site.urls),
     # this is for user loggin in page "/"
-    url(r'^$', views.home, name='home'),
+    url(r'^$', views.home, name='profile'),
+    #
+    url(r'^upload/$', views.model_form_upload, name='model_form_upload'),
+    #
+    url(r'^newsfeed/$', views.newsfeed, name='newsfeed'),
     # this is for login page "/login"
     url(r'^login/$', built_views.login, {'template_name': 'portal/login.html'}, name='login'),
     # for logout but open login page
@@ -25,3 +32,5 @@ urlpatterns = [
     url(r'^forget_pass/$', views.forget_pass, name='forget_pass'),
 
 ]
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

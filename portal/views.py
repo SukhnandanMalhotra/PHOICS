@@ -2,23 +2,23 @@
 This is a doc string
 """
 from django.contrib.auth import login
-from django.core.mail import send_mail, BadHeaderError
+from django.core.mail import send_mail
+from django.core.exceptions import ValidationError
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.contrib.sites.shortcuts import get_current_site
-from django.shortcuts import render, redirect
 from django.utils.encoding import force_bytes, force_text
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from django.template.loader import render_to_string
 from phoics.settings import EMAIL_HOST_USER
-from .forms import SignUpPage
-from .forms import forget_password
+from .forms import SignUpPage, forget_password
 from .tokens import account_activation_token
+from django.shortcuts import render, redirect, get_object_or_404, render_to_response
+from django.conf import settings
+from django.core.files.storage import FileSystemStorage
 
-# front page function which return front page html
-def front_page(request):
-    return render(request,'portal/front_page.html')
-
+from .models import Document
+from .forms import DocumentForm
 
 """
  it will work when user is logged in
@@ -27,21 +27,21 @@ def front_page(request):
 """
 @login_required
 def home(request):
-    """
-    doc string inside a function
-    :param request:
-    :return: render
-    """
-    return render(request, 'portal/home.html')
+     documents = Document.objects.all()
+     return render(request,'portal/profile.html', {'documents': documents})
 
+# front page function which return front page html
+def front_page(request):
+    return render(request,'portal/front_page.html')
 
 def signup(request):
     if request.method == 'POST':
         form = SignUpPage(request.POST)
         if form.is_valid():
             email = form.cleaned_data.get('email')
-            if email in User.objects.all().values('email'):
-                raise form.ValidationError('this email user already exist')
+            User.objects.filter(email=email).count()
+            if email and User.objects.filter(email=email).count() > 0:
+                raise ValidationError('this email user already exist')
             else:
                 user = form.save(commit=False)
                 user.is_active = False
@@ -77,24 +77,34 @@ def activate(request, uidb64, token):
         user.profile.email_confirmed = True
         user.save()
         login(request, user)
-        return redirect('home')
+        return redirect('profile')
     else:
         return render(request, 'portal/account_activation_invalid.html')
 
+def newsfeed(request):
+    documents = Document.objects.all()
+    return render(request,'portal/newsfeed.html', {'documents': documents})
 
-
-def forget_pass(request):
+def model_form_upload(request):
     if request.method == 'POST':
-        form = forget_password(request.POST)
+        form = DocumentForm(request.POST, request.FILES)
         if form.is_valid():
-            form.save(commit=False)
-            your_email = form.cleaned_data.get('your_email')
-            return redirect('front_page')
-
+            form.save()
+            return redirect('profile')
     else:
-        form = forget_password()
-    return render(request, 'portal/forget_page.html',{'form':form})
+        form = DocumentForm()
+    return render(request, 'portal/model_form_upload.html', {
+        'form': form
+    })
 
-
-
-
+# def forget_pass(request):
+#     if request.method == 'POST':
+#         form = forget_password(request.POST)
+#         if form.is_valid():
+#             form.save(commit=False)
+#             your_email = form.cleaned_data.get('your_email')
+#             return redirect('front_page')
+#
+#     else:
+#         form = forget_password()
+#     return render(request, 'portal/forget_page.html',{'form':form})

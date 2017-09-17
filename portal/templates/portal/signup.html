@@ -22,12 +22,13 @@ SHARE<br></p>
      <a href="{% url 'logout' %}">logout</a>
 {% else %}
     <form method='post'>
+    {% csrf_token %}
     {% for field in form %}
         <label for="name">{{ field.label_tag }}</label><br>
         {{ field }}<br><br>
     {% endfor %}
     <p class="button">
-    SUBMIT
+        <button type="submit">SUBMIT</button>
     </p>
     <p class="ques">already have an account? <a href="{% url 'login' %}">login</a></p>
     </form>
