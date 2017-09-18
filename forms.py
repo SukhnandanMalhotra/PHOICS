@@ -11,7 +11,7 @@ class DocumentForm(forms.ModelForm):
         size=forms.ModelChoiceField(queryset=Document.objects.filter(uploaded_at=datetime.now()),empty_label=None)
         flip = forms.ModelChoiceField(queryset=Document.objects.filter(uploaded_at=datetime.now()), empty_label=None)
 
-        fields = ( 'document','status', 'size' ,'flip')
+        fields = ( 'document','status', 'size' ,'flip','rotate')
 
 
 # class ProfileImageForm(forms.ModelForm):
