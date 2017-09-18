@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Raleway');
 
 body{
-	background-color: #9eb25d;
+	background-color: #02b46d;
 	margin:0px;
 }
 div.back{
@@ -14,7 +14,7 @@ img{
 }
 p.text{
 	position:absolute;
-	font-size: 200%;
+	font-size: 150%;
 	color:white;
 	margin-left:5vw;
 	margin-top:10vh;
@@ -62,7 +62,7 @@ p.button{
 	margin-left:5vw;
 	margin-top: 0px;
 	margin-bottom: 0px;
-    background-color: #9eb25d;
+    background-color: #02b46d;
     padding:1% 5% 1% 5%;
     font-family: Raleway;
     box-shadow: 0 1px 4px rgba(0, 0, 0, .6); 
@@ -81,6 +81,6 @@ p.ques{
 	margin-top: 1vh;
 	margin-left:5vw;
 	font-family: Raleway;
-	line-height: 115%
+	line-height: 150%
    
 }

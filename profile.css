@@ -1,0 +1,283 @@
+@import url('https://fonts.googleapis.com/css?family=Raleway');
+body{
+	margin:0px;
+	background-color: #eeeeee;
+}
+div{
+    
+	height:100vh;
+	width:20vw;
+	background-color: #02b46d;
+	box-shadow: 3px 3px 4px rgba(0, 0, 0, .6);
+}
+h1{
+	position: absolute;
+	font-family: Raleway light;
+	color: black;
+	margin-left:3vw;
+}
+img.dp{
+    position: absolute;
+    width:20vw;
+    height:30vh;
+    margin-top: 10vh;
+}
+
+ul{ 
+    margin:0px;
+	position:absolute;
+	width:20vw;
+	box-sizing: border-box;
+	list-style-type: none;
+	margin-top: 50vh;
+	padding:0px;
+	cursor:pointer;
+}
+
+li{ 
+    width:20vw;
+	background-color: #273b09;
+	height:7vh;
+	color:white;
+	font-family: Raleway medium;
+	color: white;
+	padding:5% 2% 5% 10%;
+	box-sizing: border-box;
+}
+span{ 
+float:right;
+margin-right: 1vw; 
+}
+
+li.per{
+	background-color: #038458;
+
+}
+li.pub{
+	background-color: #037951;
+}
+li:hover{
+	background-color:#02b46d;
+	color: black;
+
+}
+div.bottom_bar{
+	position: absolute;
+	margin-top:64vh;
+	height:36vh;
+	width:20vw;
+	box-sizing: border-box;
+	background-color: #036846;
+}
+p.name{
+	position:absolute;
+	margin-top:43vh;
+	color:black;
+	margin-left:3vw;
+	font-size:120%;
+	text-align: center;
+    font-family:Raleway medium;
+}
+p.button{
+	margin-left:5vw;
+	margin-top:10vh;
+    font-family: Raleway medium;
+    color: white;
+    border:2px solid white;
+    width:10vw;
+    text-align:center;
+    padding-top:2%;
+    padding-bottom: 2%;
+    cursor:pointer;
+    transition: padding 1s ease-in;
+}
+.button:hover{
+
+ padding:4%;
+ 
+}
+div.top-bar{
+    position: absolute;
+    margin-left:20vw;
+    width:80vw;
+    height:10vh;
+    background-color: #02b46d;
+    margin-top: 0px;
+}
+#search{
+	margin-top: 3vh;
+	margin-left: 10vw;
+	width:25vw;
+	height: 4vh;
+	
+}
+div.image{
+	position:absolute;
+	width:20vw;
+	height:30vh;
+	background-color: white;
+	margin-top: 10vh;
+	margin-left: 20vw;
+	box-shadow: 0px 0px 0px ;
+
+}
+div.image1{
+	position:absolute;
+	width:20vw;
+	height:30vh;
+	background-color: white;
+	margin-top: 10vh;
+	margin-left: 40vw;
+    box-shadow: 0px 0px 0px ;
+}
+img{
+	width:20vw;
+	height: 30vh;
+	transition: transform 1s ease-in;
+}
+img.profile{
+	position: absolute;
+	width:5vw;
+	height:10vh;
+	margin-left: 50vw;
+}
+.profile:hover{
+
+	background-color:black;
+}
+img.search_img{
+	position: absolute;
+	margin-top:3.5vh;
+	margin-left:36vw;
+	width:2vw;
+	height:4vh;
+}
+img.home{
+	position: absolute;
+	margin-left:56vw;
+	width:5vw;
+	height:10vh;
+}
+.home:hover{
+	background-color:black;
+}
+#img{
+	cursor:pointer;
+	overflow: hidden;
+}
+
+#img:hover img{
+    transform:scale(1.2);
+    filter:brightness(0.5);
+}
+#img p{
+	position:absolute;
+	top:22vh;
+	opacity:0;
+	color:white;
+    left:2vw;
+}
+#img:hover p{
+	opacity:1;
+}
+@media only screen and (max-width:1050px){
+	body{
+		font-size:100%;
+	}
+	li{
+		font-size:120%;
+	}
+}
+@media only screen and (max-width:450px){
+	
+	p.name{
+	    margin-left:0;
+		font-size:75%;
+	}
+	img.profile{
+
+           width:10vw;
+	}
+	img.home{
+		margin-left:62vw;
+		width:10vw;
+	}
+	img.search_img{
+		margin-left:40vw;
+		width:5vw;
+	}
+	h1{
+		font-size:85%;
+		margin-top:4vh;
+	}
+	p.button{
+		font-size:50%;
+		margin-top:5vh;
+	}
+	li{
+		font-size:75%;
+	}
+}
+@media only screen and (max-width:380px){
+	
+	p.name{
+	    margin-left:2vw;
+		font-size:60%;
+	}
+	img.profile{
+
+           width:12vw;
+	}
+	img.home{
+		margin-left:62vw;
+		width:12vw;
+	}
+	img.search_img{
+		margin-left:40vw;
+		width:5vw;
+	}
+	h1{
+		font-size:65%;
+		margin-top:4vh;
+	}
+	p.button{
+		font-size:50%;
+		margin-top:5vh;
+		padding:5%;
+	}
+	li{
+		font-size:60%;
+	}
+}
+
+@media only screen and (max-width:320px){
+	
+	p.name{
+	    margin-left:2vw;
+		font-size:50%;
+	}
+	img.profile{
+
+           width:12vw;
+	}
+	img.home{
+		margin-left:62vw;
+		width:12vw;
+	}
+	img.search_img{
+		margin-left:40vw;
+		width:5vw;
+	}
+	h1{
+		font-size:65%;
+		margin-top:4vh;
+	}
+	p.button{
+		font-size:50%;
+		margin-top:5vh;
+		padding:5%;
+	}
+	li{
+		font-size:50%;
+	}
+}

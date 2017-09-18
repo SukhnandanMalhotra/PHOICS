@@ -1,0 +1,93 @@
+@import url('https://fonts.googleapis.com/css?family=Raleway');
+body{
+	margin:0px;
+	background-color: #eeeeee;
+}
+div.top-bar{
+    position: absolute;
+   
+    width:100vw;
+    height:10vh;
+    background-color: #02b46d;
+    margin-top: 0px;
+}
+h1{
+	position:absolute;
+	font-family: Raleway light;
+	color:#007842;
+	margin-top:2vh;
+	margin-left: 3vw;
+}
+#search{
+	margin-top: 3vh;
+	margin-left: 35vw;
+	width:25vw;
+	height: 4vh;
+	
+}
+img.profile{
+	position: absolute;
+	width:5vw;
+	height:10vh;
+	margin-left: 70vw;
+}
+.profile:hover{
+	background-color: black;
+}
+img.search_img{
+	position: absolute;
+	margin-top:3.5vh;
+	margin-left:61vw;
+	width:2vw;
+	height:4vh;
+}
+img.home{
+	position: absolute;
+	margin-left:75vw;
+
+	width:5vw;
+	height:10vh;
+}
+.home:hover{
+	background-color:black;
+}
+div.feed1{
+	position: absolute;
+	margin-top:12vh;
+	margin-left: 50vh;
+    width:50vw;
+    height:60vh;
+    background-color: white;
+    align-items: center;
+}
+.feed1 img{
+	margin-top:7vh;
+	width:50vw;
+	height:40vh;
+	margin-bottom: 2vh;
+}
+p{  
+    margin-top: 0;
+	position:absolute;
+	margin-left:3vw;
+	font-family:Raleway light;
+	cursor:pointer;
+}
+p.name{
+	margin-top:2vh;
+}
+label{
+	
+	margin-top:45vh;
+	
+	margin-left:15vw;
+	font-family:Raleway light;
+}
+p.share{
+	margin-left:10vw;
+}
+input{
+	margin-top:2vh;
+	margin-left:3vw;
+	width:20vw;
+}

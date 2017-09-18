@@ -5,6 +5,7 @@ body{
 	background-image: url("background (2).jpg");
 	background-repeat: no-repeat;
 	background-size: cover;
+	
     }
 h1{
 	text-align: center;                      /* /////////// PHOICS HEADING//////////*/
@@ -23,11 +24,11 @@ p{
     padding: 10px;
     text-align: center;
     font-family:Raleway;
-    font-size:20px;
+    font-size:15px;
     word-wrap: break-word;
     }
 span{
-	font-size:25px;
+	font-size:20px;
     }
 div.container{                                       /*/////////////////boundary box////////////////////////*/
    border: 5px solid white;
@@ -57,21 +58,27 @@ li{                                                      /*/////////////////////
 	color:white;
 	padding:2% 8% 2% 8%;
 	font-family: Raleway;
-	opacity: 0.8;
+
 	cursor: pointer;
    
     }
+ a{
+ 	text-decoration:none;
+ 	color:white;
+ }
  li.su{
-  -webkit-transition: padding-right 1s ease-out;	/*////////////////////////////////////////animation-signup button//////////////*/
+  -webkit-transition: all 1s ease-out;	/*////////////////////////////////////////animation-signup button//////////////*/
  }
 li.su:hover{
 	padding-right:20%;
+	padding-left:15%;
 }
 li.li{
-	-webkit-transition: padding-left 1s ease-out;	/*/////////////////////////animation-login button////////////*/
+	-webkit-transition: all 1s ease-out;	/*/////////////////////////animation-login button////////////*/
 }
 li.li:hover{
 	padding-left: 20%;
+	padding-right:15%;
 }
 ul{
 	position: relative;
@@ -82,23 +89,18 @@ ul{
 	box-sizing: border-box;
 	}
 div.hline1{                                 /*//////////////top horizontal line ///////////////*/
-	width:25%;
+	width:30%;
 	height:1px;
 	background-color: white;
-	margin-left: 35%;
-	animation-name: expand;
-	animation-name: 2s;
-	animation-iteration-count: 3;
+	margin-left: 37%;
+
     }
-   @-webkit-keyframes expand{
-   	from{width:0%;}
-   	to{width:25%;}
-   }
+  
 div.hline2{                                     /*////////////////////bottom horizontal line/////////////////*/
 	width:30%;
 	height:1px;
 	background-color: white;
-	margin-left:35%;
+	margin-left:37%;
     }
 @media only screen and (max-width: 900px) {                    /*///////////////////////media query for buttons(to make responsive)//////////*/
     li {
@@ -116,12 +118,19 @@ div.hline2{                                     /*////////////////////bottom hor
 		letter-spacing:15px;
 		font-size:3em;
 	}
+	p{
+		font-size:10px;
+	}
+	span{
+		font-size:15px;
+	}
 }
 @media only screen and (max-width:590px){                  /*////////////////////////media query for heading phoics (to make responsive)////////////*/
 	h1{
 		letter-spacing:10px;
 		font-size:2.5em;
 	}
+
 }
 @media only screen and (max-width:450px){
 	h1{
