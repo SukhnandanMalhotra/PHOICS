@@ -2,7 +2,7 @@ from django.conf.urls import url, include
 from django.contrib.auth import views as built_views
 from django.contrib import admin
 from portal import views
-
+from django.contrib.auth.views import password_reset
 from django.conf import settings
 from django.conf.urls.static import static
 
@@ -28,9 +28,19 @@ urlpatterns = [
         views.activate, name='activate'),
     # for front page "/front_page"
     url(r'^front_page/$', views.front_page, name='front_page'),
-    # if user forget password then go "/forget_pass/"
-    url(r'^forget_pass/$', views.forget_pass, name='forget_pass'),
+    url(r'^password_reset/$', built_views.password_reset, name='password_reset'),
+    url(r'^password_reset/done/$', built_views.password_reset_done, name='password_reset_done'),
+    url(r'^reset/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$',
+        built_views.password_reset_confirm, name='password_reset_confirm'),
+    url(r'^reset/done/$', built_views.password_reset_complete, name='password_reset_complete'),
 
-]
+    # if user forget password then go "/forget_pass/"
+    # url(r'^forget_pass/$', views.forget_pass, name='forget_pass'),
+    # url(r'^enter_otp/$', views.enter_otp, name='enter_otp'),
+    # url(r'^reset_pass/$', views.reset_pass, name='reset_pass'),
+    # url(r'^password_reset/$', password_reset, {'template_name': 'portal/reset_password_form.html'}, name='reset_password'),
+   ]
+
+
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

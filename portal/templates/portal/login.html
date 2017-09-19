@@ -32,9 +32,9 @@ SHARE<br></p>
         {% endfor %}
     {% endfor %}
     <p class="button">
-    <button type="submit">LOG-IN</button>
+    <button class="button" type="submit">LOG-IN</button>
     </p>
-    <p class="ques"><a href="{% url 'forget_pass' %}">Forgot password?</a><br>
+    <p class="ques"><a href="{% url 'password_reset' %}">Forgot password?</a><br>
         New User? <a href="{% url 'signup' %}">signup</a>    </p>
 
     </form>

@@ -13,8 +13,11 @@ class SignUpPage(UserCreationForm):
         model = User
         fields = ('username', 'email', 'password1', 'password2', )
 
-class forget_password(forms.Form):
+class ForgetPassword(forms.Form):
     your_email = forms.EmailField(max_length=254, help_text='Required. Please enter a valid email address')
+
+class OTPForm(forms.Form):
+    otp = forms.CharField(max_length=10)
 
 class DocumentForm(forms.ModelForm):
     class Meta:
@@ -22,3 +25,7 @@ class DocumentForm(forms.ModelForm):
         status=forms.ModelChoiceField(queryset=Document.objects.filter(uploaded_at=datetime.now()),empty_label=None)
         fields = ( 'document','status')
 
+class YourNewPassword(forms.Form):
+    your_user_name = forms.CharField(max_length=222,)
+    old_password = forms.CharField(max_length=222,)
+    new_password = forms.CharField(max_length=222,)
