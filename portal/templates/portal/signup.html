@@ -28,9 +28,8 @@ SHARE<br></p>
         <label for="name">{{ field.label_tag }}</label><br>
         {{ field }}<br><br>
     {% endfor %}
-    <p class="button">
-        <button type="submit">SUBMIT</button>
-    </p>
+        <button class="button" type="submit">SUBMIT</button>
+
     <p class="ques">already have an account? <a href="{% url 'login' %}">login</a></p>
     </form>
 {% endif %}

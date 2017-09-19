@@ -10,8 +10,6 @@ class Document(models.Model):
     status = models.CharField(max_length=7,choices=choice,default="PUBLIC")
     document = models.FileField(upload_to='documents/')
     uploaded_at = models.DateTimeField(auto_now_add=True)
-    def __unicode__(self):
-        return self.document
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)

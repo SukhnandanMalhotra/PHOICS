@@ -15,6 +15,7 @@ from .tokens import account_activation_token
 from django.shortcuts import render, redirect, get_object_or_404, render_to_response
 from .models import Document
 from .forms import DocumentForm, SignUpPage
+from django.contrib.auth.views import password_reset
 #from .forms import ForgetPassword, OTPForm
 from . import forms
 from django.conf import settings
@@ -31,7 +32,7 @@ from django.http import HttpResponse
 """
 @login_required
 def home(request):
-    documents = Document.objects.all()
+    documents = Document.objects.order_by('-uploaded_at')
     return render(request,'portal/profile.html', {'documents': documents})
 
 
@@ -102,7 +103,7 @@ def activate(request, uidb64, token):
         return render(request, 'portal/account_activation_invalid.html')
 
 def newsfeed(request):
-    documents = Document.objects.all()
+    documents = Document.objects.order_by('-uploaded_at')
     return render(request,'portal/newsfeed.html', {'documents': documents})
 
 def model_form_upload(request):
@@ -116,7 +117,6 @@ def model_form_upload(request):
     return render(request, 'portal/model_form_upload.html', {
         'form': form
     })
-
 
 """
 this is that code that we want to follow for forget password before now code
