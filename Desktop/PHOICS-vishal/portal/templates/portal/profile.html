@@ -1,21 +1,24 @@
-{% extends 'base_profile.html' %}
-{% block content %}
-     <a href="{% url 'logout' %}">logout</a>
-  <h2>Welcome, {{ user.get_full_name }} <small>{{ user.username }}</small>!</h2>
+{% extends 'base.html' %}
 
-  <ul>
+{% block content %}
+  <ul style="list-style-type:none">
     <li>
-        <a href="{% url 'newsfeed' %}">NEWSFEED PAGE</a>
-        <a href="{% url 'model_form_upload' %}">UPLOAD PICTURE</a>
+        <a href="{% url 'newsfeed' %}">NEWSFEED PAGE</a><br>
+        <a href="{% url 'model_form_upload' %}">UPLOAD PICTURE</a><br>
+{#        <a href="{% url 'profilepic' %}">UPLOAD profile pic</a><br>#}
 
     </li>
   </ul>
-  <ul>
-      {% for obj in documents %}
-          <li>
-              <img src="{{ obj.document.url }}" style="height: 500px;width: 500px;">
-{#              {% social_widget_render 'facebook/likebox.html' href='https://www.facebook.com/FacebookDevelopers' %}#}
-          </li>
-      {% endfor %}
-  </ul>
+
+    <div>
+        <ul style="list-style-type:none">
+            {% for obj in documents %}
+                {% if obj.user == request.user %}
+                    <li>
+                        <img src="{{ obj.document.url }}" style="height: 500px;width: 500px;">
+                    </li>
+                {% endif %}
+            {% endfor %}
+        </ul>
+    </div>
 {% endblock %}
