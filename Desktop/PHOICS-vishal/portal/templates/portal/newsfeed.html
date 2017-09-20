@@ -1,18 +1,39 @@
-{% extends 'base.html' %}
+{% extends 'base_profile.html' %}
 
 {% block content %}
-  <ul style="list-style-type:none">
-    <li>
-      <a href="{% url 'profile' %}">PROFILE PAGE</a>
-    </li>
-  </ul>
-  <ul style="list-style-type:none">
-      {% for obj in documents %}
-         {% if obj.status == "PUBLIC" %}
-             <li>
-                 <img src="{{ obj.document.url }}" style="height: 500px;width: 500px;">
-             </li>
-         {% endif %}
-      {% endfor %}
-  </ul>
+{% if user.is_authenticated %}
+    {% csrf_token %}
+    <ul>
+        <li>
+        <a href="{% url 'profile' %}">PROFILE PAGE</a>
+        </li>
+    </ul>
+    <ul>
+        {% for obj in documents %}
+            {% if obj.status == "PUBLIC" %}
+                <li>
+                <h3>{{ obj.uploaded_at }}  by  {{ obj.user }}</h3>
+                <a href="{{ obj.document.url }}"><img src="{{ obj.document.url }}" style="height: 500px;width: 500px;"></a>
+                </li>
+            {% endif %}
+        {% endfor %}
+    </ul>
+{% else %}
+    <h3>you are not logged in first login</h3>
+{% endif %}
+<div>
+    <span>
+        {% if documents.has_previous %}
+            <a href="?page={{ documents.previous_page_number }}">previous</a>
+        {% endif %}
+
+        <span>
+            Page {{ documents.number }} of {{ documents.paginator.num_pages }}.
+        </span>
+
+        {% if documents.has_next %}
+            <a href="?page={{ documents.next_page_number }}">next</a>
+        {% endif %}
+    </span>
+</div>
 {% endblock %}

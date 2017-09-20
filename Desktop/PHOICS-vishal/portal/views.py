@@ -1,18 +1,28 @@
 from django.shortcuts import render, redirect
 
-from .models import Document,Comment
+from .models import Document
 from .forms import DocumentForm
 
 def home(request):
     documents = Document.objects.all()
-    # profilepic=ProfilePic.objects.all()
-    posts=Comment.objects.all()
-    return render(request, 'portal/profile.html', {'documents': documents,'post':posts})
+    # profilepic=ProfilePic.objects.all()posts=Comment.objects.all()
+    return render(request, 'portal/profile.html', {'documents': documents})
 
 
 def newsfeed(request):
-    documents = Document.objects.all()
+    documents = Document.objects.order_by('-uploaded_at')
+    paginator = Paginator(documents, 20)
+    page = request.GET.get('page')
+    try:
+        documents = paginator.page(page)
+    except PageNotAnInteger:
+        # If page is not an integer, deliver first page.
+        documents = paginator.page(1)
+    except EmptyPage:
+        # If page is out of range (e.g. 9999), deliver last page of results.
+        documents = paginator.page(paginator.num_pages)
     return render(request, 'portal/newsfeed.html', {'documents': documents})
+
 
 # def profilepic(request):
 #     if request.method == 'POST':
