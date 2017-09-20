@@ -16,8 +16,11 @@ class SignUpPage(UserCreationForm):
 class DocumentForm(forms.ModelForm):
     class Meta:
         model = Document
-        status=forms.ModelChoiceField(queryset=Document.objects.filter(uploaded_at=datetime.now()),empty_label=None)
-        fields = ('document', 'status')
+        status = forms.ModelChoiceField(queryset=Document.objects.filter(uploaded_at=datetime.now()),empty_label=None)
+        # size = forms.ModelChoiceField(queryset=Document.objects.filter(uploaded_at=datetime.now()), empty_label=None)
+        # flip= forms.ModelChoiceField(queryset=Document.objects.filter(uploaded_at=datetime.now()), empty_label=None)
+        # rotate = forms.ModelChoiceField(queryset=Document.objects.filter(uploaded_at=datetime.now()), empty_label=None)
+        fields = ('document', 'status',)
 
 # class ForgetPassword(forms.Form):
 #     your_email = forms.EmailField(max_length=254, help_text='Required. Please enter a valid email address')

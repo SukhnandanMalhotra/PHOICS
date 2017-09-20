@@ -110,7 +110,9 @@ def model_form_upload(request):
     if request.method == 'POST':
         form = DocumentForm(request.POST, request.FILES)
         if form.is_valid():
-            form.save()
+            profile1 = form.save(commit=False)
+            profile1.user = request.user
+            profile1.save()
             return redirect('profile')
     else:
         form = DocumentForm()

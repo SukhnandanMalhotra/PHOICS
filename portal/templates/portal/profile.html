@@ -14,9 +14,11 @@
   </ul>
   <ul>
       {% for obj in documents %}
-          <li>
-              <img src="{{ obj.document.url }}" style="height: 500px;width: 500px;">
-          </li>
+          {% if obj.user == request.user %}
+              <li>
+                  <img src="{{ obj.document.url }}">
+              </li>
+          {% endif %}
       {% endfor %}
   </ul>
 {% endblock %}
