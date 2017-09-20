@@ -20,22 +20,26 @@ SHARE<br></p>
 {% if user.is_authenticated %}
     <label>FIRST LOG OUT</label>
     <a href="{% url 'logout' %}">logout</a>
+
 {% else %}
     <form method="post">
-        {% csrf_token %}
-        {% for field in form %}
-            <label for="e-mail">{{ field.label_tag }}</label><br><br>
-            {{ field }}<br><br>
-            {% for error in field.errors %}
-                <label for="e-mail">{{ error }}</label><br><br>
-            {% endfor %}
+    {% csrf_token %}
+    {% for field in form %}
+        <label for="e-mail">{{ field.label_tag }}</label><br><br>
+        {{ field }}<br><br>
+        {% for error in field.errors %}
+            <label for="e-mail">{{ error }}</label><br><br>
         {% endfor %}
-        <p class="button">
-            <button type="submit">LOG-IN</button>
-        </p>
-        <p class="ques">Forgot password?<br>New User? <a href="{% url 'signup' %}">signup</a></p>
+    {% endfor %}
+    <p class="button">
+    <button type="submit">LOG-IN</button>
+    </p>
+    <p class="ques"><a href="{% url 'forget_pass' %}">Forgot password?</a><br>
+        New User? <a href="{% url 'signup' %}">signup</a>    </p>
+
     </form>
-{% endif %}
+
+    {% endif %}
 </p>
 </div>
 </body>

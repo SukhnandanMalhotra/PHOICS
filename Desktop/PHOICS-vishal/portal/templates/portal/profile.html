@@ -1,5 +1,7 @@
 {% extends 'base_profile.html' %}
+
 {% block content %}
+    {% csrf_token %}
      <a href="{% url 'logout' %}">logout</a>
   <h2>Welcome, {{ user.get_full_name }} <small>{{ user.username }}</small>!</h2>
 
@@ -12,10 +14,12 @@
   </ul>
   <ul>
       {% for obj in documents %}
-          <li>
-              <img src="{{ obj.document.url }}" style="height: 500px;width: 500px;">
-{#              {% social_widget_render 'facebook/likebox.html' href='https://www.facebook.com/FacebookDevelopers' %}#}
-          </li>
+          {% if obj.user == request.user %}
+              <li>
+                  <h3>{{ obj.uploaded_at }}</h3>
+                  <a href="{{ obj.document.url }}"><img src="{{ obj.document.url }}" style="height: 500px;width: 500px;"></a>
+              </li>
+          {% endif %}
       {% endfor %}
   </ul>
 {% endblock %}

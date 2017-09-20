@@ -13,7 +13,10 @@ from django.template.loader import render_to_string
 from phoics.settings import EMAIL_HOST_USER
 from .forms import SignUpPage, forget_password
 from .tokens import account_activation_token
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404, render_to_response
+from django.conf import settings
+from django.core.files.storage import FileSystemStorage
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 from .models import Document
 from .forms import DocumentForm
@@ -25,8 +28,20 @@ from .forms import DocumentForm
 """
 @login_required
 def home(request):
-     documents = Document.objects.order_by('-uploaded_at')
-     return render(request,'portal/profile.html', {'documents': documents})
+    documents = Document.objects.order_by('-uploaded_at')
+    return render(request,'portal/profile.html', {'documents': documents})
+
+
+# def like(request, post_id):
+#     p = Like.objects.get()
+#     number_of_likes = p.like_set.all().count()
+#     new_hipe, created = Hipe.objects.get_or_create(user=request.user, post_id=post_id)
+#     render_to_response('portal/wall.html', locals(), context_instance=RequestContext(request))
+#
+# def post_detail(request, id):
+#     post_details = get_object_or_404(Posts, pk=id)
+#     user_likes_this = post.like_set.filter(user=request.user) and True or False
+#     return render_to_response('portal/wall.html', locals(), context_instance=RequestContext(request))
 
 # front page function which return front page html
 def front_page(request):
@@ -75,19 +90,31 @@ def activate(request, uidb64, token):
         user.profile.email_confirmed = True
         user.save()
         login(request, user)
-        return redirect('')
+        return redirect('profile')
     else:
         return render(request, 'portal/account_activation_invalid.html')
 
 def newsfeed(request):
     documents = Document.objects.order_by('-uploaded_at')
+    paginator = Paginator(documents, 20)
+    page = request.GET.get('page')
+    try:
+        documents = paginator.page(page)
+    except PageNotAnInteger:
+        # If page is not an integer, deliver first page.
+        documents = paginator.page(1)
+    except EmptyPage:
+        # If page is out of range (e.g. 9999), deliver last page of results.
+        documents = paginator.page(paginator.num_pages)
     return render(request,'portal/newsfeed.html', {'documents': documents})
 
 def model_form_upload(request):
     if request.method == 'POST':
         form = DocumentForm(request.POST, request.FILES)
         if form.is_valid():
-            form.save()
+            profile1=form.save(commit=False)
+            profile1.user = request.user
+            profile1.save()
             return redirect('profile')
     else:
         form = DocumentForm()
@@ -105,4 +132,15 @@ def forget_pass(request):
 
     else:
         form = forget_password()
-    return render(request, 'portal/forget_page.html',{'form':form})
+    return render(request, 'portal/forget_page.html',{'form': form})
+
+# def like(request, picture_id):
+#     new_like, created = Like.objects.get_or_create(user=request.user, picture_id=picture_id)
+#     if not created:
+#         pass
+#     else:
+#         pass
+#
+# def picture_detail(request, id):
+#     pic = get_object_or_404(Document, pk=id)
+#     user_likes_this = pic.like_set.filter(user=request.user) and True or False

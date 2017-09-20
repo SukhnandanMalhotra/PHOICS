@@ -11,13 +11,14 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     # this is for user loggin in page "/"
     url(r'^$', views.home, name='profile'),
+    #
     url(r'^upload/$', views.model_form_upload, name='model_form_upload'),
     #
     url(r'^newsfeed/$', views.newsfeed, name='newsfeed'),
     # this is for login page "/login"
     url(r'^login/$', built_views.login, {'template_name': 'portal/login.html'}, name='login'),
     # for logout but open login page
-    url(r'^logout/$', built_views.logout, {'next_page': 'login'}, name='logout'),
+    url(r'^logout/$', built_views.logout, {'next_page': 'front_page'}, name='logout'),
     # signup page "/signup/"
     url(r'^signup/$', views.signup, name='signup'),
     # page after email send for verification "/account_activation_sent/"
