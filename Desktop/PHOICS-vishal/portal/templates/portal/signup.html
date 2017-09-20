@@ -1,0 +1,38 @@
+{% load staticfiles %}
+<html>
+<head>
+<title>signup</title>
+<link rel="stylesheet" type="text/css" href="{% static 'portal/signup_page.css' %}">
+</head>
+<body>
+<div class="back">
+<img src="{% static 'portal/images/background.jpg' %}">
+<p class="text"><span>PHOICS</span><br>
+UPDATE<br>
+EDIT<br>
+SHARE<br></p>
+</div>
+<div class="form">
+<h1>SIGN-UP</h1>
+<p>
+
+
+{% if user.is_authenticated %}
+    <h3>first log out</h3>
+     <a href="{% url 'logout' %}">logout</a>
+{% else %}
+    <form method='post'>
+    {% csrf_token %}
+    {% for field in form %}
+        <label for="name">{{ field.label_tag }}</label><br>
+        {{ field }}<br><br>
+    {% endfor %}
+    <p class="button">
+        <button type="submit">SUBMIT</button>
+    </p>
+    <p class="ques">already have an account? <a href="{% url 'login' %}">login</a></p>
+    </form>
+{% endif %}
+</div>
+</body>
+</html>
