@@ -15,6 +15,7 @@ from .tokens import account_activation_token
 from django.shortcuts import render, redirect, get_object_or_404, render_to_response
 from .models import Document
 from .forms import DocumentForm, SignUpPage
+from django.contrib import messages
 from django.contrib.auth.views import password_reset
 #from .forms import ForgetPassword, OTPForm
 from . import forms
@@ -52,7 +53,7 @@ def signup(request):
             User.objects.filter(email=email).count()
             # if count is greater than zero it means this email id already exist
             if email and User.objects.filter(email=email).count() > 0:
-                raise ValidationError('this email user already exist')
+                messages.error(request, 'this email-id already register', extra_tags='alert')
             else:
                 user = form.save(commit=False)
                 user.is_active = False
@@ -73,17 +74,20 @@ def signup(request):
                     'uid': urlsafe_base64_encode(force_bytes(user.pk)),
                     'token': account_activation_token.make_token(user),
                 })
-                from_mail=EMAIL_HOST_USER
-                to_mail=[user.email]
+                from_mail = EMAIL_HOST_USER
+                to_mail = [user.email]
                 # fail_silently false than it will raise as smtplib.SMTPException.
                 send_mail(subject, message,from_mail,to_mail,fail_silently=False)
-                return redirect('account_activation_sent')
+                messages.success(request, 'your email is successfully send')
+                #return redirect('account_activation_sent')
     else:
         form = SignUpPage()
+
+        messages.info(request, 'please fill form first')
     return render(request, 'portal/signup.html', {'form': form})
 
-def account_activation_sent(request):
-    return render(request, 'portal/account_activation_sent.html')
+#def account_activation_sent(request):
+    #return render(request, 'portal/account_activation_sent.html')
 
 def activate(request, uidb64, token):
     try:

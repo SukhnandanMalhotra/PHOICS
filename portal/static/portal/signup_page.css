@@ -26,10 +26,10 @@ span{
 }
 div.form{
 	position:absolute;
-	margin-top:20vh;
+	margin-top:10vh;
 	margin-left:55vw;
 	width:30vw;
-	height:65vh;
+	height:85vh;
 	background-color: white;
 	box-shadow: 3px 3px 4px rgba(0, 0, 0, .6);
 }

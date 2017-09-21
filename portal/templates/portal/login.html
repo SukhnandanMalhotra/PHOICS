@@ -25,10 +25,10 @@ SHARE<br></p>
     <form method="post">
     {% csrf_token %}
     {% for field in form %}
-        <label for="e-mail">{{ field.label_tag }}</label><br><br>
+        <label>{{ field.label_tag }}</label><br><br>
         {{ field }}<br><br>
         {% for error in field.errors %}
-            <label for="e-mail">{{ error }}</label><br><br>
+            <p>{{ error }}</p><br><br>
         {% endfor %}
     {% endfor %}
     <p class="button">
