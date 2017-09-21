@@ -9,16 +9,6 @@ from .models import Document
 from .forms import DocumentForm
 from django.forms import ModelForm
 
-class DocumentForm(forms.ModelForm):
-    class Meta:
-        model = Document
-        status = forms.ModelChoiceField(queryset=Document.objects.filter(uploaded_at=datetime.now()), empty_label=None)
-        size = forms.ModelChoiceField(queryset=Document.objects.filter(uploaded_at=datetime.now()), empty_label=None)
-        flip = forms.ModelChoiceField(queryset=Document.objects.filter(uploaded_at=datetime.now()), empty_label=None)
-        rotate= forms.ModelChoiceField(queryset=Document.objects.filter(uploaded_at=datetime.now()),empty_label=None)
-
-        fields = ('document', 'status', 'size', 'flip', 'rotate')
-
 
 def home(request):
      documents = Document.objects.order_by()
@@ -49,6 +39,13 @@ def Doc_update(request, pk, template_name='portal/model_form_upload.html'):
         form.save()
         return redirect('profile')
     return render(request, template_name, {'form':form})
+
+def Doc_delete(request, pk, template_name='portal/Doc_delete.html'):
+    removex = get_object_or_404(Document, pk=pk)
+    if request.method=='POST':
+        removex.delete()
+        return redirect('profile')
+    return render(request, template_name, {'object':removex})
 
 
 

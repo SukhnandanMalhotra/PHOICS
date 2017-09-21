@@ -13,6 +13,7 @@
           <li>
               <img src="{{ obj.document.url }}" >
              <a href="{% url "Doc_edit" obj.id %}">Edit</a>
+            <a href="{% url "Doc_delete" obj.id %}">Delete</a>
           </li>
       {% endfor %}
   </ul>
