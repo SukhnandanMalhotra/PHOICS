@@ -22,15 +22,17 @@ SHARE<br></p>
     <a href="{% url 'logout' %}">logout</a>
 
 {% else %}
+
     <form method="post">
     {% csrf_token %}
     {% for field in form %}
         <label>{{ field.label_tag }}</label><br><br>
         {{ field }}<br><br>
-        {% for error in field.errors %}
-            <p>{{ error }}</p><br><br>
-        {% endfor %}
+
     {% endfor %}
+    {% if form.errors %}
+            <p style="color: red">your username and  password does not <br>match. please try again </p><br><br>
+        {% endif %}
     <p class="button">
     <button class="button" type="submit">LOG-IN</button>
     </p>
