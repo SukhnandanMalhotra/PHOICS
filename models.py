@@ -1,8 +1,8 @@
 from __future__ import unicode_literals
-
+from django.core.urlresolvers import reverse
 from django.db import models
 from PIL import Image, ImageEnhance
-# from PIL import ImageEnhance
+
 from io import BytesIO
 from django.core.files.uploadedfile import InMemoryUploadedFile
 import sys
@@ -18,14 +18,15 @@ class Document(models.Model):
     size=models.IntegerField(choices=choice2,default=1)
     flip=models.CharField(max_length=17,choices=choice3, default="NONE")
     rotate=models.CharField(max_length=15,choices=choice4, default='NONE')
-
     document = models.ImageField(upload_to='documents/')
     uploaded_at = models.DateTimeField(auto_now_add=True)
 
 
-
     def __unicode__(self):
         return self.document
+
+    def get_absolute_url(self):
+        return reverse('model_form_upload', kwargs={'pk': self.pk})
 
     def save(self):
 
@@ -56,7 +57,7 @@ class Document(models.Model):
 
         elif self.rotate == 'anti':
             im=im.rotate(90)
-            
+
         elif self.rotate == 'NONE':
             pass
 
@@ -65,10 +66,13 @@ class Document(models.Model):
 
         im.save(output, format='JPEG', quality=100)
         output.seek(0)
+
+
         self.document = InMemoryUploadedFile(output, 'ImageField', "%s.jpg" % self.document.name.split('.')[0],
                                              'image/jpeg',
                                              sys.getsizeof(output), None)
-        super(Document, self).save()
+        super(Document,self).save()
+
 
 
 
