@@ -19,6 +19,6 @@ class forget_password(forms.Form):
 class DocumentForm(forms.ModelForm):
     class Meta:
         model = Document
-        status=forms.ModelChoiceField(queryset=Document.objects.filter(uploaded_at=datetime.now()),empty_label=None)
-        fields = ( 'document','status')
+        status = forms.ModelChoiceField(queryset=Document.objects.filter(uploaded_at__gte=datetime.now()), empty_label=None)
+        fields = ('document','status')
 

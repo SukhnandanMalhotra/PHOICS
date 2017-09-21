@@ -96,7 +96,12 @@ def activate(request, uidb64, token):
 
 def newsfeed(request):
     documents = Document.objects.order_by('-uploaded_at')
-    paginator = Paginator(documents, 20)
+    # documents=documents.filter(status == "public")
+    image=[]
+    for obj in documents:
+        if obj.status == "PUBLIC":
+            image.append(obj)
+    paginator = Paginator(image, 12)
     page = request.GET.get('page')
     try:
         documents = paginator.page(page)
