@@ -16,6 +16,7 @@ from django.shortcuts import render, redirect, get_object_or_404, render_to_resp
 from .models import Document
 from .forms import DocumentForm, SignUpPage
 from django.contrib import messages
+from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.contrib.auth.views import password_reset
 #from .forms import ForgetPassword, OTPForm
 from . import forms
@@ -108,7 +109,16 @@ def activate(request, uidb64, token):
 
 def newsfeed(request):
     documents = Document.objects.order_by('-uploaded_at')
-    return render(request,'portal/newsfeed.html', {'documents': documents})
+    paginator = Paginator(documents, 5)
+    page = request.GET.get('page')
+    try:
+        images = paginator.page(page)
+    except PageNotAnInteger:
+        images = paginator.page(1)
+    except EmptyPage:
+        images = paginator.page(paginator.num_pages)
+
+    return render(request,'portal/newsfeed.html', {'images': images})
 
 def model_form_upload(request):
     if request.method == 'POST':
@@ -123,52 +133,3 @@ def model_form_upload(request):
     return render(request, 'portal/model_form_upload.html', {
         'form': form
     })
-
-"""
-this is that code that we want to follow for forget password before now code
-"""
-# def forget_pass(request):
-#     if request.method == 'POST':
-#         form = ForgetPassword(request.POST)
-#         if form.is_valid():
-#             your_email = form.cleaned_data.get('your_email')
-#             subject = 'reset your password'
-#             message = render_to_string('portal/forget_email_sent.html', {
-#                   })
-#             from_mail = EMAIL_HOST_USER
-#             to_mail = [your_email]
-#             send_mail(subject, message, from_mail, to_mail, fail_silently=False)
-#             return redirect('enter_otp')
-#
-#     else:
-#         form = ForgetPassword()
-#     return render(request, 'portal/forget_page.html', {'form': form})
-
-# def enter_otp(request):
-#     if request.method == 'POST':
-#         form = OTPForm(request.POST)
-#         if form.is_valid():
-#             your_otp = form.cleaned_data.get('otp')
-#             return redirect('reset_password')
-#     else:
-#         form = OTPForm()
-#     return render(request, 'portal/enter_otp.html', {'form':form})
-#
-# def reset_pass(request):
-#     if request.method == 'POST':
-#         form = YourNewPassword(request.POST)
-#         if form.is_valid():
-#             your_user_name = form.cleaned_data.get('your_user_name')
-#             old_password = form.cleaned_data.get('old_password')
-#             new_password = form.cleaned_data.get('new_password')
-#             user_exist = User.objects.filter(Q(username=your_user_name) and Q(password=old_password))
-#             if user_exist.exists():
-#                 user_exist.password = new_password
-#                 return redirect('front_page')
-#             else:
-#                 return HttpResponse('user does not exist')
-#
-#     else:
-#         form = YourNewPassword()
-#     return render(request, 'portal/reset_password_form.html', {'form': form})
-#

@@ -9,14 +9,29 @@
         </li>
     </ul>
     <ul>
-        {% for obj in documents %}
-            {% if obj.status == "PUBLIC" %}
+        {% for img in images %}
+            {% if img.status == "PUBLIC" %}
                 <li>
-                <img src="{{ obj.document.url }}">
+                <h3>{{ img.uploaded_at }}  by  {{ img.user }}</h3>
+                <a href="{{ img.document.url }}"><img src="{{ img.document.url }}"></a>
                 </li>
             {% endif %}
         {% endfor %}
+
     </ul>
+        {% if images.has_previous %}
+            <a href="?page={{ images.previous_page_number }}">previous</a>
+        {% endif %}
+
+
+            Page {{ images.number }} of {{ images.paginator.num_pages }}.
+
+
+        {% if images.has_next %}
+            <a href="?page={{ images.next_page_number }}">next</a>
+        {% endif %}
+
+
 {% else %}
     <h3>you are not logged-in first login</h3>
 {% endif %}

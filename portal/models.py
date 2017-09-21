@@ -3,10 +3,17 @@ from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 from django.db import models
+import uuid
+import os
 # from PIL import Image
 # from io import BytesIO
 # from django.core.files.uploadedfile import  InMemoryUploadedFile
 # import sys
+
+def get_file_name(instance, filename):
+    ext = filename.split('.')[-1]
+    filename = "%s.%s" % (uuid.uuid4(), ext)
+    return os.path.join('documents', filename)
 
 choice1 = (("PRIVATE", "Private"),("PUBLIC", "Public"),)
 # choice2 = ((1,"Large"),(2, "Medium"),(3,"Small"))
@@ -15,16 +22,20 @@ choice1 = (("PRIVATE", "Private"),("PUBLIC", "Public"),)
 
 
 class Document(models.Model):
-    user = models.ForeignKey(User, default="")
+    user = models.ForeignKey(User)
     status = models.CharField(max_length=7,choices=choice1,default="PUBLIC")
     # size = models.IntegerField(choices=choice2, default=1)
     # flip = models.CharField(max_length=20, choices=choice3, default="NONE")
     # rotate = models.CharField(max_length=20, choices=choice4, default="NONE")
-    document = models.FileField(upload_to='documents/')
+    document = models.FileField(upload_to=get_file_name)
     uploaded_at = models.DateTimeField(auto_now_add=True)
 
-    def __unicode__(self):
-        return self.document
+    # def __str__(self):
+    #     return self.document
+
+    def __str__(self):
+        return self.user.username
+
 
     # def save(self):
     #     im=Image.open(self.document)
@@ -69,6 +80,9 @@ class Profile(models.Model):
     location = models.CharField(max_length=30, blank=True)
     birth_date = models.DateTimeField(null=True, blank=True)
     email_confirmed = models.BooleanField(default=False)
+    def __str__(self):
+        return self.user.username
+
 
 @receiver(post_save, sender=User)
 def update_user_profile(sender, instance, created, **kwargs):

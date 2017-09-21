@@ -16,7 +16,8 @@
       {% for obj in documents %}
           {% if obj.user == request.user %}
               <li>
-                  <img src="{{ obj.document.url }}">
+                  <h3>{{ obj.uploaded_at }}</h3>
+                  <a href="{{ obj.document.url }}"><img src="{{ obj.document.url }}"></a>
               </li>
           {% endif %}
       {% endfor %}
