@@ -1,7 +1,8 @@
 from __future__ import unicode_literals
 from django.core.urlresolvers import reverse
 from django.db import models
-from PIL import Image, ImageEnhance
+from PIL import Image
+from PIL import ImageFilter
 
 from io import BytesIO
 from django.core.files.uploadedfile import InMemoryUploadedFile
@@ -12,12 +13,14 @@ choice1 = (("PRIVATE", "Private"),("PUBLIC", "Public"),)
 choice2 = ((1,"Large"),(2, "Medium"),(3,"Small"))
 choice3 = (('horizon',"Flip Horizontally"),('vertical',"Flip Vertically"),('NONE',"None"))
 choice4 =(('clock',"Clockwise"),('anti', "Anticlockwise"),('NONE', "None"))
+choice5=(('y', 'Yes'),('n','No'))
 
 class Document(models.Model):
     status=models.CharField(max_length=7,choices=choice1,default="PUBLIC")
     size=models.IntegerField(choices=choice2,default=1)
     flip=models.CharField(max_length=17,choices=choice3, default="NONE")
     rotate=models.CharField(max_length=15,choices=choice4, default='NONE')
+    blur=models.CharField(max_length=5,choices=choice5,default='n')
     document = models.ImageField(upload_to='documents/')
     uploaded_at = models.DateTimeField(auto_now_add=True)
 
@@ -61,8 +64,10 @@ class Document(models.Model):
         elif self.rotate == 'NONE':
             pass
 
-
-
+        if self.blur =='y':
+            im=im.filter(ImageFilter.BLUR)
+        if self.blur =='n':
+            pass
 
         im.save(output, format='JPEG', quality=100)
         output.seek(0)

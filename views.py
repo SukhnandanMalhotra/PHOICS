@@ -6,7 +6,8 @@ from django.conf import settings
 from django.core.files.storage import FileSystemStorage
 from django.core.files import File
 from .models import Document
-from .forms import DocumentForm
+from .forms import DocumentForm , UpdateForm
+
 from django.forms import ModelForm
 
 
@@ -34,7 +35,7 @@ def model_form_upload(request):
 
 def Doc_update(request, pk, template_name='portal/model_form_upload.html'):
     updatex = get_object_or_404(Document, pk=pk)
-    form = DocumentForm(request.POST or None, instance=updatex)
+    form = UpdateForm(request.POST or None, instance=updatex)
     if form.is_valid():
         form.save()
         return redirect('profile')
