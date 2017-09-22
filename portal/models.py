@@ -27,7 +27,7 @@ class Document(models.Model):
     # size = models.IntegerField(choices=choice2, default=1)
     # flip = models.CharField(max_length=20, choices=choice3, default="NONE")
     # rotate = models.CharField(max_length=20, choices=choice4, default="NONE")
-    document = models.FileField(upload_to=get_file_name)
+    document = models.ImageField(upload_to=get_file_name)
     uploaded_at = models.DateTimeField(auto_now_add=True)
 
     # def __str__(self):
