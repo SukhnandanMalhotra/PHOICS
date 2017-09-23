@@ -32,7 +32,7 @@ img.profile{
 	margin-left: 70vw;
 }
 .profile:hover{
-	background-color: black;
+	background-color: white;
 }
 img.search_img{
 	position: absolute;
@@ -49,20 +49,20 @@ img.home{
 	height:10vh;
 }
 .home:hover{
-	background-color:black;
+	background-color:white;
 }
 div.feed1{
 	position: absolute;
 	margin-top:12vh;
 	margin-left: 50vh;
-    width:50vw;
+    width:40vw;
     height:60vh;
     background-color: white;
     align-items: center;
 }
 .feed1 img{
 	margin-top:7vh;
-	width:50vw;
+	width:40vw;
 	height:40vh;
 	margin-bottom: 2vh;
 }
@@ -90,4 +90,69 @@ input{
 	margin-top:2vh;
 	margin-left:3vw;
 	width:20vw;
+}
+@media only screen and (max-width:1050px){
+	div.feed1{position: absolute;
+    margin-top: 12vh;
+    margin-left: 25vw;
+    width: 50vw;
+    height: 60vh;
+    background-color: white;
+    align-items: center;
+}
+.feed1 img{
+	width:50vw;
+}
+img.profile{
+		width:10vw;
+	}
+	img.home{
+		width:10vw;
+		margin-left:80vw;
+	}
+	img.search_img{
+		width:4vw;
+	}
+p{
+	font-size:150%;
+}
+p.share{
+	margin-left:12vw;
+}	
+label{
+	font-size:150%;
+	margin-left:20vw;
+}
+
+
+}
+@media only screen and (max-width:780px){
+	p{font-size:100%;}
+	label{font-size:100%;}
+}
+@media only screen and (max-width:450px){
+	h1{
+		font-size:100%;
+	}
+	img.profile{
+		width:10vw;
+	}
+	img.home{
+		width:10vw;
+		margin-left:80vw;
+	}
+	img.search_img{
+		width:4vw;
+	}
+	p{
+		font-size:75%;
+	}
+    p.share{
+    	margin-left: 15vw;
+    }
+
+	label{
+		font-size:75%;
+		margin-left: 25vw;
+	}
 }

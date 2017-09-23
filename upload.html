@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>upload file</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" type="text/css" href="upload.css">
+</head>
+<body>
+
+<div class="container">
+<h1>UPLOAD FILE</h1>
+<button class="choose-file">CHOOSE FILE</button><br>
+<p>
+<label class="size" for="size">Size: </label>
+<input id="size" list="sizes" ><br>
+<datalist id="sizes">
+	<option value="small">
+	<option value="medium">
+	<option value="large">
+</datalist>
+<label class="status" for="status">Status: </label>
+<input id="status" list="Status"><br>
+<datalist id="Status">
+	<option value="personal">
+	<option value="private">
+</datalist>
+
+<label class="flip" for="flip">Flip: </label>
+<input id="flip" list="flips"><br>
+<datalist id="flips">
+      <option value="horizontal">
+      <option value="vertical">
+  </datalist>
+<label class="rotate" for="rotate">Rotate: </label>
+<input id="rotate" list="Rotate"><br>
+<datalist id="Rotate">
+	<option value=" clockwise">
+	<option value=" anticlockwise">
+</datalist>
+<button class="upload">UPLOAD</button>
+
+</p>
+</div>
+</body>	
+</html>

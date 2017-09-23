@@ -1,34 +1,37 @@
 <html>
 <head>
 <title>signup</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" type="text/css" href="login_signup.css">
 </head>
 <body>
+<canvas id="drawing_area"></canvas>
+<script src="animation.js"></script>
 <div class="back">
 <img src="background (2).jpg">
 <p class="text"><span>PHOICS</span><br>
 UPDATE EDIT SHARE</p>
-
 </div>
 <div class="form">
 <h1>SIGN-UP</h1>
 <p>
+
 <form>
-<label for="name">Name:</label><br>
-<input type="text" id="name" name=""></br><br>
-<label for="e-mail">E-mail:</label><br>
-<input type="text" id="e-mail" name=""></br><br>
-<label for="psd">Password:</label><br>
-<input type="password" id="psd" name=""></br><br>
-<label for="cnf psd"> Confirm Password:</label><br>
- <input type="password" id="cnf psd" name="">
-</p>
+<div id="title"><label for="name">Name:</label><br>
+<input  type="text" id="name" name=""></br><br></div>
+<p class="e-mail"><label for="e-mail" id="mail">E-mail:</label><br>
+<input  type="text" id="e-mail" name=""></br><br></p>
+<p class="psd"><label for="psd" id="pass">Password:</label><br>
+<input  type="password" id="psd" name=""></br><br></p>
+<p class="cnfpsd"><label for="cnf psd" id="cnfpass"> Confirm Password:</label><br>
+ <input  type="password" id="cnf psd" name=""></p>
 </form>
-<p class="button">
+</p>
+<a class="home" href="profile_page.html"><p class="button">
 SUBMIT
 </p>
+</a>
 <p class="ques">already have an account?<a href="login.html">login</a></p>
 </div>
-
 </body>
 </html>
