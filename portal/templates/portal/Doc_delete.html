@@ -1,0 +1,8 @@
+{% extends 'base.html' %}
+{% block content %}
+<form method="post">{% csrf_token %}
+    Want to delete the picture?
+    <input type="submit" value="Submit" />
+</form>
+ <p><a href="{% url 'profile' %}">Return to profile page</a></p>
+{% endblock %}

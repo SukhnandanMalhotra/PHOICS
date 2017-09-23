@@ -1,0 +1,615 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="fb8a9f43-cff4-466e-a281-f0ee91f64be7" name="Default" comment="gitignore repaired....">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/db.sqlite3" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/documents/1.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/documents/1_2rMJgAz.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/documents/1_NTzJftq.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/documents/1_NTzJftq_eD9c2xa.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/documents/1_NTzJftq_eD9c2xa_VIcmB5p.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/documents/1_NTzJftq_eD9c2xa_VIcmB5p_U7e3cu6.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/documents/1_NTzJftq_eD9c2xa_VIcmB5p_U7e3cu6_f2RNiVF.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/documents/1_OxTlJxl.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/documents/1_OxTlJxl_vfM2EGU.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/documents/1_OxTlJxl_vfM2EGU_iKspgNH.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/documents/1_OxTlJxl_vfM2EGU_iKspgNH_En3csmD.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/documents/1_OxTlJxl_vfM2EGU_iKspgNH_En3csmD_7dCHU5c.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/documents/1_Y4E1Gnr.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/documents/1_ikKc4ri.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/documents/1_ikKc4ri_BuG8Aw0.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/documents/1_ikKc4ri_BuG8Aw0_8dJMWDr.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/documents/1_tvPern5.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/documents/DSCN0142.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/documents/DSCN0142_PXWGX6n.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/documents/DSCN0220.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/documents/DSCN0220_TYMMvQg.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/documents/DSCN0220_ogalGzk.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/documents/DSCN0221.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/documents/IMG-20150406-WA0005.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/documents/IMG-20150406-WA0005_WK3qVDS.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/documents/IMG-20150406-WA0005_WK3qVDS_4uoayLC.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/documents/IMG-20150406-WA0005_WK3qVDS_4uoayLC_EPSkVv7.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/documents/IMG-20150406-WA0005_WK3qVDS_4uoayLC_EPSkVv7_KLq6a9H.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/documents/IMG-20150406-WA0005_sOWS2yL.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/documents/sfs.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/documents/sfs_4xxmbdX.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/documents/sfs_Gnq8WCI.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/documents/sfs_NUGDInH.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/documents/sfs_QCS8CLp.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/documents/sfs_WZMUT7y.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/documents/sfs_d0Yg1aW.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/documents/sfs_d0Yg1aW_N12Cr7U.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/documents/teddy_bear.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/documents/teddy_bear_2jvSRQi.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/documents/teddy_bear_3uehdHS.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/documents/teddy_bear_41g2njt.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/documents/teddy_bear_5kA2bJU.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/documents/teddy_bear_7BQUjIY.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/documents/teddy_bear_7BQUjIY_1kb0tBo.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/documents/teddy_bear_9DcTlLt.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/documents/teddy_bear_AWt3XOF.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/documents/teddy_bear_Db1tkIY.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/documents/teddy_bear_F4pPspI.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/documents/teddy_bear_F4pPspI_sDCr5Zs.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/documents/teddy_bear_KSbxkvy.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/documents/teddy_bear_LB3vHpZ.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/documents/teddy_bear_TBhXpPR.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/documents/teddy_bear_TBhXpPR_hR2bpFX.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/documents/teddy_bear_TBhXpPR_hR2bpFX_jHCXRpE.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/documents/teddy_bear_TBhXpPR_hR2bpFX_jHCXRpE_yAL3fKK.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/documents/teddy_bear_TBhXpPR_hR2bpFX_jHCXRpE_yAL3fKK_37XEmAu.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/documents/teddy_bear_W0feuCR.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/documents/teddy_bear_XwLVJDE.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/documents/teddy_bear_Zv7wgs9.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/documents/teddy_bear_b3EbAb0.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/documents/teddy_bear_b3EbAb0_Z9ssaom.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/documents/teddy_bear_b3EbAb0_Z9ssaom_43tYXwv.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/documents/teddy_bear_b3EbAb0_Z9ssaom_43tYXwv_c7lxY6G.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/documents/teddy_bear_b3fuYk8.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/documents/teddy_bear_oPzUiZQ.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/documents/teddy_bear_oPzUiZQ_coE16Zw.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/documents/teddy_bear_oPzUiZQ_coE16Zw_4dS3ots.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/documents/teddy_bear_oPzUiZQ_coE16Zw_4dS3ots_4eDoAjZ.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/documents/teddy_bear_oPzUiZQ_coE16Zw_4dS3ots_4eDoAjZ_DTlGNV2.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/documents/teddy_bear_oPzUiZQ_coE16Zw_4dS3ots_4eDoAjZ_DTlGNV2_aAOlN9K.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/documents/teddy_bear_oPzUiZQ_coE16Zw_4dS3ots_4eDoAjZ_DTlGNV2_aAOlN9K_r0swj4W.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/documents/teddy_bear_oPzUiZQ_coE16Zw_4dS3ots_4eDoAjZ_DTlGNV2_aAOlN9K_r0swj4W_n1OSkcA.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/documents/teddy_bear_oPzUiZQ_coE16Zw_4dS3ots_4eDoAjZ_DTlGNV2_aAOlN9K_r0swj4W_n1OSkcA_Y2j_39VnLkU.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/documents/teddy_bear_oPzUiZQ_coE16Zw_4dS3ots_4eDoAjZ_DTlGNV2_aAOlN9K_r0swj4W_n1OSkcA_Y2j_bg05R8n.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/documents/teddy_bear_oPzUiZQ_coE16Zw_4dS3ots_4eDoAjZ_DTlGNV2_aAOlN9K_r0swj4W_n1OSkcA_Y2j_snecTjW.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/documents/teddy_bear_oPzUiZQ_coE16Zw_4dS3ots_4eDoAjZ_DTlGNV2_aAOlN9K_r0swj4W_n1OSkcA_Y2jt7m3.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/documents/teddy_bear_pruDcYi.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/documents/teddy_bear_qiYwfNs.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/documents/teddy_bear_tbYzUKO.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/documents/teddy_bear_uErBMqy.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/documents/teddy_bear_x6Dntzo.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/documents/teddy_bear_yZN346z.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/documents/teddy_bear_yZN346z_kcxImug.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/phoics.iml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/manage.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/phoics/__init__.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/phoics/settings.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/phoics/templates/base.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/phoics/urls.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/phoics/wsgi.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/portal/__init__.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/portal/admin.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/portal/apps.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/portal/forms.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/portal/migrations/0001_initial.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/portal/migrations/0002_auto_20170912_2138.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/portal/migrations/0003_auto_20170912_2142.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/portal/migrations/0004_auto_20170917_0001.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/portal/migrations/0005_document_flip.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/portal/migrations/0006_remove_document_flip.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/portal/migrations/0007_document_flip.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/portal/migrations/0008_document_rotate.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/portal/migrations/0009_document_blur.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/portal/migrations/0010_update.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/portal/migrations/0011_delete_update.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/portal/migrations/__init__.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/portal/models.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/portal/templates/portal/Doc_delete.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/portal/templates/portal/home.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/portal/templates/portal/model_form_upload.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/portal/templates/portal/newsfeed.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/portal/templates/portal/profile.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/portal/templates/portal/profilepic.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/portal/tests.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/portal/urls.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/portal/views.py" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_TABLE_DETAILS" value="true" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <expand />
+    <select />
+  </component>
+  <component name="DjangoConsoleOptions" custom-start-script="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)">
+    <option name="myCustomStartScript" value="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/portal/views.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="136">
+              <caret line="8" column="44" lean-forward="false" selection-start-line="8" selection-start-column="44" selection-end-line="8" selection-end-column="44" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="forms.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/portal/forms.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="374">
+              <caret line="26" column="60" lean-forward="false" selection-start-line="26" selection-start-column="60" selection-end-line="26" selection-end-column="60" />
+              <folding>
+                <element signature="e#0#24#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="models.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/portal/models.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="217">
+              <caret line="78" column="35" lean-forward="false" selection-start-line="78" selection-start-column="35" selection-end-line="78" selection-end-column="35" />
+              <folding>
+                <element signature="e#0#39#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="urls.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/phoics/urls.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="153">
+              <caret line="14" column="60" lean-forward="false" selection-start-line="14" selection-start-column="60" selection-end-line="14" selection-end-column="60" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+        <option value="HTML File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/../simple-file-upload-master/simple-file-upload-master/uploads/core/templates/core/home.html" />
+        <option value="$PROJECT_DIR$/file_upload/phoics/wsgi.py" />
+        <option value="$PROJECT_DIR$/file_upload/phoics/urls.py" />
+        <option value="$PROJECT_DIR$/file_upload/phoics/portal/forms.py" />
+        <option value="$PROJECT_DIR$/file_upload/phoics/portal/views.py" />
+        <option value="$PROJECT_DIR$/file_upload/phoics/settings.py" />
+        <option value="$PROJECT_DIR$/portal/urls.py" />
+        <option value="$PROJECT_DIR$/portal/apps.py" />
+        <option value="$PROJECT_DIR$/PHOICS-master/phoics/settings.py" />
+        <option value="$PROJECT_DIR$/portal/templates/portal/home.html" />
+        <option value="$PROJECT_DIR$/phoics/templates/base.html" />
+        <option value="$PROJECT_DIR$/portal/templates/portal/model_form_upload.html" />
+        <option value="$PROJECT_DIR$/phoics/settings.py" />
+        <option value="$PROJECT_DIR$/portal/templates/portal/profilepic.html" />
+        <option value="$PROJECT_DIR$/portal/templates/portal/newsfeed.html" />
+        <option value="$PROJECT_DIR$/portal/templates/portal/edit_picture.html" />
+        <option value="$PROJECT_DIR$/portal/templates/portal/Image_update_form.html" />
+        <option value="$PROJECT_DIR$/phoics/urls.py" />
+        <option value="$PROJECT_DIR$/portal/templates/portal/profile.html" />
+        <option value="$PROJECT_DIR$/portal/templates/portal/Doc_delete.html" />
+        <option value="$PROJECT_DIR$/portal/forms.py" />
+        <option value="$PROJECT_DIR$/portal/views.py" />
+        <option value="$PROJECT_DIR$/portal/models.py" />
+        <option value="$PROJECT_DIR$/.gitignore" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="631" />
+    <option name="height" value="546" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectView">
+    <navigator currentView="ProjectPane" proportions="" version="1">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource />
+      <sortByType />
+      <manualOrder />
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scratches" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="PHOICS" type="b2602c69:ProjectViewProjectNode" />
+              <item name="PHOICS" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="PHOICS" type="b2602c69:ProjectViewProjectNode" />
+              <item name="PHOICS" type="462c0819:PsiDirectoryNode" />
+              <item name="phoics" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="PHOICS" type="b2602c69:ProjectViewProjectNode" />
+              <item name="PHOICS" type="462c0819:PsiDirectoryNode" />
+              <item name="portal" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="Django server.phoics">
+    <configuration name="phoics" type="Python.DjangoServer" factoryName="Django server">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="phoics" />
+      <option name="launchJavascriptDebuger" value="false" />
+      <option name="port" value="8000" />
+      <option name="host" value="" />
+      <option name="additionalOptions" value="" />
+      <option name="browserUrl" value="" />
+      <option name="runTestServer" value="false" />
+      <option name="runNoReload" value="false" />
+      <option name="useCustomRunCommand" value="false" />
+      <option name="customRunCommand" value="" />
+    </configuration>
+  </component>
+  <component name="ShelveChangesManager" show_recycled="false">
+    <option name="remove_strategy" value="false" />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="fb8a9f43-cff4-466e-a281-f0ee91f64be7" name="Default" comment="" />
+      <created>1505046499415</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1505046499415</updated>
+    </task>
+    <task id="LOCAL-00001" summary="Project Repaired. Portal is added to main project.">
+      <created>1506159053514</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1506159053514</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
+    <servers />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <editor active="true" />
+    <layout>
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21709532" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.37254903" sideWeight="0.41149774" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980332" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32843137" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32843137" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.4232026" sideWeight="0.5885023" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+    </layout>
+    <layout-to-restore>
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.37254903" sideWeight="0.41149774" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32843137" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32843137" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3382353" sideWeight="0.5885023" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.20801815" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980332" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+    </layout-to-restore>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Project Repaired. Portal is added to main project." />
+    <option name="LAST_COMMIT_MESSAGE" value="Project Repaired. Portal is added to main project." />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <option name="time" value="1" />
+    </breakpoint-manager>
+    <watches-manager />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/../simple-file-upload-master/simple-file-upload-master/uploads/core/templates/core/simple_upload.html" />
+    <entry file="file://$PROJECT_DIR$/../simple-file-upload-master/simple-file-upload-master/uploads/__init__.py" />
+    <entry file="file://$PROJECT_DIR$/file_upload/phoics/__init__.py" />
+    <entry file="file://$PROJECT_DIR$/file_upload/phoics/portal/migrations/__init__.py" />
+    <entry file="file://$PROJECT_DIR$/../simple-file-upload-master/simple-file-upload-master/uploads/core/__init__.py" />
+    <entry file="file://$PROJECT_DIR$/../simple-file-upload-master/simple-file-upload-master/uploads/core/migrations/__init__.py" />
+    <entry file="file://$PROJECT_DIR$/file_upload/phoics/portal/__init__.py" />
+    <entry file="file://$PROJECT_DIR$/file_upload/phoics/portal/migrations/0001_initial.py" />
+    <entry file="file://$PROJECT_DIR$/../simple-file-upload-master/simple-file-upload-master/uploads/core/migrations/__pycache__/__init__.cpython-34.pyc" />
+    <entry file="file://$PROJECT_DIR$/../simple-file-upload-master/simple-file-upload-master/uploads/core/migrations/__pycache__/0001_initial.cpython-34.pyc" />
+    <entry file="file://$PROJECT_DIR$/../simple-file-upload-master/simple-file-upload-master/uploads/wsgi.py" />
+    <entry file="file://$PROJECT_DIR$/PHOICS-master/phoics/wsgi.py" />
+    <entry file="file://$PROJECT_DIR$/PHOICS-master/phoics/urls.py" />
+    <entry file="file://$PROJECT_DIR$/file_upload/phoics/wsgi.py" />
+    <entry file="file://$PROJECT_DIR$/file_upload/phoics/portal/admin.py" />
+    <entry file="file://$PROJECT_DIR$/file_upload/phoics/portal/apps.py" />
+    <entry file="file://$PROJECT_DIR$/file_upload/phoics/portal/forms.py" />
+    <entry file="file://$PROJECT_DIR$/file_upload/phoics/portal/models.py" />
+    <entry file="file://$PROJECT_DIR$/file_upload/phoics/portal/tests.py" />
+    <entry file="file://$PROJECT_DIR$/file_upload/phoics/urls.py" />
+    <entry file="file://$PROJECT_DIR$/file_upload/phoics/portal/views.py" />
+    <entry file="file://$PROJECT_DIR$/file_upload/phoics/settings.py" />
+    <entry file="file://$PROJECT_DIR$/PHOICS-master/portal/views.py" />
+    <entry file="file://$PROJECT_DIR$/../simple-file-upload-master/simple-file-upload-master/uploads/settings.py" />
+    <entry file="file://$PROJECT_DIR$/portal/migrations/0001_initial.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PHOICS-master/portal/apps.py" />
+    <entry file="file://$PROJECT_DIR$/PHOICS-master/phoics/settings.py" />
+    <entry file="file://$PROJECT_DIR$/../simple-file-upload-master/simple-file-upload-master/uploads/core/templates/core/home.html" />
+    <entry file="file://$PROJECT_DIR$/media/178408.jpg" />
+    <entry file="file://$USER_HOME$/Downloads/django-photo-edit-master/photoedit/photoapp/forms.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/phoics/templates/base.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="7" lean-forward="true" selection-start-line="10" selection-start-column="7" selection-end-line="10" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/phoics/wsgi.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/portal/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/portal/tests.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/portal/apps.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="4" column="11" lean-forward="false" selection-start-line="4" selection-start-column="11" selection-end-line="4" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/portal/admin.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/portal/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/portal/templates/portal/edit_picture.html" />
+    <entry file="file://$PROJECT_DIR$/portal/templates/portal/Image_update_form.html" />
+    <entry file="file://$PROJECT_DIR$/portal/templates/portal/newsfeed.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="17" column="14" lean-forward="false" selection-start-line="17" selection-start-column="14" selection-end-line="17" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/portal/templates/portal/profilepic.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="14" lean-forward="false" selection-start-line="10" selection-start-column="14" selection-end-line="10" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/portal/templates/portal/home.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="17" column="7" lean-forward="false" selection-start-line="17" selection-start-column="7" selection-end-line="17" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/phoics/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="18" column="15" lean-forward="false" selection-start-line="18" selection-start-column="15" selection-end-line="18" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/portal/templates/portal/profile.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="15" column="53" lean-forward="false" selection-start-line="15" selection-start-column="53" selection-end-line="15" selection-end-column="53" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/portal/templates/portal/model_form_upload.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="19" lean-forward="false" selection-start-line="2" selection-start-column="19" selection-end-line="2" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/portal/templates/portal/Doc_delete.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="24" lean-forward="false" selection-start-line="3" selection-start-column="24" selection-end-line="3" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/portal/forms.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="26" column="60" lean-forward="false" selection-start-line="26" selection-start-column="60" selection-end-line="26" selection-end-column="60" />
+          <folding>
+            <element signature="e#0#24#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/portal/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="44" lean-forward="false" selection-start-line="8" selection-start-column="44" selection-end-line="8" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/portal/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="217">
+          <caret line="78" column="35" lean-forward="false" selection-start-line="78" selection-start-column="35" selection-end-line="78" selection-end-column="35" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/phoics/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="14" column="60" lean-forward="false" selection-start-line="14" selection-start-column="60" selection-end-line="14" selection-end-column="60" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>
