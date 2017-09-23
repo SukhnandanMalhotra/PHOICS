@@ -18,6 +18,7 @@ urlpatterns = [
     # for logout but open login page
     url(r'^logout/$', built_views.logout, {'next_page': 'front_page'}, name='logout'),
     # signup page "/signup/"
+    url(r'^information/$', views.user_info, name="user_info"),
     url(r'^signup/$', views.signup, name='signup'),
     # page after email send for verification "/account_activation_sent/"
     #url(r'^account_activation_sent/$', views.account_activation_sent, name='account_activation_sent'),
@@ -39,6 +40,9 @@ urlpatterns = [
     url(r'^reset/done/$', built_views.password_reset_complete, {
         'template_name': 'forget/password_reset_complete.html'}, name='password_reset_complete'),
 
+    url(r'^edit/(?P<pk>\d+)$', views.Doc_update, name='Doc_edit'),
+
+    url(r'^delete/(?P<pk>\d+)$', views.Doc_delete, name='Doc_delete'),
    ]
 
 

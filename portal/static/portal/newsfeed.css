@@ -4,7 +4,7 @@ body{
 	background-color: #eeeeee;
 }
 div.top-bar{
-    position: absolute;
+    position: relative;
 
     width:100vw;
     height:10vh;
@@ -52,12 +52,12 @@ img.home{
 	background-color:black;
 }
 div.feed1{
-	position: absolute;
-	margin-top:12vh;
+	position: relative;
+	margin-top:3vh;
 	margin-left: 50vh;
     width:50vw;
     height:60vh;
-    background-color: white;
+    background-color: white ;
     align-items: center;
 }
 .feed1 img{

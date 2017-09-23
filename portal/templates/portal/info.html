@@ -1,0 +1,57 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+<head>
+<title>INFO</title>
+<link rel="stylesheet" type="text/css" href="{% static 'portal/signup_page.css' %}">
+</head>
+<body>
+<div class="back">
+<img src="{% static 'portal/images/background.jpg' %}">
+<p class="text"><span>PHOICS</span><br>
+UPDATE<br>
+EDIT<br>
+SHARE<br></p>
+</div>
+<div class="form">
+<h1>ENTER-INFO</h1>
+<p>
+
+
+{% if user.is_authenticated %}
+    <form method='post'>
+    {% csrf_token %}
+    {% for field in form %}
+           <label for="name">{{ field.label_tag }}</label><br>
+           {{ field }}<br><br>
+
+           {% for error in field.errors %}
+                 <p style="color: red">{{ error }}</p>
+           {% endfor %}
+    {% endfor %}
+    {% if messages %}
+           <ul class="messages" style="color: red;list-style-type: none">
+           {% for message in messages %}
+                 <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+           {% endfor %}
+           </ul>
+
+    {% endif %}
+    <button class="button" type="submit">SUBMIT</button><br>
+    <a href="{% url 'profile' %}">PROFILE</a>
+    </form>
+{% else %}
+    <h3>first logged in</h3>
+     <a href="{% url 'login' %}">logout</a>
+{% endif %}
+
+
+
+
+
+
+</p>
+</div>
+
+</body>
+</html>

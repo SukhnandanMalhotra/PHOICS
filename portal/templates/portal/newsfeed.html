@@ -11,26 +11,30 @@
 
 <div class="top-bar">
 <h1>P H O I C S</h1>
-    <img src="{% static 'portal/images/search-13-xxl.png' %}" class="search_img">
+    <img src="{% static 'portal/images/search.png' %}" class="search_img">
 	<a href="{% url 'profile' %}"><img src="{% static 'portal/images/profile.png' %}" class="profile"></a>
 	<input type="text" id="search" >
 
 </div>
 {% if user.is_authenticated %}
     {% csrf_token %}
-<div class="feed1">
-     {% for img in images %}
-            {% if img.status == "PUBLIC" %}
 
+     {% for img in images %}
+
+            {% if img.status == "PUBLIC" %}
+                 <div class="feed1">
                  <p class="name">{{ img.uploaded_at }}  by  {{ img.user }}</p>
-                 <a href="{{ img.document.url }}"><img src="{{ img.document.url }}"></a>
+                 <a href="{{ img.document.url }}"><img src="{{ img.document.url }}" ></a>
                  <p class="like">like no.</p>
                  <p class="share">share</p>
                  <label  for="comment">comment no.</label><br>
                 <input type="text" id="comment"><br>
+                </div>
             {% endif %}
+
         {% endfor %}
-</div>
+
+
     <footer>
         {% if images.has_previous %}
             <a href="?page={{ images.previous_page_number }}">previous</a>

@@ -13,10 +13,13 @@ from django.template.loader import render_to_string
 from phoics.settings import EMAIL_HOST_USER
 from .tokens import account_activation_token
 from django.shortcuts import render, redirect, get_object_or_404, render_to_response
-from .models import Document
-from .forms import DocumentForm, SignUpPage
+from .models import Document, Profile
+from .forms import DocumentForm, SignUpPage, Info, UpdateForm
 from django.contrib import messages
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
+from django.forms import ModelForm
+from django.core.files.storage import FileSystemStorage
+from django.core.files import File
 from django.contrib.auth.views import password_reset
 #from .forms import ForgetPassword, OTPForm
 from . import forms
@@ -49,6 +52,7 @@ signup all functionality
 def signup(request):
     if request.method == 'POST':
         form = SignUpPage(request.POST)
+
         if form.is_valid():
             email = form.cleaned_data.get('email')
             User.objects.filter(email=email).count()
@@ -109,7 +113,11 @@ def activate(request, uidb64, token):
 
 def newsfeed(request):
     documents = Document.objects.order_by('-uploaded_at')
-    paginator = Paginator(documents, 5)
+    image=[]
+    for obj in documents:
+        if obj.status == "PUBLIC":
+            image.append(obj)
+    paginator = Paginator(image, 5)
     page = request.GET.get('page')
     try:
         images = paginator.page(page)
@@ -134,4 +142,36 @@ def model_form_upload(request):
         'form': form
     })
 
+def user_info(request):
+    try:
+        profile = request.user.profile
+    except Profile.DoesNotExist:
+        profile = Profile(user=request.user)
+    if request.method == 'POST':
+        form = Info(request.POST, instance=profile)
+
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'your information saved successfully')
+            return redirect('profile')
+    else:
+        form = Info()
+
+        messages.info(request, 'please fill form first')
+    return render(request, 'portal/info.html', {'form': form})
+
+def Doc_update(request, pk, template_name='portal/model_form_upload.html'):
+    updatex = get_object_or_404(Document, pk=pk)
+    form = UpdateForm(request.POST or None, instance=updatex)
+    if form.is_valid():
+        form.save()
+        return redirect('profile')
+    return render(request, template_name, {'form':form})
+
+def Doc_delete(request, pk, template_name='portal/Doc_delete.html'):
+    removex = get_object_or_404(Document, pk=pk)
+    if request.method=='POST':
+        removex.delete()
+        return redirect('profile')
+    return render(request, template_name, {'object':removex})
 
