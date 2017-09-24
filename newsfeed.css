@@ -2,9 +2,10 @@
 body{
 	margin:0px;
 	background-color: #eeeeee;
+
 }
 div.top-bar{
-    position: absolute;
+    position: fixed;
    
     width:100vw;
     height:10vh;
@@ -14,7 +15,7 @@ div.top-bar{
 h1{
 	position:absolute;
 	font-family: Raleway light;
-	color:#007842;
+	color:black;
 	margin-top:2vh;
 	margin-left: 3vw;
 }
@@ -50,6 +51,17 @@ img.home{
 }
 .home:hover{
 	background-color:white;
+}
+p.logout{  
+	display: inline;
+	position: absolute;
+	margin-left: 23vw;
+	margin-top: 4vh;
+	font-family: Raleway medium;
+}
+a{
+	text-decoration: none;
+	color:black;
 }
 div.feed1{
 	position: absolute;

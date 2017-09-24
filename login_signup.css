@@ -44,7 +44,7 @@ h1{
 	margin-left:35%;
 	font-family: Raleway thin;
     margin-bottom: 5%;
-    color: #02b46d;
+    color: black;
 }
 
 form{
@@ -67,7 +67,7 @@ input{
 }
 input:focus{
 	outline:none;
-	border-bottom:2px solid  #02b46d;
+	border-bottom:2px solid  #bce53e;
 }
 #title:focus label{
 	font-size: 100%;
@@ -81,17 +81,19 @@ p.button{
 	margin-left:4.5vw;
 	margin-top: 0px;
 	margin-bottom: 0px;
-    background-color:#02b46d;
+    background-color:black;
     padding:2% 4% 2% 4%;
     font-family: Raleway;
   /*  box-shadow: 0 1px 4px rgba(0, 0, 0, .6); */
     text-align:center;
+    cursor: pointer;
    /* box-sizing: border-box;*/
    
 }
-p.buttton:hover{
+p.button:hover{
+	border:2px solid black;
 	background-color: white;
-	color:#02b46d;
+	color:black;
 }
 p.button:active{
 	border:3px solid #273b09;
