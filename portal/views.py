@@ -21,7 +21,6 @@ from django.forms import ModelForm
 from django.core.files.storage import FileSystemStorage
 from django.core.files import File
 from django.contrib.auth.views import password_reset
-#from .forms import ForgetPassword, OTPForm
 from . import forms
 from django.conf import settings
 from django.core.files.storage import FileSystemStorage

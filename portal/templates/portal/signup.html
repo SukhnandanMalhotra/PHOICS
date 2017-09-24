@@ -3,7 +3,7 @@
 <html>
 <head>
 <title>signup</title>
-<link rel="stylesheet" type="text/css" href="{% static 'portal/signup_page.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'portal/signuppage.css' %}">
 </head>
 <body>
 <div class="back">
@@ -23,7 +23,7 @@ SHARE<br></p>
      <a href="{% url 'logout' %}">logout</a>
 {% else %}
     <form method='post'>
-    {% csrf_token %}
+   {% csrf_token %}
     {% for field in form %}
         <label for="name">{{ field.label_tag }}</label><br>
         {{ field }}<br><br>

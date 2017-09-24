@@ -6,8 +6,6 @@ from django.contrib.auth.views import password_reset
 from django.conf import settings
 from django.conf.urls.static import static
 
-
-
 urlpatterns = [
     url(r'^$', views.home, name='profile'),
     url(r'^upload/$', views.model_form_upload, name='model_form_upload'),

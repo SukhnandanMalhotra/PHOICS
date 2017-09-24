@@ -1,11 +1,36 @@
-{% extends 'base_profile.html' %}
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>upload file</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" type="text/css" href="{% static 'portal/upload.css' %}">
+</head>
+<body>
 
-{% block content %}
-  <form method="post" enctype="multipart/form-data">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Upload</button>
-  </form>
+<div class="container">
+<h1>UPLOAD FILE</h1>
 
-  <p><a href="{% url 'profile' %}">Return to profile page</a></p>
-{% endblock %}
+ <form method="post" enctype="multipart/form-data">
+     {% csrf_token %}
+ <p style="color:#02b46d;">
+     {% for field in form %}
+        <label>{{ field.label_tag }}</label>
+        {{ field }}<br><br>
+
+        {% for error in field.errors %}
+          <p style="color: red">{{ error }}</p>
+        {% endfor %}
+{% endfor %}
+ </p>
+
+<button class="upload" type="submit">UPLOAD</button><br><br>
+<a href="{% url 'profile' %}"><p class="upload">PROFILE PAGE</p></a>
+
+</p>
+
+
+</form>
+</div>
+</body>
+</html>block %}
