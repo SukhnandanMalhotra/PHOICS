@@ -22,7 +22,7 @@ p{
     line-height: 110%;
     padding: 10px;
     text-align: center;
-    font-family:Raleway;
+    font-family: 'Raleway', sans-serif;
     font-size:20px;
     word-wrap: break-word;
     }
@@ -37,7 +37,6 @@ div.container{                                       /*/////////////////boundary
 	height:50%;
 	width:50vw;
 	padding: 5%;
-	float: center;
 	animation-name: box;
 	animation-duration: 6s;
     }
@@ -57,21 +56,22 @@ li{                                                      /*/////////////////////
 	color:white;
 	padding:2% 8% 2% 8%;
 	font-family: Raleway;
-	opacity: 0.8;
 	cursor: pointer;
 
     }
- li.su{
-  -webkit-transition: padding-right 1s ease-out;	/*////////////////////////////////////////animation-signup button//////////////*/
+li.su{
+  -webkit-transition: all 1s ease-out;	/*////////////////////////////////////////animation-signup button//////////////*/
  }
 li.su:hover{
 	padding-right:20%;
+	padding-left:15%;
 }
 li.li{
-	-webkit-transition: padding-left 1s ease-out;	/*/////////////////////////animation-login button////////////*/
+	-webkit-transition: all 1s ease-out;	/*/////////////////////////animation-login button////////////*/
 }
 li.li:hover{
 	padding-left: 20%;
+	padding-right:15%;
 }
 a{
     text-decoration:none;

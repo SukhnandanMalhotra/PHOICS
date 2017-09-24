@@ -3,7 +3,7 @@
 <html>
 <head>
 <title>login</title>
-<link rel="stylesheet" type="text/css" href="{% static 'portal/signup_page.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'portal/signuppage.css' %}">
 </head>
 <body>
 <div class="back">
@@ -22,19 +22,21 @@ SHARE<br></p>
     <a href="{% url 'logout' %}">logout</a>
 
 {% else %}
+
     <form method="post">
     {% csrf_token %}
     {% for field in form %}
-        <label for="e-mail">{{ field.label_tag }}</label><br><br>
+        <label>{{ field.label_tag }}</label><br><br>
         {{ field }}<br><br>
-        {% for error in field.errors %}
-            <label for="e-mail">{{ error }}</label><br><br>
-        {% endfor %}
+
     {% endfor %}
+    {% if form.errors %}
+            <p style="color: red">your username and  password does not <br>match. please try again </p><br><br>
+        {% endif %}
     <p class="button">
-    <button type="submit">LOG-IN</button>
+    <button class="button" type="submit">LOG-IN</button>
     </p>
-    <p class="ques"><a href="{% url 'forget_pass' %}">Forgot password?</a><br>
+    <p class="ques"><a href="{% url 'password_reset' %}">Forgot password?</a><br>
         New User? <a href="{% url 'signup' %}">signup</a>    </p>
 
     </form>

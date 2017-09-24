@@ -3,7 +3,7 @@
 <html>
 <head>
 <title>signup</title>
-<link rel="stylesheet" type="text/css" href="{% static 'portal/signup_page.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'portal/signuppage.css' %}">
 </head>
 <body>
 <div class="back">
@@ -23,15 +23,32 @@ SHARE<br></p>
      <a href="{% url 'logout' %}">logout</a>
 {% else %}
     <form method='post'>
-    {% csrf_token %}
+   {% csrf_token %}
     {% for field in form %}
         <label for="name">{{ field.label_tag }}</label><br>
         {{ field }}<br><br>
-    {% endfor %}
-    <p class="button">
-        <button type="submit">SUBMIT</button>
-    </p>
+
+        {% for error in field.errors %}
+          <p style="color: red">{{ error }}</p>
+        {% endfor %}
+{% endfor %}
+         {% if messages %}
+       <ul class="messages" style="color: red;list-style-type: none">
+       {% for message in messages %}
+           <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+       {% endfor %}
+       </ul>
+    {% endif %}
+
+
+        <button class="button" type="submit">SUBMIT</button>
+
     <p class="ques">already have an account? <a href="{% url 'login' %}">login</a></p>
+
+
+
+
+
     </form>
 {% endif %}
 </p>
