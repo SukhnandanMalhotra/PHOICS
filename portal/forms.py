@@ -14,12 +14,12 @@ class SignUpPage(UserCreationForm):
         model = User
         fields = ('username', 'email', 'password1', 'password2', )
 
+
 class Info(forms.ModelForm):
 
     class Meta:
         model = Profile
-        fields = ('bio', 'location', 'birth_date', )
-
+        fields = ('First_Name', 'Last_Name', 'City', 'DOB', 'profile_pic', )
 
 
 class DocumentForm(forms.ModelForm):
@@ -31,13 +31,12 @@ class DocumentForm(forms.ModelForm):
         flip = forms.ModelChoiceField(queryset=Document.objects.filter(uploaded_at=datetime.now()), empty_label=None)
         rotate = forms.ModelChoiceField(queryset=Document.objects.filter(uploaded_at=datetime.now()), empty_label=None)
         blur = forms.ModelChoiceField(queryset=Document.objects.filter(uploaded_at=datetime.now()), empty_label=None)
-
         fields = ('document', 'status', 'size', 'flip', 'rotate', 'blur')
+
 
 class UpdateForm(forms.ModelForm):
 
     class Meta:
-
         model = Document
         status = forms.ModelChoiceField(queryset=Document.objects.filter(uploaded_at=datetime.now()),
                                         empty_label=None)

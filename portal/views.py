@@ -37,7 +37,8 @@ from django.http import HttpResponse
 @login_required
 def home(request):
     documents = Document.objects.order_by('-uploaded_at')
-    return render(request,'portal/profile.html', {'documents': documents})
+    profile_pic = Profile.objects.all
+    return render(request,'portal/profile.html', {'documents': documents, 'profile_pic': profile_pic, })
 
 
 # front page function which return front page html
@@ -46,7 +47,6 @@ def front_page(request):
 
 """
 signup all functionality
-
 """
 def signup(request):
     if request.method == 'POST':
@@ -147,7 +147,7 @@ def user_info(request):
     except Profile.DoesNotExist:
         profile = Profile(user=request.user)
     if request.method == 'POST':
-        form = Info(request.POST, instance=profile)
+        form = Info(request.POST, request.FILES, instance=profile)
 
         if form.is_valid():
             form.save()
@@ -173,4 +173,3 @@ def Doc_delete(request, pk, template_name='portal/Doc_delete.html'):
         removex.delete()
         return redirect('profile')
     return render(request, template_name, {'object':removex})
-

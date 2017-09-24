@@ -10,7 +10,12 @@
 
 <div>
 <h1>P H O I C S</h1>
-<img src="{% static 'portal/images/login.jpg' %}" class="dp">
+  {% for obj in profile_pic %}
+          <a href="{{ obj.profile_pic.url }}"><img src="{{ obj.profile_pic.url }}" class="dp"></a>
+           </div>
+{% endfor %}
+
+{#<img src="{% static 'portal/images/login.jpg' %}" class="dp">#}
 <p class="name"> {{ user.username }}</p>
 <ul>
 <li class="per">Personal <span>No.</span> </li>

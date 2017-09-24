@@ -90,13 +90,21 @@ class Document(models.Model):
                                              sys.getsizeof(output), None)
         super(Document, self).save()
 
+def get_profile_name(instance, filename):
+    ext = filename.split('.')[-1]
+    filename = "%s.%s" % (uuid.uuid4(), ext)
+    return os.path.join('profile_pic', filename)
+
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    bio = models.TextField(max_length=500, blank=True)
-    location = models.CharField(max_length=30, blank=True)
-    birth_date = models.DateTimeField(null=True, blank=True)
+    First_Name = models.CharField(max_length=100, blank=True)
+    Last_Name = models.CharField(max_length=100, blank=True)
+    City = models.CharField(max_length=30, blank=True)
+    DOB = models.DateTimeField(null=True, blank=True)
+    profile_pic = models.ImageField(upload_to=get_profile_name, blank=True)
     email_confirmed = models.BooleanField(default=False)
+
 
     def __str__(self):
         return self.user.username

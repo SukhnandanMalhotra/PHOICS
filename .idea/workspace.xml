@@ -11,12 +11,43 @@
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/portal/templates/portal/newsfeed.html" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/portal/templates/portal/profile.html" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/portal/urls.py" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/media/documents/153922d6-607b-4ef5-a2f5-d3737205d85c.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/media/documents/1e279792-2542-4405-9ff0-8d109be69bc0.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/media/documents/242bdff8-4469-4b66-ba8e-0cdedf4255ed.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/media/documents/2f2ea582-08b0-46ae-82e5-06ab153348e4.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/media/documents/3727313c-1984-4eed-92d9-1c14fdcebb5f.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/media/documents/48ec30cd-f808-488b-9931-9cfa1e670370.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/media/documents/4f70590c-d0d2-4905-bbbe-ec10f5c69361.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/media/documents/7eac9f37-a73c-49d2-94e2-e811ffdc57c6.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/media/documents/87ef1c9b-4cde-420f-ba46-d66bf5068f40.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/media/documents/90de75b9-f64d-443f-966a-66979358223a.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/media/documents/94caaf8b-c44b-452c-aa81-d20486c6981d.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/media/documents/albert.jpg.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/media/documents/b360094d-ef4b-4e23-a89e-c43f04dcf610.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/media/documents/badminton.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/media/documents/bg1.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/media/documents/bg2.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/media/documents/bg3.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/media/documents/bg5.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/media/documents/bg5_DlPw8HK.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/media/documents/bg6.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/media/documents/bg9.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/media/documents/c276f325-d633-4b3d-921e-dadef11efef8.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/media/documents/c299cf86-eff4-4d5e-b10d-0c8204c829c9.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/media/documents/c5655fb8-4ae2-41d6-b187-863d4d38dd72.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/media/documents/eb34b34f-6348-4285-9a16-66ff3c1c6be1.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/media/documents/fde888a9-a8ac-4f57-92a3-b7605dad815d.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/media/documents/htmsub.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/portal/migrations/0002_auto_20170920_1610.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/portal/migrations/0003_auto_20170920_1613.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/portal/migrations/0004_auto_20170921_1815.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/portal/migrations/0005_auto_20170922_1459.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/portal/migrations/0006_auto_20170923_1602.py" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/portal/static/portal/signup_page.css" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/portal/templates/portal/forget_page.html" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/portal/templates/portal/home.html" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db.sqlite3" afterPath="$PROJECT_DIR$/db.sqlite3" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/phoics/urls.py" afterPath="$PROJECT_DIR$/phoics/urls.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/portal/admin.py" afterPath="$PROJECT_DIR$/portal/admin.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/portal/apps.py" afterPath="$PROJECT_DIR$/portal/apps.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/portal/forms.py" afterPath="$PROJECT_DIR$/portal/forms.py" />
@@ -25,10 +56,8 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/portal/static/portal/front_page.css" afterPath="$PROJECT_DIR$/portal/static/portal/front_page.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/portal/templates/portal/account_activation_invalid.html" afterPath="$PROJECT_DIR$/portal/templates/portal/account_activation_invalid.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/portal/templates/portal/front_page.html" afterPath="$PROJECT_DIR$/portal/templates/portal/front_page.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/portal/templates/portal/info.html" afterPath="$PROJECT_DIR$/portal/templates/portal/info.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/portal/templates/portal/login.html" afterPath="$PROJECT_DIR$/portal/templates/portal/login.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/portal/templates/portal/signup.html" afterPath="$PROJECT_DIR$/portal/templates/portal/signup.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/portal/urls.py" afterPath="$PROJECT_DIR$/portal/urls.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/portal/views.py" afterPath="$PROJECT_DIR$/portal/views.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -56,12 +85,12 @@
     <favorites_list name="phoics" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="profile.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/portal/templates/portal/profile.html">
+    <leaf>
+      <file leaf-file-name="models.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/portal/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="14" column="0" lean-forward="false" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+            <state relative-caret-position="17">
+              <caret line="15" column="38" lean-forward="true" selection-start-line="15" selection-start-column="38" selection-end-line="15" selection-end-column="38" />
               <folding />
             </state>
           </provider>
@@ -70,8 +99,8 @@
       <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/portal/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2040">
-              <caret line="144" column="8" lean-forward="false" selection-start-line="144" selection-start-column="8" selection-end-line="144" selection-end-column="8" />
+            <state relative-caret-position="255">
+              <caret line="42" column="0" lean-forward="true" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
               <folding>
                 <element signature="e#29#66#0" expanded="true" />
               </folding>
@@ -79,11 +108,31 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="signup.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/portal/templates/portal/signup.html">
+      <file leaf-file-name="model_form_upload.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/portal/templates/portal/model_form_upload.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
-              <caret line="33" column="12" lean-forward="true" selection-start-line="26" selection-start-column="4" selection-end-line="33" selection-end-column="12" />
+            <state relative-caret-position="350">
+              <caret line="31" column="0" lean-forward="true" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="profile.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/portal/templates/portal/profile.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="102">
+              <caret line="14" column="3" lean-forward="false" selection-start-line="14" selection-start-column="3" selection-end-line="14" selection-end-column="3" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="info.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/portal/templates/portal/info.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="197">
+              <caret line="31" column="4" lean-forward="true" selection-start-line="31" selection-start-column="4" selection-end-line="31" selection-end-column="4" />
               <folding />
             </state>
           </provider>
@@ -92,41 +141,8 @@
       <file leaf-file-name="forms.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/portal/forms.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
-              <caret line="37" column="0" lean-forward="true" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="models.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/portal/models.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="model_form_upload.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/portal/templates/portal/model_form_upload.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="510">
-              <caret line="30" column="0" lean-forward="true" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
-              <folding>
-                <element signature="n#style#0;n#p#0;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#p#1;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="upload.css" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/portal/static/portal/upload.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="544">
-              <caret line="74" column="20" lean-forward="true" selection-start-line="74" selection-start-column="20" selection-end-line="74" selection-end-column="20" />
+            <state relative-caret-position="204">
+              <caret line="20" column="0" lean-forward="false" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -186,21 +202,21 @@
         <option value="$PROJECT_DIR$/portal/templates/portal/newsfeed.html" />
         <option value="$PROJECT_DIR$/portal/static/portal/Profile.css" />
         <option value="$PROJECT_DIR$/portal/templates/portal/Doc_delete.html" />
-        <option value="$PROJECT_DIR$/portal/templates/portal/profile.html" />
         <option value="$PROJECT_DIR$/phoics/urls.py" />
         <option value="$PROJECT_DIR$/portal/urls.py" />
-        <option value="$PROJECT_DIR$/portal/forms.py" />
-        <option value="$PROJECT_DIR$/portal/models.py" />
         <option value="$PROJECT_DIR$/portal/templates/portal/error_404.html" />
         <option value="$PROJECT_DIR$/portal/static/portal/newsfeed.css" />
         <option value="$PROJECT_DIR$/portal/static/portal/signup_page.css" />
         <option value="$PROJECT_DIR$/portal/templates/portal/signup.html" />
-        <option value="$PROJECT_DIR$/portal/templates/portal/info.html" />
         <option value="$PROJECT_DIR$/portal/static/portal/signuppage.css" />
         <option value="$PROJECT_DIR$/portal/templates/portal/login.html" />
         <option value="$PROJECT_DIR$/portal/static/portal/upload.css" />
-        <option value="$PROJECT_DIR$/portal/views.py" />
         <option value="$PROJECT_DIR$/portal/templates/portal/model_form_upload.html" />
+        <option value="$PROJECT_DIR$/portal/models.py" />
+        <option value="$PROJECT_DIR$/portal/forms.py" />
+        <option value="$PROJECT_DIR$/portal/views.py" />
+        <option value="$PROJECT_DIR$/portal/templates/portal/profile.html" />
+        <option value="$PROJECT_DIR$/portal/templates/portal/info.html" />
       </list>
     </option>
   </component>
@@ -233,7 +249,6 @@
     </navigator>
     <panes>
       <pane id="Scope" />
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -249,30 +264,6 @@
             <path>
               <item name="phoics" type="b2602c69:ProjectViewProjectNode" />
               <item name="phoics" type="462c0819:PsiDirectoryNode" />
-              <item name="phoics" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="phoics" type="b2602c69:ProjectViewProjectNode" />
-              <item name="phoics" type="462c0819:PsiDirectoryNode" />
-              <item name="phoics" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="phoics" type="b2602c69:ProjectViewProjectNode" />
-              <item name="phoics" type="462c0819:PsiDirectoryNode" />
-              <item name="portal" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="phoics" type="b2602c69:ProjectViewProjectNode" />
-              <item name="phoics" type="462c0819:PsiDirectoryNode" />
-              <item name="portal" type="462c0819:PsiDirectoryNode" />
-              <item name="static" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="phoics" type="b2602c69:ProjectViewProjectNode" />
-              <item name="phoics" type="462c0819:PsiDirectoryNode" />
-              <item name="portal" type="462c0819:PsiDirectoryNode" />
-              <item name="static" type="462c0819:PsiDirectoryNode" />
               <item name="portal" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -292,6 +283,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -364,19 +356,20 @@
     <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19591528" sideWeight="0.88071895" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.29954615" sideWeight="0.74019605" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.22385621" sideWeight="0.5030257" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.0" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.290469" sideWeight="0.25980392" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31535947" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.17320262" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.251497" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.001633987" sideWeight="0.4969743" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.21028744" sideWeight="0.119281046" order="3" side_tool="true" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.06699347" sideWeight="0.4969743" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.290469" sideWeight="0.25980392" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.027444255" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.0113464445" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.015128593" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -409,6 +402,42 @@
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ORDER">
+      <list>
+        <option value="0" />
+        <option value="2" />
+        <option value="3" />
+        <option value="1" />
+      </list>
+    </option>
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="RECENTLY_FILTERED_USER_GROUPS">
+                <collection />
+              </option>
+              <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+                <collection />
+              </option>
+              <option name="COLUMN_ORDER">
+                <list>
+                  <option value="0" />
+                  <option value="1" />
+                  <option value="2" />
+                  <option value="3" />
+                </list>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
@@ -421,7 +450,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/portal/views.py</url>
-          <line>120</line>
+          <line>126</line>
           <option name="timeStamp" value="6" />
         </line-breakpoint>
       </breakpoints>
@@ -430,16 +459,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/portal/templates/registration/password_reset_email.html" />
-    <entry file="file://$PROJECT_DIR$/portal/templates/registration/password_reset_done.html" />
-    <entry file="file://$PROJECT_DIR$/portal/templates/portal/enter_otp.html" />
-    <entry file="file://$PROJECT_DIR$/portal/templates/portal/front_page.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/portal/templates/registration/meaning_of every_reset_function" />
     <entry file="file://$PROJECT_DIR$/portal/templates/registration/password_reset_form.html" />
     <entry file="file://$PROJECT_DIR$/portal/templates/my_templates/password_reset_email.html" />
@@ -473,13 +492,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
           <caret line="8" column="6" lean-forward="false" selection-start-line="8" selection-start-column="6" selection-end-line="8" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/portal/templates/portal/account_activation_invalid.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="0" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -556,7 +568,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
           <caret line="8" column="15" lean-forward="false" selection-start-line="6" selection-start-column="2" selection-end-line="10" selection-end-column="46" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -574,18 +585,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/portal/templates/portal/account_activation_email.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="19" lean-forward="true" selection-start-line="6" selection-start-column="19" selection-end-line="6" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/phoics/settings.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="505">
           <caret line="136" column="0" lean-forward="true" selection-start-line="136" selection-start-column="0" selection-end-line="136" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -593,7 +596,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
           <caret line="18" column="0" lean-forward="true" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -615,9 +617,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="505">
           <caret line="48" column="0" lean-forward="true" selection-start-line="48" selection-start-column="0" selection-end-line="48" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#41#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -625,14 +624,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
           <caret line="10" column="47" lean-forward="false" selection-start-line="10" selection-start-column="47" selection-end-line="10" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/portal/templates/portal/profile.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="14" column="0" lean-forward="false" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -647,18 +638,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1564">
           <caret line="92" column="1" lean-forward="true" selection-start-line="92" selection-start-column="1" selection-end-line="92" selection-end-column="1" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/portal/static/portal/signup_page.css" />
-    <entry file="file://$PROJECT_DIR$/portal/templates/portal/info.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="7" column="6" lean-forward="true" selection-start-line="7" selection-start-column="6" selection-end-line="7" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/portal/static/portal/signuppage.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="459">
@@ -673,55 +656,106 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/portal/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2040">
-          <caret line="144" column="8" lean-forward="false" selection-start-line="144" selection-start-column="8" selection-end-line="144" selection-end-column="8" />
-          <folding>
-            <element signature="e#29#66#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/portal/templates/portal/signup.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="289">
-          <caret line="33" column="12" lean-forward="true" selection-start-line="26" selection-start-column="4" selection-end-line="33" selection-end-column="12" />
-          <folding />
+          <caret line="33" column="12" lean-forward="false" selection-start-line="26" selection-start-column="4" selection-end-line="33" selection-end-column="12" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/portal/static/portal/upload.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="544">
-          <caret line="74" column="20" lean-forward="true" selection-start-line="74" selection-start-column="20" selection-end-line="74" selection-end-column="20" />
+          <caret line="74" column="20" lean-forward="false" selection-start-line="74" selection-start-column="20" selection-end-line="74" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/portal/static/portal/images/login.jpg">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/portal/migrations/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/manage.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="10" column="2" lean-forward="true" selection-start-line="10" selection-start-column="2" selection-end-line="10" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/portal/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="15" column="38" lean-forward="true" selection-start-line="15" selection-start-column="38" selection-end-line="15" selection-end-column="38" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/portal/forms.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="37" column="0" lean-forward="true" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
+        <state relative-caret-position="204">
+          <caret line="20" column="0" lean-forward="false" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/portal/templates/portal/account_activation_email.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="19" lean-forward="true" selection-start-line="6" selection-start-column="19" selection-end-line="6" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/portal/templates/portal/account_activation_invalid.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="0" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/media/profile_pic/c9e36a7e-abf7-48e2-b0cb-95ea55e33f4c.jpg">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/portal/templates/portal/model_form_upload.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="30" column="0" lean-forward="true" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
+        <state relative-caret-position="350">
+          <caret line="31" column="0" lean-forward="true" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/portal/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="42" column="0" lean-forward="true" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
           <folding>
-            <element signature="n#style#0;n#p#0;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#p#1;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="e#29#66#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/portal/models.py">
+    <entry file="file://$PROJECT_DIR$/portal/templates/portal/profile.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="102">
+          <caret line="14" column="3" lean-forward="false" selection-start-line="14" selection-start-column="3" selection-end-line="14" selection-end-column="3" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/portal/templates/portal/info.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="197">
+          <caret line="31" column="4" lean-forward="true" selection-start-line="31" selection-start-column="4" selection-end-line="31" selection-end-column="4" />
           <folding />
         </state>
       </provider>
