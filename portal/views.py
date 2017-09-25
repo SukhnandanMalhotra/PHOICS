@@ -86,8 +86,6 @@ def signup(request):
                 #return redirect('account_activation_sent')
     else:
         form = SignUpPage()
-
-        messages.info(request, 'please fill form first')
     return render(request, 'portal/signup.html', {'form': form})
 
 #def account_activation_sent(request):
