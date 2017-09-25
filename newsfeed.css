@@ -6,7 +6,7 @@ body{
 }
 #top{
 	margin: 0;
-	position:fixed;
+	position:relative;
 	width:100vw;
     height:10vh;
     background-color: #02b46d;
@@ -44,8 +44,8 @@ a{
 	color:black;
 }
 div.feed1{
-	position: absolute;
-	margin-top:12vh;
+	position: relative;
+	margin-top:3vh;
 	margin-left: 50vh;
     width:40vw;
     height:60vh;
