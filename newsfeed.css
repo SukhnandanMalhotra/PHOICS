@@ -4,61 +4,41 @@ body{
 	background-color: #eeeeee;
 
 }
-div.top-bar{
-    position: fixed;
-   
-    width:100vw;
+#top{
+	margin: 0;
+	position:fixed;
+	width:100vw;
     height:10vh;
     background-color: #02b46d;
-    margin-top: 0px;
+    z-index: 1;
 }
-h1{
-	position:absolute;
-	font-family: Raleway light;
-	color:black;
-	margin-top:2vh;
-	margin-left: 3vw;
+h2{
+	position: relative;
+    margin-top:3vh;
+    margin-left:10vw;
+	letter-spacing: 0.5em;
+    font-family: Raleway light;
+   display: inline;
 }
-#search{
-	margin-top: 3vh;
-	margin-left: 35vw;
-	width:25vw;
-	height: 4vh;
-	
+i.fa{
+	cursor: pointer;
 }
-img.profile{
-	position: absolute;
-	width:5vw;
-	height:10vh;
-	margin-left: 70vw;
+i.fa:hover{
+	color:white;
 }
-.profile:hover{
-	background-color: white;
-}
-img.search_img{
-	position: absolute;
-	margin-top:3.5vh;
-	margin-left:61vw;
-	width:2vw;
-	height:4vh;
-}
-img.home{
-	position: absolute;
-	margin-left:75vw;
 
-	width:5vw;
-	height:10vh;
+i.fa-home{
+	position: relative;
+	margin-top:3vh;
+	margin-left:45%;
 }
-.home:hover{
-	background-color:white;
+i.fa-user{
+	margin-left:2%;
 }
-p.logout{  
-	display: inline;
-	position: absolute;
-	margin-left: 23vw;
-	margin-top: 4vh;
-	font-family: Raleway medium;
+i.fa-sign-out{
+	margin-left:2%;
 }
+
 a{
 	text-decoration: none;
 	color:black;

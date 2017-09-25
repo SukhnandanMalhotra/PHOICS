@@ -125,6 +125,10 @@ div.details{
 	bottom:10%;
 	right:5%;
 }
+a{
+	text-decoration: none;
+	color:black;
+}
 @media only screen and (max-width:950px){
 	.user-profile{
     margin-top: 10%;

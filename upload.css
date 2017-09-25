@@ -50,16 +50,16 @@ i.fa-sign-out{
 div.content{
 	border:1px solid #aaa;
 }
-p{ 
+p.upload{ 
 	margin-top:20%;
    font-family: Raleway;
    font-size: 120%;
    padding:5%;
- 
-   border-left:2px solid black;
+  border-left:2px solid black;
 }
 button{
-	margin:5%;
+	margin:10%;
+	margin-bottom: 5%;
 	background-color:transparent;
 	box-shadow: none;
 	padding:1% 2% 1% 2%;
@@ -68,7 +68,62 @@ button{
 	border-radius: 2px;
 	cursor: pointer;
 }
+button.upload{
+	margin-top:5%;
+}
 button:hover{
 	background-color: black;
 	color: white;
+}
+div.Form{
+	margin-top:5%;
+	margin-left:5%;
+	font-family: Raleway;
+	display:table;
+}
+div.row{
+	display:table-row;
+}
+.row label{
+	display:table-cell;
+	font-weight: bold;
+	padding:2% 7% 2% 5%;
+
+
+}
+.row input{
+	display:table-cell;
+	padding:2%;
+}
+input{
+	border:1px solid #bbb;
+	width:20vw;
+}
+a{
+	text-decoration: none;
+	color:black;
+}
+@media only screen and (max-width:650px){
+i.fa-home{
+	margin-left:30%;
+}
+
+}
+@media only screen and (max-width:550px){
+i.fa-home{
+	margin-left:25%;
+}
+}
+@media only screen and (max-width:420px){
+i.fa-home{
+	margin-left:15%;
+}
+
+}
+@media only screen and (max-width:350px){
+	
+i.fa-home{
+	margin-left:5%;
+}
+
 }
