@@ -3,7 +3,7 @@ from django.forms import extras
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from datetime import datetime
-from portal.models import Document, Profile
+from portal.models import Document, Profile,Comment
 """
 UserCreationForm contain password1 and password2(conf.password)
 it also check both password must be same
@@ -20,7 +20,11 @@ class Info(forms.ModelForm):
         model = Profile
         fields = ('bio', 'location', 'birth_date', )
 
+class Comment1(forms.ModelForm):
 
+    class Meta:
+        model = Comment
+        fields = ('comment',)
 
 class DocumentForm(forms.ModelForm):
 

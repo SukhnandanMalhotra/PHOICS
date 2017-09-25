@@ -13,19 +13,11 @@ from django.template.loader import render_to_string
 from phoics.settings import EMAIL_HOST_USER
 from .tokens import account_activation_token
 from django.shortcuts import render, redirect, get_object_or_404, render_to_response
-from .models import Document, Profile
-from .forms import DocumentForm, SignUpPage, Info, UpdateForm
+from .models import Document, Profile,Comment
+from .forms import DocumentForm, SignUpPage, Info, UpdateForm,Comment1
 from django.contrib import messages
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
-from django.forms import ModelForm
-from django.core.files.storage import FileSystemStorage
-from django.core.files import File
-from django.contrib.auth.views import password_reset
-from . import forms
-from django.conf import settings
-from django.core.files.storage import FileSystemStorage
-import random
-from django.http import HttpResponse
+
 
 
 
@@ -124,8 +116,20 @@ def newsfeed(request):
         images = paginator.page(1)
     except EmptyPage:
         images = paginator.page(paginator.num_pages)
+    comment1 = Comment.objects.order_by('-uploaded_at')
+    return render(request,'portal/newsfeed.html', {'images': images,'comment1':comment1})
 
-    return render(request,'portal/newsfeed.html', {'images': images})
+# def comment(request):
+#     comment1=Comment.objects.order_by('-uploaded_at')
+def comment_form(request):
+    if request.method == 'POST':
+        form = Comment1(request.POST)
+        form.save()
+    else:
+        form = Comment1()
+    return render(request, 'portal/newsfeed.html', {
+        'form': form
+    })
 
 def model_form_upload(request):
     if request.method == 'POST':

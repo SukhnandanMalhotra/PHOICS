@@ -102,11 +102,7 @@ class Profile(models.Model):
         return self.user.username
 
 
-# @receiver(post_save, sender=User)
-# def update_user_profile(sender, instance, created, **kwargs):
-#     # here created is a boolean that tells new instance
-#     #  was created or an older instance was updated.
-#     if created:
-#         Profile.objects.create(user=instance)
-#     instance.profile.save()
-#
+class Comment(models.Model):
+    image = models.ForeignKey(Document)
+    comment=models.TextField(max_length=500,blank=True)
+    uploaded_at = models.DateTimeField(auto_now_add=True)

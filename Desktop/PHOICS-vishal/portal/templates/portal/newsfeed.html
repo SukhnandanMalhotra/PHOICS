@@ -1,4 +1,5 @@
 {% load staticfiles %}
+{#{% load social_share %}#}
 <!DOCTYPE html>
 <html>
 <head>
@@ -25,13 +26,23 @@
                  <div class="feed1">
                  <p class="name">{{ img.uploaded_at }}  by  {{ img.user }}</p>
                  <a href="{{ img.document.url }}"><img src="{{ img.document.url }}" ></a>
+{#                 {% post_to_facebook img  %}#}
+                 {% for com in comment1 %}
+                     {% if com.image == img.document %}
+                         <p>{{ com.comment }}
+                     {%  endif %}
+                 {%  endfor %}
                  <p class="like">like no.</p>
                  <p class="share">share</p>
-                 <label  for="comment">comment no.</label><br>
-                <input type="text" id="comment"><br>
+
                 </div>
             {% endif %}
-
+        <label  for="comment">comment no.</label><br>
+            <form method='post'  enctype="multipart/form-data">
+            {% csrf_token %}
+            <input type="text" id="comment"><br>
+            <button type="submit">Comment</button><br><br>
+            </form>
         {% endfor %}
 
 

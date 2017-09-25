@@ -1,11 +1,9 @@
 from django.conf.urls import url, include
 from django.contrib.auth import views as built_views
-from django.contrib import admin
 from portal import views
 from django.contrib.auth.views import password_reset
 from django.conf import settings
 from django.conf.urls.static import static
-from django.views.generic import TemplateView
 from django_filters.views import FilterView
 from portal.filters import UserFilter
 
@@ -47,6 +45,7 @@ urlpatterns = [
     url(r'^delete/(?P<pk>\d+)$', views.Doc_delete, name='Doc_delete'),
 
     url(r'^search/$', FilterView.as_view(filterset_class=UserFilter, template_name='portal/user_list.html'), name='search'),
+    # url(r'^comment/$', views.comment, name='comment'),
    ]
 
 
