@@ -1,93 +1,5 @@
 {% load staticfiles %}
-{#<!DOCTYPE html>#}
-{#<html>#}
-{#<head>#}
-{#<title>profie page</title>#}
-{#<meta name="viewport" content="width=device-width, initial-scale=1.0">#}
-{#<link rel="stylesheet" type="text/css" href="{% static 'portal/Profile.css' %}">#}
-{#</head>#}
-{#<body>#}
-{##}
-{#<div>#}
-{#<h1>P H O I C S</h1>#}
-{##}
-{#  {% for obj in profile_pic %}#}
-{##}
-{##}
-{#{% if obj.profile_pic.url is not none %}#}
-{#     {% if obj.user == request.user %}#}
-{##}
-{#         <a href="{{ obj.profile_pic.url }}"><img src="{{ obj.profile_pic.url }}" class="dp"></a>#}
-{#{% endif %}#}
-{#      {% endif %}#}
-{##}
-{#{% endfor %}#}
-{##}
-{# </div>#}
-{#<img src="{% static 'portal/images/login.jpg' %}" class="dp">#}
-{#<p class="name"> {{ user.username }}</p>#}
-{#<ul>#}
-{#<li class="per">Personal <span>No.</span> </li>#}
-{#<li class="pub">Public <span> No.</span>  </li>#}
-{#</ul>#}
-{#<div class="bottom_bar">#}
-{#	<p class=button><a href="{% url 'model_form_upload' %}">UPLOAD </a></p>#}
-{#    <p class=button><a href="{% url 'user_info' %}">EDIT PROFILE</a></p>#}
-{#</div>#}
-{#</div>#}
-{#<div class="top-bar">#}
-{#    <img src="{% static 'portal/images/search.png' %}" class="search_img">#}
-{#	<a href="{% url 'newsfeed' %}"><img src="{% static 'portal/images/home-icon.png' %}" class="home"></a>#}
-{#	<input type="text" id="search" >#}
-{#    <p class="logout"><a href="{% url 'logout' %}">log out</a></p>#}
-{##}
-{##}
-{#</div>#}
-{##}
-{#<div class="image" id="img"><img src="{% static 'portal/images/ff6510a9f486757f8c1bc938997e9bba--indoor-photography-book-photography.jpg' %}"><p>caption</p></div>#}
-{#<div class="image1" id="img"><img src="{% static 'portal/images/7904977172_a2e456325e_z.jpg' %}"><p>caption</p></div>#}
-{# {% for obj in documents %}#}
-{#         {% if obj.user == request.user %}#}
-{#           <div class="image" id="img">#}
-{##}
-{##}
-{#                    <a href="{{ obj.document.url }}"><img src="{{ obj.document.url }}"></a>#}
-{#           <p>{{ obj.uploaded_at }}#}
-{#            <a href="{% url "Doc_edit" obj.id %}">Edit</a>#}
-{#            <a href="{% url "Doc_delete" obj.id %}">Delete</a></p>#}
-{#           </div>#}
-{#         {% endif %}#}
-{#     {% endfor %}#}
-{##}
-{##}
-{#</body>#}
-{#</html>#}
-{##}
-{#{% extends 'base_profile.html' %}#}
-{##}
-{#{% block content %}#}
-{#    {% csrf_token %}#}
-{#     <a href="{% url 'logout' %}">logout</a>#}
-{#  <h2>Welcome, {{ user.get_full_name }} <small>{{ user.username }}</small>!</h2>#}
-{##}
-{#  <ul>#}
-{#    <li>#}
-{#        <a href="{% url 'newsfeed' %}">NEWSFEED PAGE</a>#}
-{#        <a href="{% url 'model_form_upload' %}">UPLOAD PICTURE</a>#}
-{##}
-{#    </li>#}
-{#  </ul>#}
-{#  <ul>#}
-{#      {% for obj in documents %}#}
-{#          {% if obj.user == request.user %}#}
-{#              <li>#}
-{#                  <h3>{{ obj.uploaded_at }}</h3>#}
-{#                  <a href="{{ obj.document.url }}"><img src="{{ obj.document.url }}"></a>#}
-{#              </li>#}
-{#          {% endif %}#}
-{#      {% endfor %}#}
-{#  </ul>#}
-{#{% endblock %}#}
+
 
 <!DOCTYPE html>
 <html>
@@ -102,10 +14,9 @@
         <div id="top">
        	<h2>PHOICS</h2>
             <a href="{% url 'newsfeed' %}"><i class="fa fa-home fa-2x" aria-hidden="true"></i></a>
-       	<i class="fa fa-user fa-2x" aria-hidden="true"></i>
+       	     <a href="{% url 'profile' %}"></a> <i class="fa fa-user fa-2x" aria-hidden="true"></i>
             <a href="{% url 'logout' %}"><i class="fa fa-sign-out fa-2x" aria-hidden="true"></i></a>
-            <a href="{% url 'newsfeed' %}">NEWSFEED PAGE</a>
-             <a href="{% url 'logout' %}">logout</a>
+
        </div>
        <div class="user-profile">
 {#       <div class="dp"><img  src="{% static 'portal/images/profile image.jpg' %}"></div>#}

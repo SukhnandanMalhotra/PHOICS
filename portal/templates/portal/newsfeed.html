@@ -5,22 +5,19 @@
 <title>newsfeed</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" type="text/css" href="{% static 'portal/newsfeed.css' %}">
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
 <body>
-
-<div class="top-bar">
-<h1>P H O I C S</h1>
-    <img src="{% static 'portal/images/search.png' %}" class="search_img">
-	<a href="{% url 'profile' %}"><img src="{% static 'portal/images/profile.png' %}" class="profile"></a>
-	<input type="text" id="search" >
-
-</div>
+<div id="top">
+       	<h2>PHOICS</h2>
+       	<a href="{% url 'newsfeed' %}"><i class="fa fa-home fa-2x" aria-hidden="true"></i></a>
+       <a href="{% url 'profile' %}">	<i class="fa fa-user fa-2x" aria-hidden="true"></i></a>
+       	<a href="{% url 'logout' %}"><i class="fa fa-sign-out fa-2x" aria-hidden="true"></i></a>
+       </div>
 {% if user.is_authenticated %}
     {% csrf_token %}
-
      {% for img in images %}
-
             {% if img.status == "PUBLIC" %}
                  <div class="feed1">
                  <p class="name">{{ img.uploaded_at }}  by  {{ img.user }}</p>
@@ -31,10 +28,7 @@
                 <input type="text" id="comment"><br>
                 </div>
             {% endif %}
-
         {% endfor %}
-
-
     <footer>
         {% if images.has_previous %}
             <a href="?page={{ images.previous_page_number }}">previous</a>
@@ -44,60 +38,14 @@
             <a href="?page={{ images.next_page_number }}">next</a>
         {% endif %}
     </footer>
-
 {% else %}
     <h3>you are not logged-in first login</h3>
 {% endif %}
 
 
 
-{#    <p class="name">NAME</p>#}
-{#    <img src="{% static 'portal/images/7904977172_a2e456325e_z.jpg' %}">#}
-{#    <p class="like">like no.</p>#}
-{#    <p class="share">share</p>#}
-{#    <label  for="comment">comment no.</label><br>#}
-{#<input type="text" id="comment">#}
 
 </div>
 </body>
 </html>
 
-{#{% extends 'base_profile.html' %}#}
-{##}
-{#{% block content %}#}
-{#{% if user.is_authenticated %}#}
-{#    {% csrf_token %}#}
-{#    <ul>#}
-{#        <li>#}
-{#        <a href="{% url 'profile' %}">PROFILE PAGE</a>#}
-{#        </li>#}
-{#    </ul>#}
-{#    <ul>#}
-{#        {% for img in images %}#}
-{#            {% if img.status == "PUBLIC" %}#}
-{#                <li>#}
-{#                <h3>{{ img.uploaded_at }}  by  {{ img.user }}</h3>#}
-{#                <a href="{{ img.document.url }}"><img src="{{ img.document.url }}"></a>#}
-{#                </li>#}
-{#            {% endif %}#}
-
-{#        {% endfor %}#}
-{##}
-{#    </ul>#}
-{#        {% if images.has_previous %}#}
-{#            <a href="?page={{ images.previous_page_number }}">previous</a>#}
-{#        {% endif %}#}
-{##}
-{##}
-{#            Page {{ images.number }} of {{ images.paginator.num_pages }}.#}
-{##}
-{##}
-{#        {% if images.has_next %}#}
-{#            <a href="?page={{ images.next_page_number }}">next</a>#}
-{#        {% endif %}#}
-{##}
-{##}
-{#{% else %}#}
-{#    <h3>you are not logged-in first login</h3>#}
-{#{% endif %}#}
-{#{% endblock %}#}

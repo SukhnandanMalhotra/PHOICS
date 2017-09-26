@@ -17,6 +17,7 @@ from .models import Document, Profile
 from .forms import DocumentForm, SignUpPage, Info, UpdateForm
 from django.contrib import messages
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
+
 from django.forms import ModelForm
 from django.core.files.storage import FileSystemStorage
 from django.core.files import File
@@ -34,6 +35,8 @@ from django.http import HttpResponse
  it will redirect to the user on login page 
  having next parameter default have SETTING.LOGIN_URL
 """
+
+
 @login_required
 def home(request):
     documents = Document.objects.order_by('-uploaded_at')
@@ -48,10 +51,11 @@ def front_page(request):
 """
 signup all functionality
 """
+
+
 def signup(request):
     if request.method == 'POST':
         form = SignUpPage(request.POST)
-
         if form.is_valid():
             email = form.cleaned_data.get('email')
             User.objects.filter(email=email).count()
@@ -83,13 +87,11 @@ def signup(request):
                 # fail_silently false than it will raise as smtplib.SMTPException.
                 send_mail(subject, message,from_mail,to_mail,fail_silently=False)
                 messages.success(request, 'your email is successfully send')
-                #return redirect('account_activation_sent')
+                # return redirect('account_activation_sent')
     else:
         form = SignUpPage()
     return render(request, 'portal/signup.html', {'form': form})
 
-#def account_activation_sent(request):
-    #return render(request, 'portal/account_activation_sent.html')
 
 def activate(request, uidb64, token):
     try:
@@ -108,6 +110,7 @@ def activate(request, uidb64, token):
     else:
         return render(request, 'portal/account_activation_invalid.html')
 
+
 def newsfeed(request):
     documents = Document.objects.order_by('-uploaded_at')
     image=[]
@@ -125,6 +128,7 @@ def newsfeed(request):
 
     return render(request,'portal/newsfeed.html', {'images': images})
 
+
 def model_form_upload(request):
     if request.method == 'POST':
         form = DocumentForm(request.POST, request.FILES)
@@ -138,6 +142,7 @@ def model_form_upload(request):
     return render(request, 'portal/model_form_upload.html', {
         'form': form
     })
+
 
 def user_info(request):
     try:
@@ -156,6 +161,7 @@ def user_info(request):
 
         messages.info(request, 'please fill form first')
     return render(request, 'portal/info.html', {'form': form})
+
 
 def Doc_update(request, pk, template_name='portal/model_form_upload.html'):
     updatex = get_object_or_404(Document, pk=pk)

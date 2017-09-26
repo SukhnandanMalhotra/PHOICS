@@ -4,33 +4,41 @@
 <head>
 	<title>upload file</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" type="text/css" href="{% static 'portal/upload.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'portal/upload.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
+    <div id="top">
+        <h2>PHOICS</h2>
+        <a href="{% url 'newsfeed' %}"><i class="fa fa-home fa-2x" aria-hidden="true"></i></a>
+        <a href="{% url 'profile' %}">	<i class="fa fa-user fa-2x" aria-hidden="true"></i></a>
+       	<a href="{% url 'logout"><i class="fa fa-sign-out fa-2x" aria-hidden="true"></i></a>
+    </div>
+    <div class="container">
+         <div class="content heading"><p class="upload">UPLOAD IMAGE</p></div>
+         <div class="content form">
+         <div class="Form">
 
-<div class="container">
-<h1>UPLOAD FILE</h1>
+         {% if user.is_authenticated %}
+              <form method='post' enctype="multipart/form-data">
+              {% csrf_token %}
+              {% for field in form %}
+                  <div class="form">
+                  <label for="name">{{ field.label_tag }}</label><br>
+                  {{ field }}<br><br>
 
- <form method="post" enctype="multipart/form-data">
-     {% csrf_token %}
- <p style="color:#02b46d;">
-     {% for field in form %}
-        <label>{{ field.label_tag }}</label>
-        {{ field }}<br><br>
+                      {% for error in field.errors %}
+                          <p style="color: red">{{ error }}</p>
+                      {% endfor %}
+                  </div>
+              {% endfor %}
+              <button class="button" type="submit">SUBMIT</button><br>
+              </form>
 
-        {% for error in field.errors %}
-          <p style="color: red">{{ error }}</p>
-        {% endfor %}
-{% endfor %}
- </p>
-
-<button class="upload" type="submit">UPLOAD</button><br><br>
-<a href="{% url 'profile' %}"><p class="upload">PROFILE PAGE</p></a>
-
-</p>
-
-
-</form>
-</div>
+         {% else %}
+             <h3>first logged in</h3>
+         {% endif %}
+         </div>
+         </div>
 </body>
-</html>block %}
+</html>

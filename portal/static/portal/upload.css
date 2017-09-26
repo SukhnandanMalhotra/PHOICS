@@ -1,101 +1,140 @@
 @import url('https://fonts.googleapis.com/css?family=Raleway');
 body{
-	background-color: rgba(3,230,140,1);
+	background-color: #eee;
+	margin: 0;
 }
-div{
-	position:absolute;
-	left:0;
-	right:0;
-	top:0;
-	bottom:0;
-	margin:auto;
-	background-color: white;
-	height:70vh;
-	width:30vw;
-	border:5px solid #038458;
-	border-radius: 10px;
+#top{
+	margin: 0;
+	position:fixed;
+	width:100vw;
+    height:10vh;
+    background-color: #02b46d;
+    z-index: 1;
 }
-h1{
-	font-size:120%;
-	font-family: Raleway;
-	text-align: center;
+h2{
+	position: relative;
+    margin-top:3vh;
+    margin-left:10vw;
+	letter-spacing: 0.5em;
+    font-family: Raleway light;
+   display: inline;
+}
+i.fa{
+	cursor: pointer;
+}
+i.fa:hover{
 	color:white;
-	background-color:#02b46d;
-	height:10%;
-	margin-top: 0;
-	padding-top: 2%;
-	box-sizing: border-box;
+}
 
+i.fa-home{
+	position: relative;
+	margin-top:3vh;
+	margin-left:45%;
+}
+i.fa-user{
+	margin-left:2%;
+}
+i.fa-sign-out{
+	margin-left:2%;
+}
+.container{
+	position:absolute;
+	margin-top:20vh;
+	margin-left:20vw;
+	width:60vw;
+	height:70vh;
+	display:grid;
+	grid-template-columns: 30% 70%;
+	background-color: white;
+}
+div.content{
+	border:1px solid #aaa;
+}
+p.upload{
+	margin-top:20%;
+   font-family: Raleway;
+   font-size: 120%;
+   padding:5%;
+  border-left:2px solid black;
 }
 button{
-	background: transparent ;
-	border:2px solid   #02b46d;
-	font-family: Raleway;
-	font-size:120%;
-	color:#02b46d;
-}
-
-.choose-file {
-
-	margin-top: 3vh;
-	margin-left: 5vh;
-	margin-bottom: 5vh;
-}
-.upload{
-	position: absolute;
-	margin-top:10vh;
-	margin-left:15vw;
+	margin:10%;
+	margin-bottom: 5%;
+	background-color:transparent;
+	box-shadow: none;
+	padding:1% 2% 1% 2%;
 	width:10vw;
+	border:2px solid black;
+	border-radius: 2px;
+	cursor: pointer;
 }
-label{
+button.upload{
+	margin-top:5%;
+}
+button:hover{
+	background-color: black;
+	color: white;
+}
+div.Form{
+	margin-top:5%;
+	margin-left:5%;
 	font-family: Raleway;
+	display:table;
+}
+div.row{
+	display:table-row;
+}
+.row label{
+	display:table-cell;
+	font-weight: bold;
+	padding:2% 7% 2% 5%;
+
+
+}
+.row input{
+	display:table-cell;
+	padding:2%;
 }
 input{
-	font-size: 120%;
-
-
+	border:1px solid #bbb;
+	width:20vw;
 }
-.size{
-	position:absolute;
-	margin-left:8%;
-	top:21vh;
+a{
+	text-decoration: none;
+	color:black;
 }
-#size{
-	position:absolute;
-	margin-left:25%;
-	top:20vh;
-}
-.status{
-	position:absolute;
-	margin-left:8%;
-	top:26vh;
-}
-#status{
-	position:absolute;
-	margin-left:25%;
-	top:25vh;
-}
-.flip{
-	position:absolute;
-	margin-left:8%;
-	top:31vh;
-}
-#flip{
-	position:absolute;
-	margin-left:25%;
-	top:30vh;
-}
-.rotate{
-	position:absolute;
-	margin-left:8%;
-	top:36vh;
-}
-#rotate{
-	position:absolute;
-	margin-left:25%;
-	top:35vh;
+@media only screen and (max-width:650px){
+i.fa-home{
+	margin-left:30%;
 }
 
-input{
-	width:50%;
+}
+@media only screen and (max-width:550px){
+i.fa-home{
+	margin-left:25%;
+}
+}
+@media only screen and (max-width:420px){
+i.fa-home{
+	margin-left:15%;
+}
+
+}
+@media only screen and (max-width:350px){
+
+i.fa-home{
+	margin-left:5%;
+}
+
+}
+@media only screen and (max-width:1050px){
+	div.container{
+		width: 100%;
+		height: 0;
+		padding-bottom:50%;
+		left: 0;right: 0;top:0;bottom:0;margin:auto;
+	}
+	button{
+		width:15vw;
+	}
 }

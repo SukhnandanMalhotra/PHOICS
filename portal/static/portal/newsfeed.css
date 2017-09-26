@@ -2,67 +2,59 @@
 body{
 	margin:0px;
 	background-color: #eeeeee;
-}
-div.top-bar{
-    position: relative;
 
-    width:100vw;
+}
+#top{
+	margin: 0;
+	position:relative;
+	width:100vw;
     height:10vh;
     background-color: #02b46d;
-    margin-top: 0px;
+    z-index: 1;
 }
-h1{
-	position:absolute;
-	font-family: Raleway light;
-	color:#007842;
-	margin-top:2vh;
-	margin-left: 3vw;
+h2{
+	position: relative;
+    margin-top:3vh;
+    margin-left:10vw;
+	letter-spacing: 0.5em;
+    font-family: Raleway light;
+   display: inline;
 }
-#search{
-	margin-top: 3vh;
-	margin-left: 35vw;
-	width:25vw;
-	height: 4vh;
+i.fa{
+	cursor: pointer;
+}
+i.fa:hover{
+	color:white;
+}
 
+i.fa-home{
+	position: relative;
+	margin-top:3vh;
+	margin-left:45%;
 }
-img.profile{
-	position: absolute;
-	width:5vw;
-	height:10vh;
-	margin-left: 70vw;
+i.fa-user{
+	margin-left:2%;
 }
-.profile:hover{
-	background-color: black;
+i.fa-sign-out{
+	margin-left:2%;
 }
-img.search_img{
-	position: absolute;
-	margin-top:3.5vh;
-	margin-left:61vw;
-	width:2vw;
-	height:4vh;
-}
-img.home{
-	position: absolute;
-	margin-left:75vw;
 
-	width:5vw;
-	height:10vh;
-}
-.home:hover{
-	background-color:black;
+a{
+	text-decoration: none;
+	color:black;
 }
 div.feed1{
 	position: relative;
 	margin-top:3vh;
 	margin-left: 50vh;
-    width:50vw;
+    width:40vw;
     height:60vh;
-    background-color: white ;
+    background-color: white;
     align-items: center;
 }
 .feed1 img{
 	margin-top:7vh;
-	width:50vw;
+	width:40vw;
 	height:40vh;
 	margin-bottom: 2vh;
 }
@@ -90,4 +82,69 @@ input{
 	margin-top:2vh;
 	margin-left:3vw;
 	width:20vw;
+}
+@media only screen and (max-width:1050px){
+	div.feed1{position: absolute;
+    margin-top: 12vh;
+    margin-left: 25vw;
+    width: 50vw;
+    height: 60vh;
+    background-color: white;
+    align-items: center;
+}
+.feed1 img{
+	width:50vw;
+}
+img.profile{
+		width:10vw;
+	}
+	img.home{
+		width:10vw;
+		margin-left:80vw;
+	}
+	img.search_img{
+		width:4vw;
+	}
+p{
+	font-size:150%;
+}
+p.share{
+	margin-left:12vw;
+}
+label{
+	font-size:150%;
+	margin-left:20vw;
+}
+
+
+}
+@media only screen and (max-width:780px){
+	p{font-size:100%;}
+	label{font-size:100%;}
+}
+@media only screen and (max-width:450px){
+	h1{
+		font-size:100%;
+	}
+	img.profile{
+		width:10vw;
+	}
+	img.home{
+		width:10vw;
+		margin-left:80vw;
+	}
+	img.search_img{
+		width:4vw;
+	}
+	p{
+		font-size:75%;
+	}
+    p.share{
+    	margin-left: 15vw;
+    }
+
+	label{
+		font-size:75%;
+		margin-left: 25vw;
+	}
 }

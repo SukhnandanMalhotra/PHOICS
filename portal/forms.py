@@ -1,18 +1,22 @@
 from django import forms
-from django.forms import extras
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from datetime import datetime
 from portal.models import Document, Profile
+from captcha.fields import ReCaptchaField
 """
 UserCreationForm contain password1 and password2(conf.password)
 it also check both password must be same
 """
+
+
 class SignUpPage(UserCreationForm):
     email = forms.EmailField(max_length=254, help_text='Required. Inform a valid email address.')
+    captcha = ReCaptchaField()
+
     class Meta:
         model = User
-        fields = ('username', 'email', 'password1', 'password2', )
+        fields = ('username', 'email', 'password1', 'password2', 'captcha', )
 
 
 class Info(forms.ModelForm):

@@ -8,10 +8,29 @@ import os
 from django.core.urlresolvers import reverse
 from PIL import Image
 from PIL import ImageFilter
-
 from io import BytesIO
 from django.core.files.uploadedfile import InMemoryUploadedFile
 import sys
+
+
+def get_profile_name(instance, filename):
+    ext = filename.split('.')[-1]
+    filename = "%s.%s" % (uuid.uuid4(), ext)
+    return os.path.join('profile_pic', filename)
+
+
+class Profile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    First_Name = models.CharField(max_length=100, blank=True)
+    Last_Name = models.CharField(max_length=100, blank=True)
+    City = models.CharField(max_length=30, blank=True)
+    DOB = models.DateTimeField(null=True, blank=True)
+    profile_pic = models.ImageField(upload_to=get_profile_name, blank=True)
+    email_confirmed = models.BooleanField(default=False)
+
+    def __str__(self):
+        return self.user.username
+
 
 def get_file_name(instance, filename):
     ext = filename.split('.')[-1]
@@ -90,30 +109,14 @@ class Document(models.Model):
                                              sys.getsizeof(output), None)
         super(Document, self).save()
 
-def get_profile_name(instance, filename):
-    ext = filename.split('.')[-1]
-    filename = "%s.%s" % (uuid.uuid4(), ext)
-    return os.path.join('profile_pic', filename)
 
 
-class Profile(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
-    First_Name = models.CharField(max_length=100, blank=True)
-    Last_Name = models.CharField(max_length=100, blank=True)
-    City = models.CharField(max_length=30, blank=True)
-    DOB = models.DateTimeField(null=True, blank=True)
-    profile_pic = models.ImageField(upload_to=get_profile_name, blank=True)
-    email_confirmed = models.BooleanField(default=False)
 
 
-    def __str__(self):
-        return self.user.username
-
-
-@receiver(post_save, sender=User)
-def update_user_profile(sender, instance, created, **kwargs):
-    # here created is a boolean that tells new instance
-    #  was created or an older instance was updated.
-    if created:
-        Profile.objects.create(user=instance)
-    instance.profile.save()
+# @receiver(post_save, sender=User)
+# def update_user_profile(sender, instance, created, **kwargs):
+#     # here created is a boolean that tells new instance
+#     #  was created or an older instance was updated.
+#     if created:
+#         Profile.objects.create(user=instance)
+#     instance.profile.save()

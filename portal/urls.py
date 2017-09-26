@@ -14,7 +14,7 @@ urlpatterns = [
     # this is for login page "/login"
     url(r'^login/$', built_views.login, {'template_name': 'portal/login.html'}, name='login'),
     # for logout but open login page
-    url(r'^logout/$', built_views.logout, {'next_page': 'front_page'}, name='logout'),
+    url(r'^logout/$', built_views.logout, {'next_page': 'login'}, name='logout'),
     # signup page "/signup/"
     url(r'^information/$', views.user_info, name="user_info"),
     url(r'^signup/$', views.signup, name='signup'),
@@ -41,6 +41,7 @@ urlpatterns = [
     url(r'^edit/(?P<pk>\d+)$', views.Doc_update, name='Doc_edit'),
 
     url(r'^delete/(?P<pk>\d+)$', views.Doc_delete, name='Doc_delete'),
+
    ]
 
 
