@@ -48,6 +48,14 @@ def Doc_delete(request, pk, template_name='portal/Doc_delete.html'):
         return redirect('profile')
     return render(request, template_name, {'object':removex})
 
+# def Doc_reset(request,pk,template_name='portal/Doc_reset.html'):
+#     resetx= get_object_or_404(Document, pk=pk)
+#     form = ResetForm(request.POST or None, instance=resetx)
+#     if form.is_valid():
+#         form.save()
+#         return redirect('profile')
+#     return render(request, template_name, {'form'})
+
 
 
 

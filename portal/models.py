@@ -2,7 +2,7 @@ from __future__ import unicode_literals
 from django.core.urlresolvers import reverse
 from django.db import models
 from PIL import Image
-from PIL import ImageFilter
+from PIL import ImageFilter, ImageOps
 
 from io import BytesIO
 from django.core.files.uploadedfile import InMemoryUploadedFile
@@ -14,6 +14,7 @@ choice2 = ((1,"Large"),(2, "Medium"),(3,"Small"))
 choice3 = (('horizon',"Flip Horizontally"),('vertical',"Flip Vertically"),('NONE',"None"))
 choice4 =(('clock',"Clockwise"),('anti', "Anticlockwise"),('NONE', "None"))
 choice5=(('y', 'Yes'),('n','No'))
+choice6=((1,'Original'),(2, 'Filter 2'),(3, 'Filter 3'),(4, 'Filter 4'), (5, 'Filter 5'),(6,'Filter 6'))
 
 class Document(models.Model):
     status=models.CharField(max_length=7,choices=choice1,default="PUBLIC")
@@ -22,6 +23,7 @@ class Document(models.Model):
     rotate=models.CharField(max_length=15,choices=choice4, default='NONE')
     blur=models.CharField(max_length=5,choices=choice5,default='n')
     document = models.ImageField(upload_to='documents/')
+    effect=models.IntegerField(choices=choice6, default=1)
     uploaded_at = models.DateTimeField(auto_now_add=True)
 
 
@@ -30,6 +32,7 @@ class Document(models.Model):
 
     def get_absolute_url(self):
         return reverse('model_form_upload', kwargs={'pk': self.pk})
+
 
     def save(self):
 
@@ -69,7 +72,43 @@ class Document(models.Model):
         if self.blur =='n':
             pass
 
-        im.save(output, format='JPEG', quality=100)
+        if self.effect == 1:
+            im=im.convert('RGB')
+            r,g,b = im.split()
+            im = Image.merge('RGB', (r,g,b))
+
+        elif self.effect == 2:
+            r,g,b = im.split()
+            im =Image.merge('RGB', (b,g, r))
+
+        elif self.effect == 3:
+            r,g,b = im.split()
+            im=Image.merge('RGB',(g,r,b))
+
+        # elif self.effect == 4:
+            # r,g,b=im.split()
+            # avg= r+g+b/3
+            # R,G,B =  avg, avg, avg
+            # im =Image.merge('RGB', (R,G,B))
+            # width, height= im.size
+            # for i in im(width):
+            #     for j in im(height):
+            #         r, g, b = im.getpixel((i, j))
+            #         avg = int(round((r + g + b) / 3.0))
+            #         R, G, B = avg, avg, avg
+            #         im=Image.merge(R,G, B)
+            # im=im.convert('L')
+
+
+        elif self.effect == 5:
+            r,g,b = im.split()
+            im =Image.merge('RGB', (r,b,g))
+
+        elif self.effect ==6:
+            im = im.filter(ImageFilter.FIND_EDGES)
+
+
+        im.save(output, format='JPEG', quality=95)
         output.seek(0)
 
 
@@ -77,6 +116,11 @@ class Document(models.Model):
                                              'image/jpeg',
                                              sys.getsizeof(output), None)
         super(Document,self).save()
+
+
+
+
+
 
 
 
