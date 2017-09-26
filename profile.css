@@ -17,7 +17,7 @@ h2{
     margin-top:3vh;
     margin-left:10vw;
 	letter-spacing: 0.5em;
-    font-family: Raleway medium;
+    font-family: 'Raleway';
    display: inline;
 }
 i.fa{
@@ -130,7 +130,7 @@ a{
 	color:black;
 }
 #confirm-box{
-	visibility: hidden;
+	display: none;
 	position:fixed;
 	background-color: white;
 	text-align: center;

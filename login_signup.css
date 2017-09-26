@@ -2,7 +2,7 @@
 
 body{
 
-	background-color:#bce53e;
+	background-color:#02b46d;
 	margin:0px;
    }
    canvas{
@@ -25,7 +25,7 @@ p.text{
 	margin-left:5vw;
 	margin-top:10vh;
     width:20vw;
-    font-family: Raleway thin;
+    font-family:'Raleway' thin;
 }
 span{
 	font-size: 400%;
@@ -35,16 +35,16 @@ div.form{
 	margin-top:20vh;
 	margin-left:55vw;
 	width:30vw;
-	/*height:70vh;*/
+	height:70vh;
 	background-color: white;
 	box-shadow: 3px 3px 4px rgba(0, 0, 0, .6); 
 }
 h1{
-	margin:10%;
+	margin:5%;
 	margin-left:35%;
-	font-family: Raleway thin;
+	font-family: 'Raleway', thin;
     margin-bottom: 5%;
-    color: black;
+    color: #02b46d;
 }
 
 form{
@@ -54,7 +54,7 @@ form{
  
 }
 label{
-	font-family:Raleway; 
+	font-family:'Raleway'; 
 	font-size:120%;
 }
 input{
@@ -67,7 +67,7 @@ input{
 }
 input:focus{
 	outline:none;
-	border-bottom:2px solid  #bce53e;
+	border-bottom:2px solid  #02b46d;
 }
 #title:focus label{
 	font-size: 100%;
@@ -83,7 +83,7 @@ p.button{
 	margin-bottom: 0px;
     background-color:black;
     padding:2% 4% 2% 4%;
-    font-family: Raleway;
+    font-family: 'Raleway';
   /*  box-shadow: 0 1px 4px rgba(0, 0, 0, .6); */
     text-align:center;
     cursor: pointer;
@@ -103,22 +103,24 @@ p.ques{
 	position: absolute;
 	margin-top: 1vh;
 	margin-left:5vw;
-	font-family: Raleway;
+	font-family: 'Raleway';
 	line-height: 150%;
    
 }
-/*@media only screen and (min-height:1400px){
+@media only screen and (min-height:1400px){
 	div.form{
 		height:40vh;
 	}
 }
-@media only screen and (min-height:750px){
+@media only screen and (min-height:800px){
 	div.form{
-		height:35vh;
+    height: 40vh;
+    width: 50vw;
+    margin-left: 40vw;
 	}
 }
 @media only screen and (max-width:450px){
 	div.form{
 		width:40vw;
 	}
-}*/
+}
