@@ -103,6 +103,7 @@ class Profile(models.Model):
 
 
 class Comment(models.Model):
+    user=models.ForeignKey(User, default="")
     image = models.ForeignKey(Document)
     comment=models.TextField(max_length=500,blank=True)
     uploaded_at = models.DateTimeField(auto_now_add=True)

@@ -38,11 +38,8 @@
                 </div>
             {% endif %}
         <label  for="comment">comment no.</label><br>
-            <form method='post'  enctype="multipart/form-data">
-            {% csrf_token %}
             <input type="text" id="comment"><br>
-            <button type="submit">Comment</button><br><br>
-            </form>
+                <a href="{%  url 'comment' img.id %}"><button type="submit">Comment</button></a><br><br>
         {% endfor %}
 
 

@@ -121,15 +121,15 @@ def newsfeed(request):
 
 # def comment(request):
 #     comment1=Comment.objects.order_by('-uploaded_at')
-def comment_form(request):
-    if request.method == 'POST':
-        form = Comment1(request.POST)
-        form.save()
-    else:
-        form = Comment1()
-    return render(request, 'portal/newsfeed.html', {
-        'form': form
-    })
+def comment_form(request,pk):
+    documents = Document.objects.get(pk=pk)
+    form = Comment1(request.POST)
+    form.image=documents
+    form.save()
+    return redirect('newsfeed')
+    # return render(request, 'portal/newsfeed.html', {
+    #     'form': form
+    # })
 
 def model_form_upload(request):
     if request.method == 'POST':

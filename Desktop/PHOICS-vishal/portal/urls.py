@@ -45,7 +45,7 @@ urlpatterns = [
     url(r'^delete/(?P<pk>\d+)$', views.Doc_delete, name='Doc_delete'),
 
     url(r'^search/$', FilterView.as_view(filterset_class=UserFilter, template_name='portal/user_list.html'), name='search'),
-    # url(r'^comment/$', views.comment, name='comment'),
+    url(r'^comment/(?P<pk>\d+)$', views.comment_form, name='comment'),
    ]
 
 

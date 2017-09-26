@@ -24,7 +24,7 @@ class Comment1(forms.ModelForm):
 
     class Meta:
         model = Comment
-        fields = ('comment',)
+        fields = ('image','comment',)
 
 class DocumentForm(forms.ModelForm):
 
