@@ -13,7 +13,7 @@ urlpatterns = [
     url(r'^newsfeed/$', views.newsfeed, name='newsfeed'),
     url(r'^edit/(?P<pk>\d+)$', views.Doc_update, name='Doc_edit'),
     url(r'^delete/(?P<pk>\d+)$', views.Doc_delete, name='Doc_delete'),
-    # url(r'^reset/(?P<pk>\d+)$', views.Doc_reset, name='Doc_reset'),
+    url(r'^reset/(?P<pk>\d+)$', views.Doc_reset, name='Doc_reset'),
     url(r'^admin/', admin.site.urls),
 ]
 

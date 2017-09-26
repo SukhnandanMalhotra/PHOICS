@@ -2,7 +2,7 @@ from __future__ import unicode_literals
 from django.core.urlresolvers import reverse
 from django.db import models
 from PIL import Image
-from PIL import ImageFilter, ImageOps
+from PIL import ImageFilter
 
 from io import BytesIO
 from django.core.files.uploadedfile import InMemoryUploadedFile
@@ -15,6 +15,7 @@ choice3 = (('horizon',"Flip Horizontally"),('vertical',"Flip Vertically"),('NONE
 choice4 =(('clock',"Clockwise"),('anti', "Anticlockwise"),('NONE', "None"))
 choice5=(('y', 'Yes'),('n','No'))
 choice6=((1,'Original'),(2, 'Filter 2'),(3, 'Filter 3'),(4, 'Filter 4'), (5, 'Filter 5'),(6,'Filter 6'))
+choice7=((1, 'Yes'),(2,'No'))
 
 class Document(models.Model):
     status=models.CharField(max_length=7,choices=choice1,default="PUBLIC")
@@ -24,6 +25,7 @@ class Document(models.Model):
     blur=models.CharField(max_length=5,choices=choice5,default='n')
     document = models.ImageField(upload_to='documents/')
     effect=models.IntegerField(choices=choice6, default=1)
+    reset = models.IntegerField(choices=choice7, default=1)
     uploaded_at = models.DateTimeField(auto_now_add=True)
 
 
@@ -37,8 +39,14 @@ class Document(models.Model):
     def save(self):
 
         im = Image.open(self.document)
+        temp =im.copy()
 
         output = BytesIO()
+
+        if self.reset == 1:
+            temp.load()
+            im=temp
+
 
         if self.size == 1:
             im = im.resize((700, 700))

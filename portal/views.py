@@ -6,7 +6,7 @@ from django.conf import settings
 from django.core.files.storage import FileSystemStorage
 from django.core.files import File
 from .models import Document
-from .forms import DocumentForm , UpdateForm
+from .forms import DocumentForm , UpdateForm, ResetForm
 
 from django.forms import ModelForm
 
@@ -48,13 +48,13 @@ def Doc_delete(request, pk, template_name='portal/Doc_delete.html'):
         return redirect('profile')
     return render(request, template_name, {'object':removex})
 
-# def Doc_reset(request,pk,template_name='portal/Doc_reset.html'):
-#     resetx= get_object_or_404(Document, pk=pk)
-#     form = ResetForm(request.POST or None, instance=resetx)
-#     if form.is_valid():
-#         form.save()
-#         return redirect('profile')
-#     return render(request, template_name, {'form'})
+def Doc_reset(request,pk,template_name='portal/Doc_reset.html'):
+    resetx= get_object_or_404(Document, pk=pk)
+    form = ResetForm(request.POST or None, instance=resetx)
+    if form.is_valid():
+        form.save()
+        return redirect('profile')
+    return render(request, template_name, {'form':form})
 
 
 
