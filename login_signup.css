@@ -35,7 +35,7 @@ div.form{
 	margin-top:20vh;
 	margin-left:55vw;
 	width:30vw;
-	height:70vh;
+	/*height:70vh;*/
 	background-color: white;
 	box-shadow: 3px 3px 4px rgba(0, 0, 0, .6); 
 }
@@ -107,7 +107,7 @@ p.ques{
 	line-height: 150%;
    
 }
-@media only screen and (min-height:1400px){
+/*@media only screen and (min-height:1400px){
 	div.form{
 		height:40vh;
 	}
@@ -121,4 +121,4 @@ p.ques{
 	div.form{
 		width:40vw;
 	}
-}
+}*/
