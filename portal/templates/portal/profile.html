@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <ul>
+    <li>
+        <a href="{% url 'newsfeed' %}">NEWSFEED PAGE</a>
+        <a href="{% url 'model_form_upload' %}">UPLOAD PICTURE</a>
+
+    </li>
+  </ul>
+  <ul>
+      {% for obj in documents %}
+          <li>
+              <img src="{{ obj.document.url }}" >
+             <a href="{% url "Doc_edit" obj.id %}">Edit</a>
+            <a href="{% url "Doc_delete" obj.id %}">Delete</a>
+          <a href ="{% url "Doc_reset" obj.id %}">Reset</a>
+          </li>
+      {% endfor %}
+  </ul>
+{% endblock %}
