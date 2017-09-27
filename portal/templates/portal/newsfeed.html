@@ -1,4 +1,5 @@
 {% load staticfiles %}
+{% load humanize %}
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,43 +10,40 @@
 </head>
 
 <body>
-<div id="top">
-       	<h2>PHOICS</h2>
-       	<a href="{% url 'newsfeed' %}"><i class="fa fa-home fa-2x" aria-hidden="true"></i></a>
-       <a href="{% url 'profile' %}">	<i class="fa fa-user fa-2x" aria-hidden="true"></i></a>
-       	<a href="{% url 'logout' %}"><i class="fa fa-sign-out fa-2x" aria-hidden="true"></i></a>
-       </div>
-{% if user.is_authenticated %}
-    {% csrf_token %}
-     {% for img in images %}
-            {% if img.status == "PUBLIC" %}
-                 <div class="feed1">
-                 <p class="name">{{ img.uploaded_at }}  by  {{ img.user }}</p>
-                 <a href="{{ img.document.url }}"><img src="{{ img.document.url }}" ></a>
-                 <p class="like">like no.</p>
-                 <p class="share">share</p>
-                 <label  for="comment">comment no.</label><br>
-                <input type="text" id="comment"><br>
-                </div>
+    <div id="top">
+        <h2>PHOICS</h2>
+        <a href="{% url 'newsfeed' %}"><i class="fa fa-home fa-2x" aria-hidden="true"></i></a>
+        <a href="{% url 'profile' %}">	<i class="fa fa-user fa-2x" aria-hidden="true"></i></a>
+        <a href="{% url 'logout' %}"><i class="fa fa-sign-out fa-2x" aria-hidden="true"></i></a>
+    </div>
+    {% if user.is_authenticated %}
+        {% csrf_token %}
+        <div class="container">
+            {% for img in images %}
+                {% if img.status == "PUBLIC" %}
+                    <div class="feed1">
+                        <a href="{{ img.document.url }}"><img src="{{ img.document.url }}" ></a>
+                        <label for="comment">{{ img.uploaded_at|naturaltime|capfirst }} by <h3>{{ img.user }}</h3></label>
+                        {# <p class="like">l ike no.</p>#}
+                        {# <p class="share">share</p>#}
+                        {# <label  for="comment">comment no.</label><br>#}
+                        {# <input type="text" id="comment"><br>#}
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+        <footer>
+            {% if images.has_previous %}
+                <a href="?page={{ images.previous_page_number }}"><button>Previous</button></a>
             {% endif %}
-        {% endfor %}
-    <footer>
-        {% if images.has_previous %}
-            <a href="?page={{ images.previous_page_number }}">previous</a>
-        {% endif %}
-        Page {{ images.number }} of {{ images.paginator.num_pages }}.
-        {% if images.has_next %}
-            <a href="?page={{ images.next_page_number }}">next</a>
-        {% endif %}
-    </footer>
-{% else %}
-    <h3>you are not logged-in first login</h3>
-{% endif %}
-
-
-
-
-</div>
+            Page {{ images.number }} of {{ images.paginator.num_pages }}.
+            {% if images.has_next %}
+                <a href="?page={{ images.next_page_number }}"><button>Next</button></a>
+            {% endif %}
+         </footer>
+    {% else %}
+        <h3>you are not logged-in first login</h3>
+    {% endif %}
 </body>
 </html>
 

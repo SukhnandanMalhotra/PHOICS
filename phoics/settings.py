@@ -39,14 +39,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.humanize',
     'portal.apps.PollsConfig',
-    'filters',
-    'captcha',
 
 ]
 
-RECAPTCHA_PRIVATE_KEY = 'privkey'
-RECAPTCHA_PUBLIC_KEY = 'pubkey'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

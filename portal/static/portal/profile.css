@@ -4,6 +4,7 @@ body{
 	margin:0px;
 }
 #top{
+	top:0;
 	margin: 0;
 	position:fixed;
 	width:100vw;
@@ -16,7 +17,7 @@ h2{
     margin-top:3vh;
     margin-left:10vw;
 	letter-spacing: 0.5em;
-    font-family: Raleway light;
+    font-family: 'Raleway';
    display: inline;
 }
 i.fa{
@@ -29,7 +30,7 @@ i.fa:hover{
 i.fa-home{
 	position: relative;
 	margin-top:3vh;
-	margin-left:45%;
+	margin-left:60%;
 }
 i.fa-user{
 	margin-left:2%;
@@ -38,27 +39,25 @@ i.fa-sign-out{
 	margin-left:2%;
 }
 .user-profile{
-	position: absolute;
+	position: relative;
     margin-left:20%;
-    margin-top: 7%;
+    margin-top: 15vh;
     width: 60vw;
     display: grid;
-    grid-template-columns: 30% 70%;
-    grid-auto-rows: 25vh;
+    grid-template-columns: 40% 60%;
     grid-column-gap: 1em;
 
 }
 .user-profile >div{
-	font-family: Raleway;
+	font-family: 'Raleway';
 }
 .feeds{
-   position: absolute;
+   position: relative;
     margin-left:17%;
-    margin-top: 23%;
+    margin-top: 3vh;
     width: 70vw;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    grid-auto-rows: 40vh;
     grid-column-gap: 1em;
     grid-row-gap:2em;
 }
@@ -69,7 +68,7 @@ img{
 	width:70%;
     border-radius: 50%;
     margin-left:15%;
-    height: 100%
+    /*height: 100%*/
 }
 
 button{
@@ -107,7 +106,7 @@ div.details{
 .hide{
 	visibility: hidden;
 	color:white;
-	font-family: Raleway;
+	font-family: 'Raleway';
 }
 .edit{
 	position:absolute;
@@ -121,109 +120,72 @@ div.details{
 	left:5%;
 }
 .delete{
+	cursor: pointer;
 	position: absolute;
 	bottom:10%;
 	right:5%;
 }
 a{
-    text-decoration:none;
-    color:black;
+	text-decoration: none;
+	color:black;
 }
-@media only screen and (max-width:950px){
-	.user-profile{
-    margin-top: 10%;
-    width: 70vw;
-    grid-auto-rows: 20vh;
-    }
-    .feeds{
-    margin-top: 28%;
-    margin-left:10%;
-    width: 80vw;
-    grid-auto-rows: 35vh;
+#confirm-box{
+	display: none;
+	top:0;
+	position:absolute;
+	background-color: white;
+	text-align: center;
+	padding:1%;
+	margin-top:40vh;
+    margin-left:25vw;
+	border:1px solid  black;
 }
-
-}
-@media only screen and (max-width:750px){
-   .feeds{
-    margin-top: 30%;
-}
-button.edit-profile{
-	width:20vw;
-}
-
-}
-@media only screen and (max-width:650px){
-	.user-profile{
-    margin-top: 15%;
-    margin-left:2%;
-    width: 90vw;
-    grid-auto-rows: 20vh;
-    }
-    .feeds{
-    margin-top: 40%;
-    margin-left:2%;
-    width: 95vw;
-    grid-auto-rows: 35vh;
-}
+@media only screen and (max-width:1050px){
 i.fa-home{
-	margin-left:30%;
+        margin-left:45%;
 }
-
 }
-@media only screen and (max-width:550px){
-
-    .feeds{
-    margin-top: 45%;
-    margin-left:2%;
-    width: 95vw;
-    grid-auto-rows: 30vh;
+@media only screen and (max-width:830px){
+	button{
+		width:15vw;
+	}
 }
+@media only screen and (max-width:780px){
+    i.fa-home{
+        margin-left:30%;
+}
+}
+@media only screen and (max-width:520px){
+	button{
+		width:20vw;
+	}
+	h1{
+		font-size:90%;
+	}
+	button{
+		font-size:90%;
+	}
+}
+@media only screen and (max-width:450px){
 i.fa-home{
-	margin-left:25%;
+      margin-left:10%;
 }
-button{
-	width:30vw;
+h1{
+		font-size:75%;
+	}
+	button{
+		font-size:75%;
+	}
 }
-}
-@media only screen and (max-width:420px){
-	.user-profile{
-    margin-top: 20%;
-    margin-left:2%;
-    width: 90vw;
-    grid-auto-rows: 15vh;
-    }
-    .feeds{
-    margin-top: 55%;
-    margin-left:2%;
-    width: 95vw;
-    grid-auto-rows: 25vh;
-}
-i.fa-home{
-	margin-left:15%;
-}
+@media only screen and (max-width:360px){
+	h2{
+		font-size:95%;
+	}
+i.fa{
+		font-size:90%;
+	}
+	i.fa-home{
+		margin-left:27%;
+	}
 
-}
-@media only screen and (max-width:350px){
-
-    .feeds{
-    margin-top: 57%;
-    margin-left:2%;
-    width: 95vw;
-    grid-auto-rows: 25vh;
-}
-i.fa-home{
-	margin-left:5%;
-}
-
-}
-@media only screen and (min-height:1000px){
-	.user-profile{
-		margin-top: 20%;
-		    grid-auto-rows: 15vh;
-		}
-	.feeds{
-     margin-top:50%;
-    grid-auto-rows: 30vh;
-
-}
 }

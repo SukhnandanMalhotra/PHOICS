@@ -2,11 +2,10 @@
 body{
 	margin:0px;
 	background-color: #eeeeee;
-
 }
 #top{
-	margin: 0;
-	position:relative;
+	top:0;
+	position:fixed;
 	width:100vw;
     height:10vh;
     background-color: #02b46d;
@@ -17,8 +16,8 @@ h2{
     margin-top:3vh;
     margin-left:10vw;
 	letter-spacing: 0.5em;
-    font-family: Raleway light;
-   display: inline;
+    font-family: Raleway medium;
+    display: inline;
 }
 i.fa{
 	cursor: pointer;
@@ -30,7 +29,7 @@ i.fa:hover{
 i.fa-home{
 	position: relative;
 	margin-top:3vh;
-	margin-left:45%;
+	margin-left:60%;
 }
 i.fa-user{
 	margin-left:2%;
@@ -43,19 +42,21 @@ a{
 	text-decoration: none;
 	color:black;
 }
+div.container{
+	position:relative;
+	margin-top:12vh;
+}
 div.feed1{
 	position: relative;
 	margin-top:3vh;
-	margin-left: 50vh;
-    width:40vw;
-    height:60vh;
+	margin-left: 25vw;
+    width:50vw;
     background-color: white;
     align-items: center;
 }
 .feed1 img{
 	margin-top:7vh;
-	width:40vw;
-	height:40vh;
+	width:50vw;
 	margin-bottom: 2vh;
 }
 p{
@@ -64,14 +65,15 @@ p{
 	margin-left:3vw;
 	font-family:Raleway light;
 	cursor:pointer;
+	display: inline;
 }
 p.name{
+	font-weight: bold;
 	margin-top:2vh;
+	font-size:150%;
 }
 label{
-
 	margin-top:45vh;
-
 	margin-left:15vw;
 	font-family:Raleway light;
 }
@@ -79,72 +81,90 @@ p.share{
 	margin-left:10vw;
 }
 input{
-	margin-top:2vh;
+	margin-top:1vh;
+	margin-bottom:1vh;
 	margin-left:3vw;
 	width:20vw;
 }
-@media only screen and (max-width:1050px){
-	div.feed1{position: absolute;
-    margin-top: 12vh;
-    margin-left: 25vw;
-    width: 50vw;
-    height: 60vh;
+footer{
+	padding: 2%;
     background-color: white;
-    align-items: center;
+    text-align: center;
+    font-family: Raleway;
+    margin-top: 5vh;
 }
-.feed1 img{
-	width:50vw;
+@media only screen and (max-width:1050px){
+    label{
+	    margin-left:20vw;
 }
-img.profile{
-		width:10vw;
-	}
-	img.home{
-		width:10vw;
-		margin-left:80vw;
-	}
-	img.search_img{
-		width:4vw;
-	}
-p{
-	font-size:150%;
+    i.fa-home{
+        margin-left:45%;
 }
-p.share{
-	margin-left:12vw;
-}
-label{
-	font-size:150%;
-	margin-left:20vw;
-}
-
-
 }
 @media only screen and (max-width:780px){
-	p{font-size:100%;}
-	label{font-size:100%;}
+    i.fa-home{
+        margin-left:30%;
 }
-@media only screen and (max-width:450px){
-	h1{
-		font-size:100%;
-	}
-	img.profile{
-		width:10vw;
-	}
-	img.home{
-		width:10vw;
-		margin-left:80vw;
-	}
-	img.search_img{
-		width:4vw;
-	}
-	p{
-		font-size:75%;
+p{
+		font-size:90%;
 	}
     p.share{
     	margin-left: 15vw;
     }
-
-	label{
-		font-size:75%;
+label{
+		font-size:90%;
 		margin-left: 25vw;
 	}
+}
+@media only screen and (max-width:450px){
+	p{
+		font-size:60%;
+	}
+    p.share{
+    	margin-left: 15vw;
+    }
+    p.name{
+		font-size:100%;
+	}
+
+	label{
+		font-size:60%;
+		margin-left: 25vw;
+	}
+	i.fa-home{
+      margin-left:10%;
+}
+}
+@media only screen and (max-width:360px){
+	h2{
+		font-size:95%;
+	}
+	p{
+		font-size:50%;
+	}
+	p.name{
+		font-size:100%;
+	}
+	label{
+		font-size:60%;
+	}
+	i.fa{
+		font-size:90%;
+	}
+	i.fa-home{
+		margin-left:27%;
+	}
+}
+
+button{
+	background-color:transparent;
+	box-shadow: none;
+	width:5vw;
+	border:2px solid black;
+	border-radius: 2px;
+	cursor: pointer;
+}
+button:hover{
+	background-color: black;
+	color: white;
 }

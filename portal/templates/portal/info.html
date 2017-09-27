@@ -18,25 +18,24 @@
     <div class="container">
          <div class="content heading"><p class="upload">YOUR INFO</p></div>
          <div class="content form">
-         <div class="Form">
-
-         {% if user.is_authenticated %}
-              <form method='post' enctype="multipart/form-data">
-              {% csrf_token %}
-              {% for field in form %}
-                  <div class="form">
-                  <label for="name">{{ field.label_tag }}</label><br>
-                  {{ field }}<br><br>
-
-                      {% for error in field.errors %}
-                          <p style="color: red">{{ error }}</p>
-                      {% endfor %}
-                  </div>
-              {% endfor %}
-              <button class="button" type="submit">SUBMIT</button><br>
-              </form>
-         {% endif %}
+             <div class="Form">
+                 {% if user.is_authenticated %}
+                     <form method='post' enctype="multipart/form-data">
+                         {% csrf_token %}
+                         {% for field in form %}
+                             <div class="form">
+                                 <label for="name">{{ field.label_tag }}</label><br>
+                                 {{ field }}<br><br>
+                                 {% for error in field.errors %}
+                                     <p style="color: red">{{ error }}</p>
+                                 {% endfor %}
+                             </div>
+                         {% endfor %}
+                         <button class="button" type="submit">SUBMIT</button><br>
+                     </form>
+                 {% endif %}
+             </div>
          </div>
-         </div>
+    </div>
 </body>
 </html>

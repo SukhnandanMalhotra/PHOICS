@@ -1,9 +1,6 @@
-"""
-This is a doc string
-"""
+
 from django.contrib.auth import login
 from django.core.mail import send_mail
-from django.core.exceptions import ValidationError
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.contrib.sites.shortcuts import get_current_site
@@ -14,22 +11,13 @@ from phoics.settings import EMAIL_HOST_USER
 from .tokens import account_activation_token
 from django.shortcuts import render, redirect, get_object_or_404, render_to_response
 from .models import Document, Profile
-from .forms import DocumentForm, SignUpPage, Info, UpdateForm
+from .forms import DocumentForm, SignUpPage, Info, UpdateForm, ResetForm
 from django.contrib import messages
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
-
 from django.forms import ModelForm
 from django.core.files.storage import FileSystemStorage
-from django.core.files import File
-from django.contrib.auth.views import password_reset
-from . import forms
 from django.conf import settings
-from django.core.files.storage import FileSystemStorage
-import random
 from django.http import HttpResponse
-
-
-
 """
  it will work when user is logged in
  it will redirect to the user on login page 
@@ -47,10 +35,6 @@ def home(request):
 # front page function which return front page html
 def front_page(request):
     return render(request,'portal/front_page.html')
-
-"""
-signup all functionality
-"""
 
 
 def signup(request):
@@ -73,7 +57,7 @@ def signup(request):
                 message = render_to_string('portal/account_activation_email.html', {
                     """
                     uid a user id encoded in base 64
-                    token with uid make a unque link for every user 
+                    token with uid make a unique link for every user 
                     user use to get user form information
                     
                     """
@@ -85,7 +69,8 @@ def signup(request):
                 from_mail = EMAIL_HOST_USER
                 to_mail = [user.email]
                 # fail_silently false than it will raise as smtplib.SMTPException.
-                send_mail(subject, message,from_mail,to_mail,fail_silently=False)
+                send_mail(subject, message, from_mail, to_mail, fail_silently=False)
+
                 messages.success(request, 'your email is successfully send')
                 # return redirect('account_activation_sent')
     else:
@@ -125,7 +110,6 @@ def newsfeed(request):
         images = paginator.page(1)
     except EmptyPage:
         images = paginator.page(paginator.num_pages)
-
     return render(request,'portal/newsfeed.html', {'images': images})
 
 
@@ -151,19 +135,16 @@ def user_info(request):
         profile = Profile(user=request.user)
     if request.method == 'POST':
         form = Info(request.POST, request.FILES, instance=profile)
-
         if form.is_valid():
             form.save()
             messages.success(request, 'your information saved successfully')
             return redirect('profile')
     else:
         form = Info()
-
-        messages.info(request, 'please fill form first')
     return render(request, 'portal/info.html', {'form': form})
 
 
-def Doc_update(request, pk, template_name='portal/model_form_upload.html'):
+def doc_update(request, pk, template_name='portal/model_form_upload.html'):
     updatex = get_object_or_404(Document, pk=pk)
     form = UpdateForm(request.POST or None, instance=updatex)
     if form.is_valid():
@@ -171,9 +152,21 @@ def Doc_update(request, pk, template_name='portal/model_form_upload.html'):
         return redirect('profile')
     return render(request, template_name, {'form':form})
 
-def Doc_delete(request, pk, template_name='portal/Doc_delete.html'):
+
+def doc_delete(request, pk):
     removex = get_object_or_404(Document, pk=pk)
-    if request.method=='POST':
-        removex.delete()
+    removex.delete()
+    return redirect('profile')
+
+
+def Doc_reset(request,pk,template_name='portal/Doc_reset.html'):
+    resetx= get_object_or_404(Document, pk=pk)
+    form = ResetForm(request.POST or None, instance=resetx)
+    if form.is_valid():
+        form.save()
         return redirect('profile')
-    return render(request, template_name, {'object':removex})
+    return render(request, template_name, {'form':form})
+
+
+def error_page(request):
+    return render(request, 'portal/error_404.html')

@@ -1,57 +1,55 @@
 {% load staticfiles %}
-
-
 <!DOCTYPE html>
 <html>
-    <head>
-         <title>profie page</title>
-         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-         <link rel="stylesheet" type="text/css" href="{% static 'portal/profile.css' %}">
-         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    </head>
-    <body>
-       </div>
-        <div id="top">
-       	<h2>PHOICS</h2>
-            <a href="{% url 'newsfeed' %}"><i class="fa fa-home fa-2x" aria-hidden="true"></i></a>
+<head>
+      <title>Profile Page</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="stylesheet" type="text/css" href="{% static 'portal/PRofile.css' %}">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+         <div id="top">
+       	     <h2>PHOICS</h2>
+             <a href="{% url 'newsfeed' %}"><i class="fa fa-home fa-2x" aria-hidden="true"></i></a>
        	     <a href="{% url 'profile' %}"></a> <i class="fa fa-user fa-2x" aria-hidden="true"></i>
-            <a href="{% url 'logout' %}"><i class="fa fa-sign-out fa-2x" aria-hidden="true"></i></a>
-
+             <a href="{% url 'logout' %}"><i class="fa fa-sign-out fa-2x" aria-hidden="true"></i></a>
+         </div>
+         <div class="user-profile">
+             {# <div class="dp"><img  src="{% static 'portal/images/profile image.jpg' %}"></div>#}
+             {% for obj in profile_pic %}
+                 {% if obj.profile_pic.url is not none %}
+                     {% if obj.user == request.user %}
+                         <div class="dp"> <a href="{{ obj.profile_pic.url }}">
+                             <img src="{{ obj.profile_pic.url }}"></a>
+                         </div>
+                     {% endif %}
+                 {% endif %}
+            {% endfor %}
+             <div class="details"><h1 class="name">{{ user.username }}</h1>
+                 <a href="{% url 'model_form_upload' %}"><button>UPLOAD </button></a>
+                 <a href="{% url 'user_info' %}"><button class="edit-profile">EDIT PROFILE</button></a>
+             </div>
+         </div>
+         <div class="feeds">
+             {% for obj in documents %}
+                 {% if obj.user == request.user %}
+                     <div class="image">
+                         <a href="{{ obj.document.url }}"><img class="feed" src="{{ obj.document.url }}"></a>
+                         <div class="hide date">{{ obj.uploaded_at }}</div>
+                         <div class="hide edit"> <a href="{% url "Doc_edit" obj.id %}">Edit</a></div>
+                         <a href ="{% url "Doc_reset" obj.id %}">Reset</a>
+                         <div class="hide delete" onclick='document.getElementById("confirm-box").style.display="block"' >
+                                      Delete</div>
+                         <div id="confirm-box" style="z-index: 2;">
+       	                     Are you sure you want to delete this image?<br><br><br>
+                             <a href="{% url "Doc_delete" obj.id %}">
+                                 <button onclick='document.getElementById("confirm-box").style.display="none"'>yes</button>
+                             </a>
+                             <button onclick='document.getElementById("confirm-box").style.display="none"'>no</button>
+                         </div>
+                     </div>
+                 {% endif %}
+             {% endfor %}
        </div>
-       <div class="user-profile">
-{#       <div class="dp"><img  src="{% static 'portal/images/profile image.jpg' %}"></div>#}
-           {% for obj in profile_pic %}
-
-
-{% if obj.profile_pic.url is not none %}
-     {% if obj.user == request.user %}
-
-         <div class="dp"> <a href="{{ obj.profile_pic.url }}"><img src="{{ obj.profile_pic.url }}"></a></div>
-{% endif %}
- {% else %}
-
-      {% endif %}
-
-{% endfor %}
-       <div class="details"><h1 class="name">{{ user.username }}</h1>
-           <button><a href="{% url 'model_form_upload' %}">UPLOAD </a></button>
-    <button class="edit-profile"><a href="{% url 'user_info' %}">EDIT PROFILE</a></button>
-
-       </div>
-       </div>
-       <div class="feeds">
-           {% for obj in documents %}
-         {% if obj.user == request.user %}
-           <div class="image">
-
-
-                    <a href="{{ obj.document.url }}"><img class="feed" src="{{ obj.document.url }}"></a>
-               <div class="hide date">{{ obj.uploaded_at }}</div>
-            <a href="{% url "Doc_edit" obj.id %}">Edit</a>
-            <a href="{% url "Doc_delete" obj.id %}">Delete</a></p>
-           </div>
-         {% endif %}
-     {% endfor %}
-       </div>
-    </body>
-</html>
+</body>
+</html>7
