@@ -98,21 +98,30 @@ div.details{
 }
 
 .feed:hover{
-	filter: brightness(50%);
+	filter: brightness(40%);
 }
 .image:hover >div{
 	visibility: visible;
 }
 .hide{
 	visibility: hidden;
+	cursor:pointer;
 	color:white;
 	font-family: Raleway;
+}
+.hide:hover img{
+	filter:brightness(40%);
+
 }
 .edit{
 	position:absolute;
 	right:5%;
-	top:5%;
-
+	top:45%;
+}
+.reset{
+	position:absolute;
+	top:45%;
+	left:45%;
 }
 .date{
 	position: absolute;
@@ -120,10 +129,10 @@ div.details{
 	left:5%;
 }
 .delete{
-	cursor: pointer;
+	
 	position: absolute;
-	bottom:10%;
-	right:5%;
+	top:45%;
+	left:5%;
 }
 a{
 	text-decoration: none;
