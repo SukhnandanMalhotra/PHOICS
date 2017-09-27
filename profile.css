@@ -130,15 +130,19 @@ a{
 	color:black;
 }
 #confirm-box{
+	top:0;
 	display: none;
 	position:fixed;
 	background-color: white;
 	text-align: center;
-	padding:5%;
-	padding-bottom:2%;
-	height:20vh;
-	margin:50vh;
+    padding:1%;
+	width:30vw;
+	/*height:15vh;*/
+	margin-top:40vh;
+	margin-left:25vw;
 	border:1px solid  black;
+	box-shadow: 2%;
+	
 }
 @media only screen and (max-width:1050px){
 i.fa-home{

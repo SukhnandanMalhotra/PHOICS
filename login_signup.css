@@ -3,30 +3,32 @@
 body{
 
 	background-color:#02b46d;
-	margin:0px;
+	margin:0;
    }
    canvas{
-   	position: absolute;
+   	top:0;                                          /*/////////////canvas animation///////////*/
+   	position:fixed;
 	border:1px solid black;
 	height:100vh;
 	width:100vw;
 	margin:0;
 }
 div.back{
-	position:absolute;
+	position:fixed;                         /*//////////////////////background div withn image and phoics///////////////////*/
 	margin: 0;
+	top:0;
 }
 
 img{
 	position:absolute;
-	width:70vw;
+	width:70vw;                                 /*///////////////background image/////////////////*/
 	height:100vh;
 }
 p.text{
 	position:absolute;
 	font-size: 150%;
 	color:white;
-	margin-left:5vw;
+	margin-left:5vw;                                 /*//////////////////////////////text on  background//////////////////*/
 	margin-top:10vh;
     width:20vw;
     font-family:'Raleway', thin;
@@ -36,36 +38,44 @@ span{
 }
 div.form{
 	position:absolute;
-	margin-top:20vh;
-	margin-left:55vw;
-	/*width:30vw;*/
+	margin-top:10vh;
+	margin-left:55vw;                                     /*//////////////////////////card for signup and login////////////////*/
+	width:30vw;
 	/*height:70vh;*/
 	background-color: white;
 	box-shadow: 3px 3px 4px rgba(0, 0, 0, .6); 
 }
+div.login{
+	margin-top:20vh;                        
+}
+div.details{
+	display:table;
+	margin-left:5vw;                         /*///////////////table for details////////////////*/
+
+}
+div.row{
+	display:table-row;
+}
 h1{
 	margin:5%;
 	margin-left:35%;
-	font-family: 'Raleway', thin;
+	font-family: 'Raleway', thin;           /*////////////////////////////////heading on top card//////////////////*/
     margin-bottom: 5%;
     color: #02b46d;
 }
 
-form{
-	margin-left:15%;
-    
- 
-}
-label{
+
+label{                                        /*////////////////label/////////////*/ 
 	font-family:'Raleway'; 
-	font-size:120%;
+	font-size:100%;
 }
 input{
 	border:0px;
 	border-bottom:2px solid grey;
-   padding-top: 1%;
+   padding-top: 1%;                           /*////////////////input field//////////////*/
     padding-left: 2%;
     font-size:120%;
+    width:23vw;
 }
 input:focus{
 	outline:none;
@@ -81,7 +91,7 @@ input:focus{
 button.button{
 	width:18vw;
 	margin-left:7vw;
-	margin-top: 0px;
+	margin-top: 0px;                          /*/////////////////////////button//////////////*/
 	margin-bottom: 0px;
     background-color:black;
     padding:2% 4% 2% 4%;
@@ -109,17 +119,30 @@ p.ques{
 	line-height: 150%;
    
 }
-div.details{
-	display:table;
-	margin-left:7vw;
-	margin-right: 7vw;
-}
-div.row{
-	display:table-row;
-}
 
-@media only screen and (max-width:800px){
-	span{
-		font-size:300%;
+
+@media only screen and (max-width:750px){
+
+button.button {
+     margin-top: 3%;
+   }
+    p.ques {
+    font-size: 70%;
+}                                                      /*//////////////////////////media query for responsiveness///////////////*/
+div.form {
+    margin-top: 20vh;
+    width: 40vw;
+  }
+h1 {
+    font-size: 100%;
+}
+div.details {
+    font-size: 70%;
+}
+p.text {
+	    font-size: 70%;
 	}
+}
+.log{
+	font-size:150%;
 }
