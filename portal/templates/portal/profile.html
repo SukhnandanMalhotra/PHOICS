@@ -4,7 +4,7 @@
 <head>
       <title>Profile Page</title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <link rel="stylesheet" type="text/css" href="{% static 'portal/PRofile.css' %}">
+      <link rel="stylesheet" type="text/css" href="{% static 'portal/profile.css' %}">
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
@@ -36,8 +36,9 @@
                      <div class="image">
                          <a href="{{ obj.document.url }}"><img class="feed" src="{{ obj.document.url }}"></a>
                          <div class="hide date">{{ obj.uploaded_at }}</div>
-                         <div class="hide edit"> <a href="{% url "Doc_edit" obj.id %}">Edit</a></div>
-                         <a href ="{% url "Doc_reset" obj.id %}">Reset</a>
+                         <div class="hide edit"> <a class="edit" href="{% url "Doc_edit" obj.id %}">Edit</a></div>
+
+{#                         <a href ="{% url "Doc_reset" obj.id %}">ResetFilter</a>#}
                          <div class="hide delete" onclick='document.getElementById("confirm-box").style.display="block"' >
                                       Delete</div>
                          <div id="confirm-box" style="z-index: 2;">

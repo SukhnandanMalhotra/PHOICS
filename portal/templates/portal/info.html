@@ -4,7 +4,7 @@
 <head>
 	<title>upload file</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="{% static 'portal/upload.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'portal/Upload.css' %}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
@@ -23,8 +23,8 @@
                      <form method='post' enctype="multipart/form-data">
                          {% csrf_token %}
                          {% for field in form %}
-                             <div class="form">
-                                 <label for="name">{{ field.label_tag }}</label><br>
+                             <div class="row">
+                                 <label for="name">{{ field.label_tag }}</label>
                                  {{ field }}<br><br>
                                  {% for error in field.errors %}
                                      <p style="color: red">{{ error }}</p>

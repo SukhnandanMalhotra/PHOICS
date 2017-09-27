@@ -23,7 +23,8 @@
                 {% if img.status == "PUBLIC" %}
                     <div class="feed1">
                         <a href="{{ img.document.url }}"><img src="{{ img.document.url }}" ></a>
-                        <label for="comment">{{ img.uploaded_at|naturaltime|capfirst }} by <h3>{{ img.user }}</h3></label>
+                        <p class="name">{{ img.user }}</p>
+                        <p class="date">{{ img.uploaded_at|naturaltime|capfirst }}</p>
                         {# <p class="like">l ike no.</p>#}
                         {# <p class="share">share</p>#}
                         {# <label  for="comment">comment no.</label><br>#}

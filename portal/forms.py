@@ -35,7 +35,7 @@ class DocumentForm(forms.ModelForm):
         flip = forms.ModelChoiceField(queryset=Document.objects.filter(uploaded_at=datetime.now()), empty_label=None)
         rotate = forms.ModelChoiceField(queryset=Document.objects.filter(uploaded_at=datetime.now()), empty_label=None)
         blur = forms.ModelChoiceField(queryset=Document.objects.filter(uploaded_at=datetime.now()), empty_label=None)
-        effect= forms.ModelChoiceField(queryset=Document.objects.filter(uploaded_at=datetime.now()), empty_label=None)
+        effect = forms.ModelChoiceField(queryset=Document.objects.filter(uploaded_at=datetime.now()), empty_label=None)
         fields = ('document', 'status', 'size', 'flip', 'rotate', 'blur', 'effect')
 
 
@@ -58,9 +58,9 @@ class UpdateForm(forms.ModelForm):
         fields = ('status', 'size', 'flip', 'rotate', 'blur', 'effect')
 
 
-class ResetForm(forms.ModelForm):
-    class Meta:
-        model = Document
-        reset = forms.ModelChoiceField(queryset=Document.objects.filter(uploaded_at=datetime.now()), empty_label=None)
-        fields = ('reset',)
+# class ResetForm(forms.ModelForm):
+#     class Meta:
+#         model = Document
+#         reset = forms.ModelChoiceField(queryset=Document.objects.filter(uploaded_at=datetime.now()), empty_label=None)
+#         fields = ('reset',)
 

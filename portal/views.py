@@ -11,7 +11,7 @@ from phoics.settings import EMAIL_HOST_USER
 from .tokens import account_activation_token
 from django.shortcuts import render, redirect, get_object_or_404, render_to_response
 from .models import Document, Profile
-from .forms import DocumentForm, SignUpPage, Info, UpdateForm, ResetForm
+from .forms import DocumentForm, SignUpPage, Info, UpdateForm
 from django.contrib import messages
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.forms import ModelForm
@@ -124,7 +124,7 @@ def model_form_upload(request):
     else:
         form = DocumentForm()
     return render(request, 'portal/model_form_upload.html', {
-        'form': form
+        'form': form, 'title': 'Upload Image'
     })
 
 
@@ -150,7 +150,7 @@ def doc_update(request, pk, template_name='portal/model_form_upload.html'):
     if form.is_valid():
         form.save()
         return redirect('profile')
-    return render(request, template_name, {'form':form})
+    return render(request, template_name, {'form':form, 'title': 'Edit Image'})
 
 
 def doc_delete(request, pk):
@@ -159,13 +159,13 @@ def doc_delete(request, pk):
     return redirect('profile')
 
 
-def Doc_reset(request,pk,template_name='portal/Doc_reset.html'):
-    resetx= get_object_or_404(Document, pk=pk)
-    form = ResetForm(request.POST or None, instance=resetx)
-    if form.is_valid():
-        form.save()
-        return redirect('profile')
-    return render(request, template_name, {'form':form})
+# def Doc_reset(request,pk,template_name='portal/Doc_reset.html'):
+#     resetx= get_object_or_404(Document, pk=pk)
+#     form = ResetForm(request.POST or None, instance=resetx)
+#     if form.is_valid():
+#         form.save()
+#         return redirect('profile')
+#     return render(request, template_name, {'form':form})
 
 
 def error_page(request):

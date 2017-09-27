@@ -53,33 +53,38 @@ div.feed1{
     width:50vw;
     background-color: white;
     align-items: center;
+    border:1px solid #90949c;
+    border-radius: 5px;
 }
 .feed1 img{
-	margin-top:7vh;
+	margin-top:2vh;
 	width:50vw;
-	margin-bottom: 2vh;
+	margin-bottom: 1vh;
+	border-bottom:2px solid #90949c;
+	border-top:2px solid #90949c;
 }
 p{
-    margin-top: 0;
-	position:absolute;
-	margin-left:3vw;
+	font-weight:bold;
+	margin-bottom: 0;
+	margin-top:0;
+    margin-left:3vw;
 	font-family:Raleway light;
 	cursor:pointer;
-	display: inline;
 }
 p.name{
-	font-weight: bold;
-	margin-top:2vh;
 	font-size:150%;
+}
+p.date{
+	margin-top:1vh;
+	margin-bottom:1vh;
+    color:#90949c;
 }
 label{
 	margin-top:45vh;
 	margin-left:15vw;
 	font-family:Raleway light;
 }
-p.share{
-	margin-left:10vw;
-}
+
 input{
 	margin-top:1vh;
 	margin-bottom:1vh;
@@ -92,6 +97,8 @@ footer{
     text-align: center;
     font-family: Raleway;
     margin-top: 5vh;
+    margin-bottom: 0;
+    bottom: 0;
 }
 @media only screen and (max-width:1050px){
     label{

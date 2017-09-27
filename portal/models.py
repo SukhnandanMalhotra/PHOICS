@@ -7,7 +7,7 @@ import uuid
 import os
 from django.core.urlresolvers import reverse
 from PIL import Image
-from PIL import ImageFilter
+from PIL import ImageFilter, ImageOps
 from io import BytesIO
 from django.core.files.uploadedfile import InMemoryUploadedFile
 import sys
@@ -42,8 +42,8 @@ choice2 = ((1, "Large"), (2, "Medium"),(3, "Small"))
 choice3 = (('horizon', "Flip Horizontally"), ('vertical', "Flip Vertically"),('NONE', "None"))
 choice4 = (('clock', "Clockwise"), ('anti', "Anticlockwise"), ('NONE', "None"))
 choice5 = (('y', 'Yes'), ('n', 'No'))
-choice6 = ((1, "None"), (2, "Aqua"), (3, "Seaform"), (4, "Grayscale"), (5, "Retro"), (6, "Edges"))
-choice7=((1, 'Yes'),(2,'No'))
+choice6 = ((1, "None"), (2, "Aqua"), (3, "Seaform"), (4, "Grayscale"), (5, "Retro"), (6, "Edges"), (7, "Negative"),(8,'Sepia'))
+# choice7=((1, 'Yes'),(2,'No'))
 
 
 class Document(models.Model,object):
@@ -55,7 +55,7 @@ class Document(models.Model,object):
     blur = models.CharField(max_length=5, choices=choice5, default='n')
     effect = models.IntegerField(choices=choice6, default=1)
     document = models.ImageField(upload_to=get_file_name)
-    reset = models.IntegerField(choices=choice7, default=1)
+    # reset = models.IntegerField(choices=choice7, default=1)
     uploaded_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
@@ -69,12 +69,12 @@ class Document(models.Model,object):
 
     def save(self):
         im = Image.open(self.document)
-        temp = im.copy()
+        # temp = im.copy()
         output = BytesIO()
 
-        if self.reset == 1:
-            temp.load()
-            im = temp
+        # if self.reset == 1:
+        #     temp.load()
+        #     im = temp
 
         if self.size == 1:
             im = im.resize((700, 700))
@@ -115,13 +115,29 @@ class Document(models.Model,object):
             r, g, b = im.split()
             im = Image.merge('RGB', (g, r, b))
         elif self.effect == 4:
-            im = im.convert('L')
+            width, height = im.size
+            for i in range(width):
+                for j in range(height):
+                    r,g,b = im.getpixel((i,j))
+                    c=int(round((r+g+b)/3))
+                    im.putpixel((i,j),(c,c,c))
         elif self.effect == 5:
             im = im.convert('RGB')
             r, g, b = im.split()
             im = Image.merge('RGB', (r, b, g))
         elif self.effect == 6:
             im = im.filter(ImageFilter.FIND_EDGES)
+        elif self.effect == 7:
+            im = ImageOps.invert(im)
+        elif self.effect==8:
+            width, height= im.size
+            for i in range(width):
+                for j in range(height):
+                    r,g,b = im.getpixel((i,j))
+                    c=int((round(r+g+b)/3))
+                    R,G,B= c+100,c+100,c
+                    im.putpixel((i,j),(R,G,B))
+
 
         im.save(output, format='JPEG', quality=100)
         output.seek(0)
