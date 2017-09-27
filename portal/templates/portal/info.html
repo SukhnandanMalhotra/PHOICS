@@ -1,0 +1,41 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>upload file</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static 'portal/Upload.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <div id="top">
+        <h2>PHOICS</h2>
+        <a href="{% url 'newsfeed' %}"><i class="fa fa-home fa-2x" aria-hidden="true"></i></a>
+        <a href="{% url 'profile' %}">	<i class="fa fa-user fa-2x" aria-hidden="true"></i></a>
+        <a href="{% url 'logout' %}"><i class="fa fa-sign-out fa-2x" aria-hidden="true"></i></a>
+
+    </div>
+    <div class="container">
+         <div class="content heading"><p class="upload">YOUR INFO</p></div>
+         <div class="content form">
+             <div class="Form">
+                 {% if user.is_authenticated %}
+                     <form method='post' enctype="multipart/form-data">
+                         {% csrf_token %}
+                         {% for field in form %}
+                             <div class="row">
+                                 <label for="name">{{ field.label_tag }}</label>
+                                 {{ field }}<br><br>
+                                 {% for error in field.errors %}
+                                     <p style="color: red">{{ error }}</p>
+                                 {% endfor %}
+                             </div>
+                         {% endfor %}
+                         <button class="button" type="submit">SUBMIT</button><br>
+                     </form>
+                 {% endif %}
+             </div>
+         </div>
+    </div>
+</body>
+</html>
