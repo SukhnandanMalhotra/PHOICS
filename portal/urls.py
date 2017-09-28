@@ -47,7 +47,6 @@ urlpatterns = [
 
     # url(r'^reset/(?P<pk>\d+)$', views.Doc_reset, name='Doc_reset'),
     url(r'^search/$', FilterView.as_view(filterset_class=UserFilter, template_name='portal/user_list.html'), name='search'),
-    url(r'^/$', views.error_page, name='error'),
 
    ]
 
