@@ -41,6 +41,16 @@
             {% if images.has_next %}
                 <a href="?page={{ images.next_page_number }}"><button>Next</button></a>
             {% endif %}
+<br><br>PAGE:
+        {%  for num in page_range %}
+
+            {%  if images.number == num %}
+                <a href="?page={{num}}">{{num}}</a>
+            {% else %}
+                <a href="?page={{num}}"><button>{{num}}</button></a>
+            {% endif %}
+
+        {% endfor %}
          </footer>
     {% else %}
         <h3>you are not logged-in first login</h3>

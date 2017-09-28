@@ -98,11 +98,11 @@ def activate(request, uidb64, token):
 
 def newsfeed(request):
     documents = Document.objects.order_by('-uploaded_at')
-    image=[]
+    image = []
     for obj in documents:
         if obj.status == "PUBLIC":
             image.append(obj)
-    paginator = Paginator(image, 5)
+    paginator = Paginator(image, 2)
     page = request.GET.get('page')
     try:
         images = paginator.page(page)
@@ -110,7 +110,14 @@ def newsfeed(request):
         images = paginator.page(1)
     except EmptyPage:
         images = paginator.page(paginator.num_pages)
-    return render(request,'portal/newsfeed.html', {'images': images})
+
+    current_page_no = images.number - 1
+    total_pages = len(paginator.page_range)
+    before_show = current_page_no - 6 if current_page_no >= 6 else 0
+    after_show = current_page_no + 6 if current_page_no <= total_pages - 6 else total_pages
+    page_range = paginator.page_range[before_show:after_show]
+
+    return render(request, 'portal/newsfeed.html', {'images': images, 'page_range': page_range})
 
 
 def model_form_upload(request):
