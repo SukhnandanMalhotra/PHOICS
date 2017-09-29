@@ -22,23 +22,31 @@
                  <label>FIRST LOG OUT</label>
                  <a href="{% url 'logout' %}">logout</a>
              {% else %}
-                 <form method="post" novalidate>
+                 <form name="login" method="post" novalidate>
                      {% csrf_token %}
-                  <div class="log details">
-                     {% for field in form %}
+                     <div class="log details">
+
 
                          <div class="row">
-                             <label>{{ field.label_tag }}</label><br><br>
-                             {{ field }}<br><br>
-                         </div>
-                     {% endfor %}
-                             {% if form.errors %}
-                             <p style="color: red">your username and  password does not <br>match. please try again </p><br><br>
-                             {% endif %}
-
+                             <label id="id_username">{{ form.username.label_tag }}</label><br>
+                         <input id="id_username" type="text" name="subject" maxlength="100" required />
+{#                            <p id="id_username"> {{ form.username }}</p><br>#}
+                            <p id="print"></p>
+                               <br>
 
                          </div>
-                     <button class="log button" type="submit">LOG-IN</button>
+
+                         <div class="row">
+                             <label>{{ form.password.label_tag }}</label><br>
+                             <p id="id_password">{{ form.password }}</p><br><br>
+                         </div>
+{#                         {% if form.errors %}#}
+{#                             <p style="color: red">your username and  password does not <br>match. please try again </p><br><br>#}
+{#                         {% endif %}#}
+                            <button class="log button" type="submit" onclick="check_req()">LOG-IN</button>
+
+                         </div>
+
 
                      <p class="log ques"><a href="{% url 'password_reset' %}">Forgot password?</a><br>
                      New User? <a href="{% url 'signup' %}">signup</a>
