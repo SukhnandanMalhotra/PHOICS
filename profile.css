@@ -97,11 +97,12 @@ div.details{
 	position: relative;
 }
 
-.feed:hover{
+img.feed:hover{
 	filter: brightness(40%);
 }
-.image:hover >div{
+.image:hover >div.hide{
 	visibility: visible;
+    /*filter:brightness(100%);*/
 }
 .hide{
 	visibility: hidden;
@@ -109,10 +110,7 @@ div.details{
 	color:white;
 	font-family: Raleway;
 }
-.hide:hover img{
-	filter:brightness(40%);
 
-}
 .edit{
 	position:absolute;
 	right:5%;

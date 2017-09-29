@@ -44,10 +44,27 @@ i.fa-sign-out{
 	margin-left:20vw;
 	width:60vw;
 	display:grid;
-	grid-template-columns: 30% 70%;
+	grid-template-columns: 1fr 2fr 1fr;
 	background-color: white;
 }
 div.content{
+	border:1px solid #aaa;
+}
+div.form{
+	border-right:none;
+}
+div.preview{
+	border-left:none;
+}
+div.image{
+	position:absolute;
+	margin-top:10vh;
+	margin-right:1%;
+	max-height: 50%;
+}
+img{
+	width:70%;
+	max-height:100%;
 	border:1px solid #aaa;
 }
 p.upload{ 
@@ -76,10 +93,12 @@ button:hover{
 	color: white;
 }
 div.Form{
+
 	margin-top:5%;
 	margin-left:5%;
 	font-family: Raleway;
 	display:table;
+
 }
 div.row{
 	display:table-row;
@@ -87,7 +106,9 @@ div.row{
 .row label{
 	display:table-cell;
 	font-weight: bold;
-	padding:2% 7% 2% 5%;
+	/*padding:2% 7% 2% 7%;*/
+	width:6vw;
+	/*box-sizing: border-box;*/
 }
 .row input{
 	display:table-cell;
@@ -101,6 +122,13 @@ a{
 	text-decoration: none;
 	color:black;
 }
+@media only screen and (max-width:1900px){
+        div.container{
+		width: 90vw;
+		margin-left: 5vw;	
+	}
+}
+
 @media only screen and (max-width:1050px){
 i.fa-home{
         margin-left:45%;
@@ -130,7 +158,15 @@ i.fa{
 	}
 button{
 		width:20vw;
+		font-size:70%;
 	}
+	.row label {
+   
+    font-weight: bold;
+   /* padding: 2% 10% 2% 7%;*/
+    width: 11vw;
+    font-size: 70%;
+    }
 }	
 
 @media only screen and (max-width:360px){
