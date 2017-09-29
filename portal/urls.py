@@ -17,6 +17,7 @@ urlpatterns = [
 
     url(r'^login/$', built_views.login, {'template_name': 'portal/login.html'}, name='login'),
 
+    # if user will logout it will render to login page
     url(r'^logout/$', built_views.logout, {'next_page': 'login'}, name='logout'),
 
     url(r'^information/$', views.user_info, name="user_info"),
@@ -45,8 +46,8 @@ urlpatterns = [
 
     url(r'^delete/(?P<pk>\d+)$', views.doc_delete, name='Doc_delete'),
 
-    # url(r'^reset/(?P<pk>\d+)$', views.Doc_reset, name='Doc_reset'),
-    url(r'^search/$', FilterView.as_view(filterset_class=UserFilter, template_name='portal/user_list.html'), name='search'),
+    url(r'^search/$', FilterView.as_view(filterset_class=UserFilter,
+                                         template_name='portal/user_list.html'), name='search'),
 
    ]
 

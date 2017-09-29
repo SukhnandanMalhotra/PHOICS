@@ -26,14 +26,15 @@ from django.http import HttpResponse
 
 @login_required
 def home(request):
+    # in order_by minus sign represent descending order
     documents = Document.objects.order_by('-uploaded_at')
     profile_pic = Profile.objects.all
-    return render(request,'portal/profile.html', {'documents': documents, 'profile_pic': profile_pic, })
+    return render(request, 'portal/profile.html', {'documents': documents, 'profile_pic': profile_pic, })
 
 
 # front page function which return front page html
 def front_page(request):
-    return render(request,'portal/front_page.html')
+    return render(request, 'portal/front_page.html')
 
 
 def signup(request):
@@ -55,10 +56,10 @@ def signup(request):
                 # subject with email is send
                 message = render_to_string('portal/account_activation_email.html', {
                     """
-                    uid a user id encoded in base 64
-                    token with uid make a unique link for every user 
+                    uid contain user id encoded in base 64
+                    token help to make link as it work only once
                     user use to get user form information
-                    
+                    domain - 127.0.0.1:8000
                     """
                     'user': user,
                     'domain': current_site.domain,
@@ -67,16 +68,17 @@ def signup(request):
                 })
                 from_mail = EMAIL_HOST_USER
                 to_mail = [user.email]
-                # fail_silently false than it will raise as smtplib.SMTPException.
+                # fail_silently "false", then if error in sending email it will raise -
+                # smtplib.SMTPException, SMTPServerDisconnected, SMTPDataError,etc.
                 send_mail(subject, message, from_mail, to_mail, fail_silently=False)
-
                 messages.success(request, 'your email is successfully send')
-                # return redirect('account_activation_sent')
+
     else:
         form = SignUpPage()
     return render(request, 'portal/signup.html', {'form': form})
 
 
+# when user click on email link then this function execute
 def activate(request, uidb64, token):
     try:
         # decode the uid from 64 base to normal text
@@ -101,16 +103,20 @@ def newsfeed(request):
     for obj in documents:
         if obj.status == "PUBLIC":
             image.append(obj)
+    # now image object contain all the public images of user
     paginator = Paginator(image, 2)
+    # here 2 means one page contain two images
     page = request.GET.get('page')
     try:
         images = paginator.page(page)
     except PageNotAnInteger:
+        # if page number is not an integer redirect to page no 1
         images = paginator.page(1)
     except EmptyPage:
+        # if page has no images , redirect to last page
         images = paginator.page(paginator.num_pages)
-
-    current_page_no = images.number - 1
+    # this is for display pages no. near to current page
+    current_page_no = images.number
     total_pages = len(paginator.page_range)
     before_show = current_page_no - 6 if current_page_no >= 6 else 0
     after_show = current_page_no + 6 if current_page_no <= total_pages - 6 else total_pages
@@ -123,9 +129,9 @@ def model_form_upload(request):
     if request.method == 'POST':
         form = DocumentForm(request.POST, request.FILES)
         if form.is_valid():
-            profile1 = form.save(commit=False)
-            profile1.user = request.user
-            profile1.save()
+            upload_details = form.save(commit=False)
+            upload_details.user = request.user
+            upload_details.save()
             return redirect('profile')
     else:
         form = DocumentForm()
@@ -137,7 +143,7 @@ def model_form_upload(request):
 def user_info(request):
     try:
         profile = request.user.profile
-    except Profile.DoesNotExist:
+    except Profile.DoesNotExist:            # if profile is not updated, save previous profile data
         profile = Profile(user=request.user)
     if request.method == 'POST':
         form = Info(request.POST, request.FILES, instance=profile)
@@ -156,9 +162,10 @@ def doc_update(request, pk, template_name='portal/model_form_upload.html'):
     if form.is_valid():
         form.save()
         return redirect('profile')
-    return render(request, template_name, {'form':form, 'title': 'Edit Image'})
+    return render(request, template_name, {'form': form, 'title': 'Edit Image'})
 
 
+# it will delete the selected image through 'delete()'
 def doc_delete(request, pk):
     removex = get_object_or_404(Document, pk=pk)
     removex.delete()
@@ -172,7 +179,3 @@ def doc_delete(request, pk):
 #         form.save()
 #         return redirect('profile')
 #     return render(request, template_name, {'form':form})
-
-
-def error_page(request):
-    return render(request, 'portal/error_404.html')
