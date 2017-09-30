@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Raleway');
 body{
 	background-color: #eee;
-	margin:0px;
+	margin: 0;
 }
 #top{
 	top:0;
@@ -17,7 +17,7 @@ h2{
     margin-top:3vh;
     margin-left:10vw;
 	letter-spacing: 0.5em;
-    font-family: 'Raleway';
+    font-family: 'Raleway' medium;
    display: inline;
 }
 i.fa{
@@ -26,11 +26,14 @@ i.fa{
 i.fa:hover{
 	color:white;
 }
-
+i.fa-search{
+	margin-top:3vh;
+	margin-left:50%;
+}
 i.fa-home{
 	position: relative;
 	margin-top:3vh;
-	margin-left:60%;
+	margin-left:2%;
 }
 i.fa-user{
 	margin-left:2%;
@@ -152,7 +155,7 @@ a{
 	
 }
 @media only screen and (max-width:1050px){
-i.fa-home{
+i.fa-search{
         margin-left:45%;
 }
 }
@@ -162,7 +165,7 @@ i.fa-home{
 	}
 }
 @media only screen and (max-width:780px){
-    i.fa-home{
+    i.fa-search{
         margin-left:30%;
 }
 }
@@ -178,7 +181,7 @@ i.fa-home{
 	}
 }
 @media only screen and (max-width:450px){
-i.fa-home{
+i.fa-search{
       margin-left:10%;
 }
 h1{
@@ -195,7 +198,7 @@ h1{
 i.fa{
 		font-size:90%;
 	}
-	i.fa-home{
+	i.fa-search{
 		margin-left:27%;
 	}
 	

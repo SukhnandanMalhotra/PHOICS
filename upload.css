@@ -26,11 +26,14 @@ i.fa{
 i.fa:hover{
 	color:white;
 }
-
+i.fa-search{
+	margin-top:3vh;
+	margin-left:50%;
+}
 i.fa-home{
 	position: relative;
 	margin-top:3vh;
-	margin-left:60%;
+	margin-left:2%;
 }
 i.fa-user{
 	margin-left:2%;
@@ -114,10 +117,12 @@ div.row{
 	display:table-cell;
 	padding:2%;
 }
+
 input{
 	border:1px solid #bbb;
 	width:20vw;
 }
+
 a{
 	text-decoration: none;
 	color:black;
@@ -130,7 +135,7 @@ a{
 }
 
 @media only screen and (max-width:1050px){
-i.fa-home{
+i.fa-search{
         margin-left:45%;
 }
 div.container{
@@ -142,13 +147,18 @@ div.container{
 	}
 }
 @media only screen and (max-width:780px){
-    i.fa-home{
+    i.fa-search{
         margin-left:30%;
 }
 }
-@media only screen and (max-width:450px){
-i.fa-home{
+@media only screen and (max-width:540px){
+i.fa-search{
       margin-left:25%;
+}
+}
+@media only screen and (max-width:500px){
+i.fa-search{
+      margin-left:20%;
 }
 i.fa{
 		font-size:95%;
@@ -176,7 +186,7 @@ button{
 i.fa{
 		font-size:90%;
 	}
-	i.fa-home{
+	i.fa-search{
 		margin-left:27%;
 	}	
 }
