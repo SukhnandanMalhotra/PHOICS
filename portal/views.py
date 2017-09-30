@@ -1,4 +1,4 @@
-from django.contrib.auth import login
+from django.contrib.auth import authenticate, login
 from django.core.mail import send_mail
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
@@ -35,6 +35,18 @@ def home(request):
 # front page function which return front page html
 def front_page(request):
     return render(request, 'portal/front_page.html')
+
+
+def my_view(request):
+    username = request.POST['username']
+    password = request.POST['password']
+    user = authenticate(username=username, password=password)
+    if user is not None:
+        login(request, user)
+        return redirect('profile')
+    else:
+        return render(request, 'portal/login.html')
+
 
 
 def signup(request):
@@ -97,6 +109,7 @@ def activate(request, uidb64, token):
         return render(request, 'portal/account_activation_invalid.html')
 
 
+@login_required
 def newsfeed(request):
     documents = Document.objects.order_by('-uploaded_at')
     image = []
@@ -171,11 +184,3 @@ def doc_delete(request, pk):
     removex.delete()
     return redirect('profile')
 
-
-# def Doc_reset(request,pk,template_name='portal/Doc_reset.html'):
-#     resetx= get_object_or_404(Document, pk=pk)
-#     form = ResetForm(request.POST or None, instance=resetx)
-#     if form.is_valid():
-#         form.save()
-#         return redirect('profile')
-#     return render(request, template_name, {'form':form})
