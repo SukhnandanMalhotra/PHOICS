@@ -24,9 +24,9 @@ from django.http import HttpResponse
  having next parameter default have SETTING.LOGIN_URL
 """
 
-
+# works as condition that if user is logged in then run below functions otherwise not
 @login_required
-def home(request):
+def home(request):                          #helps in rendering a user his profile page
     documents = Document.objects.order_by('-uploaded_at')
     profile_pic = Profile.objects.all
     return render(request,'portal/profile.html', {'documents': documents, 'profile_pic': profile_pic, })
@@ -37,7 +37,7 @@ def front_page(request):
     return render(request,'portal/front_page.html')
 
 
-def signup(request):
+def signup(request):                   # controls data input to database and give output as html page for signup
     if request.method == 'POST':
         form = SignUpPage(request.POST)
         if form.is_valid():
@@ -78,7 +78,7 @@ def signup(request):
     return render(request, 'portal/signup.html', {'form': form})
 
 
-def activate(request, uidb64, token):
+def activate(request, uidb64, token):        # activates a user account in case of signup or forget password
     try:
         # decode the uid from 64 base to normal text
         uid = force_text(urlsafe_base64_decode(uidb64))
@@ -96,7 +96,7 @@ def activate(request, uidb64, token):
         return render(request, 'portal/account_activation_invalid.html')
 
 
-def newsfeed(request):
+def newsfeed(request):                      # renders newsfeed page
     documents = Document.objects.order_by('-uploaded_at')
     image=[]
     for obj in documents:
@@ -113,7 +113,7 @@ def newsfeed(request):
     return render(request,'portal/newsfeed.html', {'images': images})
 
 
-def model_form_upload(request):
+def model_form_upload(request):        # renders a template to upload image and connect them with user who upload
     if request.method == 'POST':
         form = DocumentForm(request.POST, request.FILES)
         if form.is_valid():
@@ -128,7 +128,12 @@ def model_form_upload(request):
     })
 
 
-def user_info(request):
+def user_info(request):                  # takes input of user's personal details using form
+    obj = Profile.objects.get(user=request.user)
+    # for obj1 in objs:
+    #     if request.user == obj1.user:
+    #         obj=obj1
+    #         break
     try:
         profile = request.user.profile
     except Profile.DoesNotExist:
@@ -141,10 +146,10 @@ def user_info(request):
             return redirect('profile')
     else:
         form = Info()
-    return render(request, 'portal/info.html', {'form': form})
+    return render(request, 'portal/info.html', {'form': form , 'obj':obj})
 
 
-def doc_update(request, pk, template_name='portal/model_form_upload.html'):
+def doc_update(request, pk, template_name='portal/model_form_upload.html'):  # to update an image and save in database
     updatex = get_object_or_404(Document, pk=pk)
     form = UpdateForm(request.POST or None, instance=updatex)
     if form.is_valid():
@@ -153,7 +158,7 @@ def doc_update(request, pk, template_name='portal/model_form_upload.html'):
     return render(request, template_name, {'form':form, 'title': 'Edit Image'})
 
 
-def doc_delete(request, pk):
+def doc_delete(request, pk):                               # to delete object of an image from database
     removex = get_object_or_404(Document, pk=pk)
     removex.delete()
     return redirect('profile')

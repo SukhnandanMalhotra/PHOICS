@@ -13,26 +13,26 @@ from django.core.files.uploadedfile import InMemoryUploadedFile
 import sys
 
 
-def get_profile_name(instance, filename):
+def get_profile_name(instance, filename):        # to give unique id to profile pic uploaded
     ext = filename.split('.')[-1]
     filename = "%s.%s" % (uuid.uuid4(), ext)
     return os.path.join('profile_pic', filename)
 
 
-class Profile(models.Model):
+class Profile(models.Model):                     # all details comming as user's profile info form get saved in this table
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     First_Name = models.CharField(max_length=100, blank=True)
     Last_Name = models.CharField(max_length=100, blank=True)
     City = models.CharField(max_length=30, blank=True)
     DOB = models.DateTimeField(null=True, blank=True)
-    profile_pic = models.ImageField(upload_to=get_profile_name, blank=True)
+    profile_pic = models.ImageField(upload_to=get_profile_name, default='profile_pic/default.jpg')
     email_confirmed = models.BooleanField(default=False)
 
-    def __str__(self):
+    def __str__(self):                    # shows every object with a name
         return self.user.username
 
 
-def get_file_name(instance, filename):
+def get_file_name(instance, filename):               # to give unique id to images uploaded
     ext = filename.split('.')[-1]
     filename = "%s.%s" % (uuid.uuid4(), ext)
     return os.path.join('documents', filename)
@@ -46,7 +46,8 @@ choice6 = ((1, "None"), (2, "Aqua"), (3, "Seaform"), (4, "Grayscale"), (5, "Retr
 # choice7=((1, 'Yes'),(2,'No'))
 
 
-class Document(models.Model,object):
+class Document(models.Model,object):                  # all details comming about a particular picture uploaded
+                                                      #  get saved in this table
     user = models.ForeignKey(User)
     status = models.CharField(max_length=7, choices=choice1, default="PUBLIC")
     size = models.IntegerField(choices=choice2, default=1)
@@ -61,16 +62,16 @@ class Document(models.Model,object):
     def __str__(self):
         return self.user.username
 
-    def __unicode__(self):
+    def __unicode__(self):                  # gives a common name to objects
         return self.document
 
     def get_absolute_url(self):
         return reverse('model_form_upload', kwargs={'pk': self.pk})
 
     def save(self):
-        im = Image.open(self.document)
+        im = Image.open(self.document)    #opens a particular image
         # temp = im.copy()
-        output = BytesIO()
+        output = BytesIO()                #reads image in bytes
 
         # if self.reset == 1:
         #     temp.load()
@@ -141,11 +142,12 @@ class Document(models.Model,object):
 
 
         im.save(output, format='JPEG', quality=100)
-        output.seek(0)
+        output.seek(0)          # shows output of image saved
 
         self.document = InMemoryUploadedFile(output, 'ImageField', "%s.jpg" % self.document.name.split('.')[0],
                                              'image/jpeg', sys.getsizeof(output), None)
-        super(Document,self).save()
+                                        # saves image in memory
+        super(Document,self).save()     #saves image in database
 
 
 @receiver(post_save, sender=User)
