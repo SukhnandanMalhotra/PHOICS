@@ -2,11 +2,12 @@ from django.contrib.auth.tokens import PasswordResetTokenGenerator
 from django.utils import six
 
 
-class AccountActivationTokenGenerator(PasswordResetTokenGenerator):
+class AccountActivationTokenGenerator(PasswordResetTokenGenerator):     #creates a token for account activation in case
+                                                                        # of signup and forgot password
     def _make_hash_value(self, user, timestamp):
         return (
-            six.text_type(user.pk) + six.text_type(timestamp) +
-            six.text_type(user.profile.email_confirmed)
+            six.text_type(user.pk) + six.text_type(timestamp) +         #six.text_type() converts anything given as
+            six.text_type(user.profile.email_confirmed)                 #arguments in text format
         )
 
 account_activation_token = AccountActivationTokenGenerator()
