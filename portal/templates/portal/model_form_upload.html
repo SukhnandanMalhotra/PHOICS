@@ -2,6 +2,18 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <script >
+        function preview(event)
+        {
+            var reader = new FileReader();
+            reader.onload = function()
+            {
+                var output = document.getElementById('output');
+                output.src = reader.result;
+            }
+            reader.readAsDataURL(event.target.files[0]);
+        }
+    </script>
 	<title>upload file</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="{% static 'portal/Upload.css' %}">
@@ -19,7 +31,9 @@
          <div class="content form">
              <div class="Form">
                  {% if user.is_authenticated %}
-                      <form method='post' enctype="multipart/form-data" novalidate>
+                      <form method='post' enctype="multipart/form-data" novalidate onchange="preview(event)">
+
+                          <img id="output"/>
                               {% csrf_token %}
                           {% for field in form %}
                               <div>

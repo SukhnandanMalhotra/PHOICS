@@ -159,6 +159,9 @@ def doc_delete(request, pk):
     return redirect('profile')
 
 
+
+
+
 # def Doc_reset(request,pk,template_name='portal/Doc_reset.html'):
 #     resetx= get_object_or_404(Document, pk=pk)
 #     form = ResetForm(request.POST or None, instance=resetx)

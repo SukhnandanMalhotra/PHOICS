@@ -45,8 +45,7 @@ class UpdateForm(forms.ModelForm):
         model = Document
         status = forms.ModelChoiceField(queryset=Document.objects.filter(uploaded_at=datetime.now()),
                                         empty_label=None)
-        size = forms.ModelChoiceField(queryset=Document.objects.filter(uploaded_at=datetime.now()),
-                                      empty_label=None)
+        size = forms.ModelChoiceField(queryset=Document.objects.filter(uploaded_at=datetime.now()), empty_label=None)
         flip = forms.ModelChoiceField(queryset=Document.objects.filter(uploaded_at=datetime.now()),
                                       empty_label=None)
         rotate = forms.ModelChoiceField(queryset=Document.objects.filter(uploaded_at=datetime.now()),
