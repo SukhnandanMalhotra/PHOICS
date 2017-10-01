@@ -16,7 +16,8 @@
 
     </div>
     <div class="container">
-         <div class="content heading"><p class="upload">YOUR INFO</p></div>
+         <div class="content heading"><p class="upload">YOUR INFO</p></div><br>
+         <div><a> <img src="{{ obj.profile_pic.url }}" style="width: 200px; height: 200px;"></a></div>
          <div class="content form">
              <div class="Form">
                  {% if user.is_authenticated %}

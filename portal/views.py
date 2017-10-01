@@ -128,7 +128,12 @@ def model_form_upload(request):        # renders a template to upload image and 
     })
 
 
-def user_info(request):                   # takes input of user's personal details using form
+def user_info(request):                  # takes input of user's personal details using form
+    obj = Profile.objects.get(user=request.user)
+    # for obj1 in objs:
+    #     if request.user == obj1.user:
+    #         obj=obj1
+    #         break
     try:
         profile = request.user.profile
     except Profile.DoesNotExist:
@@ -141,7 +146,7 @@ def user_info(request):                   # takes input of user's personal detai
             return redirect('profile')
     else:
         form = Info()
-    return render(request, 'portal/info.html', {'form': form})
+    return render(request, 'portal/info.html', {'form': form , 'obj':obj})
 
 
 def doc_update(request, pk, template_name='portal/model_form_upload.html'):  # to update an image and save in database
