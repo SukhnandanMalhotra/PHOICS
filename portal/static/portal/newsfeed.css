@@ -1,10 +1,11 @@
 @import url('https://fonts.googleapis.com/css?family=Raleway');
 body{
-	margin:0px;
-	background-color: #eeeeee;
+	background-color: #eee;
+	margin: 0;
 }
 #top{
 	top:0;
+	margin: 0;
 	position:fixed;
 	width:100vw;
     height:10vh;
@@ -16,8 +17,8 @@ h2{
     margin-top:3vh;
     margin-left:10vw;
 	letter-spacing: 0.5em;
-    font-family: Raleway medium;
-    display: inline;
+    font-family: 'Raleway' medium;
+   display: inline;
 }
 i.fa{
 	cursor: pointer;
@@ -25,11 +26,14 @@ i.fa{
 i.fa:hover{
 	color:white;
 }
-
+i.fa-search{
+	margin-top:3vh;
+	margin-left:50%;
+}
 i.fa-home{
 	position: relative;
 	margin-top:3vh;
-	margin-left:60%;
+	margin-left:2%;
 }
 i.fa-user{
 	margin-left:2%;
@@ -68,7 +72,7 @@ p{
 	margin-bottom: 0;
 	margin-top:0;
     margin-left:3vw;
-	font-family:Raleway light;
+	font-family:'Raleway' light;
 	cursor:pointer;
 }
 p.name{
@@ -82,7 +86,7 @@ p.date{
 label{
 	margin-top:45vh;
 	margin-left:15vw;
-	font-family:Raleway light;
+	font-family:'Raleway' light;
 }
 
 input{
@@ -101,44 +105,37 @@ footer{
     bottom: 0;
 }
 @media only screen and (max-width:1050px){
-    label{
-	    margin-left:20vw;
-}
-    i.fa-home{
+
+    i.fa-search{
         margin-left:45%;
 }
 }
 @media only screen and (max-width:780px){
-    i.fa-home{
+    i.fa-search{
         margin-left:30%;
 }
 p{
 		font-size:90%;
 	}
-    p.share{
-    	margin-left: 15vw;
-    }
-label{
-		font-size:90%;
-		margin-left: 25vw;
-	}
+ 
 }
-@media only screen and (max-width:450px){
+@media only screen and (max-width:560px){
+    i.fa{
+    	font-size:150%;
+    }
+}
+@media only screen and (max-width:490px){
 	p{
 		font-size:60%;
 	}
-    p.share{
-    	margin-left: 15vw;
-    }
+   
     p.name{
-		font-size:100%;
+		font-size:90%;
 	}
-
-	label{
-		font-size:60%;
-		margin-left: 25vw;
+ i.fa{
+		font-size:120%;
 	}
-	i.fa-home{
+	i.fa-search{
       margin-left:10%;
 }
 }
@@ -152,13 +149,11 @@ label{
 	p.name{
 		font-size:100%;
 	}
-	label{
-		font-size:60%;
-	}
+	
 	i.fa{
 		font-size:90%;
 	}
-	i.fa-home{
+	i.fa-search{
 		margin-left:27%;
 	}
 }

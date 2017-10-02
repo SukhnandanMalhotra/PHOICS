@@ -36,8 +36,8 @@ urlpatterns = [
         'template_name': 'forget/password_reset_done.html'}, name='password_reset_done'),
 
     url(r'^reset/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$',
-        built_views.password_reset_confirm, { 'template_name': 'forget/password_reset_confirm.html',
-                                              'post_reset_redirect': 'login'}, name='password_reset_confirm'),
+        built_views.password_reset_confirm, {'template_name': 'forget/password_reset_confirm.html',
+                                             'post_reset_redirect': 'login'}, name='password_reset_confirm'),
 
     url(r'^edit/(?P<pk>\d+)$', views.doc_update, name='Doc_edit'),
 
