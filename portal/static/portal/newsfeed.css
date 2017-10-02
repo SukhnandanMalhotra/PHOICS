@@ -117,7 +117,7 @@ footer{
 p{
 		font-size:90%;
 	}
- 
+
 }
 @media only screen and (max-width:560px){
     i.fa{
@@ -128,7 +128,7 @@ p{
 	p{
 		font-size:60%;
 	}
-   
+
     p.name{
 		font-size:90%;
 	}
@@ -149,7 +149,7 @@ p{
 	p.name{
 		font-size:100%;
 	}
-	
+
 	i.fa{
 		font-size:90%;
 	}
@@ -157,7 +157,6 @@ p{
 		margin-left:27%;
 	}
 }
-
 button{
 	background-color:transparent;
 	box-shadow: none;
