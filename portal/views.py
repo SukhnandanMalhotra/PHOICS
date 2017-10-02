@@ -154,6 +154,7 @@ def model_form_upload(request):
 
 
 def user_info(request):
+    obj = Profile.objects.get(user=request.user)
     try:
         profile = request.user.profile
     except Profile.DoesNotExist:            # if profile is not updated, save previous profile data
@@ -166,7 +167,7 @@ def user_info(request):
             return redirect('profile')
     else:
         form = Info()
-    return render(request, 'portal/info.html', {'form': form})
+    return render(request, 'portal/info.html', {'form': form , 'obj':obj})
 
 
 def doc_update(request, pk, template_name='portal/model_form_upload.html'):

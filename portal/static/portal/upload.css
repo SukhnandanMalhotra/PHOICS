@@ -159,3 +159,6 @@ i.fa{
 	border:1px solid  black;
 
 }
+.side{
+	display: flex;
+}
