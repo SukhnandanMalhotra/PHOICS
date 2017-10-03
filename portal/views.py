@@ -48,7 +48,6 @@ def my_view(request):
         return render(request, 'portal/login.html')
 
 
-
 def signup(request):
     if request.method == 'POST':
         form = SignUpPage(request.POST)

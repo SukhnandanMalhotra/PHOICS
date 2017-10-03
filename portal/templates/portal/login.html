@@ -27,13 +27,10 @@
                      <div class="log details">
                          <div class="row">
                              <label id="id_username">{{ form.username.label_tag }}</label><br>
-
-                            <p id="id_username"> {{ form.username }}</p><br>
-                            <p id="print"></p>
-                               <br>
-
+                             <p id="id_username"> {{ form.username }}</p><br>
+                             <p id="print"></p>
+                             <br>
                          </div>
-
                          <div class="row">
                              <label>{{ form.password.label_tag }}</label><br>
                              <p id="id_password">{{ form.password }}</p><br><br>
@@ -42,12 +39,9 @@
 {#                             <p style="color: red">your username and  password does not <br>match. please try again </p><br><br>#}
 {#                         {% endif %}#}
                             <button class="log button" type="submit" onclick="check_req()">LOG-IN</button>
-
                          </div>
-
-
                      <p class="log ques"><a href="{% url 'password_reset' %}">Forgot password?</a><br>
-                     New User? <a href="{% url 'signup' %}">signup</a>
+                         New User? <a href="{% url 'signup' %}">signup</a>
                      </p>
                  </form>
              {% endif %}

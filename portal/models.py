@@ -13,13 +13,13 @@ from django.core.files.uploadedfile import InMemoryUploadedFile
 import sys
 
 
-def get_profile_name(instance, filename):        # to give unique id to profile pic uploaded
+def get_profile_name(instance, filename):    # to give unique id to profile pic uploaded by using uuid
     ext = filename.split('.')[-1]
     filename = "%s.%s" % (uuid.uuid4(), ext)
     return os.path.join('profile_pic', filename)
 
 
-class Profile(models.Model):                     # all details comming as user's profile info form get saved in this table
+class Profile(models.Model):                # all details comming as user's profile info form get saved in this table
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     First_Name = models.CharField(max_length=100, blank=True)
     Last_Name = models.CharField(max_length=100, blank=True)
@@ -28,7 +28,7 @@ class Profile(models.Model):                     # all details comming as user's
     profile_pic = models.ImageField(upload_to=get_profile_name, default='profile_pic/default.jpg')
     email_confirmed = models.BooleanField(default=False)
 
-    def __str__(self):                    # shows every object with a name
+    def __str__(self):                    # shows every object with username name
         return self.user.username
 
 
@@ -43,7 +43,7 @@ choice3 = (('horizon', "Flip Horizontally"), ('vertical', "Flip Vertically"),('N
 choice4 = (('clock', "Clockwise"), ('anti', "Anticlockwise"), ('NONE', "None"))
 choice5 = (('y', 'Yes'), ('n', 'No'))
 choice6 = ((1, "None"), (2, "Aqua"), (3, "Seaform"), (4, "Grayscale"), (5, "Retro"), (6, "Edges"), (7, "Negative"),(8,'Sepia'))
-# choice7=((1, 'Yes'),(2,'No'))
+
 
 
 class Document(models.Model,object):                  # all details comming about a particular picture uploaded
@@ -56,7 +56,6 @@ class Document(models.Model,object):                  # all details comming abou
     blur = models.CharField(max_length=5, choices=choice5, default='n')
     effect = models.IntegerField(choices=choice6, default=1)
     document = models.ImageField(upload_to=get_file_name)
-    # reset = models.IntegerField(choices=choice7, default=1)
     uploaded_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
@@ -132,14 +131,14 @@ class Document(models.Model,object):                  # all details comming abou
             im = im.filter(ImageFilter.FIND_EDGES)
         elif self.effect == 7:
             im = ImageOps.invert(im)
-        elif self.effect==8:
-            width, height= im.size
+        elif self.effect == 8:
+            width, height = im.size
             for i in range(width):
                 for j in range(height):
-                    r,g,b = im.getpixel((i,j))
-                    c=int((round(r+g+b)/3))
-                    R,G,B= c+100,c+100,c
-                    im.putpixel((i,j),(R,G,B))
+                    r, g, b = im.getpixel((i,j))
+                    c = int((round(r+g+b)/3))
+                    R, G, B = c+100, c+100, c
+                    im.putpixel((i, j), (R, G, B))
 
 
         im.save(output, format='JPEG', quality=100)

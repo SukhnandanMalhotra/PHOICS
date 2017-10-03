@@ -3,7 +3,7 @@ from django.utils import six
 
 
 class AccountActivationTokenGenerator(PasswordResetTokenGenerator):     #creates a token for account activation in case
-                                                                        # of signup and forgot password
+                                                                        # of signup
     def _make_hash_value(self, user, timestamp):
         return (
             six.text_type(user.pk) + six.text_type(timestamp) +         #six.text_type() converts anything given as

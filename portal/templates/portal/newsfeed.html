@@ -1,21 +1,18 @@
 {% load staticfiles %}
 {% load humanize %}
 
-
-
 <!DOCTYPE html>
 <html>
 <head>
 <title>newsfeed</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" type="text/css" href="{% static 'portal/newsfeed.css' %}">
- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
-
 <body>
     <div id="top">
         <h2>PHOICS</h2>
-         <a href="{% url 'search' %}" ><i class="fa fa-search fa-2x" aria-hidden="true"></i></a>
+        <a href="{% url 'search' %}" ><i class="fa fa-search fa-2x" aria-hidden="true"></i></a>
         <a href="{% url 'newsfeed' %}"><i class="fa fa-home fa-2x" aria-hidden="true"></i></a>
         <a href="{% url 'profile' %}">	<i class="fa fa-user fa-2x" aria-hidden="true"></i></a>
         <a href="{% url 'logout' %}"><i class="fa fa-sign-out fa-2x" aria-hidden="true"></i></a>
@@ -29,11 +26,6 @@
                         <a href="{{ img.document.url }}"><img src="{{ img.document.url }}" ></a>
                         <p class="name">{{ img.user }}</p>
                         <p class="date">{{ img.uploaded_at|naturaltime|capfirst }}</p>
-                        {# <p class="like">l ike no.</p>#}
-                        {# <p class="share">share</p>#}
-                        {# <label  for="comment">comment no.</label><br>#}
-                        {# <input type="text" id="comment"><br>#}
-
                     </div>
                 {% endif %}
             {% endfor %}
@@ -46,17 +38,16 @@
             {% if images.has_next %}
                 <a href="?page={{ images.next_page_number }}"><button>Next</button></a>
             {% endif %}
-<br><br>PAGE:
-        {%  for num in page_range %}
+            <br><br>PAGE:
+            {%  for num in page_range %}
 
-            {%  if images.number == num %}
-                <a href="?page={{num}}">{{num}}</a>
-            {% else %}
-                <a href="?page={{num}}"><button>{{num}}</button></a>
-            {% endif %}
-
-        {% endfor %}
-         </footer>
+                {%  if images.number == num %}
+                    <a href="?page={{num}}">{{num}}</a>
+                {% else %}
+                    <a href="?page={{num}}"><button>{{num}}</button></a>
+                {% endif %}
+            {% endfor %}
+        </footer>
     {% else %}
         <h3>you are not logged-in first login</h3>
     {% endif %}
