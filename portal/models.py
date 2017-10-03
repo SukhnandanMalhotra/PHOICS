@@ -82,6 +82,7 @@ class Document(models.Model,object):                  # all details comming abou
         elif self.size == 2:
             im = im.resize((500, 500))
         elif self.size == 3:
+
             im = im.resize((300, 300))
         # im=im.resize(size,size)
 
