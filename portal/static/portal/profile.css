@@ -52,7 +52,7 @@ i.fa-sign-out{
 
 }
 .user-profile >div{
-	font-family: Raleway;
+	font-family: 'Raleway';
 }
 .feeds{
    position: relative;
@@ -111,17 +111,22 @@ img.feed:hover{
 	visibility: hidden;
 	cursor:pointer;
 	color:white;
-	font-family: Raleway;
+	font-family: 'Raleway';
 }
+.status{
+	position:absolute;
+	bottom:10%;
+	right:5%;
 
+}
 .edit{
 	position:absolute;
 	right:5%;
-	top:45%;
+	top:10%;
 }
 .reset{
 	position:absolute;
-	top:45%;
+	top:10%;
 	left:45%;
 }
 .date{
@@ -132,7 +137,7 @@ img.feed:hover{
 .delete{
 
 	position: absolute;
-	top:45%;
+	top:10%;
 	left:5%;
 }
 a{
@@ -267,17 +272,22 @@ img.feed:hover{
 	visibility: hidden;
 	cursor:pointer;
 	color:white;
-	font-family: Raleway;
+	font-family: 'Raleway';
+}
+.status{
+	position:absolute;
+	bottom:10%;
+	right:5%;
 }
 
 .edit{
 	position:absolute;
 	right:5%;
-	top:45%;
+	top:10%;
 }
 .reset{
 	position:absolute;
-	top:45%;
+	top:10%;
 	left:45%;
 }
 .date{
@@ -288,7 +298,7 @@ img.feed:hover{
 .delete{
 
 	position: absolute;
-	top:45%;
+	top:10%;
 	left:5%;
 }
 a{

@@ -38,8 +38,9 @@
 {#                         {% if form.errors %}#}
 {#                             <p style="color: red">your username and  password does not <br>match. please try again </p><br><br>#}
 {#                         {% endif %}#}
-                            <button class="log button" type="submit" onclick="check_req()">LOG-IN</button>
-                         </div>
+
+                     </div>
+                     <button class="log button" type="submit" onclick="check_req()">LOG-IN</button>
                      <p class="log ques"><a href="{% url 'password_reset' %}">Forgot password?</a><br>
                          New User? <a href="{% url 'signup' %}">signup</a>
                      </p>

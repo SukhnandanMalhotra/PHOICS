@@ -53,8 +53,6 @@ i.fa-sign-out{
 div.content{
 	border:1px solid #aaa;
 }
-
-
 div.form{
 	border-right:none;
 }
@@ -72,8 +70,7 @@ img{
 	max-height:100%;
 	border:1px solid #aaa;
 }
-p.upload{ 
-
+p.upload{
 	margin-top:20%;
    font-family: Raleway;
    font-size: 120%;
@@ -112,10 +109,9 @@ div.row{
 .row label{
 	display:table-cell;
 	font-weight: bold;
-	padding:2% 7% 2% 8%;
-
 	/*padding:2% 7% 2% 7%;*/
 	width:6vw;
+	/*box-sizing: border-box;*/
 }
 .row input{
 	display:table-cell;
@@ -134,7 +130,7 @@ a{
 @media only screen and (max-width:1900px){
         div.container{
 		width: 90vw;
-		margin-left: 5vw;	
+		margin-left: 5vw;
 	}
 }
 
@@ -174,16 +170,14 @@ button{
 		width:20vw;
 		font-size:70%;
 	}
-
 	.row label {
-   
+
     font-weight: bold;
    /* padding: 2% 10% 2% 7%;*/
     width: 11vw;
     font-size: 70%;
     }
-}	
-
+}
 
 @media only screen and (max-width:360px){
 	h2{
@@ -195,22 +189,4 @@ i.fa{
 	i.fa-search{
 		margin-left:27%;
 	}
-}
-
-#confirm-box{
-	top:0;
-	display: none;
-	position:fixed;
-	background-color: white;
-	text-align: center;
-    padding:1%;
-	width:30vw;
-	/*height:15vh;*/
-	margin-top:40vh;
-	margin-left:25vw;
-	border:1px solid  black;
-
-}
-.side{
-	display: flex;
 }

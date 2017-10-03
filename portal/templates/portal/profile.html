@@ -10,6 +10,7 @@
 <body>
          <div id="top">
        	     <h2>PHOICS</h2>
+             <a href="{% url 'search' %}"><i class="fa fa-search fa-2x" aria-hidden="true"></i> </a>
              <a href="{% url 'newsfeed' %}"><i class="fa fa-home fa-2x" aria-hidden="true"></i></a>
        	     <a href="{% url 'profile' %}"></a> <i class="fa fa-user fa-2x" aria-hidden="true"></i>
              <a href="{% url 'logout' %}"><i class="fa fa-sign-out fa-2x" aria-hidden="true"></i></a>
@@ -31,51 +32,34 @@
              </div>
          </div>
          <div class="feeds">
-         <p> PRIVATE PICS</p>
              {% for obj in documents %}
-                 {% if obj.user == request.user and obj.status == 'PRIVATE'%}
+                 {% if obj.user == request.user %}
                      <div class="image">
                          <a href="{{ obj.document.url }}"><img class="feed" src="{{ obj.document.url }}"></a>
                          <div class="hide date">{{ obj.uploaded_at }}</div>
-                         <div class="hide edit"> <a class="edit" href="{% url "Doc_edit" obj.id %}">Edit</a></div>
-
-{#                         <a href ="{% url "Doc_reset" obj.id %}">ResetFilter</a>#}
-                         <div class="hide delete" onclick='document.getElementById("confirm-box").style.display="block"' >
-                                      Delete</div>
-                         <div id="confirm-box" style="z-index: 2;">
-       	                     Are you sure you want to delete this image?<br><br><br>
-                             <a href="{% url "Doc_delete" obj.id %}">
-                                 <button onclick='document.getElementById("confirm-box").style.display="none"'>yes</button>
-                             </a>
-                             <button onclick='document.getElementById("confirm-box").style.display="none"'>no</button>
-                         </div>
-                     </div>
-                 {% endif %}
-             {% endfor %}<br>
-         </div>
-         <div class="feeds">
-         <p> PUBLIC PICS</p>
-            {% for obj in documents %}
-                 {% if obj.user == request.user and obj.status == 'PUBLIC'%}
-                     <div class="image">
-                         <a href="{{ obj.document.url }}"><img class="feed" src="{{ obj.document.url }}"></a>
-                         <div class="hide date">{{ obj.uploaded_at }}</div>
-                         <div class="hide edit"> <a class="edit" href="{% url "Doc_edit" obj.id %}">Edit</a></div>
-                         <div class="hide delete"> <a href="{% url "Doc_delete" obj.id %}"><button onclick="alert_function()">Delete</button></a></div>
-
+                         <div class="hide status">personal</div>
+                         <div class="hide edit">
+                             <a class="edit" href="{% url "Doc_edit" obj.id %}">
+                                 <i class="fa fa-pencil-square-o fa-2x" aria-hidden="true"></i></a></div>
+                             <div class="hide delete" onclick="alert_function()">
+                                 <a style="color: white;" href="{% url "Doc_delete" obj.id %}">
+                                 <i class="fa fa-trash-o fa-2x" aria-hidden="true"></i>
+                                 </a></div>
 {#                         <div class="hide delete" onclick='document.getElementById("confirm-box").style.display="block"' >#}
-{#                             <a href="{% url "Doc_delete" obj.id %}">      Delete</a></div>#}
+{#                                      Delete</div>#}
 {#                         <div id="confirm-box" style="z-index: 2;">#}
 {#       	                     Are you sure you want to delete this image?<br><br><br>#}
 {#                             <a href="{% url "Doc_delete" obj.id %}">#}
 {#                                 <button onclick='document.getElementById("confirm-box").style.display="none"'>yes</button>#}
 {#                             </a>#}
 {#                             <button onclick='document.getElementById("confirm-box").style.display="none"'>no</button>#}
-{#                        </div>#}
+{#                         </div>#}
                      </div>
                  {% endif %}
-             {% endfor %}
-       </div>
+             {% endfor %}<br>
+         </div>
+
+
 <script>
 function alert_function() {
     alert("Are you sure you want to delete it");

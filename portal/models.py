@@ -1,10 +1,11 @@
 from __future__ import unicode_literals
 from django.contrib.auth.models import User
-from django.db.models.signals import post_save
+from django.db.models.signals import post_save, post_delete
 from django.dispatch import receiver
 from django.db import models
 import uuid
 import os
+from django.contrib import messages
 from django.core.urlresolvers import reverse
 from PIL import Image
 from PIL import ImageFilter, ImageOps
@@ -42,15 +43,16 @@ choice2 = ((1, "Large"), (2, "Medium"),(3, "Small"))
 choice3 = (('horizon', "Flip Horizontally"), ('vertical', "Flip Vertically"),('NONE', "None"))
 choice4 = (('clock', "Clockwise"), ('anti', "Anticlockwise"), ('NONE', "None"))
 choice5 = (('y', 'Yes'), ('n', 'No'))
-choice6 = ((1, "None"), (2, "Aqua"), (3, "Seaform"), (4, "Grayscale"), (5, "Retro"), (6, "Edges"), (7, "Negative"),(8,'Sepia'))
+choice6 = ((1, "None"), (2, "Aqua"), (3, "Seaform"), (4, "Grayscale"),
+           (5, "Retro"), (6, "Edges"), (7, "Negative"), (8, 'Sepia'))
 
 
 
-class Document(models.Model,object):                  # all details comming about a particular picture uploaded
-                                                      #  get saved in this table
+class Document(models.Model,object):                  # all details comming about a particular picture uploaded                                                      #  get saved in this table
     user = models.ForeignKey(User)
     status = models.CharField(max_length=7, choices=choice1, default="PUBLIC")
-    size = models.IntegerField(choices=choice2, default=1)
+    width = models.IntegerField(blank=True, default=500, help_text="Enter positive value ")
+    height = models.IntegerField(blank=True, default=500, help_text="Enter positive value ")
     flip = models.CharField(max_length=17, choices=choice3, default="NONE")
     rotate = models.CharField(max_length=15, choices=choice4, default='NONE')
     blur = models.CharField(max_length=5, choices=choice5, default='n')
@@ -69,22 +71,10 @@ class Document(models.Model,object):                  # all details comming abou
 
     def save(self):
         im = Image.open(self.document)    #opens a particular image
-        # temp = im.copy()
-        output = BytesIO()                #reads image in bytes
 
-        # if self.reset == 1:
-        #     temp.load()
-        #     im = temp
-
-        if self.size == 1:
-            im = im.resize((700, 700))
-        elif self.size == 2:
-            im = im.resize((500, 500))
-        elif self.size == 3:
-
-            im = im.resize((300, 300))
-        # im=im.resize(size,size)
-
+        output = BytesIO()                #file is written into memory
+        if self.width >= 0 and self.height >= 0:
+            im = im.resize((self.width, self.height))
         if self.flip == 'horizon':
             im = im.transpose(Image.FLIP_LEFT_RIGHT)
         elif self.flip == 'vertical':
@@ -139,15 +129,29 @@ class Document(models.Model,object):                  # all details comming abou
                     c = int((round(r+g+b)/3))
                     R, G, B = c+100, c+100, c
                     im.putpixel((i, j), (R, G, B))
-
-
-        im.save(output, format='JPEG', quality=100)
-        output.seek(0)          # shows output of image saved
+        im.save(output, format='JPEG', quality=100)   # saving the image into the file in memory
+        output.seek(0)
 
         self.document = InMemoryUploadedFile(output, 'ImageField', "%s.jpg" % self.document.name.split('.')[0],
                                              'image/jpeg', sys.getsizeof(output), None)
-                                        # saves image in memory
-        super(Document,self).save()     #saves image in database
+
+        try:
+            this = Document.objects.get(id=self.id)
+            if this.document == self.document:
+                self.document = this.document
+            else:
+                this.document.delete(save=False)
+        except:
+            pass  # when new image
+        super(Document, self).save()
+
+
+@receiver(post_delete, sender=Document)
+def document_post_delete_handler(sender, **kwargs):
+    instance = kwargs['instance']
+    storage, path = instance.document.storage, instance.document.path
+    if (path != '.') and (path != '/') and (path != 'photo/') and (path != 'document/.'):
+        storage.delete(path)
 
 
 @receiver(post_save, sender=User)

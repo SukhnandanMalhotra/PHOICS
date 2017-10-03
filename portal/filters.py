@@ -5,10 +5,9 @@ import django_filters
 
 
 class UserFilter(django_filters.FilterSet):
-    username = django_filters.CharFilter(name='username', lookup_expr='icontains')
-    email = django_filters.CharFilter(name='email', lookup_expr='icontains')
-    year_joined = django_filters.NumberFilter(name='date_joined', lookup_expr='year')
+    username = django_filters.CharFilter(name='username', lookup_expr='icontains',
+                                         widget=forms.TextInput(attrs={'placeholder': 'username'}))
 
     class Meta:
         model = User
-        fields = ['username', 'year_joined',]
+        fields = ['username', ]

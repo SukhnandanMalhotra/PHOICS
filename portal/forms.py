@@ -31,12 +31,13 @@ class DocumentForm(forms.ModelForm):                   # to render to user a for
     class Meta:
         model = Document
         status = forms.ModelChoiceField(queryset=Document.objects.filter(uploaded_at=datetime.now()), empty_label=None)
-        size = forms.ModelChoiceField(queryset=Document.objects.filter(uploaded_at=datetime.now()), empty_label=None)
+        width = forms.IntegerField()
+        height = forms.IntegerField()
         flip = forms.ModelChoiceField(queryset=Document.objects.filter(uploaded_at=datetime.now()), empty_label=None)
         rotate = forms.ModelChoiceField(queryset=Document.objects.filter(uploaded_at=datetime.now()), empty_label=None)
         blur = forms.ModelChoiceField(queryset=Document.objects.filter(uploaded_at=datetime.now()), empty_label=None)
         effect = forms.ModelChoiceField(queryset=Document.objects.filter(uploaded_at=datetime.now()), empty_label=None)
-        fields = ('document', 'status', 'size', 'flip', 'rotate', 'blur', 'effect')
+        fields = ('document', 'status', 'width', 'height','rotate', 'flip', 'blur', 'effect')
 
 
 class UpdateForm(forms.ModelForm):                     # renders a form update pictures uploaded
@@ -45,21 +46,18 @@ class UpdateForm(forms.ModelForm):                     # renders a form update p
         model = Document
         status = forms.ModelChoiceField(queryset=Document.objects.filter(uploaded_at=datetime.now()),
                                         empty_label=None)
-        size = forms.ModelChoiceField(queryset=Document.objects.filter(uploaded_at=datetime.now()), empty_label=None)
+        width = forms.IntegerField()
+        height = forms.IntegerField()
         flip = forms.ModelChoiceField(queryset=Document.objects.filter(uploaded_at=datetime.now()),
                                       empty_label=None)
         rotate = forms.ModelChoiceField(queryset=Document.objects.filter(uploaded_at=datetime.now()),
-                                        empty_label=None)
+                                         empty_label=None)
         blur = forms.ModelChoiceField(queryset=Document.objects.filter(uploaded_at=datetime.now()),
                                       empty_label=None)
         effect = forms.ModelChoiceField(queryset=Document.objects.filter(uploaded_at=datetime.now()),
                                         empty_label=None)
-        fields = ('status', 'size', 'flip', 'rotate', 'blur', 'effect')
+        fields = ('status', 'width','height', 'flip', 'rotate', 'blur', 'effect')
 
 
-# class ResetForm(forms.ModelForm):                  # renders a form to reset the changes done
-#     class Meta:
-#         model = Document
-#         reset = forms.ModelChoiceField(queryset=Document.objects.filter(uploaded_at=datetime.now()), empty_label=None)
-#         fields = ('reset',)
+
 
