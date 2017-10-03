@@ -180,8 +180,14 @@ def doc_update(request, pk, template_name='portal/model_form_upload.html'):
 
 
 # it will delete the selected image through 'delete()'
+# def doc_delete(request, pk, template_name='portal/profile.html'):
+#     removex = get_object_or_404(Document, id=pk)
+#     if request.method == 'POST':
+#         removex.delete()
+#         return redirect('profile')
+#     return render(request, template_name, {'object': removex})
+
 def doc_delete(request, pk):
-    removex = get_object_or_404(Document, pk=pk)
+    removex = get_object_or_404(Document, id=pk)
     removex.delete()
     return redirect('profile')
-

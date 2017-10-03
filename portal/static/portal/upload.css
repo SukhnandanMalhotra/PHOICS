@@ -26,11 +26,14 @@ i.fa{
 i.fa:hover{
 	color:white;
 }
-
+i.fa-search{
+	margin-top:3vh;
+	margin-left:50%;
+}
 i.fa-home{
 	position: relative;
 	margin-top:3vh;
-	margin-left:60%;
+	margin-left:2%;
 }
 i.fa-user{
 	margin-left:2%;
@@ -44,13 +47,33 @@ i.fa-sign-out{
 	margin-left:20vw;
 	width:60vw;
 	display:grid;
-	grid-template-columns: 30% 70%;
+	grid-template-columns: 1fr 2fr 1fr;
 	background-color: white;
 }
 div.content{
 	border:1px solid #aaa;
 }
-p.upload{
+
+
+div.form{
+	border-right:none;
+}
+div.preview{
+	border-left:none;
+}
+div.image{
+	position:absolute;
+	margin-top:10vh;
+	margin-right:1%;
+	max-height: 50%;
+}
+img{
+	width:70%;
+	max-height:100%;
+	border:1px solid #aaa;
+}
+p.upload{ 
+
 	margin-top:20%;
    font-family: Raleway;
    font-size: 120%;
@@ -76,10 +99,12 @@ button:hover{
 	color: white;
 }
 div.Form{
+
 	margin-top:5%;
 	margin-left:5%;
 	font-family: Raleway;
 	display:table;
+
 }
 div.row{
 	display:table-row;
@@ -88,21 +113,33 @@ div.row{
 	display:table-cell;
 	font-weight: bold;
 	padding:2% 7% 2% 8%;
+
+	/*padding:2% 7% 2% 7%;*/
+	width:6vw;
 }
 .row input{
 	display:table-cell;
 	padding:2%;
 }
+
 input{
 	border:1px solid #bbb;
 	width:20vw;
 }
+
 a{
 	text-decoration: none;
 	color:black;
 }
+@media only screen and (max-width:1900px){
+        div.container{
+		width: 90vw;
+		margin-left: 5vw;	
+	}
+}
+
 @media only screen and (max-width:1050px){
-i.fa-home{
+i.fa-search{
         margin-left:45%;
 }
 div.container{
@@ -114,13 +151,18 @@ div.container{
 	}
 }
 @media only screen and (max-width:780px){
-    i.fa-home{
+    i.fa-search{
         margin-left:30%;
 }
 }
-@media only screen and (max-width:450px){
-i.fa-home{
+@media only screen and (max-width:540px){
+i.fa-search{
       margin-left:25%;
+}
+}
+@media only screen and (max-width:500px){
+i.fa-search{
+      margin-left:20%;
 }
 i.fa{
 		font-size:95%;
@@ -130,8 +172,18 @@ i.fa{
 	}
 button{
 		width:20vw;
+		font-size:70%;
 	}
-}
+
+	.row label {
+   
+    font-weight: bold;
+   /* padding: 2% 10% 2% 7%;*/
+    width: 11vw;
+    font-size: 70%;
+    }
+}	
+
 
 @media only screen and (max-width:360px){
 	h2{
@@ -140,7 +192,7 @@ button{
 i.fa{
 		font-size:90%;
 	}
-	i.fa-home{
+	i.fa-search{
 		margin-left:27%;
 	}
 }
