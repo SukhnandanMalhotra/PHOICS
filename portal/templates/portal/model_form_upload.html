@@ -29,7 +29,7 @@
         <h2>PHOICS</h2>
         <a href="{% url 'search' %}"><i class="fa fa-search fa-2x" aria-hidden="true"></i></a>
         <a href="{% url 'newsfeed' %}"><i class="fa fa-home fa-2x" aria-hidden="true"></i></a>
-        <a href="{% url 'profile' %}">	<i class="fa fa-user fa-2x" aria-hidden="true"></i></a>
+        <a href="{% url 'profile' user.username %}">	<i class="fa fa-user fa-2x" aria-hidden="true"></i></a>
         <a href="{% url 'logout' %}"><i class="fa fa-sign-out fa-2x" aria-hidden="true"></i></a>
     </div>
     <div class="container">
@@ -40,14 +40,14 @@
                     {% if user.is_authenticated %}
                          <form method='post' enctype="multipart/form-data" novalidate onchange="preview(event)">
 
-{#                           <img id="output"/>#}
+             {#  <img id="output"/>#}
                                 {% csrf_token %}
 
                             {% for field in form %}
-                                <div>
+                                <div class="row">
                                     <label for="name">{{ field.label_tag }}</label>
                                     {{ field }}
-                                    {{ field.help_text }}<br><br>
+                                    <br><br>
                                     {% for error in field.errors %}
                                              <p style="color: red">{{ error }}</p>
                                     {% endfor %}

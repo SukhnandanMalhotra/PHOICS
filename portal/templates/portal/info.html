@@ -10,13 +10,16 @@
 <body>
     <div id="top">
         <h2>PHOICS</h2>
-         <a href="search_page.html"><i class="fa fa-search fa-2x" aria-hidden="true"></i></a>
+         <a href="{% url 'search' %}"><i class="fa fa-search fa-2x" aria-hidden="true"></i></a>
         <a href="{% url 'newsfeed' %}"><i class="fa fa-home fa-2x" aria-hidden="true"></i></a>
-        <a href="{% url 'profile' %}">	<i class="fa fa-user fa-2x" aria-hidden="true"></i></a>
+        <a href="{% url 'profile' user.username %}">	<i class="fa fa-user fa-2x" aria-hidden="true"></i></a>
         <a href="{% url 'logout' %}"><i class="fa fa-sign-out fa-2x" aria-hidden="true"></i></a>
 
     </div>
+    {% if user.is_authenticated %}
+         <h3 style="margin-top: 5%">{{ user.username }}</h3>
     <div class="container">
+
          <div class="content heading"><p class="upload">YOUR INFO</p></div>
 
          <div class="content form">
@@ -39,10 +42,11 @@
              </div>
          </div>
       <div class="content preview">
-          <div class="image"
+          <div class="image">
           <a> <img src="{{ obj.profile_pic.url }}" style="width: 200px; height: 200px;"></a>
       </div>
       </div>
     </div>
+{% endif %}
 </body>
 </html>

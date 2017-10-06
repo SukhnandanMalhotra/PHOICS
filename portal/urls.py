@@ -9,25 +9,26 @@ from django_filters.views import FilterView
 from portal.filters import UserFilter
 
 urlpatterns = [
-    url(r'^$', views.home, name='profile'),
-
+    # url(r'^$', views.home, name='profile'),
+    url(r'^$', views.newsfeed, name='newsfeed'),
+    url(r'^profile/(?P<username>\w+)/$', views.home, name='profile'),
     url(r'^upload/$', views.model_form_upload, name='model_form_upload'),
 
-    url(r'^newsfeed/$', views.newsfeed, name='newsfeed'),
+
 
     url(r'^login/$', built_views.login, {'template_name': 'portal/login.html'}, name='login'),
 
     # if user will logout it will render to login page
     url(r'^logout/$', built_views.logout, {'next_page': 'login'}, name='logout'),
 
-    url(r'^information/$', views.user_info, name="user_info"),
+    url(r'^information/(?P<username>\w+)/$', views.user_info, name="user_info"),
 
     url(r'^signup/$', views.signup, name='signup'),
 
     url(r'^activate/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$',
         views.activate, name='activate'),
 
-    url(r'^frontpage/$', views.front_page, name='front_page'),
+    # url(r'^frontpage/$', views.front_page, name='front_page'),
 
     url(r'^passwordreset/$', password_reset, {
         'template_name': 'forget/password_reset_form.html'}, name='password_reset'),
@@ -39,7 +40,7 @@ urlpatterns = [
         built_views.password_reset_confirm, {'template_name': 'forget/password_reset_confirm.html',
                                              'post_reset_redirect': 'login'}, name='password_reset_confirm'),
 
-    url(r'^edit/(?P<pk>\d+)$', views.doc_update, name='Doc_edit'),
+    url(r'^profile/edit/(?P<username>\w+)/(?P<pk>\d+)$', views.doc_update, name='Doc_edit'),
 
     url(r'^delete/(?P<pk>\d+)$', views.doc_delete, name='Doc_delete'),
 

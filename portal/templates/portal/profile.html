@@ -12,7 +12,7 @@
        	     <h2>PHOICS</h2>
              <a href="{% url 'search' %}"><i class="fa fa-search fa-2x" aria-hidden="true"></i> </a>
              <a href="{% url 'newsfeed' %}"><i class="fa fa-home fa-2x" aria-hidden="true"></i></a>
-       	     <a href="{% url 'profile' %}"></a> <i class="fa fa-user fa-2x" aria-hidden="true"></i>
+       	     <a href="{% url 'profile' user.username %}"></a> <i class="fa fa-user fa-2x" aria-hidden="true"></i>
              <a href="{% url 'logout' %}"><i class="fa fa-sign-out fa-2x" aria-hidden="true"></i></a>
          </div>
          <div class="user-profile">
@@ -28,7 +28,7 @@
             {% endfor %}
              <div class="details"><h1 class="name">{{ user.username }}</h1>
                  <a href="{% url 'model_form_upload' %}"><button>UPLOAD </button></a>
-                 <a href="{% url 'user_info' %}"><button class="edit-profile">EDIT PROFILE</button></a>
+                 <a href="{% url 'user_info' user.username %}"><button class="edit-profile">EDIT PROFILE</button></a>
              </div>
          </div>
          <div class="feeds">
@@ -37,9 +37,13 @@
                      <div class="image">
                          <a href="{{ obj.document.url }}"><img class="feed" src="{{ obj.document.url }}"></a>
                          <div class="hide date">{{ obj.uploaded_at }}</div>
-                         <div class="hide status">personal</div>
+                         {%  if obj.status == 'PUBLIC' %}
+                         <div class="hide status">PUBLIC</div>
+                             {% else %}
+                              <div class="hide status">PRIVATE</div>
+                             {% endif %}
                          <div class="hide edit">
-                             <a class="edit" href="{% url "Doc_edit" obj.id %}">
+                             <a class="edit" href="{% url "Doc_edit" user.username obj.id %}">
                                  <i class="fa fa-pencil-square-o fa-2x" aria-hidden="true"></i></a></div>
                              <div class="hide delete" onclick="alert_function()">
                                  <a style="color: white;" href="{% url "Doc_delete" obj.id %}">

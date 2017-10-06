@@ -35,9 +35,9 @@
                              <label>{{ form.password.label_tag }}</label><br>
                              <p id="id_password">{{ form.password }}</p><br><br>
                          </div>
-{#                         {% if form.errors %}#}
-{#                             <p style="color: red">your username and  password does not <br>match. please try again </p><br><br>#}
-{#                         {% endif %}#}
+                         {% if form.errors %}
+                             <p style="color: red">your username and  password does not <br>match. please try again </p><br><br>
+                         {% endif %}
 
                      </div>
                      <button class="log button" type="submit" onclick="check_req()">LOG-IN</button>

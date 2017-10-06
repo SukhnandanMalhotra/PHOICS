@@ -25,8 +25,9 @@ from django.http import HttpResponse
 
 
 @login_required
-def home(request):
+def home(request, username):
     # in order_by minus sign represent descending order
+    u = User.objects.get(username=username)
     documents = Document.objects.order_by('-uploaded_at')
     profile_pic = Profile.objects.all
     return render(request, 'portal/profile.html', {'documents': documents, 'profile_pic': profile_pic, })
@@ -157,8 +158,9 @@ def model_form_upload(request):
     })
 
 
-def user_info(request):
+def user_info(request, username):
     obj = Profile.objects.get(user=request.user)
+    u = User.objects.get(username=username)
     try:
         profile = request.user.profile
     except Profile.DoesNotExist:            # if profile is not updated, save previous profile data
@@ -171,10 +173,10 @@ def user_info(request):
             return redirect('profile')
     else:
         form = Info()
-    return render(request, 'portal/info.html', {'form': form , 'obj':obj})
+    return render(request, 'portal/info.html', {'form': form, 'obj': obj})
 
 
-def doc_update(request, pk, template_name='portal/model_form_upload.html'):
+def doc_update(request, pk, username, template_name='portal/model_form_upload.html'):
     updatex = get_object_or_404(Document, pk=pk)
     form = UpdateForm(request.POST or None, instance=updatex)
     if form.is_valid():

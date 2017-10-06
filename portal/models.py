@@ -26,7 +26,7 @@ class Profile(models.Model):                # all details comming as user's prof
     Last_Name = models.CharField(max_length=100, blank=True)
     City = models.CharField(max_length=30, blank=True)
     DOB = models.DateTimeField(null=True, blank=True)
-    profile_pic = models.ImageField(upload_to=get_profile_name, default='profile_pic/default.jpg')
+    profile_pic = models.ImageField(upload_to=get_profile_name, default='profile_pic/default_profile.jpg')
     email_confirmed = models.BooleanField(default=False)
 
     def __str__(self):                    # shows every object with username name
@@ -110,8 +110,8 @@ class Document(models.Model,object):                  # all details comming abou
             width, height = im.size
             for i in range(width):
                 for j in range(height):
-                    r,g,b = im.getpixel((i,j))
-                    c=int(round((r+g+b)/3))
+                    r, g, b = im.getpixel((i,j))
+                    c = int(round((r+g+b)/3))
                     im.putpixel((i,j),(c,c,c))
         elif self.effect == 5:
             im = im.convert('RGB')
@@ -146,12 +146,12 @@ class Document(models.Model,object):                  # all details comming abou
         super(Document, self).save()
 
 
-@receiver(post_delete, sender=Document)
-def document_post_delete_handler(sender, **kwargs):
-    instance = kwargs['instance']
-    storage, path = instance.document.storage, instance.document.path
-    if (path != '.') and (path != '/') and (path != 'photo/') and (path != 'document/.'):
-        storage.delete(path)
+# @receiver(post_delete, sender=Document)
+# def document_post_delete_handler(sender, **kwargs):
+#     instance = kwargs['instance']
+#     storage, path = instance.document.storage, instance.document.path
+#     if (path != '.') and (path != '/') and (path != 'photo/') and (path != 'document/.'):
+#         storage.delete(path)
 
 
 @receiver(post_save, sender=User)
