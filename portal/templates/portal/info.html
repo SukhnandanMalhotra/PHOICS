@@ -16,7 +16,7 @@
         <a href="{% url 'logout' %}"><i class="fa fa-sign-out fa-2x" aria-hidden="true"></i></a>
 
     </div>
-    {% if user.is_authenticated %}
+    {% if request.user.is_authenticated %}
          <h3 style="margin-top: 5%">{{ user.username }}</h3>
     <div class="container">
 

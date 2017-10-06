@@ -27,7 +27,6 @@ from django.http import HttpResponse
 @login_required
 def home(request, username):
     # in order_by minus sign represent descending order
-    u = User.objects.get(username=username)
     documents = Document.objects.order_by('-uploaded_at')
     profile_pic = Profile.objects.all
     return render(request, 'portal/profile.html', {'documents': documents, 'profile_pic': profile_pic, })
@@ -104,7 +103,7 @@ def activate(request, uidb64, token):
         user.profile.email_confirmed = True
         user.save()
         login(request, user)
-        return redirect('profile')
+        return redirect('profile user.username')
     else:
         return render(request, 'portal/account_activation_invalid.html')
 
@@ -160,7 +159,6 @@ def model_form_upload(request):
 
 def user_info(request, username):
     obj = Profile.objects.get(user=request.user)
-    u = User.objects.get(username=username)
     try:
         profile = request.user.profile
     except Profile.DoesNotExist:            # if profile is not updated, save previous profile data

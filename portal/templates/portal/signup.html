@@ -18,7 +18,7 @@
     <div class="sign-up form">
         <h1>SIGN-UP</h1>
         <p>
-            {% if user.is_authenticated %}
+            {% if request.user.is_authenticated %}
                 <h3>first log out</h3>
                 <a href="{% url 'logout' %}">logout</a>
             {% else %}
