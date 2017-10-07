@@ -15,7 +15,7 @@
        	     <a href="{% url 'profile' user.username %}"></a> <i class="fa fa-user fa-2x" aria-hidden="true"></i>
              <a href="{% url 'logout' %}"><i class="fa fa-sign-out fa-2x" aria-hidden="true"></i></a>
          </div>
-         {% if user == request.user %}
+
          <div class="user-profile">
              {# <div class="dp"><img  src="{% static 'portal/images/profile image.jpg' %}"></div>#}
              {% for obj in profile_pic %}
@@ -28,7 +28,7 @@
                  {% endif %}
             {% endfor %}
              <div class="details"><h1 class="name">{{ user.username }}</h1>
-                 <a href="{% url 'model_form_upload' %}"><button>UPLOAD </button></a>
+                 <a href="{% url 'model_form_upload' user.username %}"><button>UPLOAD </button></a>
                  <a href="{% url 'user_info' user.username %}"><button class="edit-profile">EDIT PROFILE</button></a>
              </div>
          </div>
@@ -70,6 +70,6 @@ function alert_function() {
     alert("Are you sure you want to delete it");
     }
 </script>
-{% endif %}
+
 </body>
 </html>

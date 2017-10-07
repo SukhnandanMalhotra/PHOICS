@@ -12,7 +12,7 @@ urlpatterns = [
     # url(r'^$', views.home, name='profile'),
     url(r'^$', views.newsfeed, name='newsfeed'),
     url(r'^profile/(?P<username>\w+)/$', views.home, name='profile'),
-    url(r'^upload/$', views.model_form_upload, name='model_form_upload'),
+    url(r'^upload/(?P<username>\w+)/$', views.model_form_upload, name='model_form_upload'),
 
 
 

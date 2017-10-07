@@ -33,14 +33,15 @@
         <a href="{% url 'logout' %}"><i class="fa fa-sign-out fa-2x" aria-hidden="true"></i></a>
     </div>
     <div class="container">
-         <div class="content heading"><p class="upload">{{ title }}</p></div>
+        <div class="content heading"><p class="upload" ><p style="text-align: center; font-size: 200%">
+            {{ user.username }}</p><br><br>{{ title }}</div>
          <div class="content form">
              <div class="Form">
 
                     {% if request.user.is_authenticated %}
+
                          <form method='post' enctype="multipart/form-data" novalidate onchange="preview(event)">
 
-             {#  <img id="output"/>#}
                                 {% csrf_token %}
 
                             {% for field in form %}

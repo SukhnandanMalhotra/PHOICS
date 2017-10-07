@@ -8,7 +8,7 @@ from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from django.template.loader import render_to_string
 from phoics.settings import EMAIL_HOST_USER
 from .tokens import account_activation_token
-from django.shortcuts import render, redirect, get_object_or_404, render_to_response
+from django.shortcuts import render, redirect, get_object_or_404, render_to_response,reverse
 from .models import Document, Profile
 from .forms import DocumentForm, SignUpPage, Info, UpdateForm
 from django.contrib import messages
@@ -24,7 +24,7 @@ from django.http import HttpResponse
 """
 
 
-@login_required
+@login_required(redirect_field_name='profile')
 def home(request, username):
     # in order_by minus sign represent descending order
     documents = Document.objects.order_by('-uploaded_at')
@@ -43,7 +43,7 @@ def my_view(request):
     user = authenticate(username=username, password=password)
     if user is not None:
         login(request, user)
-        return redirect('profile')
+        return redirect(reverse('profile', kwargs={'username': username}))
     else:
         return render(request, 'portal/login.html')
 
@@ -90,7 +90,7 @@ def signup(request):
 
 
 # when user click on email link then this function execute
-def activate(request, uidb64, token):
+def activate(request, uidb64, token, username):
     try:
         # decode the uid from 64 base to normal text
         uid = force_text(urlsafe_base64_decode(uidb64))
@@ -103,7 +103,7 @@ def activate(request, uidb64, token):
         user.profile.email_confirmed = True
         user.save()
         login(request, user)
-        return redirect('profile user.username')
+        return redirect(reverse('profile', kwargs={'username': username}))
     else:
         return render(request, 'portal/account_activation_invalid.html')
 
@@ -137,7 +137,7 @@ def newsfeed(request):
     return render(request, 'portal/newsfeed.html', {'images': images, 'page_range': page_range})
 
 
-def model_form_upload(request):
+def model_form_upload(request, username):
     if request.method == 'POST':
         form = DocumentForm(request.POST, request.FILES)
         if form.is_valid():
@@ -149,7 +149,7 @@ def model_form_upload(request):
             if width < 0 or height < 0:
                 messages.error(request, 'Enter valid width and height')
                 return redirect('model_form_upload')
-            return redirect('profile')
+            return redirect(reverse('profile', kwargs={'username': username}))
     else:
         form = DocumentForm()
     return render(request, 'portal/model_form_upload.html', {
@@ -168,7 +168,7 @@ def user_info(request, username):
         if form.is_valid():
             form.save()
             messages.success(request, 'your information saved successfully')
-            return redirect('profile')
+            return redirect(reverse('profile', kwargs={'username': username}))
     else:
         form = Info()
     return render(request, 'portal/info.html', {'form': form, 'obj': obj})
@@ -179,7 +179,7 @@ def doc_update(request, pk, username, template_name='portal/model_form_upload.ht
     form = UpdateForm(request.POST or None, instance=updatex)
     if form.is_valid():
         form.save()
-        return redirect('profile')
+        return redirect(reverse('profile', kwargs={'username': username}))
     return render(request, template_name, {'form': form, 'title': 'Edit Image'})
 
 
@@ -191,7 +191,7 @@ def doc_update(request, pk, username, template_name='portal/model_form_upload.ht
 #         return redirect('profile')
 #     return render(request, template_name, {'object': removex})
 
-def doc_delete(request, pk):
+def doc_delete(request, pk, username):
     removex = get_object_or_404(Document, id=pk)
     removex.delete()
-    return redirect('profile')
+    return redirect('/profile/%s' % username)

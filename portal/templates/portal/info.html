@@ -17,10 +17,11 @@
 
     </div>
     {% if request.user.is_authenticated %}
-         <h3 style="margin-top: 5%">{{ user.username }}</h3>
+
     <div class="container">
 
-         <div class="content heading"><p class="upload">YOUR INFO</p></div>
+         <div class="content heading"><p class="upload"><p style="text-align: center; font-size: 200%">
+            {{ user.username }}</p><br><br>YOUR INFO</div>
 
          <div class="content form">
              <div class="Form">
