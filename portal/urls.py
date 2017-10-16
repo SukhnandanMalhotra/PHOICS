@@ -8,7 +8,9 @@ from django.conf.urls.static import static
 from django_filters.views import FilterView
 from portal.filters import UserFilter
 
+
 urlpatterns = [
+
     # url(r'^$', views.home, name='profile'),
     url(r'^$', views.newsfeed, name='newsfeed'),
 
@@ -40,12 +42,13 @@ urlpatterns = [
         built_views.password_reset_confirm, {'template_name': 'forget/password_reset_confirm.html',
                                              'post_reset_redirect': 'login'}, name='password_reset_confirm'),
 
-    url(r'^profile/edit/(?P<username>\w+)/(?P<pk>\d+)$', views.doc_update, name='Doc_edit'),
+    url(r'^profile/(?P<username>\w+)/edit/(?P<pk>\d+)$', views.doc_update, name='Doc_edit'),
 
-    url(r'^delete/(?P<pk>\d+)$', views.doc_delete, name='Doc_delete'),
+    url(r'^profile/(?P<username>\w+)/delete/(?P<pk>\d+)$', views.doc_delete, name='Doc_delete'),
 
     url(r'^search/$', FilterView.as_view(filterset_class=UserFilter,
                                          template_name='portal/user_list.html'), name='search'),
 
    ]
+
 

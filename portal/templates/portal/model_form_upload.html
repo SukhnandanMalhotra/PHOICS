@@ -57,10 +57,10 @@
                             {% endfor %}
                          {% if messages %}
                                         <ul class="messages" style="color: red;list-style-type: none">
-                                        {% for message in messages %}
-                                        <li{% if messages.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                                   {% for message in messages %}
                                         {% endfor %}
-                                         </ul>
+                                                </ul>
+                                        <li{% if messages.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
                                        {% endif %}
                             <button class="button" type="submit">SUBMIT</button><br>
                          </form>
@@ -71,6 +71,7 @@
                  </div>
             </div>
             <div class="content preview">
+                <h3>current photo</h3>
                 <div class="image"><img id="output"/></div>
             </div>
         </div>

@@ -47,7 +47,7 @@
                              <a class="edit" href="{% url "Doc_edit" user.username obj.id %}">
                                  <i class="fa fa-pencil-square-o fa-2x" aria-hidden="true"></i></a></div>
                              <div class="hide delete" onclick="alert_function()">
-                                 <a style="color: white;" href="{% url "Doc_delete" obj.id %}">
+                                 <a style="color: white;" href="{% url "Doc_delete" user.username obj.id %}">
                                  <i class="fa fa-trash-o fa-2x" aria-hidden="true"></i>
                                  </a></div>
 {#                         <div class="hide delete" onclick='document.getElementById("confirm-box").style.display="block"' >#}

@@ -13,6 +13,7 @@ from .models import Document, Profile
 from .forms import DocumentForm, SignUpPage, Info, UpdateForm
 from django.contrib import messages
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
+from django.http import HttpResponseRedirect
 from django.forms import ModelForm
 from django.core.files.storage import FileSystemStorage
 from django.conf import settings
@@ -27,10 +28,11 @@ from django.http import HttpResponse
 @login_required
 def home(request, username):
     # in order_by minus sign represent descending order
-    documents = Document.objects.order_by('-uploaded_at')
-    profile_pic = Profile.objects.all
-    return render(request, 'portal/profile.html', {'documents': documents, 'profile_pic': profile_pic, })
-
+    if username == request.user.username:
+        documents = Document.objects.order_by('-uploaded_at')
+        profile_pic = Profile.objects.all
+        return render(request, 'portal/profile.html', {'documents': documents, 'profile_pic': profile_pic, })
+    return redirect('newsfeed')
 
 # front page function which return front page html
 def front_page(request):
@@ -138,49 +140,57 @@ def newsfeed(request):
 
 
 def model_form_upload(request, username):
-    if request.method == 'POST':
-        form = DocumentForm(request.POST, request.FILES)
-        if form.is_valid():
-            width = form.cleaned_data.get('width')
-            height = form.cleaned_data.get('height')
-            upload_details = form.save(commit=False)
-            upload_details.user = request.user
-            upload_details.save()
-            if width < 0 or height < 0:
-                messages.error(request, 'Enter valid width and height')
-                return redirect('model_form_upload')
-            return redirect(reverse('profile', kwargs={'username': username}))
-    else:
-        form = DocumentForm()
-    return render(request, 'portal/model_form_upload.html', {
-        'form': form, 'title': 'Upload Image'
+    if username == request.user.username:
+        if request.method == 'POST':
+            form = DocumentForm(request.POST, request.FILES)
+            if form.is_valid():
+                width = form.cleaned_data.get('width')
+                height = form.cleaned_data.get('height')
+                upload_details = form.save(commit=False)
+                upload_details.user = request.user
+                upload_details.save()
+                if width < 0 or height < 0:
+                    messages.error(request, 'Enter valid width and height')
+                    return redirect('model_form_upload')
+                return redirect(reverse('profile', kwargs={'username': username}))
+        else:
+            form = DocumentForm()
+        return render(request, 'portal/model_form_upload.html', {
+            'form': form, 'title': 'Upload Image'
     })
+    return redirect('newsfeed')
+
 
 
 def user_info(request, username):
-    obj = Profile.objects.get(user=request.user)
-    try:
-        profile = request.user.profile
-    except Profile.DoesNotExist:            # if profile is not updated, save previous profile data
-        profile = Profile(user=request.user)
-    if request.method == 'POST':
-        form = Info(request.POST, request.FILES, instance=profile)
-        if form.is_valid():
-            form.save()
-            messages.success(request, 'your information saved successfully')
-            return redirect(reverse('profile', kwargs={'username': username}))
-    else:
-        form = Info()
-    return render(request, 'portal/info.html', {'form': form, 'obj': obj})
+    if username == request.user.username:
+
+        obj = Profile.objects.get(user=request.user)
+        try:
+            profile = request.user.profile
+        except Profile.DoesNotExist:            # if profile is not updated, save previous profile data
+            profile = Profile(user=request.user)
+        if request.method == 'POST':
+            form = Info(request.POST, request.FILES, instance=profile)
+            if form.is_valid():
+                form.save()
+                messages.success(request, 'your information saved successfully')
+                return redirect(reverse('profile', kwargs={'username': username}))
+        else:
+            form = Info()
+        return render(request, 'portal/info.html', {'form': form, 'obj': obj})
+    return redirect('newsfeed')
 
 
 def doc_update(request, pk, username, template_name='portal/model_form_upload.html'):
-    updatex = get_object_or_404(Document, pk=pk)
-    form = UpdateForm(request.POST or None, instance=updatex)
-    if form.is_valid():
-        form.save()
-        return redirect(reverse('profile', kwargs={'username': username}))
-    return render(request, template_name, {'form': form, 'title': 'Edit Image'})
+    if username == request.user.username:
+        updatex = get_object_or_404(Document, pk=pk)
+        form = UpdateForm(request.POST or None, instance=updatex)
+        if form.is_valid():
+            form.save()
+            return redirect(reverse('profile', kwargs={'username': username}))
+        return render(request, template_name, {'form': form, 'title': 'Edit Image'})
+    return redirect('newsfeed')
 
 
 # it will delete the selected image through 'delete()'
@@ -194,4 +204,5 @@ def doc_update(request, pk, username, template_name='portal/model_form_upload.ht
 def doc_delete(request, pk, username):
     removex = get_object_or_404(Document, id=pk)
     removex.delete()
-    return redirect('profile')
+    return HttpResponseRedirect(reverse('profile', args=(username,)))
+    # return redirect('profile/' username)
