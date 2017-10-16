@@ -24,7 +24,7 @@ from django.http import HttpResponse
 """
 
 
-@login_required(redirect_field_name='profile')
+@login_required
 def home(request, username):
     # in order_by minus sign represent descending order
     documents = Document.objects.order_by('-uploaded_at')
@@ -90,7 +90,7 @@ def signup(request):
 
 
 # when user click on email link then this function execute
-def activate(request, uidb64, token, username):
+def activate(request, uidb64, token):
     try:
         # decode the uid from 64 base to normal text
         uid = force_text(urlsafe_base64_decode(uidb64))
@@ -103,7 +103,7 @@ def activate(request, uidb64, token, username):
         user.profile.email_confirmed = True
         user.save()
         login(request, user)
-        return redirect(reverse('profile', kwargs={'username': username}))
+        return redirect('newsfeed')
     else:
         return render(request, 'portal/account_activation_invalid.html')
 
