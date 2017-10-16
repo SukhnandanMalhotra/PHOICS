@@ -194,4 +194,4 @@ def doc_update(request, pk, username, template_name='portal/model_form_upload.ht
 def doc_delete(request, pk, username):
     removex = get_object_or_404(Document, id=pk)
     removex.delete()
-    return redirect('/profile/%s' % username)
+    return redirect('profile')
