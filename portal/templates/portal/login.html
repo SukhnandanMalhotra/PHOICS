@@ -8,6 +8,8 @@
 <body>
     <canvas id="drawing_area"></canvas>
     <script src="{% static 'portal/javascript/animation.js' %}"></script>
+    <script src="{% static 'portal/javascript/validation.js' %}"></script>
+
     <div class="back">
         <img src="{% static 'portal/images/background.jpg' %}">
         <p class="text"><span>PHOICS</span><br>
@@ -22,23 +24,22 @@
                  <label>FIRST LOG OUT</label>
                  <a href="{% url 'logout' %}">logout</a>
              {% else %}
-                 <form name="login" method="post" novalidate>
+                 <form name="loginForm" method="post" onsubmit="return loginValidate() " novalidate>
                      {% csrf_token %}
                      <div class="log details">
                          <div class="row">
-                             <label id="id_username">{{ form.username.label_tag }}</label><br>
-                             <p id="id_username"> {{ form.username }}</p><br>
-                             <p id="print"></p>
-                             <br>
+                             <label id="id_username">{{ form.username.label_tag }}</label>
+                             <p id="id_username"> {{ form.username }}</p>
+                             {# <p id="print"></p> #}
                          </div>
                          <div class="row">
-                             <label>{{ form.password.label_tag }}</label><br>
-                             <p id="id_password">{{ form.password }}</p><br><br>
+                             <label>{{ form.password.label_tag }}</label>
+                             <p id="id_password">{{ form.password }}</p>
                          </div>
                          {% if form.errors %}
-                             <p style="color: red">your username and  password does not <br>match. please try again </p><br><br>
+                             <p style="color: red">your username and  password does not <br>match. please try again </p>
                          {% endif %}
-
+                         <br>
                      </div>
                      <button class="log button" type="submit">LOG-IN</button>
                      <p class="log ques"><a href="{% url 'password_reset' %}">Forgot password?</a><br>

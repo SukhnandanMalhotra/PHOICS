@@ -8,6 +8,8 @@
 <body>
     <canvas id="drawing_area"></canvas>
     <script src="{% static 'portal/javascript/animation.js' %}"></script>
+    <script src="{% static 'portal/javascript/validation.js' %}"></script>
+
     <div class="back">
         <img src="{% static 'portal/images/background.jpg' %}">
         <p class="text"><span>PHOICS</span><br>
@@ -22,18 +24,42 @@
                 <h3>first log out</h3>
                 <a href="{% url 'logout' %}">logout</a>
             {% else %}
-                <form method='post' novalidate>
+                <form name="signForm" method='post' onsubmit="return validateForm()" novalidate>
                     {% csrf_token %}
                     <div class="details">
-                        {% for field in form %}
-                        <div class="row"> <label for="name">{{ field.label_tag }}</label><br>
-                            {{ field }}<br>
-                            {% for error in field.errors %}
-                                <p style="color: red">{{ error }}</p>
-                            {% endfor %}
+                        <div class="row">
+                            <label for="name">{{ form.username.label_tag }}</label><br>
+                            {{ form.username }}<br>
+                                <p style="color: #ff0000">{{ form.username.errors }}
                         </div>
-                        <br>
-                        {% endfor %}
+
+                    <div class="row">
+                            <label for="name">{{ form.email.label_tag }}</label><br>
+                            {{ form.email }}<br>
+                                <p style="color: #ff0000">{{ form.email.errors }}</p>
+                        </div>
+
+                    <div class="row">
+                            <label for="name">{{ form.password1.label_tag }}</label><br>
+                            {{ form.password1 }}<br>
+                                <p style="color: #ff0000">{{ form.password1.errors }}</p>
+                        </div>
+
+                    <div class="row">
+                            <label for="name">{{ form.password2.label_tag }}</label><br>
+                            {{ form.password2 }}<br>
+                                <p style="color: #ff0000">{{ form.password2.errors }}</p>
+                        </div>
+
+{#                        {% for field in form %}#}
+{#                        <div class="row"> <label for="name">{{ field.label_tag }}</label><br>#}
+{#                            {{ field }}<br>#}
+{#                            {% for error in field.errors %}#}
+{#                                <p style="color: red">{{ error }}</p>#}
+{#                            {% endfor %}#}
+{#                        </div>#}
+{#                        <br>#}
+{#                        {% endfor %}#}
                         {% if messages %}
                             <ul class="messages" style="color: red;list-style-type: none">
                             {% for message in messages %}
