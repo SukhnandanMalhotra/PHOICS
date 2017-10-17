@@ -14,7 +14,10 @@ from .forms import DocumentForm, SignUpPage, Info, UpdateForm
 from django.contrib import messages
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.http import HttpResponseRedirect
-from django.forms import ModelForm
+from django.shortcuts import (render_to_response)
+from django.template import RequestContext
+
+
 from django.core.files.storage import FileSystemStorage
 from django.conf import settings
 from django.http import HttpResponse
@@ -33,6 +36,7 @@ def home(request, username):
         profile_pic = Profile.objects.all
         return render(request, 'portal/profile.html', {'documents': documents, 'profile_pic': profile_pic, })
     return redirect('newsfeed')
+
 
 # front page function which return front page html
 def front_page(request):
@@ -157,9 +161,7 @@ def model_form_upload(request, username):
             form = DocumentForm()
         return render(request, 'portal/model_form_upload.html', {
             'form': form, 'title': 'Upload Image'
-    })
-    return redirect('newsfeed')
-
+                  })
 
 
 def user_info(request, username):
@@ -179,7 +181,6 @@ def user_info(request, username):
         else:
             form = Info()
         return render(request, 'portal/info.html', {'form': form, 'obj': obj})
-    return redirect('newsfeed')
 
 
 def doc_update(request, pk, username, template_name='portal/model_form_upload.html'):
@@ -190,7 +191,6 @@ def doc_update(request, pk, username, template_name='portal/model_form_upload.ht
             form.save()
             return redirect(reverse('profile', kwargs={'username': username}))
         return render(request, template_name, {'form': form, 'title': 'Edit Image'})
-    return redirect('newsfeed')
 
 
 # it will delete the selected image through 'delete()'
@@ -206,3 +206,19 @@ def doc_delete(request, pk, username):
     removex.delete()
     return HttpResponseRedirect(reverse('profile', args=(username,)))
     # return redirect('profile/' username)
+
+
+def error404(request):
+    return render(request, 'portal/error_404.html', {'name': '404', 'title': 'Page not found'})
+
+
+def error400(request):
+    return render(request, 'portal/error_404.html', {'name': '400', 'title': 'Bad Request'})
+
+
+def error403(request):
+    return render(request, 'portal/error_404.html', {'name': '403', 'title': 'Permission Denied'})
+
+
+def error500(request):
+    return render(request, 'portal/error_404.html', {'name': '500', 'title': 'Server Error'})
