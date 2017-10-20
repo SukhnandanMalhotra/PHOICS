@@ -31,11 +31,13 @@ from django.http import HttpResponse
 @login_required
 def home(request, username):
     # in order_by minus sign represent descending order
-    if username == request.user.username:
-        documents = Document.objects.order_by('-uploaded_at')
-        profile_pic = Profile.objects.all
-        return render(request, 'portal/profile.html', {'documents': documents, 'profile_pic': profile_pic, })
-    return redirect('newsfeed')
+
+    documents = Document.objects.order_by('-uploaded_at')
+    profile_pic = Profile.objects.all
+    return render(request, 'portal/profile.html',
+                  {'documents': documents,
+                   'profile_pic': profile_pic,
+                   'username': username})
 
 
 # front page function which return front page html

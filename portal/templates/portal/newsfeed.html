@@ -24,7 +24,7 @@
                 {% if img.status == "PUBLIC" %}
                     <div class="feed1">
                         <a href="{{ img.document.url }}"><img src="{{ img.document.url }}" ></a>
-                        <p class="name">{{ img.user }}</p>
+                        <a href="{% url 'profile' img.user.username %}"> <p class="name">{{ img.user }}</p></a>
                         <p class="date">{{ img.uploaded_at|naturaltime|capfirst }}</p>
                     </div>
                 {% endif %}

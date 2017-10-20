@@ -30,7 +30,7 @@
              <div class="heading">E-mail</div>
              <div class="heading">Date Joined</div>
              {% for user in filter.qs %}
-                 <div class="ans">{{ user.username }}</div>
+                 <a href="{% url 'profile' user.username %}"> <div class="ans">{{ user.username }}</div></a>
                  <div class="ans">{{ user.email }}</div>
                  <div class="ans">{{ user.date_joined }}</div>
                  {% empty %}

@@ -28,19 +28,24 @@ urlpatterns = [
     url(r'^signup/$', views.signup, name='signup'),
 
     url(r'^activate/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$',
-        views.activate, name='activate'),
+        views.activate,
+        name='activate'),
 
     # url(r'^frontpage/$', views.front_page, name='front_page'),
 
-    url(r'^passwordreset/$', password_reset, {
-        'template_name': 'forget/password_reset_form.html'}, name='password_reset'),
+    url(r'^passwordreset/$', password_reset,
+        {'template_name': 'forget/password_reset_form.html'},
+        name='password_reset'),
 
-    url(r'^passwordreset/done/$', built_views.password_reset_done, {
-        'template_name': 'forget/password_reset_done.html'}, name='password_reset_done'),
+    url(r'^passwordreset/done/$', built_views.password_reset_done,
+        {'template_name': 'forget/password_reset_done.html'},
+        name='password_reset_done'),
 
     url(r'^reset/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$',
-        built_views.password_reset_confirm, {'template_name': 'forget/password_reset_confirm.html',
-                                             'post_reset_redirect': 'login'}, name='password_reset_confirm'),
+        built_views.password_reset_confirm,
+        {'template_name': 'forget/password_reset_confirm.html',
+         'post_reset_redirect': 'login'},
+        name='password_reset_confirm'),
 
     url(r'^profile/(?P<username>\w+)/edit/(?P<pk>\d+)$', views.doc_update, name='Doc_edit'),
 
