@@ -14,6 +14,8 @@ from .forms import DocumentForm, SignUpPage, Info, UpdateForm
 from django.contrib import messages
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.http import HttpResponseRedirect
+from django.contrib.auth.views import login
+
 from django.shortcuts import (render_to_response)
 from django.template import RequestContext
 
@@ -22,7 +24,7 @@ from django.core.files.storage import FileSystemStorage
 from django.conf import settings
 from django.http import HttpResponse
 """
- it will work when user is logged in
+ it will work when user is logged out
  it will redirect to the user on login page 
  having next parameter default have SETTING.LOGIN_URL
 """
@@ -40,6 +42,13 @@ def home(request, username):
                    'username': username})
 
 
+def check_login(request):
+    if request.user.is_authenticated:
+        return redirect('newsfeed')
+
+    return login(request, template_name='portal/login.html')
+
+
 # front page function which return front page html
 def front_page(request):
     return render(request, 'portal/front_page.html')
@@ -55,7 +64,6 @@ def my_view(request):
     else:
         return render(request, 'portal/login.html')
 
-
 def signup(request):
     if request.method == 'POST':
         form = SignUpPage(request.POST)
@@ -64,6 +72,7 @@ def signup(request):
             User.objects.filter(email=email).count()
             # if count is greater than zero it means this email id already exist
             if email and User.objects.filter(email=email).count() > 0:
+
                 messages.error(request, 'this email-id already register', extra_tags='alert')
             else:
                 user = form.save(commit=False)
@@ -90,7 +99,7 @@ def signup(request):
                 # fail_silently "false", then if error in sending email it will raise -
                 # smtplib.SMTPException, SMTPServerDisconnected, SMTPDataError,etc.
                 send_mail(subject, message, from_mail, to_mail, fail_silently=False)
-                messages.success(request, 'your email is successfully send')
+                return render(request, 'portal/email_sent.html')
 
     else:
         form = SignUpPage()

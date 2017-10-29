@@ -18,7 +18,7 @@ urlpatterns = [
 
     url(r'^upload/(?P<username>\w+)/$', views.model_form_upload, name='model_form_upload'),
 
-    url(r'^login/$', built_views.login, {'template_name': 'portal/login.html'}, name='login'),
+    url(r'^login/$', views.check_login, name='login'),
 
     # if user will logout it will render to login page
     url(r'^logout/$', built_views.logout, {'next_page': 'newsfeed'}, name='logout'),

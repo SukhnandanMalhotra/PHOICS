@@ -21,6 +21,7 @@
         {% csrf_token %}
         <div class="container">
             {% for img in images %}
+
                 {% if img.status == "PUBLIC" %}
                     <div class="feed1">
                         <a href="{{ img.document.url }}"><img src="{{ img.document.url }}" ></a>
