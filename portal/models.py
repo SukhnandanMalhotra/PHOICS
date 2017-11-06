@@ -47,7 +47,6 @@ choice6 = ((1, "None"), (2, "Aqua"), (3, "Seaform"), (4, "Grayscale"),
            (5, "Retro"), (6, "Edges"), (7, "Negative"), (8, 'Sepia'))
 
 
-
 class Document(models.Model,object):                  # all details comming about a particular picture uploaded                                                      #  get saved in this table
     user = models.ForeignKey(User)
     status = models.CharField(max_length=7, choices=choice1, default="PUBLIC")
