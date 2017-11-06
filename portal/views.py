@@ -186,13 +186,14 @@ def user_info(request, username):
 
 
 def doc_update(request, pk, username, template_name='portal/model_form_upload.html'):
-    if username == request.user.username:
-        updatex = get_object_or_404(Document, pk=pk)
-        form = UpdateForm(request.POST or None, instance=updatex)
+    updatex = get_object_or_404(Document, pk=pk)
+    form = UpdateForm(request.POST or None, instance=updatex)
+    if username == updatex.user:
+
         if form.is_valid():
             form.save()
             return redirect(reverse('profile', kwargs={'username': username}))
-        return render(request, template_name, {'form': form, 'title': 'Edit Image'})
+    return render(request, template_name, {'form': form, 'title': 'Edit Image'})
 
 
 # it will delete the selected image through 'delete()'
