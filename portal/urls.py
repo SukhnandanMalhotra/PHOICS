@@ -25,6 +25,8 @@ urlpatterns = [
 
     url(r'^information/(?P<username>\w+)/$', views.user_info, name="user_info"),
 
+    url(r'^check_signup/$', views.check_signup, name='check_signup'),
+
     url(r'^signup/$', views.signup, name='signup'),
 
     url(r'^activate/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$',
