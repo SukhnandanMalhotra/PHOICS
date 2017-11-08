@@ -65,6 +65,10 @@ class UpdateForm(forms.ModelForm):                     # renders a form update p
                                         empty_label=None)
         fields = ('status', 'width','height', 'flip', 'rotate', 'blur', 'effect')
 
+class CommentForm(forms.ModelForm):
 
+    class meta:
+        model = Comments
+        fields = ('comment', )
 
 
