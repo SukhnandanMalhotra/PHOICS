@@ -40,6 +40,8 @@
 
                     {% if request.user.is_authenticated %}
 
+
+
                          <form method='post' enctype="multipart/form-data" novalidate onchange="preview(event)">
 
                                 {% csrf_token %}
@@ -72,7 +74,8 @@
             </div>
             <div class="content preview">
                 <h3>current photo</h3>
-                <div class="image"><img id="output"/></div>
+                <div class="image"><img id="output"/>
+                <img src="{{ updatex.document.url }}" ></div>
             </div>
         </div>
 </body>

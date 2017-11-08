@@ -202,7 +202,7 @@ def doc_update(request, pk, username, template_name='portal/model_form_upload.ht
         if form.is_valid():
             form.save()
             return redirect(reverse('profile', kwargs={'username': username}))
-    return render(request, template_name, {'form': form, 'title': 'Edit Image'})
+    return render(request, template_name, {'form': form, 'title': 'Edit Image', 'updatex':updatex, 'pk':pk})
 
 
 # it will delete the selected image through 'delete()'
