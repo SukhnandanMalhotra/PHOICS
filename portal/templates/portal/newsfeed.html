@@ -27,6 +27,11 @@
                         <a href="{{ img.document.url }}"><img src="{{ img.document.url }}" ></a>
                         <a href="{% url 'profile' img.user.username %}"> <p class="name">{{ img.user }}</p></a>
                         <p class="date">{{ img.uploaded_at|naturaltime|capfirst }}</p>
+                        {% for com in comments %}
+                             {% if com.document == img.document %}
+                                   <p>{{com.comment}}</p>
+                             {% endif %}
+                        {% endfor %}
                     </div>
                 {% endif %}
             {% endfor %}

@@ -2,7 +2,7 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from datetime import datetime
-from portal.models import Document, Profile
+from portal.models import Document, Profile, Comments
 
 
 """
@@ -58,6 +58,10 @@ class UpdateForm(forms.ModelForm):                     # renders a form update p
                                         empty_label=None)
         fields = ('status', 'width','height', 'flip', 'rotate', 'blur', 'effect')
 
+class CommentForm(forms.ModelForm):
 
+    class meta:
+        model = Comments
+        fields = ('comment', )
 
 

@@ -9,8 +9,8 @@ from django.template.loader import render_to_string
 from phoics.settings import EMAIL_HOST_USER
 from .tokens import account_activation_token
 from django.shortcuts import render, redirect, get_object_or_404, render_to_response,reverse
-from .models import Document, Profile
-from .forms import DocumentForm, SignUpPage, Info, UpdateForm
+from .models import Document, Profile, Comments
+from .forms import DocumentForm, SignUpPage, Info, UpdateForm, CommentForm
 from django.contrib import messages
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.http import HttpResponseRedirect
@@ -54,6 +54,7 @@ def front_page(request):
     return render(request, 'portal/front_page.html')
 
 
+
 def my_view(request):
     username = request.POST['username']
     password = request.POST['password']
@@ -63,6 +64,13 @@ def my_view(request):
         return redirect(reverse('profile', kwargs={'username': username}))
     else:
         return render(request, 'portal/login.html')
+
+def comment(request):
+    if request.method == 'POST':
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            form.user = request.user
+            form.document = request.FILES('file')
 
 def signup(request):
     if request.method == 'POST':
@@ -128,6 +136,7 @@ def activate(request, uidb64, token):
 @login_required
 def newsfeed(request):
     documents = Document.objects.order_by('-uploaded_at')
+    comments = Comments.objects.order_by('-uploaded_at')
     image = []
     for obj in documents:
         if obj.status == "PUBLIC":
@@ -151,7 +160,7 @@ def newsfeed(request):
     after_show = current_page_no + 6 if current_page_no <= total_pages - 6 else total_pages
     page_range = paginator.page_range[before_show:after_show]
 
-    return render(request, 'portal/newsfeed.html', {'images': images, 'page_range': page_range})
+    return render(request, 'portal/newsfeed.html', {'images': images, 'comments':comments, 'page_range': page_range})
 
 
 def model_form_upload(request, username):
