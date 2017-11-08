@@ -2,7 +2,7 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from datetime import datetime
-from portal.models import Document, Profile
+from portal.models import Document, Profile, Comments
 
 
 """
@@ -24,6 +24,13 @@ class Info(forms.ModelForm):                       # renders a form to user wher
     class Meta:
         model = Profile
         fields = ('First_Name', 'Last_Name', 'City', 'DOB', 'profile_pic', )
+
+class CommentForm(forms.ModelForm):
+
+    class Meta:
+        model = Comments
+        fields = ('comment',)
+
 
 
 class DocumentForm(forms.ModelForm):                   # to render to user a form where he can upload pictures

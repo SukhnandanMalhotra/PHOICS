@@ -152,10 +152,11 @@ class Document(models.Model,object):                  # all details comming abou
 #     if (path != '.') and (path != '/') and (path != 'photo/') and (path != 'document/.'):
 #         storage.delete(path)
 
-class comments(models.Model):
+class Comments(models.Model):
     user= models.ForeignKey(User)
     document=models.ForeignKey(Document)
     comment=models.CharField(max_length=225)
+    uploaded_at = models.DateTimeField(auto_now_add=True)
 
 @receiver(post_save, sender=User)
 def update_user_profile(sender, instance, created, **kwargs):
