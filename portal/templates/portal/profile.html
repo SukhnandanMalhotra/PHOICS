@@ -17,9 +17,6 @@
          </div>
 
          <div class="user-profile">
-{#         {% if request.user.profile_pic is none %}#}
-{#             <img src="{{ profile_pic.default_profile.jpg }}">#}
-{#         {% endif %}#}
              {% for obj in profile_pic %}
                      {% if obj.user.username == username %}
                          <div class="dp"> <a href="{{ obj.profile_pic.url }}">
@@ -30,6 +27,7 @@
 
 
              <div class="details"><h1 class="name">{{ username }}</h1>
+                 <h1>TOTAL POST : {{ user_image_count }}</h1>
                  <h3>{{ post }}</h3>
                  {% if username == request.user.username %}
                  <a href="{% url 'model_form_upload' user.username %}"><button>UPLOAD </button></a>

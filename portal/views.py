@@ -33,13 +33,15 @@ from django.http import HttpResponse
 @login_required
 def home(request, username):
     # in order_by minus sign represent descending order
-
+    user = User.objects.get(username=username)
+    user_image_count = user.document_set.all().count()
     documents = Document.objects.order_by('-uploaded_at')
     profile_pic = Profile.objects.all
     return render(request, 'portal/profile.html',
                   {'documents': documents,
                    'profile_pic': profile_pic,
-                   'username': username})
+                   'username': username,
+                   'user_image_count': user_image_count})
 
 
 def check_login(request):
