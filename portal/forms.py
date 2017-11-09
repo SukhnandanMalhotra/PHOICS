@@ -25,6 +25,13 @@ class Info(forms.ModelForm):                       # renders a form to user wher
         model = Profile
         fields = ('First_Name', 'Last_Name', 'City', 'DOB', 'profile_pic', )
 
+class CommentForm(forms.ModelForm):
+
+    class Meta:
+        model = Comments
+        fields = ('comment',)
+
+
 
 class DocumentForm(forms.ModelForm):                   # to render to user a form where he can upload pictures
                                                        # it is connected to Document table in database

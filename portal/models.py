@@ -144,11 +144,6 @@ class Document(models.Model,object):                  # all details comming abou
             pass  # when new image
         super(Document, self).save()
 
-class Comments(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    document = models.ForeignKey(Document, on_delete=models.CASCADE)
-    comment = models.TextField(max_length= 225)
-    uploaded_at = models.DateTimeField(auto_now_add=True)
 
 # @receiver(post_delete, sender=Document)
 # def document_post_delete_handler(sender, **kwargs):
@@ -157,6 +152,11 @@ class Comments(models.Model):
 #     if (path != '.') and (path != '/') and (path != 'photo/') and (path != 'document/.'):
 #         storage.delete(path)
 
+class Comments(models.Model):
+    user= models.ForeignKey(User)
+    document=models.ForeignKey(Document)
+    comment=models.CharField(max_length=225)
+    uploaded_at = models.DateTimeField(auto_now_add=True)
 
 @receiver(post_save, sender=User)
 def update_user_profile(sender, instance, created, **kwargs):
