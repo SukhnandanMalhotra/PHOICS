@@ -65,12 +65,6 @@ def my_view(request):
     else:
         return render(request, 'portal/login.html')
 
-def comment(request):
-    if request.method == 'POST':
-        form = CommentForm(request.POST)
-        if form.is_valid():
-            form.user = request.user
-            form.document = request.FILES('file')
 
 def signup(request):
     if request.method == 'POST':
@@ -137,6 +131,7 @@ def activate(request, uidb64, token):
 def newsfeed(request):
     documents = Document.objects.order_by('-uploaded_at')
     comments = Comments.objects.order_by('-uploaded_at')
+    form1 = CommentForm()
     image = []
     for obj in documents:
         if obj.status == "PUBLIC":
@@ -160,7 +155,21 @@ def newsfeed(request):
     after_show = current_page_no + 6 if current_page_no <= total_pages - 6 else total_pages
     page_range = paginator.page_range[before_show:after_show]
 
-    return render(request, 'portal/newsfeed.html', {'images': images, 'comments':comments, 'page_range': page_range})
+    return render(request, 'portal/newsfeed.html', {'images': images,'form1':form1, 'comments':comments, 'page_range': page_range})
+
+def comment(request,pk):
+    global form1
+    image = Document.objects.get(pk=pk)
+    if request.method == 'POST':
+        form1 = CommentForm(request.POST)
+        if form1.is_valid():
+            form1.user = request.user
+            form1.document = image.document
+            form1.save()
+            return redirect('newsfeed')
+        else:
+            form1=CommentForm()
+    return render(request, 'portal/newsfeed.html',{'form1':form1, })
 
 
 def model_form_upload(request, username):

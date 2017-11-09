@@ -32,6 +32,16 @@
                                    <p>{{com.comment}}</p>
                              {% endif %}
                         {% endfor %}
+                        <form method='post' enctype="multipart/form-data" novalidate >
+                            {% csrf_token %}
+                            {% for field in form1 %}
+                                <div>
+                                    <label for="name">{{ field.label_tag }}</label>
+                                    {{ field }}
+                                </div>
+                            {% endfor %}
+                            <a href="{% url 'comment' img.pk %}"><button class="button" type="submit">SUBMIT</button></a><br>
+                         </form>
                     </div>
                 {% endif %}
             {% endfor %}
