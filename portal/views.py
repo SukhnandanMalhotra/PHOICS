@@ -155,21 +155,18 @@ def newsfeed(request):
     after_show = current_page_no + 6 if current_page_no <= total_pages - 6 else total_pages
     page_range = paginator.page_range[before_show:after_show]
 
-    return render(request, 'portal/newsfeed.html', {'images': images,'form1':form1, 'comments':comments, 'page_range': page_range})
+    return render(request, 'portal/newsfeed.html', {'images': images, 'comments':comments, 'page_range': page_range})
 
-def comment(request,pk):
-    global form1
-    image = Document.objects.get(pk=pk)
-    if request.method == 'POST':
-        form1 = CommentForm(request.POST)
-        if form1.is_valid():
-            form1.user = request.user
-            form1.document = image.document
-            form1.save()
-            return redirect('newsfeed')
-        else:
-            form1=CommentForm()
-    return render(request, 'portal/newsfeed.html',{'form1':form1, })
+def comment(request):
+    img_id=0
+    if request.method == 'GET':
+        img_id=request.GET['imgid']
+
+    if img_id:
+        image = Document.objects.get(pk=img_id)
+        comm = models.Comments( user=request.user, document=image.document)
+        comm.save()
+        return render(request, 'portal/newsfeed.html')
 
 
 def model_form_upload(request, username):

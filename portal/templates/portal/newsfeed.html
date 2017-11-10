@@ -1,13 +1,27 @@
 {% load staticfiles %}
 {% load humanize %}
-
 <!DOCTYPE html>
+
 <html>
 <head>
-<title>newsfeed</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" type="text/css" href="{% static 'portal/newsfeed.css' %}">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>newsfeed</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static 'portal/newsfeed.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.google.apis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $(".comment").on('submit', function() {
+                var imgid;
+                var comment;
+                imgid= $(this).attr("imageid");
+                comment=$(this).val();
+                $.get('/phoics/comment/',{'imgid':imgid,},function(data) {
+                    $('#show_comment' + imgid).html(data);
+                })
+            })
+        })
+    </script>
 </head>
 <body>
     <div id="top">
@@ -29,19 +43,21 @@
                         <p class="date">{{ img.uploaded_at|naturaltime|capfirst }}</p>
                         {% for com in comments %}
                              {% if com.document == img.document %}
-                                   <p>{{com.comment}}</p>
+                                   <p id="show_comment{{img.id}}">{{com.comment}}</p>
                              {% endif %}
                         {% endfor %}
-                        <form method='post' enctype="multipart/form-data" novalidate >
-                            {% csrf_token %}
-                            {% for field in form1 %}
-                                <div>
-                                    <label for="name">{{ field.label_tag }}</label>
-                                    {{ field }}
-                                </div>
-                            {% endfor %}
-                            <a href="{% url 'comment' img.pk %}"><button class="button" type="submit">SUBMIT</button></a><br>
-                         </form>
+
+                        <!--<form method='post' enctype="multipart/form-data" novalidate >-->
+                            <!--{% csrf_token %}-->
+                            <!--{% for field in form1 %}-->
+                                <!--<div>-->
+                                    <!--<label for="name">{{ field.label_tag }}</label>-->
+                                    <!--{{ field }}-->
+                                <!--</div>-->
+                            <!--{% endfor %}-->
+                            <!--<a href="{% url 'comment' img.pk %}"><button class="button" type="submit">SUBMIT</button></a><br>-->
+                         <!--</form>-->
+                        <input id="comment" type="submit" "imageid"={{img.id}}>
                     </div>
                 {% endif %}
             {% endfor %}
