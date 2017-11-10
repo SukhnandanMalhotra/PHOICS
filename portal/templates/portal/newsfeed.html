@@ -4,10 +4,27 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>newsfeed</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" type="text/css" href="{% static 'portal/newsfeed.css' %}">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>newsfeed</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static 'portal/newsfeed.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            console.log('3');
+            $(".comment").on('mousedown', function() {
+                console.log('4');
+                var imgid;
+                var comment;
+                imgid= $(this).attr("imageid");
+                console.log('5');
+                comment=$(this).val();
+                $.get('/phoics/comment/',{'imgid':imgid, 'comment':comment},function(data) {
+                    $('#show_comment' + imgid).html(data);
+                })
+            })
+        })
+    </script>
 </head>
 <body>
     <div id="top">
@@ -26,33 +43,21 @@
                     <div class="feed1">
                         <a href="{{ img.document.url }}"><img src="{{ img.document.url }}" ></a>
                         <a href="{% url 'profile' img.user.username %}"> <p class="name">{{ img.user }}</p></a>
-{#                        <p>{{ img.document }}</p>#}
                         <p class="date">{{ img.uploaded_at|naturaltime|capfirst }}</p>
                         {% for com in comments %}
                             {% if com.document == img.document %}
                                 <p>{{ com.user }}</p>
-                                <p>{{com.comment}}</p>
+                                <p id="show_comment{{img.id}}">{{com.comment}}</p>
                             {% endif %}
                         {% endfor %}
-                        <p>{{ temp.keys }}</p>
-{#                        {% for i in temp.keys %}#}
-{#                            <p>{{ i }}</p>#}
-{#                        {% endfor %}#}
-{#                        {% for k, v in temp.items() %}#}
-{#                            <p>{{ k }}</p>#}
-{#                            <p>{{ v }}</p>#}
-{#                            <p>{{ temp[i] }}</p>#}
-{#                        {% endfor %}#}
-                        <form method='post' enctype="multipart/form-data" novalidate >
-                            {% csrf_token %}
-                            {% for field in form1 %}
-                                <div>
-                                    <label for="name">{{ field.label_tag }}</label>
-                                    {{ field }}
-                                </div>
-                            {% endfor %}
-                            <button class="button" type="submit">SUBMIT</button><br>
-                         </form>
+{#                        <form method="post"  enctype="multipart/form-data" novalidate >#}
+{#                            {% csrf_token %}#}
+{#                            <label >Comment:  </label>#}
+{#                            <input type="text" name="FirstName">#}
+{#                            {{ form1 }}#}
+{#                            <button class="button" type="submit">SUBMIT</button><br>#}
+{#                         </form>#}
+                        <input id="comment" type="text" imageid="{{img.pk}}">
                     </div>
                 {% endif %}
             {% endfor %}

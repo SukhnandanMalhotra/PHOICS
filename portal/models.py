@@ -155,7 +155,7 @@ class Document(models.Model,object):                  # all details comming abou
 class Comments(models.Model):
     user= models.ForeignKey(User)
     document=models.ForeignKey(Document)
-    comment=models.CharField(max_length=225)
+    comment=models.TextField(max_length=225)
     uploaded_at = models.DateTimeField(auto_now_add=True)
 
 @receiver(post_save, sender=User)
