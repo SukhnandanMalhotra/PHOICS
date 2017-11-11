@@ -19,7 +19,8 @@
                     imgid = $(this).attr("img_data");
                     comment = $(this).val();
                     $.get('/phoics/comment/', {'imgid': imgid, 'comment': comment}, function (data) {
-                        $('#show_comment' + imgid).html(data);
+                        $('#show_user' + imgid).html(data.user);
+                        $('#show_comment' + imgid).html(data.comment);
                     })
                 }
             })
@@ -45,9 +46,10 @@
                         <a href="{% url 'profile' img.user.username %}"> <p class="name">{{ img.user }}</p></a>
                         <p class="date">{{ img.uploaded_at|naturaltime|capfirst }}</p>
                         <input class="comment" type="text" img_data="{{img.pk}}" placeholder="Enter a comment">
+                        <p id="show_user{{img.pk}}"></p><p id="show_comment{{img.pk}}"></p><br>
                         {% for com in comments %}
                             {% if com.document == img %}
-                                <p id="show_comment{{img.pk}}">{{com.user}} : {{com.comment}}</p><br>
+                                <p>{{com.user}} : {{com.comment}}</p><br>
                             {% endif %}
                         {% endfor %}
                     </div>

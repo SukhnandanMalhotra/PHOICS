@@ -15,6 +15,7 @@ from django.contrib import messages
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.http import HttpResponseRedirect
 from django.contrib.auth.views import login
+from django.core import serializers
 
 from django.shortcuts import (render_to_response)
 from django.template import RequestContext
@@ -165,7 +166,7 @@ def comment(request):
         image = Document.objects.get(pk=img_id)
         com = request.GET['comment']
         comm = Comments.objects.create(user=request.user, document=image, comment=com)
-        return HttpResponse(com)
+        return HttpResponse(serializers.serialize("json",comm))
 
 
 def model_form_upload(request, username):
