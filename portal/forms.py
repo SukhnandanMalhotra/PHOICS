@@ -25,13 +25,6 @@ class Info(forms.ModelForm):                       # renders a form to user wher
         model = Profile
         fields = ('First_Name', 'Last_Name', 'City', 'DOB', 'profile_pic', )
 
-class CommentForm(forms.ModelForm):
-
-    class Meta:
-        model = Comments
-        fields = ('comment',)
-
-
 
 class DocumentForm(forms.ModelForm):                   # to render to user a form where he can upload pictures
                                                        # it is connected to Document table in database
@@ -65,10 +58,10 @@ class UpdateForm(forms.ModelForm):                     # renders a form update p
                                         empty_label=None)
         fields = ('status', 'width','height', 'flip', 'rotate', 'blur', 'effect')
 
-class CommentForm(forms.ModelForm):
-
-    class meta:
-        model = Comments
-        fields = ('comment', )
+# class CommentForm(forms.ModelForm):
+#
+#     class meta:
+#         model = Comments
+#         fields = ('comment', )
 
 

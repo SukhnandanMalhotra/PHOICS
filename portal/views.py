@@ -10,7 +10,7 @@ from phoics.settings import EMAIL_HOST_USER
 from .tokens import account_activation_token
 from django.shortcuts import render, redirect, get_object_or_404, render_to_response,reverse
 from .models import Document, Profile, Comments
-from .forms import DocumentForm, SignUpPage, Info, UpdateForm, CommentForm
+from .forms import DocumentForm, SignUpPage, Info, UpdateForm
 from django.contrib import messages
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.http import HttpResponseRedirect
@@ -131,7 +131,6 @@ def activate(request, uidb64, token):
 def newsfeed(request):
     documents = Document.objects.order_by('-uploaded_at')
     comments = Comments.objects.order_by('-uploaded_at')
-    form1 = CommentForm()
     image = []
     for obj in documents:
         if obj.status == "PUBLIC":
@@ -158,15 +157,15 @@ def newsfeed(request):
     return render(request, 'portal/newsfeed.html', {'images': images, 'comments':comments, 'page_range': page_range})
 
 def comment(request):
-    img_id=0
+    img_id = 0
     if request.method == 'GET':
-        img_id=request.GET['imgid']
+        img_id = request.GET['imgid']
 
     if img_id:
         image = Document.objects.get(pk=img_id)
-        comm = models.Comments( user=request.user, document=image.document)
-        comm.save()
-        return render(request, 'portal/newsfeed.html')
+        com = request.GET['comment']
+        comm = Comments.objects.create(user=request.user, document=image, comment=com)
+        return HttpResponse(com)
 
 
 def model_form_upload(request, username):
