@@ -158,7 +158,10 @@ class Comments(models.Model):
     comment=models.TextField(max_length=225)
     uploaded_at = models.DateTimeField(auto_now_add=True)
 
-@receiver(post_save, sender=User)
+    def __str__(self):
+        return self.comment
+
+@receiver(post_save,sender=User)
 def update_user_profile(sender, instance, created, **kwargs):
     # here created is a boolean that tells new instance
     #  was created or an older instance was updated.
