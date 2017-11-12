@@ -71,10 +71,17 @@
 
                  </div>
             </div>
+    {% if title != 'Edit Image' %}
             <div class="content preview">
-                <h3>current photo</h3>
-                <div class="image"><img id="output"/></div>
+                <h3>upload photo</h3>
+                <div class="image"><img id="output"></div>
             </div>
+        {% else %}
+        <div class="content preview">
+                <h3>current photo</h3>
+                <div class="image"><img src="{{ updatex.document.url }}"></div>
+            </div>
+    {% endif %}
         </div>
 </body>
 </html>

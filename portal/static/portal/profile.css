@@ -147,19 +147,20 @@ a{
 a.edit{
 	color:white;
 }
-#confirm-box{
-	top:0;
+#confirm-box {
+	top: 0;
 	display: none;
-	position:fixed;
+	position: fixed;
 	background-color: white;
 	text-align: center;
-    padding:1%;
-	width:30vw;
+	padding: 1%;
+	width: 30vw;
 	/*height:15vh;*/
-	margin-top:40vh;
-	margin-left:25vw;
-	border:1px solid  black;
-	box-shadow@import url('https://fonts.googleapis.com/css?family=Raleway');
+	margin-top: 40vh;
+	margin-left: 25vw;
+	border: 1px solid black;
+
+}
 body{
 	background-color: #eee;
 	margin: 0;
@@ -370,7 +371,7 @@ i.fa{
 
 }
 
-}
+
 @media only screen and (max-width:1050px){
 i.fa-search{
         margin-left:45%;

@@ -27,6 +27,7 @@
 
 
              <div class="details"><h1 class="name">{{ username }}</h1>
+                 <h1>TOTAL POST : {{ user_image_count }}</h1>
                  <h3>{{ post }}</h3>
                  {% if username == request.user.username %}
                  <a href="{% url 'model_form_upload' user.username %}"><button>UPLOAD </button></a>
