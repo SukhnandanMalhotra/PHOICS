@@ -56,6 +56,9 @@ urlpatterns = [
     url(r'^search/$', FilterView.as_view(filterset_class=UserFilter,
                                          template_name='portal/user_list.html'), name='search'),
 
+    url(r'^like/$', views.like, name='like'),
+    url(r'^user_list/$', views.list_of_user, name='user_list'),
+
    ]
 
 

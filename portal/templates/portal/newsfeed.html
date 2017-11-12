@@ -7,7 +7,14 @@
 <title>newsfeed</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" type="text/css" href="{% static 'portal/newsfeed.css' %}">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="{% static 'portal/javascript/ajax.js' %}"></script>
+
+
 </head>
 <body>
     <div id="top">
@@ -27,6 +34,24 @@
                         <a href="{{ img.document.url }}"><img src="{{ img.document.url }}" ></a>
                         <a href="{% url 'profile' img.user.username %}"> <p class="name">{{ img.user }}</p></a>
                         <p class="date">{{ img.uploaded_at|naturaltime|capfirst }}</p>
+                        <div class="display" img-id="{{ img.id }}">
+                        <strong>Total likes : </strong>
+
+                        <strong id="count_like{{ img.id }}">{{ img.like_user.count}}</strong><br>
+                    </div>
+                    <p id="user{{ img.id }}"></p>
+
+                    {% ifequal 1 img.like_or_not %}
+                        <button type="submit" class="display1" id="dislike{{ img.id }}" data-imgid="{{ img.id }}">
+                            <span class="glyphicon glyphicon-thumbs-down"></span>
+                        </button><br><br>
+                    {% endifequal %}
+
+                    {% ifnotequal 1 img.like_or_not %}
+                        <button type="submit" class="display1" id="like{{ img.id }}" data-imgid="{{ img.id }}">
+                            <span class="glyphicon glyphicon-thumbs-up"></span>
+                        </button><br><br>
+                    {% endifnotequal %}
                     </div>
                 {% endif %}
             {% endfor %}
@@ -49,8 +74,7 @@
                 {% endif %}
             {% endfor %}
         </footer>
-    {% else %}
-        <h3>you are not logged-in first login</h3>
+
     {% endif %}
 </body>
 </html>

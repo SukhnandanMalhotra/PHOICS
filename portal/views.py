@@ -251,3 +251,39 @@ def error403(request):
 
 def error500(request):
     return render(request, 'portal/error_404.html', {'name': '500', 'title': 'Server Error'})
+
+
+
+@login_required
+def like(request):
+    imgid=None
+    if request.method == 'GET':
+
+        imgid = request.GET['imgid']
+        img = Document.objects.get(id=int(imgid))
+        print("-----print-----")
+        if request.user in img.like_user.all():
+            img.like_user.remove(request.user)
+            img.like_or_not = 0
+            img.save()
+        else:
+            img.like_user.add(request.user)
+            img.like_or_not = 1
+            img.save()
+        data = img.like_user.count()
+
+        print("-----here-----")
+
+        return HttpResponse(data)
+
+
+def list_of_user(request):
+    imgid = None
+    if request.method == 'GET':
+        imgid = request.GET['imgid']
+        img = Document.objects.get(id=int(imgid))
+        x = img.like_user.all()
+        # y = ','.join(x)
+        print(x)
+        return HttpResponse(x)
+

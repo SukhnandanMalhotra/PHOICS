@@ -59,6 +59,9 @@ class Document(models.Model,object):                  # all details comming abou
     document = models.ImageField(upload_to=get_file_name)
     uploaded_at = models.DateTimeField(auto_now_add=True)
 
+    like_or_not = models.IntegerField(default=0)
+    like_user = models.ManyToManyField(User, related_name='hello', blank=True)
+
     def __str__(self):
         return self.user.username
 
