@@ -35,13 +35,15 @@ from django.http import HttpResponse
 @login_required
 def home(request, username):
     # in order_by minus sign represent descending order
-
+    user = User.objects.get(username=username)
+    user_image_count = user.document_set.all().count()
     documents = Document.objects.order_by('-uploaded_at')
     profile_pic = Profile.objects.all
     return render(request, 'portal/profile.html',
                   {'documents': documents,
                    'profile_pic': profile_pic,
-                   'username': username})
+                   'username': username,
+                   'user_image_count': user_image_count})
 
 
 def check_login(request):
@@ -50,6 +52,11 @@ def check_login(request):
 
     return login(request, template_name='portal/login.html')
 
+def check_signup(request):
+   if request.user.is_authenticated:
+        return redirect('newsfeed')
+
+   return redirect('signup')
 
 # front page function which return front page html
 def front_page(request):
@@ -227,16 +234,22 @@ def user_info(request, username):
         return render(request, 'portal/info.html', {'form': form, 'obj': obj})
 
 
-def doc_update(request, pk, username, template_name='portal/model_form_upload.html'):
-    updatex = get_object_or_404(Document, pk=pk)
-    form = UpdateForm(request.POST or None, instance=updatex)
-    if username == updatex.user:
-
-        if form.is_valid():
-            form.save()
-            return redirect(reverse('profile', kwargs={'username': username}))
-    return render(request, template_name, {'form': form, 'title': 'Edit Image','updatex':updatex, 'pk':pk})
-
+def doc_update(request, username, pk, template_name='portal/model_form_upload.html'):
+    if username == request.user.username:
+        updatex = get_object_or_404(Document, pk=pk)
+        form = UpdateForm(request.POST or None, instance=updatex)
+        if username == updatex.user.username:
+            if form.is_valid():
+                form.save()
+                return redirect(reverse('profile', kwargs={'username': username}))
+            else:
+                print("---edit image form is not valid---")
+            return render(request, template_name, {'form': form, 'title': 'Edit Image', 'updatex': updatex })
+        else:
+            print("---you are not correct user for edit image---")
+    else:
+        print("---edit image form is not working proper---")
+    return redirect(reverse('profile', kwargs={'username': username}))
 
 # it will delete the selected image through 'delete()'
 # def doc_delete(request, pk, template_name='portal/profile.html'):
