@@ -8,20 +8,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="{% static 'portal/newsfeed.css' %}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script>
         $(document).ready(function(){
-            console.log('3');
-            $(".comment").on('mousedown', function() {
-                console.log('4');
-                var imgid;
-                var comment;
-                imgid= $(this).attr("imageid");
-                console.log('5');
-                comment=$(this).val();
-                $.get('/phoics/comment/',{'imgid':imgid, 'comment':comment},function(data) {
-                    $('#show_comment' + imgid).html(data);
-                })
+            $(".comment").on('keypress', function(event) {
+                key = event.keyCode;
+                if (key == 13) {
+                    var imgid;
+                    var comment;
+                    imgid = $(this).attr("img_data");
+                    comment = $(this).val();
+                    $.get('/phoics/comment/', {'imgid': imgid, 'comment': comment}, function (data) {
+                        var data1 =  JSON.parse(data);
+                        $('#show_user' + imgid).html(data1['user']);
+                        $('#comma').html(':');
+                        $('#show_comment' + imgid).html(data1['comment']);
+                    })
+                }
             })
         })
     </script>
@@ -44,20 +47,15 @@
                         <a href="{{ img.document.url }}"><img src="{{ img.document.url }}" ></a>
                         <a href="{% url 'profile' img.user.username %}"> <p class="name">{{ img.user }}</p></a>
                         <p class="date">{{ img.uploaded_at|naturaltime|capfirst }}</p>
+                        <input class="comment" type="text" img_data="{{img.pk}}" placeholder="Enter a comment"><br>
+                        <p id="show_user{{img.pk}}" style="display: inline"></p>
+                        <p id="comma" style="display: inline" ></p>
+                        <p id="show_comment{{img.pk}}" style="display: inline"></p><br><br>
                         {% for com in comments %}
-                            {% if com.document == img.document %}
-                                <p>{{ com.user }}</p>
-                                <p id="show_comment{{img.id}}">{{com.comment}}</p>
+                            {% if com.document == img %}
+                                <p>{{com.user}} : {{com.comment}}</p><br>
                             {% endif %}
                         {% endfor %}
-{#                        <form method="post"  enctype="multipart/form-data" novalidate >#}
-{#                            {% csrf_token %}#}
-{#                            <label >Comment:  </label>#}
-{#                            <input type="text" name="FirstName">#}
-{#                            {{ form1 }}#}
-{#                            <button class="button" type="submit">SUBMIT</button><br>#}
-{#                         </form>#}
-                        <input id="comment" type="text" imageid="{{img.pk}}">
                     </div>
                 {% endif %}
             {% endfor %}
