@@ -6,6 +6,12 @@
 <html>
 <head>
 <title>newsfeed</title>
+    <style>
+        .dis1 { background-color: #ffffff; }
+        .dis2 { background-color: #ff0000; }
+        .display1 { background-color: #ff0000; }
+
+    </style>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" type="text/css" href="{% static 'portal/newsfeed.css' %}">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -31,7 +37,31 @@
                     })
                 }
             })
-        })
+        });
+        function ifnotliked(id) {
+            console.log(id);
+             $('#'+id).toggleClass('dis1');
+{#             if($('#'+id).css('background-color')==='#ff0000') {#}
+{#                 console.log(1);#}
+{#                 $(this).css('background-color', '#ffffff');#}
+{#             }#}
+{#             else {#}
+{#                 console.log(2);#}
+{#                 $(this).css('background-color', '#ff0000');#}
+{#        }#}
+
+        }
+        function ifliked(id) {
+                        console.log(id);
+             $('#'+id).toggleClass('dis2');
+{#              if($('#'+id).css('background-color')==='#ff0000')#}
+{#                 $(this).css('background-color', '#ffffff');#}
+{#             else {#}
+{#                  $(this).css('background-color', '#ff0000');#}
+{##}
+{#              }#}
+        }
+
     </script>
 </head>
 <body>
@@ -60,13 +90,16 @@
                     <p id="user{{ img.id }}"></p>
 
                     {% ifequal 1 img.like_or_not %}
-                        <button type="submit" class="display1" id="dislike{{ img.id }}" data-imgid="{{ img.id }}">
-                            <span class="glyphicon glyphicon-thumbs-down"></span>
+                        <button type="submit" class="display1" id="dislike{{ img.id }}" data-imgid="{{ img.id }}"
+                                onclick="ifnotliked(id)">
+                            <span class="glyphicon glyphicon-thumbs-up"></span>
                         </button><br><br>
+
                     {% endifequal %}
 
                     {% ifnotequal 1 img.like_or_not %}
-                        <button type="submit" class="display1" id="like{{ img.id }}" data-imgid="{{ img.id }}">
+                        <button type="submit" class="display2" id="like{{ img.id }}"
+                                data-imgid="{{ img.id }}" onclick="ifliked(id)" >
                             <span class="glyphicon glyphicon-thumbs-up"></span>
                         </button><br><br>
                     {% endifnotequal %}
@@ -79,9 +112,7 @@
                                 <p>{{com.user}} : {{com.comment}}</p><br>
                             {% endif %}
                         {% endfor %}
-                        <p style="text-align: center;" {% post_to_facebook img.document.url "Share to facebook!" %}></p>
-
-
+                        {% post_to_facebook img.document.url "Share to facebook!" %}
                     </div>
                 {% endif %}
             {% endfor %}

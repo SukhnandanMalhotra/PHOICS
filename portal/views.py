@@ -158,7 +158,7 @@ def newsfeed(request):
         if obj.status == "PUBLIC":
             image.append(obj)
     # now image object contain all the public images of user
-    paginator = Paginator(image, 2)
+    paginator = Paginator(image, 5)
     # here 2 means one page contain two images
     page = request.GET.get('page')
     try:

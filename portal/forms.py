@@ -23,7 +23,7 @@ class Info(forms.ModelForm):                       # renders a form to user wher
                                                    # details with the help of template
     class Meta:
         model = Profile
-        fields = ('First_Name', 'Last_Name', 'City', 'DOB', 'profile_pic', )
+        fields = ('First_Name', 'Last_Name', 'City', 'profile_pic', )
 
 
 class DocumentForm(forms.ModelForm):                   # to render to user a form where he can upload pictures
