@@ -13,8 +13,25 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script src="{% static 'portal/javascript/ajax.js' %}"></script>
-
-
+    <script>
+        $(document).ready(function(){
+            $(".comment").on('keypress', function(event) {
+                key = event.keyCode;
+                if (key == 13) {
+                    var imgid;
+                    var comment;
+                    imgid = $(this).attr("img_data");
+                    comment = $(this).val();
+                    $.get('/phoics/comment/', {'imgid': imgid, 'comment': comment}, function (data) {
+                        var data1 =  JSON.parse(data);
+                        $('#show_user' + imgid).html(data1['user']);
+                        $('#comma').html(':');
+                        $('#show_comment' + imgid).html(data1['comment']);
+                    })
+                }
+            })
+        })
+    </script>
 </head>
 <body>
     <div id="top">
@@ -52,6 +69,15 @@
                             <span class="glyphicon glyphicon-thumbs-up"></span>
                         </button><br><br>
                     {% endifnotequal %}
+                        <input class="comment" type="text" img_data="{{img.pk}}" placeholder="Enter a comment"><br>
+                        <p id="show_user{{img.pk}}" style="display: inline"></p>
+                        <p id="comma" style="display: inline" ></p>
+                        <p id="show_comment{{img.pk}}" style="display: inline"></p><br><br>
+                        {% for com in comments %}
+                            {% if com.document == img %}
+                                <p>{{com.user}} : {{com.comment}}</p><br>
+                            {% endif %}
+                        {% endfor %}
                     </div>
                 {% endif %}
             {% endfor %}

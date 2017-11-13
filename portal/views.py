@@ -9,12 +9,14 @@ from django.template.loader import render_to_string
 from phoics.settings import EMAIL_HOST_USER
 from .tokens import account_activation_token
 from django.shortcuts import render, redirect, get_object_or_404, render_to_response,reverse
-from .models import Document, Profile
+from .models import Document, Profile, Comments
 from .forms import DocumentForm, SignUpPage, Info, UpdateForm
 from django.contrib import messages
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.http import HttpResponseRedirect
 from django.contrib.auth.views import login
+from django.core import serializers
+import json
 
 from django.shortcuts import (render_to_response)
 from django.template import RequestContext
@@ -50,13 +52,11 @@ def check_login(request):
 
     return login(request, template_name='portal/login.html')
 
-
 def check_signup(request):
-    if request.user.is_authenticated:
+   if request.user.is_authenticated:
         return redirect('newsfeed')
 
-    return redirect('signup')
-
+   return redirect('signup')
 
 # front page function which return front page html
 def front_page(request):
@@ -72,6 +72,7 @@ def my_view(request):
         return redirect(reverse('profile', kwargs={'username': username}))
     else:
         return render(request, 'portal/login.html')
+
 
 
 def signup(request):
@@ -135,9 +136,23 @@ def activate(request, uidb64, token):
         return render(request, 'portal/account_activation_invalid.html')
 
 
+# def comment(request,pk):
+#     global form1
+#     image = Document.objects.get(pk=pk)
+#     if request.method == 'POST':
+#         form1 = CommentForm(request.POST)
+#         if form1.is_valid():
+#             form1.user = request.user
+#             form1.document = image.document
+#             form1.save()
+#     return render(request,'portal/newsfeed.html', {'form1':form1})
+#
+
 @login_required
 def newsfeed(request):
+    # form1 = CommentForm(request.POST or None)
     documents = Document.objects.order_by('-uploaded_at')
+    comments = Comments.objects.order_by('-uploaded_at')
     image = []
     for obj in documents:
         if obj.status == "PUBLIC":
@@ -161,8 +176,23 @@ def newsfeed(request):
     after_show = current_page_no + 6 if current_page_no <= total_pages - 6 else total_pages
     page_range = paginator.page_range[before_show:after_show]
 
-    return render(request, 'portal/newsfeed.html', {'images': images, 'page_range': page_range})
+    return render(request, 'portal/newsfeed.html', {'images': images, 'comments':comments, 'page_range': page_range})
 
+def comment(request):
+    img_id=0
+    if request.method == 'GET':
+        img_id=request.GET['imgid']
+
+    if img_id:
+        d = dict()
+        image = Document.objects.get(pk=img_id)
+        user = User.objects.get(username=str(request.user))
+        com = request.GET['comment']
+        d['comment'] = com
+        d['user']=user.username
+        comm = Comments.objects.create(user=request.user, document=image, comment=com)
+        x = json.dumps(d)
+        return HttpResponse(x)
 
 def model_form_upload(request, username):
     if username == request.user.username:
@@ -220,7 +250,6 @@ def doc_update(request, username, pk, template_name='portal/model_form_upload.ht
     else:
         print("---edit image form is not working proper---")
     return redirect(reverse('profile', kwargs={'username': username}))
-
 
 # it will delete the selected image through 'delete()'
 # def doc_delete(request, pk, template_name='portal/profile.html'):
