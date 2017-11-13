@@ -1,5 +1,6 @@
 {% load staticfiles %}
 {% load humanize %}
+{% load social_share %}
 
 <!DOCTYPE html>
 <html>
@@ -78,6 +79,9 @@
                                 <p>{{com.user}} : {{com.comment}}</p><br>
                             {% endif %}
                         {% endfor %}
+                        <p style="text-align: center;" {% post_to_facebook img.document.url "Share to facebook!" %}></p>
+
+
                     </div>
                 {% endif %}
             {% endfor %}
