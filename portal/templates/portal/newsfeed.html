@@ -11,19 +11,30 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script>
         $(document).ready(function(){
+            var url = $('change').attr("img_data1");
             $(".comment").on('keypress', function(event) {
                 key = event.keyCode;
                 if (key == 13) {
                     var imgid;
                     var comment;
                     imgid = $(this).attr("img_data");
+                    url = $(this).attr("img_data1");
+                    console.log(imgid)
+                    console.log(url)
                     comment = $(this).val();
-                    $.get('/phoics/comment/', {'imgid': imgid, 'comment': comment}, function (data) {
+                    $(this).val('');
+                    if (comment != ''){
+                        $.get('/phoics/comment/', {'imgid': imgid, 'comment': comment}, function (data) {
                         var data1 =  JSON.parse(data);
                         $('#show_user' + imgid).html(data1['user']);
                         $('#comma').html(':');
+                        console.log(3)
                         $('#show_comment' + imgid).html(data1['comment']);
+                        console.log(document.URL + imgid)
+                        $('#change').load(document.URL + url);
+                        console.log(2)
                     })
+                    }
                 }
             })
         })
@@ -47,15 +58,17 @@
                         <a href="{{ img.document.url }}"><img src="{{ img.document.url }}" ></a>
                         <a href="{% url 'profile' img.user.username %}"> <p class="name">{{ img.user }}</p></a>
                         <p class="date">{{ img.uploaded_at|naturaltime|capfirst }}</p>
-                        <input class="comment" type="text" img_data="{{img.pk}}" placeholder="Enter a comment"><br>
+                        <input class="comment" type="text" img_data="{{img.pk}}" img_data1="{{ img.document.url }}" placeholder="Enter a comment"><br>
                         <p id="show_user{{img.pk}}" style="display: inline"></p>
                         <p id="comma" style="display: inline" ></p>
                         <p id="show_comment{{img.pk}}" style="display: inline"></p><br><br>
-                        {% for com in comments %}
-                            {% if com.document == img %}
-                                <p>{{com.user}} : {{com.comment}}</p><br>
-                            {% endif %}
-                        {% endfor %}
+                        <div id="change">
+                            {% for com in comments %}
+                                {% if com.document == img %}
+                                    <p>{{com.user}} : {{com.comment}}</p><br>
+                                {% endif %}
+                            {% endfor %}
+                        </div>
                     </div>
                 {% endif %}
             {% endfor %}

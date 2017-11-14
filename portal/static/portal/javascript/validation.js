@@ -47,13 +47,13 @@ function loginValidate() {
     var x = document.forms["loginForm"]["username"].value;
     var y = document.forms["loginForm"]["password"].value;
     if (x == "") {
-        alert("Name must be filled out");
-        return false;
+        return "Name must be filled out";
+        // return false;
     }
 
     else if (y == "") {
-        alert("password must be filled out");
-        return false;
+        return "password must be filled out";
+        // return false;
     }
 
 }
