@@ -13,6 +13,15 @@ body{
     z-index: 1;
 }
 
+#content {
+  overflow: hidden;
+  height: 20px;
+}
+
+#more:checked + div {
+  height: auto;
+}
+
 h2{
 	position: relative;
     margin-top:3vh;
