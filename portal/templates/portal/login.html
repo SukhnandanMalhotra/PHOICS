@@ -8,7 +8,7 @@
 <body>
     <canvas id="drawing_area"></canvas>
     <script src="{% static 'portal/javascript/animation.js' %}"></script>
-    <script src="{% static 'portal/javascript/validation.js' %}"></script>
+    <script src="{% static 'portal/javascript/Validation.js' %}"></script>
 
     <div class="back">
         <img src="{% static 'portal/images/background.jpg' %}">
@@ -30,11 +30,14 @@
                          <div class="row">
                              <label id="id_username">{{ form.username.label_tag }}</label>
                              <p id="id_username"> {{ form.username }}</p>
+                             <p style="color: red" id="error_login_username"></p>
                              {# <p id="print"></p> #}
                          </div>
                          <div class="row">
                              <label>{{ form.password.label_tag }}</label>
                              <p id="id_password">{{ form.password }}</p>
+                             <p style="color: red" id="error_login_password" style="color: red"></p>
+
                          </div>
                          {% if form.errors %}
                              <p style="color: red">your username and  password does not <br>match. please try again </p>
