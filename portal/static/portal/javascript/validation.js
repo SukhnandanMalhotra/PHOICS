@@ -1,6 +1,3 @@
-
-
-
 function validateForm() {
     var x = document.forms["signForm"]["username"].value;
     var y = document.forms["signForm"]["email"].value;

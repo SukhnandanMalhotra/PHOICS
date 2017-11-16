@@ -13,14 +13,14 @@ body{
     z-index: 1;
 }
 
-#content {
-  overflow: hidden;
-  height: 20px;
+div.content {
+  overflow: scroll;
+  height: 30vh;
 }
 
-#more:checked + div {
-  height: auto;
-}
+/*#more:checked + div {*/
+  /*height: auto;*/
+/*}*/
 
 h2{
 	position: relative;
@@ -64,7 +64,7 @@ div.feed1{
 	position: relative;
 	margin-top:3vh;
 	margin-left: 25vw;
-    width:50vw;
+    width:60vw;
     background-color: white;
     align-items: center;
     border:1px solid #90949c;
