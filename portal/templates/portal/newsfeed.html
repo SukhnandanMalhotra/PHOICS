@@ -7,9 +7,17 @@
 <head>
 <title>newsfeed</title>
     <style>
-        .dis1 { background-color: #ffffff; }
-        .dis2 { background-color: #ff0000; }
-        .display1 { background-color: #ff0000; }
+
+        .fa {
+           font-size: 50px;
+           cursor: pointer;
+           user-select: none;
+         }
+
+        .fa:hover {
+          color: darkblue;
+        }
+
 
     </style>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -19,7 +27,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<script src="{% static 'portal/javascript/ajax.js' %}"></script>
+<script src="{% static 'portal/javascript/ajaxjq.js' %}"></script>
     <script>
         $(document).ready(function(){
             $(".comment").on('keypress', function(event) {
@@ -38,29 +46,14 @@
                 }
             })
         });
-        function ifnotliked(id) {
-            console.log(id);
-             $('#'+id).toggleClass('dis1');
-{#             if($('#'+id).css('background-color')==='#ff0000') {#}
-{#                 console.log(1);#}
-{#                 $(this).css('background-color', '#ffffff');#}
-{#             }#}
-{#             else {#}
-{#                 console.log(2);#}
-{#                 $(this).css('background-color', '#ff0000');#}
-{#        }#}
 
-        }
-        function ifliked(id) {
-                        console.log(id);
-             $('#'+id).toggleClass('dis2');
-{#              if($('#'+id).css('background-color')==='#ff0000')#}
-{#                 $(this).css('background-color', '#ffffff');#}
-{#             else {#}
-{#                  $(this).css('background-color', '#ff0000');#}
-{##}
-{#              }#}
-        }
+    function myFunction1(x) {
+        x.classList.toggle("fa-thumbs-down");
+     }
+    function myFunction2(y) {
+        console.log("ok")
+        y.classList.toggle("fa-thumbs-up");
+    }
 
     </script>
 </head>
@@ -89,20 +82,24 @@
                     </div>
                     <p id="user{{ img.id }}"></p>
 
+
+
+
                     {% ifequal 1 img.like_or_not %}
-                      <button type="submit" id="dislike{{ img.id }}" data-imgid="{{ img.id }}" class="glyphicon glyphicon-thumbs-down"
-                                onclick="ifnotliked(id)">
-{#                    <span class="glyphicon glyphicon-thumbs-down"></span>#}
-                        </button> <br><br>
+                      <button type="submit">
+                      <i  class="display1 fa-thumbs-down" id="dislike{{ img.id }}" data-imgid="{{ img.id }}" onclick="myFunction2(this)"></i>
+                      </button> <br><br>
 
                     {% endifequal %}
 
                     {% ifnotequal 1 img.like_or_not %}
-                        <button type="submit" class="display2" id="like{{ img.id }}"
-                                data-imgid="{{ img.id }}" onclick="ifliked(id)" >
-                            <span class="glyphicon glyphicon-thumbs-up"></span>
+                        <button type="submit">
+                        <i  class="display2 fa fa-thumbs-up" id="like{{ img.id }}" data-imgid="{{ img.id }}" onclick="myFunction1(this)"></i>
                         </button><br><br>
                     {% endifnotequal %}
+
+
+
                         <input class="comment" type="text" img_data="{{img.pk}}" placeholder="Enter a comment"><br>
                         <p id="show_user{{img.pk}}" style="display: inline"></p>
                         <p id="comma" style="display: inline" ></p>

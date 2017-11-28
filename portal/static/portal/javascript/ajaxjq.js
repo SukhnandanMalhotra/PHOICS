@@ -2,32 +2,26 @@
 $(document).ready(function() {
     $('.display1').on('click', function () {
         var imgid;
-        var status;
-        var text;
-        console.log("hello");
+        console.log("from like to dislike");
 
         imgid = $(this).attr("data-imgid");
 
-        $.get('/phoics/like/', {imgid: imgid, status: status}, function (data) {
+        $.get('/phoics/like/', {imgid: imgid}, function (data) {
             console.log("5+1");
             $('#count_like' + imgid).html(data);
-            $('#hide' + imgid).text();
         })
     })
 })
 $(document).ready(function() {
     $('.display2').on('click', function () {
         var imgid;
-        var status;
-        var text;
-        console.log("hello");
+        console.log("from start to like");
 
         imgid = $(this).attr("data-imgid");
 
-        $.get('/phoics/like/', {imgid: imgid, status: status}, function (data) {
+        $.get('/phoics/like/', {imgid: imgid}, function (data) {
             console.log("5+1");
             $('#count_like' + imgid).html(data);
-            $('#hide' + imgid).text();
         })
     })
 })
