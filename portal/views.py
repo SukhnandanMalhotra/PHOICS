@@ -52,6 +52,7 @@ def check_login(request):
 
     return login(request, template_name='portal/login.html')
 
+
 def check_signup(request):
    if request.user.is_authenticated:
         return redirect('newsfeed')

@@ -90,10 +90,10 @@
                     <p id="user{{ img.id }}"></p>
 
                     {% ifequal 1 img.like_or_not %}
-                        <button type="submit" class="display1" id="dislike{{ img.id }}" data-imgid="{{ img.id }}"
+                      <button type="submit" id="dislike{{ img.id }}" data-imgid="{{ img.id }}" class="glyphicon glyphicon-thumbs-down"
                                 onclick="ifnotliked(id)">
-                            <span class="glyphicon glyphicon-thumbs-up"></span>
-                        </button><br><br>
+{#                    <span class="glyphicon glyphicon-thumbs-down"></span>#}
+                        </button> <br><br>
 
                     {% endifequal %}
 
