@@ -59,7 +59,7 @@ urlpatterns = [
 
     url(r'^like/$', views.like, name='like'),
     url(r'^user_list/$', views.list_of_user, name='user_list'),
-
+    url(r'^flip/$', views.flip, name='flip'),
    ]
 
 

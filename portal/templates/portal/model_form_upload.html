@@ -12,7 +12,47 @@
                 output.src = reader.result;
             }
             reader.readAsDataURL(event.target.files[0]);
+
         }
+
+        var xhttp = new XMLHttpRequest();
+        function loadPic() {
+            var imgid = $(".Form").attr("id");
+            var url = "http://127.0.0.1:8000/phoics/upload/(?P<username>\\w+)";
+            xhttp.open("POST", url, true);
+            xhttp.onreadystatechange = updatePage;
+            xhttp.send(null);
+
+            function updatePage() {
+
+                if (xhttp.readyState === 4) {
+                    if (xhttp.status === 200) {
+                        var data = JSON.parse(xhttp.responseText);
+                    }
+                }
+            }
+        }
+{#                        if (data.flip === 'horizon')#}
+{#                            data = data.transpose(Image.FLIP_LEFT_RIGHT)#}
+{#                        elif self.flip == 'vertical':#}
+{#                            im = im.transpose(Image.FLIP_TOP_BOTTOM)#}
+{#                        elif self.flip == 'NONE':#}
+{#                            pass#}
+{#                        update_select($('select[name=city]'), data);#}
+{#                    }#}
+{#                }#}
+{#            }#}
+{##}
+{#        }#}
+
+{#          function update_select(select, data) {#}
+{#            select.find('option').remove();#}
+{#                for (var k in data) {#}
+{#                    select.append($('<option value="'+data[k]+'">'+data[k]+'</option>'));#}
+{#    #}
+
+
+
     </script>
 {#    <script>#}
 {#        document.getElementById("result").innerHTML = localStorage.getItem("obj.document.url");#}
@@ -30,13 +70,13 @@
         <a href="{% url 'search' %}"><i class="fa fa-search fa-2x" aria-hidden="true"></i></a>
         <a href="{% url 'newsfeed' %}"><i class="fa fa-home fa-2x" aria-hidden="true"></i></a>
         <a href="{% url 'profile' user.username %}">	<i class="fa fa-user fa-2x" aria-hidden="true"></i></a>
-        <a href="{% url 'logout' %}"><i class="fa fa-sign-out fa-2x" aria-hidden="true"></i></a>
+        <a href="{% url 'logout' %}"><i class="fa fa-sign-out fa-2x" aria-hidden=$(".Form").attr("id")"true"></i></a>
     </div>
     <div class="container">
         <div class="content heading"><p class="upload" ><p style="text-align: center; font-size: 200%">
             {{ user.username }}</p><br><br>{{ title }}</div>
          <div class="content form">
-             <div class="Form">
+             <div class="Form" id="{{updatex.id}}">
 
                     {% if request.user.is_authenticated %}
                          <img src="{{ updatex.document.url }}" >
@@ -48,7 +88,8 @@
                             {% for field in form %}
                                 <div class="row">
                                     <label for="name">{{ field.label_tag }}</label>
-                                    {{ field }}
+                                   {{ field }}
+
                                     <br><br>
                                     {% for error in field.errors %}
                                              <p style="color: red">{{ error }}</p>

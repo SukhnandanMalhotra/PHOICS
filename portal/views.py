@@ -195,6 +195,7 @@ def comment(request):
         return HttpResponse(x)
 
 def model_form_upload(request, username):
+
     if username == request.user.username:
         if request.method == 'POST':
             form = DocumentForm(request.POST, request.FILES)
@@ -213,6 +214,18 @@ def model_form_upload(request, username):
         return render(request, 'portal/model_form_upload.html', {
             'form': form, 'title': 'Upload Image'
                   })
+
+def flip(request,username):
+    if username == request.user.username:
+        if request.method == 'POST':
+            image_flip = Document.objects.get(pk=request.GET["document_id"])
+            flip_choice=Document.objects.get(pk=request.GET['flip_id'])
+            f=image_flip.flop_choice
+            # f.append(image_flip)
+            # f.append(flip_choice)
+            return HttpResponse(json.dumps(f))
+
+
 
 
 def user_info(request, username):
