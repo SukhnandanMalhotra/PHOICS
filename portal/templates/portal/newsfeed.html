@@ -24,7 +24,6 @@
                         var data1 =  JSON.parse(data);
                         $('#show_user' + imgid).html(data1['user']);
                         $('#comma').html(':');
-                        console.log(3)
                         $('#show_comment' + imgid).html(data1['comment']);
                     })
                     }
@@ -56,7 +55,7 @@
                         <p id="comma" style="display: inline" ></p>
                         <p id="show_comment{{img.pk}}" style="display: inline"></p><br><br>
 {#                        <div class = "content">#}
-                        <div>
+                        <div class = "content">
                             {% for com in comments %}
                                 {% if com.document == img %}
                                     <p>{{com.user}} : {{com.comment}}</p><br>

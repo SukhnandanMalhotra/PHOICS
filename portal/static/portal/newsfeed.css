@@ -13,10 +13,10 @@ body{
     z-index: 1;
 }
 
-div.content {
-  overflow: scroll;
-  height: 30vh;
-}
+/*div.content {*/
+  /*overflow: hidden;*/
+  /*height: 4vh;*/
+/*}*/
 
 /*#more:checked + div {*/
   /*height: auto;*/
@@ -28,7 +28,7 @@ h2{
     margin-left:10vw;
 	letter-spacing: 0.5em;
     font-family: 'Raleway' ;
-   display: inline;
+    display: inline;
 }
 i.fa{
 	cursor: pointer;
