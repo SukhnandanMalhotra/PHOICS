@@ -12,47 +12,7 @@
                 output.src = reader.result;
             }
             reader.readAsDataURL(event.target.files[0]);
-
         }
-
-        var xhttp = new XMLHttpRequest();
-        function loadPic() {
-            var imgid = $(".Form").attr("id");
-            var url = "http://127.0.0.1:8000/phoics/upload/(?P<username>\\w+)";
-            xhttp.open("POST", url, true);
-            xhttp.onreadystatechange = updatePage;
-            xhttp.send(null);
-
-            function updatePage() {
-
-                if (xhttp.readyState === 4) {
-                    if (xhttp.status === 200) {
-                        var data = JSON.parse(xhttp.responseText);
-                    }
-                }
-            }
-        }
-{#                        if (data.flip === 'horizon')#}
-{#                            data = data.transpose(Image.FLIP_LEFT_RIGHT)#}
-{#                        elif self.flip == 'vertical':#}
-{#                            im = im.transpose(Image.FLIP_TOP_BOTTOM)#}
-{#                        elif self.flip == 'NONE':#}
-{#                            pass#}
-{#                        update_select($('select[name=city]'), data);#}
-{#                    }#}
-{#                }#}
-{#            }#}
-{##}
-{#        }#}
-
-{#          function update_select(select, data) {#}
-{#            select.find('option').remove();#}
-{#                for (var k in data) {#}
-{#                    select.append($('<option value="'+data[k]+'">'+data[k]+'</option>'));#}
-{#    #}
-
-
-
     </script>
 {#    <script>#}
 {#        document.getElementById("result").innerHTML = localStorage.getItem("obj.document.url");#}
@@ -70,33 +30,78 @@
         <a href="{% url 'search' %}"><i class="fa fa-search fa-2x" aria-hidden="true"></i></a>
         <a href="{% url 'newsfeed' %}"><i class="fa fa-home fa-2x" aria-hidden="true"></i></a>
         <a href="{% url 'profile' user.username %}">	<i class="fa fa-user fa-2x" aria-hidden="true"></i></a>
-        <a href="{% url 'logout' %}"><i class="fa fa-sign-out fa-2x" aria-hidden=$(".Form").attr("id")"true"></i></a>
+        <a href="{% url 'logout' %}"><i class="fa fa-sign-out fa-2x" aria-hidden="true"></i></a>
     </div>
     <div class="container">
         <div class="content heading"><p class="upload" ><p style="text-align: center; font-size: 200%">
             {{ user.username }}</p><br><br>{{ title }}</div>
          <div class="content form">
-             <div class="Form" id="{{updatex.id}}">
+             <div class="Form">
+
 
                     {% if request.user.is_authenticated %}
-                         <img src="{{ updatex.document.url }}" >
 
                          <form method='post' enctype="multipart/form-data" novalidate onchange="preview(event)">
+                             {% csrf_token %}
+                                 <div class="row">
+                                     <label for="name">{{ form.document.label_tag }}</label>
+                                      {{ form.document }}<br>
+                                      <p id="error_image_document" style="color: #ff0000">{{ form.document.errors }}
+                                 </div>
+                                 <div class="row">
+                                     <label for="name">{{ form.status.label_tag }}</label>
+                                      {{ form.status }}<br>
+                                      <p id="error_image_status" style="color: #ff0000">{{ form.status.errors }}
+                                 </div>
 
-                                {% csrf_token %}
+                                 <div class="row">
+                                     <label for="name">{{ form.width.label_tag }}</label>
+                                      {{ form.width }}<br>
+                                      <p id="error_image_width" style="color: #ff0000">{{ form.width.errors }}
+                                 </div>
 
-                            {% for field in form %}
-                                <div class="row">
-                                    <label for="name">{{ field.label_tag }}</label>
-                                   {{ field }}
+                                 <div class="row">
+                                     <label for="name">{{ form.height.label_tag }}</label>
+                                      {{ form.height }}<br>
+                                      <p id="error_image_height" style="color: #ff0000">{{ form.height.errors }}
+                                 </div>
 
-                                    <br><br>
-                                    {% for error in field.errors %}
-                                             <p style="color: red">{{ error }}</p>
-                                    {% endfor %}
+                                 <div class="row">
+                                     <label for="name">{{ form.rotate.label_tag }}</label>
+                                      {{ form.rotate }}<br>
+                                      <p id="error_image_rotate" style="color: #ff0000">{{ form.rotate.errors }}
+                                 </div>
 
-                                </div>
-                            {% endfor %}
+                                 <div class="row">
+                                     <label for="name">{{ form.flip.label_tag }}</label>
+                                      {{ form.flip }}<br>
+                                      <p id="error_image_flip" style="color: #ff0000">{{ form.flip.errors }}
+                                 </div>
+
+                                 <div class="row">
+                                     <label for="name">{{ form.blur.label_tag }}</label>
+                                      {{ form.blur }}<br>
+                                      <p id="error_image_blur" style="color: #ff0000">{{ form.blur.errors }}
+                                 </div>
+
+                                 <div class="row">
+                                     <label for="name">{{ form.effect.label_tag }}</label>
+                                      {{ form.effect }}<br>
+                                      <p id="error_image_effect" style="color: #ff0000">{{ form.effect.errors }}
+                                 </div>
+
+
+                             {#                            {% for field in form %}#}
+{#                                <div class="row">#}
+{#                                    <label for="name">{{ field.label_tag }}</label>#}
+{#                                    {{ field }}#}
+{#                                    <br><br>#}
+{#                                    {% for error in field.errors %}#}
+{#                                             <p style="color: red">{{ error }}</p>#}
+{#                                    {% endfor %}#}
+{##}
+{#                                </div>#}
+{#                            {% endfor %}#}
                          {% if messages %}
                                         <ul class="messages" style="color: red;list-style-type: none">
                                    {% for message in messages %}
@@ -112,17 +117,12 @@
 
                  </div>
             </div>
-    {% if title != 'Edit Image' %}
             <div class="content preview">
                 <h3>upload photo</h3>
                 <div class="image"><img id="output"></div>
             </div>
-        {% else %}
-        <div class="content preview">
-                <h3>current photo</h3>
-                <div class="image"><img src="{{ updatex.document.url }}"></div>
-            </div>
-    {% endif %}
+
+
         </div>
 </body>
 </html>

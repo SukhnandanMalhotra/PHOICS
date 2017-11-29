@@ -17,6 +17,8 @@ from django.http import HttpResponseRedirect
 from django.contrib.auth.views import login
 from django.core import serializers
 import json
+from django.http import JsonResponse
+
 
 from django.shortcuts import (render_to_response)
 from django.template import RequestContext
@@ -51,6 +53,7 @@ def check_login(request):
         return redirect('newsfeed')
 
     return login(request, template_name='portal/login.html')
+
 
 def check_signup(request):
    if request.user.is_authenticated:
@@ -158,7 +161,7 @@ def newsfeed(request):
         if obj.status == "PUBLIC":
             image.append(obj)
     # now image object contain all the public images of user
-    paginator = Paginator(image, 2)
+    paginator = Paginator(image, 5)
     # here 2 means one page contain two images
     page = request.GET.get('page')
     try:
@@ -195,7 +198,6 @@ def comment(request):
         return HttpResponse(x)
 
 def model_form_upload(request, username):
-
     if username == request.user.username:
         if request.method == 'POST':
             form = DocumentForm(request.POST, request.FILES)
@@ -214,18 +216,6 @@ def model_form_upload(request, username):
         return render(request, 'portal/model_form_upload.html', {
             'form': form, 'title': 'Upload Image'
                   })
-
-def flip(request,username):
-    if username == request.user.username:
-        if request.method == 'POST':
-            image_flip = Document.objects.get(pk=request.GET["document_id"])
-            flip_choice=Document.objects.get(pk=request.GET['flip_id'])
-            f=image_flip.flop_choice
-            # f.append(image_flip)
-            # f.append(flip_choice)
-            return HttpResponse(json.dumps(f))
-
-
 
 
 def user_info(request, username):
@@ -247,7 +237,7 @@ def user_info(request, username):
         return render(request, 'portal/info.html', {'form': form, 'obj': obj})
 
 
-def doc_update(request, username, pk, template_name='portal/model_form_upload.html'):
+def doc_update(request, username, pk, template_name='portal/edit_image.html'):
     if username == request.user.username:
         updatex = get_object_or_404(Document, pk=pk)
         form = UpdateForm(request.POST or None, instance=updatex)
@@ -257,7 +247,7 @@ def doc_update(request, username, pk, template_name='portal/model_form_upload.ht
                 return redirect(reverse('profile', kwargs={'username': username}))
             else:
                 print("---edit image form is not valid---")
-            return render(request, template_name, {'form': form, 'title': 'Edit Image', 'updatex': updatex })
+            return render(request, template_name, {'form': form, 'title': 'Edit Image', 'updatex': updatex})
         else:
             print("---you are not correct user for edit image---")
     else:
@@ -328,4 +318,46 @@ def list_of_user(request):
         # y = ','.join(x)
         print(x)
         return HttpResponse(x)
+
+
+def validate_username(request):
+    username = request.GET.get('username', None)
+    data = {
+        'is_taken': User.objects.filter(username__iexact=username).exists()
+    }
+    return JsonResponse(data)
+
+
+def validate_emailid(request):
+    email = request.GET.get('email', None)
+    data = {
+        'is_taken': User.objects.filter(email__iexact=email).exists()
+    }
+    return JsonResponse(data)
+
+
+def rotate_image(request):
+    rotate = request.GET.get('rotate', None)
+    imgid = request.GET.get('imgid')
+    img = Document.objects.get(id=int(imgid))
+    img.rotate = rotate
+    img.save()
+    print("rotate")
+    data = {
+        'is_taken': 'yes'
+    }
+    return JsonResponse(data)
+
+
+def blur_image(request):
+    blur = request.GET.get('blur', None)
+    imgid = request.GET.get('imgid')
+    img = Document.objects.get(id=int(imgid))
+    img.blur = blur
+    img.save()
+    print("blur")
+    data = {
+        'is_taken': 'yes'
+    }
+    return JsonResponse(data)
 
