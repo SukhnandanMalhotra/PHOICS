@@ -17,6 +17,8 @@ from django.http import HttpResponseRedirect
 from django.contrib.auth.views import login
 from django.core import serializers
 import json
+from django.http import JsonResponse
+
 
 from django.shortcuts import (render_to_response)
 from django.template import RequestContext
@@ -317,3 +319,18 @@ def list_of_user(request):
         print(x)
         return HttpResponse(x)
 
+
+def validate_username(request):
+    username = request.GET.get('username', None)
+    data = {
+        'is_taken': User.objects.filter(username__iexact=username).exists()
+    }
+    return JsonResponse(data)
+
+
+def validate_emailid(request):
+    email = request.GET.get('email', None)
+    data = {
+        'is_taken': User.objects.filter(email__iexact=email).exists()
+    }
+    return JsonResponse(data)

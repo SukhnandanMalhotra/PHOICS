@@ -59,7 +59,9 @@ urlpatterns = [
 
     url(r'^like/$', views.like, name='like'),
     url(r'^user_list/$', views.list_of_user, name='user_list'),
+    url(r'^validate_username/$', views.validate_username, name='validate_username'),
+    url(r'^validate_email/$', views.validate_emailid, name='validate_email'),
 
-   ]
+]
 
 
