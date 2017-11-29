@@ -237,7 +237,7 @@ def user_info(request, username):
         return render(request, 'portal/info.html', {'form': form, 'obj': obj})
 
 
-def doc_update(request, username, pk, template_name='portal/model_form_upload.html'):
+def doc_update(request, username, pk, template_name='portal/edit_image.html'):
     if username == request.user.username:
         updatex = get_object_or_404(Document, pk=pk)
         form = UpdateForm(request.POST or None, instance=updatex)
@@ -247,7 +247,7 @@ def doc_update(request, username, pk, template_name='portal/model_form_upload.ht
                 return redirect(reverse('profile', kwargs={'username': username}))
             else:
                 print("---edit image form is not valid---")
-            return render(request, template_name, {'form': form, 'title': 'Edit Image', 'updatex': updatex })
+            return render(request, template_name, {'form': form, 'title': 'Edit Image', 'updatex': updatex})
         else:
             print("---you are not correct user for edit image---")
     else:
@@ -334,3 +334,30 @@ def validate_emailid(request):
         'is_taken': User.objects.filter(email__iexact=email).exists()
     }
     return JsonResponse(data)
+
+
+def rotate_image(request):
+    rotate = request.GET.get('rotate', None)
+    imgid = request.GET.get('imgid')
+    img = Document.objects.get(id=int(imgid))
+    img.rotate = rotate
+    img.save()
+    print("rotate")
+    data = {
+        'is_taken': 'yes'
+    }
+    return JsonResponse(data)
+
+
+def blur_image(request):
+    blur = request.GET.get('blur', None)
+    imgid = request.GET.get('imgid')
+    img = Document.objects.get(id=int(imgid))
+    img.blur = blur
+    img.save()
+    print("blur")
+    data = {
+        'is_taken': 'yes'
+    }
+    return JsonResponse(data)
+

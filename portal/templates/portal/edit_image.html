@@ -1,12 +1,63 @@
 {% load staticfiles %}
 <!DOCTYPE html>
 <html>
+
+
 <head>
-    <script >
+       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <script>
+    $(document).ready(function() {
+        $("#id_rotate").change(function () {
+            var rotate = $(this).val();
+            var imgid = $(".Form").attr("id");
+            console.log(imgid);
+            $.ajax({
+                url: '{% url 'rotate_image' %}',
+                data: {
+                    'rotate': rotate,
+                    'imgid': imgid
+                },
+                dataType: 'json',
+                success: function (data) {
+                    if (data.is_taken) {
+{#                            preview(event);#}
+                            alert("image after rotate");
+                    }
+                }
+
+            })
+        }) ;
+         $("#id_blur").change(function () {
+            var blur = $(this).val();
+            var imgid = $(".Form").attr("id");
+            console.log(imgid);
+            $.ajax({
+                url: '{% url 'blur_image' %}',
+                data: {
+                    'blur': blur,
+                    'imgid': imgid
+                },
+                dataType: 'json',
+                success: function (data) {
+                    if (data.is_taken) {
+{#                            preview(event);#}
+                            alert("image after blur");
+                    }
+                }
+
+            })
+        }) ;
+
+    })
+    </script>
+    <script>
         function preview(event)
         {
             var reader = new FileReader();
-            reader.onload = function()
+            reader.onprogress = function()
             {
                 var output = document.getElementById('output');
                 output.src = reader.result;
@@ -14,6 +65,7 @@
             reader.readAsDataURL(event.target.files[0]);
         }
     </script>
+
 {#    <script>#}
 {#        document.getElementById("result").innerHTML = localStorage.getItem("obj.document.url");#}
 {#        var myUrl = localStorage.url#}
@@ -36,18 +88,17 @@
         <div class="content heading"><p class="upload" ><p style="text-align: center; font-size: 200%">
             {{ user.username }}</p><br><br>{{ title }}</div>
          <div class="content form">
-             <div class="Form">
-
+             <div class="Form" id="{{ updatex.id }}">
 
                     {% if request.user.is_authenticated %}
+{#                         <img src="{{ updatex.document.url }}" >#}
 
-                         <form method='post' enctype="multipart/form-data" novalidate onchange="preview(event)">
-                             {% csrf_token %}
-                                 <div class="row">
-                                     <label for="name">{{ form.document.label_tag }}</label>
-                                      {{ form.document }}<br>
-                                      <p id="error_image_document" style="color: #ff0000">{{ form.document.errors }}
-                                 </div>
+                         <form method='post' enctype="multipart/form-data" novalidate onsubmit="preview(event)">
+
+                                {% csrf_token %}
+
+
+
                                  <div class="row">
                                      <label for="name">{{ form.status.label_tag }}</label>
                                       {{ form.status }}<br>
@@ -91,7 +142,8 @@
                                  </div>
 
 
-                             {#                            {% for field in form %}#}
+
+{#                            {% for field in form %}#}
 {#                                <div class="row">#}
 {#                                    <label for="name">{{ field.label_tag }}</label>#}
 {#                                    {{ field }}#}
@@ -117,12 +169,11 @@
 
                  </div>
             </div>
-            <div class="content preview">
-                <h3>upload photo</h3>
-                <div class="image"><img id="output"></div>
+
+        <div class="content preview">
+                <h3>current photo</h3>
+                <div class="image"><img src="{{ updatex.document.url }}"></div>
             </div>
-
-
         </div>
 </body>
 </html>

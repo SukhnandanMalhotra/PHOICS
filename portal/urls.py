@@ -61,6 +61,8 @@ urlpatterns = [
     url(r'^user_list/$', views.list_of_user, name='user_list'),
     url(r'^validate_username/$', views.validate_username, name='validate_username'),
     url(r'^validate_email/$', views.validate_emailid, name='validate_email'),
+    url(r'^edit_image/rotate/$', views.rotate_image, name='rotate_image'),
+    url(r'^edit_image/blur/$', views.blur_image, name='blur_image'),
 
 ]
 

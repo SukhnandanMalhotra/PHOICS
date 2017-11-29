@@ -156,9 +156,9 @@ class Document(models.Model,object):                  # all details comming abou
 #         storage.delete(path)
 
 class Comments(models.Model):
-    user= models.ForeignKey(User)
-    document=models.ForeignKey(Document)
-    comment=models.TextField(max_length=225)
+    user = models.ForeignKey(User)
+    document = models.ForeignKey(Document)
+    comment = models.TextField(max_length=225)
     uploaded_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
