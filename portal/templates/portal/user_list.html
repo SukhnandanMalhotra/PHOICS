@@ -15,11 +15,11 @@
             <a href="{% url 'search' %}"><i class="fa fa-search fa-2x" aria-hidden="true"></i></a>
         	<a href="{% url 'newsfeed' %}"><i class="fa fa-home fa-2x" aria-hidden="true"></i></a>
             <a href="{% url 'profile' user.username %}">	<i class="fa fa-user fa-2x" aria-hidden="true"></i></a>
-         	<a href="{% url 'login' %}"><i class="fa fa-sign-out fa-2x" aria-hidden="true"></i></a>
+         	<a href="{% url 'logout' %}"><i class="fa fa-sign-out fa-2x" aria-hidden="true"></i></a>
     </div>
 
     {%  if request.user.is_authenticated %}
-        <h3 style="margin-top: 5%">{{ user.username }}</h3>
+        <h3 style="margin-top: 5%; text-align: center; font-size: xx-large">{{ user.username }}</h3>
     <form method="get">
          <div class="search-box">
              <h1>Whom do you want to search?</h1>

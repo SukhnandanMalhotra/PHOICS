@@ -13,13 +13,22 @@ body{
     z-index: 1;
 }
 
+/*div.content {*/
+  /*overflow: hidden;*/
+  /*height: 4vh;*/
+/*}*/
+
+/*#more:checked + div {*/
+  /*height: auto;*/
+/*}*/
+
 h2{
 	position: relative;
     margin-top:3vh;
     margin-left:10vw;
 	letter-spacing: 0.5em;
     font-family: 'Raleway' ;
-   display: inline;
+    display: inline;
 }
 i.fa{
 	cursor: pointer;
@@ -55,7 +64,7 @@ div.feed1{
 	position: relative;
 	margin-top:3vh;
 	margin-left: 25vw;
-    width:50vw;
+    width:60vw;
     background-color: white;
     align-items: center;
     border:1px solid #90949c;

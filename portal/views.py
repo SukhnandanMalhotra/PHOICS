@@ -8,22 +8,22 @@ from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from django.template.loader import render_to_string
 from phoics.settings import EMAIL_HOST_USER
 from .tokens import account_activation_token
-from django.shortcuts import render, redirect, get_object_or_404, render_to_response,reverse
+from django.shortcuts import render, redirect, get_object_or_404, reverse
 from .models import Document, Profile, Comments
 from .forms import DocumentForm, SignUpPage, Info, UpdateForm
 from django.contrib import messages
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.http import HttpResponseRedirect
 from django.contrib.auth.views import login
-from django.core import serializers
+# from django.core import serializers
 import json
 
-from django.shortcuts import (render_to_response)
-from django.template import RequestContext
-
-
-from django.core.files.storage import FileSystemStorage
-from django.conf import settings
+# from django.shortcuts import (render_to_response)
+# from django.template import RequestContext
+#
+#
+# from django.core.files.storage import FileSystemStorage
+# from django.conf import settings
 from django.http import HttpResponse
 """
  it will work when user is logged out

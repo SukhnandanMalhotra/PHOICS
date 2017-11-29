@@ -37,12 +37,15 @@
                     var comment;
                     imgid = $(this).attr("img_data");
                     comment = $(this).val();
-                    $.get('/phoics/comment/', {'imgid': imgid, 'comment': comment}, function (data) {
+                    $(this).val('');
+                    if (comment != ''){
+                        $.get('/phoics/comment/', {'imgid': imgid, 'comment': comment}, function (data) {
                         var data1 =  JSON.parse(data);
                         $('#show_user' + imgid).html(data1['user']);
                         $('#comma').html(':');
                         $('#show_comment' + imgid).html(data1['comment']);
                     })
+                    }
                 }
             })
         });
@@ -61,7 +64,7 @@
     <div id="top">
         <h2>PHOICS</h2>
         <a href="{% url 'search' %}" ><i class="fa fa-search fa-2x" aria-hidden="true"></i></a>
-        <a href="{% url 'newsfeed' %}"><i class="fa fa-home fa-2x" aria-hidden="true"></i></a>
+{#        <a href="{% url 'newsfeed' %}"><i class="fa fa-home fa-2x" aria-hidden="true"></i></a>#}
         <a href="{% url 'profile' user.username %}">	<i class="fa fa-user fa-2x" aria-hidden="true"></i></a>
         <a href="{% url 'logout' %}"><i class="fa fa-sign-out fa-2x" aria-hidden="true"></i></a>
     </div>
@@ -104,11 +107,15 @@
                         <p id="show_user{{img.pk}}" style="display: inline"></p>
                         <p id="comma" style="display: inline" ></p>
                         <p id="show_comment{{img.pk}}" style="display: inline"></p><br><br>
-                        {% for com in comments %}
-                            {% if com.document == img %}
-                                <p>{{com.user}} : {{com.comment}}</p><br>
-                            {% endif %}
-                        {% endfor %}
+{#                        <div class = "content">#}
+                        <div class = "content">
+                            {% for com in comments %}
+                                {% if com.document == img %}
+                                    <p>{{com.user}} : {{com.comment}}</p><br>
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+{#                    <button>Read more</button>#}
                         {% post_to_facebook img.document.url "Share to facebook!" %}
                     </div>
                 {% endif %}
@@ -132,7 +139,8 @@
                 {% endif %}
             {% endfor %}
         </footer>
-
+    {% else %}
+        <h3>you are not logged-in first login</h3>
     {% endif %}
 </body>
 </html>
