@@ -63,6 +63,7 @@ urlpatterns = [
     url(r'^validate_email/$', views.validate_emailid, name='validate_email'),
     url(r'^edit_image/rotate/$', views.rotate_image, name='rotate_image'),
     url(r'^edit_image/blur/$', views.blur_image, name='blur_image'),
+    url(r'^edit_image/flip/$', views.flip_image, name='flip_image'),
 
 ]
 

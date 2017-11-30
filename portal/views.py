@@ -182,7 +182,7 @@ def newsfeed(request):
     return render(request, 'portal/newsfeed.html', {'images': images, 'comments':comments, 'page_range': page_range})
 
 def comment(request):
-    img_id=0
+    img_id = 0
     if request.method == 'GET':
         img_id=request.GET['imgid']
 
@@ -192,10 +192,11 @@ def comment(request):
         user = User.objects.get(username=str(request.user))
         com = request.GET['comment']
         d['comment'] = com
-        d['user']=user.username
+        d['user'] = user.username
         comm = Comments.objects.create(user=request.user, document=image, comment=com)
         x = json.dumps(d)
         return HttpResponse(x)
+
 
 def model_form_upload(request, username):
     if username == request.user.username:
@@ -339,25 +340,41 @@ def validate_emailid(request):
 def rotate_image(request):
     rotate = request.GET.get('rotate', None)
     imgid = request.GET.get('imgid')
+    print(imgid)
     img = Document.objects.get(id=int(imgid))
     img.rotate = rotate
     img.save()
     print("rotate")
     data = {
-        'is_taken': 'yes'
+        'img_source': str(img.document)
     }
     return JsonResponse(data)
 
 
 def blur_image(request):
     blur = request.GET.get('blur', None)
+    documents = Document.objects.all()
     imgid = request.GET.get('imgid')
+    print(imgid)
     img = Document.objects.get(id=int(imgid))
     img.blur = blur
     img.save()
     print("blur")
     data = {
-        'is_taken': 'yes'
+        'img_source': str(img.document)
+    }
+    return JsonResponse(data)
+
+
+def flip_image(request):
+    flip = request.GET.get('flip', None)
+    imgid = request.GET.get('imgid')
+    img = Document.objects.get(id=int(imgid))
+    img.effect = flip
+    img.save()
+    # print("flip")
+    data = {
+        'img_source': str(img.document)
     }
     return JsonResponse(data)
 

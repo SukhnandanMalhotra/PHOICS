@@ -8,24 +8,27 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
+
     <script>
+
+
     $(document).ready(function() {
         $("#id_rotate").change(function () {
             var rotate = $(this).val();
             var imgid = $(".Form").attr("id");
-            console.log(imgid);
+            var img_source = $(".image-display").attr("id");
+
             $.ajax({
                 url: '{% url 'rotate_image' %}',
                 data: {
                     'rotate': rotate,
                     'imgid': imgid
                 },
-                dataType: 'json',
+
                 success: function (data) {
-                    if (data.is_taken) {
-{#                            preview(event);#}
-                            alert("image after rotate");
-                    }
+
+
+                        $( ".image-display" ).attr("src", "/media/" + data.img_source );
                 }
 
             })
@@ -33,31 +36,52 @@
          $("#id_blur").change(function () {
             var blur = $(this).val();
             var imgid = $(".Form").attr("id");
-            console.log(imgid);
+            var img_source = $(".image-display").attr("id");
+
             $.ajax({
                 url: '{% url 'blur_image' %}',
                 data: {
                     'blur': blur,
                     'imgid': imgid
                 },
-                dataType: 'json',
+
                 success: function (data) {
-                    if (data.is_taken) {
-{#                            preview(event);#}
-                            alert("image after blur");
-                    }
+                          console.log("blurring");
+
+                        $( ".image-display" ).attr("src", "/media/" + data.img_source );
                 }
 
             })
         }) ;
 
+         $("#id_flip").change(function () {
+            var flip = $(this).val();
+            var imgid = $(".Form").attr("id");
+            var img_source = $(".image-display").attr("id");
+
+            $.ajax({
+                url: '{% url 'flip_image' %}',
+                data: {
+                    'flip': flip,
+                    'imgid': imgid
+                },
+
+                success: function (data) {
+                          console.log("flip");
+
+                        $( ".image-display" ).attr("src", "/media/" + data.img_source );
+                }
+
+            })
+        }) ;
     })
     </script>
     <script>
         function preview(event)
         {
+            console.log("imagination");
             var reader = new FileReader();
-            reader.onprogress = function()
+            reader.onload = function()
             {
                 var output = document.getElementById('output');
                 output.src = reader.result;
@@ -87,7 +111,7 @@
     <div class="container">
         <div class="content heading"><p class="upload" ><p style="text-align: center; font-size: 200%">
             {{ user.username }}</p><br><br>{{ title }}</div>
-         <div class="content form">
+        <div class="content form">
              <div class="Form" id="{{ updatex.id }}">
 
                     {% if request.user.is_authenticated %}
@@ -172,7 +196,7 @@
 
         <div class="content preview">
                 <h3>current photo</h3>
-                <div class="image"><img src="{{ updatex.document.url }}"></div>
+                <div><img id="{{ updatex.document }}" class="image-display" src="{{ updatex.document.url }}"></div>
             </div>
         </div>
 </body>
