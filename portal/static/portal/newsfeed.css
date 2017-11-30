@@ -168,3 +168,9 @@ button:hover{
 	color: white;
 }
 
+.time{
+	margin-bottom: 0;
+}
+.card{
+	border:2px solid rgba(0,0,0,0.125);
+}

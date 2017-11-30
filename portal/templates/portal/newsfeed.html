@@ -33,9 +33,7 @@
                 }
             })
         })
-        function comment_pointer(){
-            $("#comm").css("display", 'block');
-        }
+
     </script>
 </head>
 <body>
@@ -48,24 +46,26 @@
     </div>
     {% if request.user.is_authenticated %}
         {% csrf_token %}
-        <div class="container-fluid">
+        <div class="container">
             <div class="row">
             {% for img in images %}
 
                 {% if img.status == "PUBLIC" %}
                     <div class= "offset-md-3 col-md-6">
                         <div class="card">
+
                             <a href="{% url 'profile' img.user.username %}" class="card-body"> <h4 class="card-title">{{ img.user }}</h4></a>
                         <a href="{{ img.document.url }}"><img src="{{ img.document.url }}" class="card-img" ></a>
-                            
-                        <p class="date">{{ img.uploaded_at|naturaltime|capfirst }}</p>
+                        <div class="card-body">
+                        <p class="date time ">{{ img.uploaded_at|naturaltime|capfirst }}</p>
                         <div class="display" img-id="{{ img.id }}">
-                        <strong>Total likes : </strong>
 
-                        <strong id="count_like{{ img.id }}">{{ img.like_user.count}}</strong><br>
+
+                        <small class="text-muted" id="count_like{{ img.id }}">{{ img.like_user.count}} likes</small><br>
+                        </div>
                         </div>
                     <p id="user{{ img.id }}"></p>
-                    <ul class="nav nav-pills nav-fill">
+                    <ul class="nav">
                     <li class="nav-item">{% ifequal 1 img.like_or_not %}
                         <button type="submit" class="display1 nav-link" id="dislike{{ img.id }}" data-imgid="{{ img.id }}">
                             <span class="glyphicon glyphicon-thumbs-down"></span>
@@ -79,24 +79,34 @@
                     {% endifnotequal %}
                     </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link" onclick="comment_pointer()">
+                            <a class="nav-link" data-toggle="collapse" href=".collapse" aria-expanded="false" aria-controls="collapseExample">
                                 <i class="fa fa-comment-o" aria-hidden="true"></i> Comment
 
                             </a>
                         </li>
+                    <li class="nav-item">
+                        <a href='#' class="nav-link">
+                        <i class="fa fa-share" aria-hidden="true"></i> Share
+                        </a>
+                    </li>
                     </ul>
-                        <input  class="comment" type="text" img_data="{{img.pk}}" placeholder="Enter a comment" style="display:none" id="comm"><br>
+                        <div class="collapse" id="collapseExample">
+                        <input  class="comment" type="text" img_data="{{img.pk}}" placeholder="Add a comment"><br>
                         <p id="show_user{{img.pk}}" style="display: inline"></p>
                         <p id="comma" style="display: inline" ></p>
                         <p id="show_comment{{img.pk}}" style="display: inline"></p><br><br>
+
                         {% for com in comments %}
+
                             {% if com.document == img %}
                                 <p>{{com.user}} : {{com.comment}}</p><br>
                             {% endif %}
+
                         {% endfor %}
 {#                        <p style="text-align: center;" {% post_to_facebook img.document.url "Share to facebook!" %}></p>#}
-
                         </div>
+                        </div>
+                    <br>
                     </div>
                 {% endif %}
             {% endfor %}
