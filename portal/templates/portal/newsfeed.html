@@ -14,8 +14,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<script src="{% static 'portal/javascript/ajax.js' %}"></script>
-    <script>
+<script>
         $(document).ready(function(){
             $(".comment").on('keypress', function(event) {
                 key = event.keyCode;
@@ -24,26 +23,38 @@
                     var comment;
                     imgid = $(this).attr("img_data");
                     comment = $(this).val();
-                    $.get('/phoics/comment/', {'imgid': imgid, 'comment': comment}, function (data) {
+                    $(this).val('');
+                    if (comment != ''){
+                        $.get('/phoics/comment/', {'imgid': imgid, 'comment': comment}, function (data) {
                         var data1 =  JSON.parse(data);
                         $('#show_user' + imgid).html(data1['user']);
                         $('#comma').html(':');
                         $('#show_comment' + imgid).html(data1['comment']);
                     })
+                    }
                 }
             })
-        })
+        });
 
-    </script>
+</script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="{% static 'portal/javascript/ajax.js' %}"></script>
+
 </head>
 <body>
-    <div id="top">
-        <h2>PHOICS</h2>
-        <a href="{% url 'search' %}" ><i class="fa fa-search fa-2x" aria-hidden="true"></i></a>
-        <a href="{% url 'newsfeed' %}"><i class="fa fa-home fa-2x" aria-hidden="true"></i></a>
-        <a href="{% url 'profile' user.username %}">	<i class="fa fa-user fa-2x" aria-hidden="true"></i></a>
-        <a href="{% url 'logout' %}"><i class="fa fa-sign-out fa-2x" aria-hidden="true"></i></a>
+<nav class="navbar">
+    <div class="container top">
+        <a class="navbar-brand" href="{% url 'newsfeed' %}">PHOICS</a>
+        <ul class="nav justify-content-end">
+
+
+            <li class="nav-item"><a href="{% url 'search' %}" class="nav-link"><i class="fa fa-search fa-2x" aria-hidden="true"></i></a></li>
+            <li class="nav-item"><a href="{% url 'newsfeed' %}" class="nav-link"><i class="fa fa-home fa-2x" aria-hidden="true"></i></a></li>
+        <li class="nav-item>"><a class="nav-link" href="{% url 'profile' user.username %}">	<i class="fa fa-user fa-2x" aria-hidden="true"></i></a></li>
+            <li class="nav-item"><a href="{% url 'logout' %}" class="nav-link"><i class="fa fa-sign-out fa-2x" aria-hidden="true"></i></a></li>
+        </ul>
     </div>
+</nav>
     {% if request.user.is_authenticated %}
         {% csrf_token %}
         <div class="container">
@@ -79,9 +90,8 @@
                     {% endifnotequal %}
                     </li>
                         <li class="nav-item">
-                            <a class="nav-link" data-toggle="collapse" href=".collapse" aria-expanded="false" aria-controls="collapseExample">
+                            <a class="nav-link" data-toggle="collapse" href="#collapseExample{{img.pk }}" aria-expanded="false" aria-controls="collapseExample">
                                 <i class="fa fa-comment-o" aria-hidden="true"></i> Comment
-
                             </a>
                         </li>
                     <li class="nav-item">
@@ -90,8 +100,10 @@
                         </a>
                     </li>
                     </ul>
-                        <div class="collapse" id="collapseExample">
+                        <div class="collapse" id="collapseExample{{ img.pk }}">
+                        console.log(1)
                         <input  class="comment" type="text" img_data="{{img.pk}}" placeholder="Add a comment"><br>
+                        console.log(2)
                         <p id="show_user{{img.pk}}" style="display: inline"></p>
                         <p id="comma" style="display: inline" ></p>
                         <p id="show_comment{{img.pk}}" style="display: inline"></p><br><br>
