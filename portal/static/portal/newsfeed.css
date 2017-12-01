@@ -3,54 +3,14 @@ body{
 	background-color: #eee;
 	margin: 0;
 }
-#top{
-	top:0;
-	margin: 0;
-	position:fixed;
-	width:100vw;
-    height:10vh;
-    background-color: #02b46d;
-    z-index: 1;
-}
 
-h2{
-	position: relative;
-    margin-top:3vh;
-    margin-left:10vw;
-	letter-spacing: 0.5em;
-    font-family: 'Raleway' ;
-   display: inline;
-}
-i.fa{
-	cursor: pointer;
-}
-i.fa:hover{
-	color:white;
-}
-i.fa-search{
-	margin-top:3vh;
-	margin-left:50%;
-}
-i.fa-home{
-	position: relative;
-	margin-top:3vh;
-	margin-left:2%;
-}
-i.fa-user{
-	margin-left:2%;
-}
-i.fa-sign-out{
-	margin-left:2%;
-}
+
 
 a{
 	text-decoration: none;
 	color:black;
 }
-div.container{
-	position:relative;
-	margin-top:12vh;
-}
+
 div.feed1{
 	position: relative;
 	margin-top:3vh;
@@ -107,23 +67,17 @@ footer{
 }
 @media only screen and (max-width:1050px){
 
-    i.fa-search{
-        margin-left:45%;
-}
+
 }
 @media only screen and (max-width:780px){
-    i.fa-search{
-        margin-left:30%;
-}
+
 p{
 		font-size:90%;
 	}
 
 }
 @media only screen and (max-width:560px){
-    i.fa{
-    	font-size:150%;
-    }
+
 }
 @media only screen and (max-width:490px){
 	p{
@@ -133,12 +87,7 @@ p{
     p.name{
 		font-size:90%;
 	}
- i.fa{
-		font-size:120%;
-	}
-	i.fa-search{
-      margin-left:10%;
-}
+
 }
 @media only screen and (max-width:360px){
 	h2{
@@ -151,12 +100,6 @@ p{
 		font-size:100%;
 	}
 
-	i.fa{
-		font-size:90%;
-	}
-	i.fa-search{
-		margin-left:27%;
-	}
 }
 button{
 	background-color:transparent;
@@ -171,6 +114,18 @@ button:hover{
 	color: white;
 }
 
-div.display1{
-	background-color: red;
+.time{
+	margin-bottom: 0;
+}
+.card{
+	border:2px solid rgba(0,0,0,0.125);
+}
+.navbar{
+    background-color: #000;
+    top:0;
+    position:fixed;
+
+}
+.top a{
+    color: #fff;
 }

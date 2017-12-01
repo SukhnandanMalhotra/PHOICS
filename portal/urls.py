@@ -67,6 +67,6 @@ urlpatterns = [
     url(r'^edit_image/width/$', views.width_image, name='width_image'),
     url(r'^edit_image/effect/$', views.effect_image, name='effect_image'),
 
-]
+   ]
 
 
