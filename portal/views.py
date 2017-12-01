@@ -17,6 +17,8 @@ from django.http import HttpResponseRedirect
 from django.contrib.auth.views import login
 # from django.core import serializers
 import json
+from django.http import JsonResponse
+
 
 # from django.shortcuts import (render_to_response)
 # from django.template import RequestContext
@@ -53,11 +55,6 @@ def check_login(request):
     return login(request, template_name='portal/login.html')
 
 
-def check_signup(request):
-   if request.user.is_authenticated:
-        return redirect('newsfeed')
-
-   return redirect('signup')
 
 # front page function which return front page html
 def front_page(request):
@@ -75,8 +72,9 @@ def my_view(request):
         return render(request, 'portal/login.html')
 
 
-
 def signup(request):
+    if request.user.is_authenticated:
+        return redirect('newsfeed')
     if request.method == 'POST':
         form = SignUpPage(request.POST)
         if form.is_valid():
@@ -180,7 +178,7 @@ def newsfeed(request):
     return render(request, 'portal/newsfeed.html', {'images': images, 'comments':comments, 'page_range': page_range})
 
 def comment(request):
-    img_id=0
+    img_id = 0
     if request.method == 'GET':
         img_id=request.GET['imgid']
 
@@ -190,10 +188,11 @@ def comment(request):
         user = User.objects.get(username=str(request.user))
         com = request.GET['comment']
         d['comment'] = com
-        d['user']=user.username
+        d['user'] = user.username
         comm = Comments.objects.create(user=request.user, document=image, comment=com)
         x = json.dumps(d)
         return HttpResponse(x)
+
 
 def model_form_upload(request, username):
     if username == request.user.username:
@@ -235,7 +234,7 @@ def user_info(request, username):
         return render(request, 'portal/info.html', {'form': form, 'obj': obj})
 
 
-def doc_update(request, username, pk, template_name='portal/model_form_upload.html'):
+def doc_update(request, username, pk, template_name='portal/edit_image.html'):
     if username == request.user.username:
         updatex = get_object_or_404(Document, pk=pk)
         form = UpdateForm(request.POST or None, instance=updatex)
@@ -245,7 +244,7 @@ def doc_update(request, username, pk, template_name='portal/model_form_upload.ht
                 return redirect(reverse('profile', kwargs={'username': username}))
             else:
                 print("---edit image form is not valid---")
-            return render(request, template_name, {'form': form, 'title': 'Edit Image', 'updatex': updatex })
+            return render(request, template_name, {'form': form, 'title': 'Edit Image', 'updatex': updatex})
         else:
             print("---you are not correct user for edit image---")
     else:
@@ -286,7 +285,7 @@ def error500(request):
 
 @login_required
 def like(request):
-    imgid=None
+    imgid = None
     if request.method == 'GET':
 
         imgid = request.GET['imgid']
@@ -316,4 +315,102 @@ def list_of_user(request):
         # y = ','.join(x)
         print(x)
         return HttpResponse(x)
+
+
+def validate_username(request):
+    username = request.GET.get('username', None)
+    data = {
+        'is_taken': User.objects.filter(username__iexact=username).exists()
+    }
+    return JsonResponse(data)
+
+
+def validate_emailid(request):
+    email = request.GET.get('email', None)
+    data = {
+        'is_taken': User.objects.filter(email__iexact=email).exists()
+    }
+    return JsonResponse(data)
+
+
+def rotate_image(request):
+    rotate = request.GET.get('rotate', None)
+    imgid = request.GET.get('imgid')
+    print(imgid)
+    img = Document.objects.get(id=int(imgid))
+    img.rotate = rotate
+    img.save()
+    print("rotate")
+    data = {
+        'img_source': str(img.document)
+    }
+    return JsonResponse(data)
+
+
+def blur_image(request):
+    blur = request.GET.get('blur', None)
+    imgid = request.GET.get('imgid')
+    print(imgid)
+    img = Document.objects.get(id=int(imgid))
+    img.blur = blur
+    img.save()
+    print("blur")
+    data = {
+        'img_source': str(img.document)
+    }
+    return JsonResponse(data)
+
+
+def width_image(request):
+    width = request.GET.get('width', None)
+    imgid = request.GET.get('imgid')
+    print(imgid)
+    img = Document.objects.get(id=int(imgid))
+    img.width = int(width)
+    img.save()
+    print("width")
+    data = {
+        'img_source': str(img.document)
+    }
+    return JsonResponse(data)
+
+
+def height_image(request):
+    height = request.GET.get('height', None)
+    imgid = request.GET.get('imgid')
+    print(imgid)
+    img = Document.objects.get(id=int(imgid))
+    img.height = int(height)
+    img.save()
+    print("height")
+    data = {
+        'img_source': str(img.document)
+    }
+    return JsonResponse(data)
+
+
+def flip_image(request):
+    flip = request.GET.get('flip', None)
+    imgid = request.GET.get('imgid')
+    img = Document.objects.get(id=int(imgid))
+    img.flip = flip
+    img.save()
+    # print("flip")
+    data = {
+        'img_source': str(img.document)
+    }
+    return JsonResponse(data)
+
+
+def effect_image(request):
+    effect = request.GET.get('effect')
+    imgid = request.GET.get('imgid')
+    img = Document.objects.get(id=int(imgid))
+    img.effect = effect
+    img.save()
+    data = {
+        'img_source': str(img.document)
+    }
+    print("kya hua be")
+    return JsonResponse(data)
 

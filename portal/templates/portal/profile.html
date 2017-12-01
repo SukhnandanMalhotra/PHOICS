@@ -17,9 +17,7 @@
          </div>
 
          <div class="user-profile">
-{#             {% if request.user.profile_pic is none %}#}
-{#                <img src="{{ MEDIA_URL }}profile_pic/default_profile.jpg">#}
-{#             {% endif %}#}
+
              {% for obj in profile_pic %}
                      {% if obj.user.username == username %}
                          <div class="dp"> <a href="{{ obj.profile_pic.url }}">

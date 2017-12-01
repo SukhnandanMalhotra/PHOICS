@@ -21,12 +21,14 @@
 
     </style>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
 <link rel="stylesheet" type="text/css" href="{% static 'portal/newsfeed.css' %}">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
 <script src="{% static 'portal/javascript/ajaxjq.js' %}"></script>
     <script>
         $(document).ready(function(){
@@ -47,6 +49,7 @@
                     })
                     }
                 }
+
             })
         });
 
@@ -59,67 +62,118 @@
     }
 
     </script>
+
+
+
+
 </head>
 <body>
-    <div id="top">
-        <h2>PHOICS</h2>
-        <a href="{% url 'search' %}" ><i class="fa fa-search fa-2x" aria-hidden="true"></i></a>
-{#        <a href="{% url 'newsfeed' %}"><i class="fa fa-home fa-2x" aria-hidden="true"></i></a>#}
-        <a href="{% url 'profile' user.username %}">	<i class="fa fa-user fa-2x" aria-hidden="true"></i></a>
-        <a href="{% url 'logout' %}"><i class="fa fa-sign-out fa-2x" aria-hidden="true"></i></a>
+<nav class="navbar">
+    <div class="container top">
+        <a class="navbar-brand" href="{% url 'newsfeed' %}">PHOICS</a>
+        <ul class="nav justify-content-end">
+
+
+            <li class="nav-item"><a href="{% url 'search' %}" class="nav-link"><i class="fa fa-search fa-2x" aria-hidden="true"></i></a></li>
+            <li class="nav-item"><a href="{% url 'newsfeed' %}" class="nav-link"><i class="fa fa-home fa-2x" aria-hidden="true"></i></a></li>
+        <li class="nav-item>"><a class="nav-link" href="{% url 'profile' user.username %}">	<i class="fa fa-user fa-2x" aria-hidden="true"></i></a></li>
+            <li class="nav-item"><a href="{% url 'logout' %}" class="nav-link"><i class="fa fa-sign-out fa-2x" aria-hidden="true"></i></a></li>
+        </ul>
     </div>
+</nav>
     {% if request.user.is_authenticated %}
         {% csrf_token %}
         <div class="container">
+            <div class="row">
             {% for img in images %}
 
                 {% if img.status == "PUBLIC" %}
-                    <div class="feed1">
-                        <a href="{{ img.document.url }}"><img src="{{ img.document.url }}" ></a>
-                        <a href="{% url 'profile' img.user.username %}"> <p class="name">{{ img.user }}</p></a>
-                        <p class="date">{{ img.uploaded_at|naturaltime|capfirst }}</p>
-                        <div class="display" img-id="{{ img.id }}">
-                        <strong>Total likes : </strong>
+                    <div class= "offset-md-3 col-md-6">
+                        <div class="card">
 
-                        <strong id="count_like{{ img.id }}">{{ img.like_user.count}}</strong><br>
-                    </div>
+                            <a href="{% url 'profile' img.user.username %}" class="card-body"> <h4 class="card-title">{{ img.user }}</h4></a>
+                        <a href="{{ img.document.url }}"><img src="{{ img.document.url }}" class="card-img" ></a>
+                        <div class="card-body">
+                        <p class="date time ">{{ img.uploaded_at|naturaltime|capfirst }}</p>
+                        <div class="display" img-id="{{ img.id }}">
+
+
+                        <small class="text-muted" id="count_like{{ img.id }}">{{ img.like_user.count}}</small> likes<br>
+                        </div>
+                        </div>
                     <p id="user{{ img.id }}"></p>
 
 
 
 
-                    {% ifequal 1 img.like_or_not %}
-                      <button type="submit">
-                      <i  class="display1 fa-thumbs-down" id="dislike{{ img.id }}" data-imgid="{{ img.id }}" onclick="myFunction2(this)"></i>
-                      </button> <br><br>
+{#                    {% ifequal 1 img.like_or_not %}#}
+{#                      <button type="submit">#}
+{#                      <i  class="display1 fa-thumbs-down" id="dislike{{ img.id }}" data-imgid="{{ img.id }}" onclick="myFunction2(this)"></i>#}
 
+
+
+                     <ul class="nav">
+                    <li class="nav-item">
+
+                    {% ifequal 1 img.like_or_not %}
+                        <a href='#' class="nav-link">
+                      <i  class="display1 fa fa-heart nav-link" aria-hidden="true" id="dislike{{ img.id }}" data-imgid="{{ img.id }}" onclick="myFunction2(this)"></i> Like
+                      <br><br>
+                        </a>
                     {% endifequal %}
 
                     {% ifnotequal 1 img.like_or_not %}
-                        <button type="submit">
-                        <i  class="display2 fa fa-thumbs-up" id="like{{ img.id }}" data-imgid="{{ img.id }}" onclick="myFunction1(this)"></i>
-                        </button><br><br>
+
+                        <i  class="display2 fa fa-heart-o nav-link" aria-hidden="true" id="like{{ img.id }}" data-imgid="{{ img.id }}" onclick="myFunction1(this)"></i>
+                        <br><br>
                     {% endifnotequal %}
 
 
 
-                        <input class="comment" type="text" img_data="{{img.pk}}" placeholder="Enter a comment"><br>
+
+
+
+
+
+
+
+
+{#                        <input class="comment" type="text" img_data="{{img.pk}}" placeholder="Enter a comment"><br>#}
+                    </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-toggle="collapse" href="#collapseExample{{img.pk }}" aria-expanded="false" aria-controls="collapseExample">
+                                <i class="fa fa-comment-o" aria-hidden="true"></i> Comment
+                            </a>
+                        </li>
+                    <li class="nav-item">
+                        <a href='#' class="nav-link">
+                        <i class="fa fa-share" aria-hidden="true"></i> Share
+                        </a>
+                    </li>
+                    </ul>
+                        <div class="collapse" id="collapseExample{{ img.pk }}">
+
+                        <input  class="comment" type="text" img_data="{{img.pk}}" placeholder="Add a comment"><br>
+
                         <p id="show_user{{img.pk}}" style="display: inline"></p>
                         <p id="comma" style="display: inline" ></p>
                         <p id="show_comment{{img.pk}}" style="display: inline"></p><br><br>
-{#                        <div class = "content">#}
-                        <div class = "content">
-                            {% for com in comments %}
-                                {% if com.document == img %}
-                                    <p>{{com.user}} : {{com.comment}}</p><br>
-                                {% endif %}
-                            {% endfor %}
+
+                        {% for com in comments %}
+
+                            {% if com.document == img %}
+                                <p>{{com.user}} : {{com.comment}}</p><br>
+                            {% endif %}
+
+                        {% endfor %}
+{#                        <p style="text-align: center;" {% post_to_facebook img.document.url "Share to facebook!" %}></p>#}
                         </div>
-{#                    <button>Read more</button>#}
-                        {% post_to_facebook img.document.url "Share to facebook!" %}
+                        </div>
+                    <br>
                     </div>
                 {% endif %}
             {% endfor %}
+            </div>
         </div>
         <footer>
             {% if images.has_previous %}
@@ -139,9 +193,14 @@
                 {% endif %}
             {% endfor %}
         </footer>
-    {% else %}
-        <h3>you are not logged-in first login</h3>
+
     {% endif %}
+<script
+  src="https://code.jquery.com/jquery-3.2.1.min.js"
+  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
 </body>
-</html>t
+</html>
 
