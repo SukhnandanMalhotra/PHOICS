@@ -55,11 +55,6 @@ def check_login(request):
     return login(request, template_name='portal/login.html')
 
 
-def check_signup(request):
-   if request.user.is_authenticated:
-        return redirect('newsfeed')
-
-   return redirect('signup')
 
 # front page function which return front page html
 def front_page(request):
@@ -77,8 +72,9 @@ def my_view(request):
         return render(request, 'portal/login.html')
 
 
-
 def signup(request):
+    if request.user.is_authenticated:
+        return redirect('newsfeed')
     if request.method == 'POST':
         form = SignUpPage(request.POST)
         if form.is_valid():
@@ -289,7 +285,7 @@ def error500(request):
 
 @login_required
 def like(request):
-    imgid=None
+    imgid = None
     if request.method == 'GET':
 
         imgid = request.GET['imgid']
@@ -366,11 +362,54 @@ def blur_image(request):
     return JsonResponse(data)
 
 
+def width_image(request):
+    width = request.GET.get('width', None)
+    documents = Document.objects.all()
+    imgid = request.GET.get('imgid')
+    print(imgid)
+    img = Document.objects.get(id=int(imgid))
+    img.width = int(width)
+    img.save()
+    print("width")
+    data = {
+        'img_source': str(img.document)
+    }
+    return JsonResponse(data)
+
+
+def height_image(request):
+    height = request.GET.get('height', None)
+    documents = Document.objects.all()
+    imgid = request.GET.get('imgid')
+    print(imgid)
+    img = Document.objects.get(id=int(imgid))
+    img.height = int(height)
+    img.save()
+    print("height")
+    data = {
+        'img_source': str(img.document)
+    }
+    return JsonResponse(data)
+
+
 def flip_image(request):
     flip = request.GET.get('flip', None)
     imgid = request.GET.get('imgid')
     img = Document.objects.get(id=int(imgid))
-    img.effect = flip
+    img.flip = flip
+    img.save()
+    # print("flip")
+    data = {
+        'img_source': str(img.document)
+    }
+    return JsonResponse(data)
+
+
+def effect_image(request):
+    effect = request.GET.get('effect', None)
+    imgid = request.GET.get('imgid')
+    img = Document.objects.get(id=int(imgid))
+    img.effect = effect
     img.save()
     # print("flip")
     data = {

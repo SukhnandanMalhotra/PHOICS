@@ -47,7 +47,7 @@ choice6 = ((1, "None"), (2, "Aqua"), (3, "Seaform"), (4, "Grayscale"),
            (5, "Retro"), (6, "Edges"), (7, "Negative"), (8, 'Sepia'))
 
 
-class Document(models.Model,object):                  # all details comming about a particular picture uploaded                                                      #  get saved in this table
+class Document(models.Model, object):                  # all details comming about a particular picture uploaded                                                      #  get saved in this table
     user = models.ForeignKey(User)
     status = models.CharField(max_length=7, choices=choice1, default="PUBLIC")
     width = models.IntegerField(blank=True, default=500, help_text="Enter positive value ")
@@ -75,8 +75,7 @@ class Document(models.Model,object):                  # all details comming abou
         im = Image.open(self.document)    #opens a particular image
 
         output = BytesIO()                #file is written into memory
-        if self.width >= 0 and self.height >= 0:
-            im = im.resize((self.width, self.height))
+        im = im.resize((self.width, self.height))
         if self.flip == 'horizon':
             im = im.transpose(Image.FLIP_LEFT_RIGHT)
         elif self.flip == 'vertical':

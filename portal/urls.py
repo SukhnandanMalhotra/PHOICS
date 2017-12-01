@@ -25,7 +25,6 @@ urlpatterns = [
 
     url(r'^information/(?P<username>\w+)/$', views.user_info, name="user_info"),
 
-    url(r'^check_signup/$', views.check_signup, name='check_signup'),
 
     url(r'^signup/$', views.signup, name='signup'),
 
@@ -64,6 +63,9 @@ urlpatterns = [
     url(r'^edit_image/rotate/$', views.rotate_image, name='rotate_image'),
     url(r'^edit_image/blur/$', views.blur_image, name='blur_image'),
     url(r'^edit_image/flip/$', views.flip_image, name='flip_image'),
+    url(r'^edit_image/height/$', views.height_image, name='height_image'),
+    url(r'^edit_image/width/$', views.width_image, name='width_image'),
+    url(r'^edit_image/effect/$', views.effect_image, name='effect_image'),
 
 ]
 
