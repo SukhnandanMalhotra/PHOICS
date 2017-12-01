@@ -349,7 +349,6 @@ def rotate_image(request):
 
 def blur_image(request):
     blur = request.GET.get('blur', None)
-    documents = Document.objects.all()
     imgid = request.GET.get('imgid')
     print(imgid)
     img = Document.objects.get(id=int(imgid))
@@ -364,7 +363,6 @@ def blur_image(request):
 
 def width_image(request):
     width = request.GET.get('width', None)
-    documents = Document.objects.all()
     imgid = request.GET.get('imgid')
     print(imgid)
     img = Document.objects.get(id=int(imgid))
@@ -379,7 +377,6 @@ def width_image(request):
 
 def height_image(request):
     height = request.GET.get('height', None)
-    documents = Document.objects.all()
     imgid = request.GET.get('imgid')
     print(imgid)
     img = Document.objects.get(id=int(imgid))
@@ -406,14 +403,14 @@ def flip_image(request):
 
 
 def effect_image(request):
-    effect = request.GET.get('effect', None)
+    effect = request.GET.get('effect')
     imgid = request.GET.get('imgid')
     img = Document.objects.get(id=int(imgid))
     img.effect = effect
     img.save()
-    # print("flip")
     data = {
         'img_source': str(img.document)
     }
+    print("kya hua be")
     return JsonResponse(data)
 
