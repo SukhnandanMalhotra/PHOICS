@@ -391,9 +391,16 @@ def height_image(request):
 
 def flip_image(request):
     flip = request.GET.get('flip', None)
+    # rotate = request.GET.get('rotate', None)
+    # effect = request.GET.get('effect', None)
+    # blur = request.GET.get('blur', None)
     imgid = request.GET.get('imgid')
     img = Document.objects.get(id=int(imgid))
     img.flip = flip
+    #
+    # img.rotate = rotate
+    # img.blur = blur
+    # img.effect = effect
     img.save()
     # print("flip")
     data = {

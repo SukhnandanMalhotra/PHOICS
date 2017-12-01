@@ -94,15 +94,24 @@
         }) ;
 
          $("#id_flip").change(function () {
-            var flip = $(this).val();
+            var flip = $("#id_flip").val();
             var imgid = $(".Form").attr("id");
             var img_source = $(".image-display").attr("id");
-
+            var height = $("id_height").val();
+            var width = $("id_width").val();
+            var effect = $("id_effect").val();
+            var rotate = $("id_rotate").val();
+            var blur = $("id_blur").val();
             $.ajax({
                 url: '{% url 'flip_image' %}',
                 data: {
                     'flip': flip,
-                    'imgid': imgid
+                    'imgid': imgid,
+                    'height': height,
+                    'width': width,
+                    'effect': effect,
+                    'rotate': rotate,
+                    'blur': blur
                 },
 
                 success: function (data) {

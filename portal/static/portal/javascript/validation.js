@@ -7,33 +7,34 @@ function validateForm() {
 
     if (x == "") {
         document.getElementById('error_signup_username').innerHTML="Name must be filled out";
+
         return false;
     }
 
     else if (y == "") {
-        alert("email must be filled out");
+        document.getElementById('error_signup_email').innerHTML="Email must be filled out";
         return false;
 
     }
 
     else if (z == "") {
-        alert("password must be filled out");
+        document.getElementById('error_signup_password').innerHTML="Password must be filled out";
         return false;
     }
 
 
     else if (w == "") {
-        alert("confirm password must be filled out");
+        document.getElementById('error_signup_conf_password').innerHTML="confirm password must be filled out";
         return false;
     }
 
     else if (z != w){
-        alert("password are not matching");
+        document.getElementById('error_signup_conf_password').innerHTML="Password are not matching";
         return false;
     }
 
      else if (!email_check.test(y)){
-        alert("email does not contain valid syntax");
+        document.getElementById('error_signup_email').innerHTML="Email does not contain valid syntax";
         return false;
     }
 
@@ -44,12 +45,14 @@ function loginValidate() {
     var x = document.forms["loginForm"]["username"].value;
     var y = document.forms["loginForm"]["password"].value;
     if (x == "") {
-      document.getElementById('error_login_username').innerHTML="Name must be filled out";
-      return false;
+
+        document.getElementById('error_login_username').innerHTML="Name must be filled out";
+
+        return false;
     }
 
     else if (y == "") {
-        alert("password must be filled out");
+        document.getElementById('error_login_password').innerHTML="Password must be filled out";
         return false;
     }
 
@@ -60,12 +63,12 @@ function forgetValidate() {
     var x = document.forms["forgetForm"]["email"].value;
     var email_check = /^([a-zA-Z0-9_.-])+@(([a-zA-Z0-9-])+.)+([a-zA-Z0-9]{2,4})+$/;
     if (x == "") {
-        alert("email must be filled out");
+        document.getElementById('error_forget_email').innerHTML="Email must be filled out";
         return false;
     }
 
     else if (!email_check.test(x)) {
-        alert("email does not contain valid syntax");
+        document.getElementById('error_forget_email').innerHTML="Email does not contain valid input";
         return false;
     }
 }
