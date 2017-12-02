@@ -142,6 +142,7 @@ def newsfeed(request):
     # form1 = CommentForm(request.POST or None)
     documents = Document.objects.order_by('-uploaded_at')
     comments = Comments.objects.order_by('-uploaded_at')
+    profile = Profile.objects.all()
     image = []
     for obj in documents:
         if obj.status == "PUBLIC":
@@ -165,7 +166,10 @@ def newsfeed(request):
     after_show = current_page_no + 6 if current_page_no <= total_pages - 6 else total_pages
     page_range = paginator.page_range[before_show:after_show]
 
-    return render(request, 'portal/newsfeed.html', {'images': images, 'comments':comments, 'page_range': page_range})
+    return render(request, 'portal/newsfeed.html', {'images': images,
+                                                    'comments': comments,
+                                                    'page_range': page_range,
+                                                    'profile': profile})
 
 def comment(request):
     img_id = 0

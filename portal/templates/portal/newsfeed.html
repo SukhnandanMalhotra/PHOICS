@@ -138,11 +138,19 @@
             {% for img in images %}
 
                 {% if img.status == "PUBLIC" %}
+
                     <div class= "offset-md-3 col-md-6">
                         <div class="card">
+                        <ul class="nav">
+                          {% for obj in profile %}
+                              {% if obj.user == img.user %}
+                                  <li class="nav-item"><img src="{{ obj.profile_pic.url }}" style="width:50px;height: 50px;border-radius: 50%"></li>
+                              {% endif %}
+                                  {% endfor %}
 
                             <a href="{% url 'profile' img.user.username %}" class="card-body">
-                                   <h4 class="card-title">{{ img.user }}</h4></a>
+                                <li class="nav-item"> <h4 class="card-title">{{ img.user }}</h4></li></a>
+                         </ul>
                         <a href="{{ img.document.url }}"><img src="{{ img.document.url }}" class="card-img" ></a>
                         <div class="card-body">
                         <p class="date time ">{{ img.uploaded_at|naturaltime|capfirst }}</p>
