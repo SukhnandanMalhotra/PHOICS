@@ -3,7 +3,7 @@
 <html>
 <head>
       <style>
-          h5 {
+          .space_bet_word {
               word-spacing: 5px;
           }
       </style>
@@ -32,7 +32,7 @@
                          <div class="details"><h1 class="name">{{ username }}</h1>
                          <h1>TOTAL POST : {{ user_image_count }}</h1>
                          <h3>{{ post }}</h3>
-                         <h5>{{ obj.First_Name }}    {{ obj.bio }}</h5>
+                         <h5 class="space_bet_word">{{ obj.First_Name }}{{ obj.Last_Name }}    {{ obj.bio }}</h5>
                      {% endif %}
                 {% endfor %}
                  {% if username == request.user.username %}

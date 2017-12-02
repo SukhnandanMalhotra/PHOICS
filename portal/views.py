@@ -277,10 +277,10 @@ def error500(request):
 def like(request):
     imgid = None
     if request.method == 'GET':
-
+        data = dict()
         imgid = request.GET['imgid']
         img = Document.objects.get(id=int(imgid))
-        print("-----print-----")
+        print("-----we get id-----")
         if request.user in img.like_user.all():
             img.like_user.remove(request.user)
             img.like_or_not = 0
@@ -289,11 +289,17 @@ def like(request):
             img.like_user.add(request.user)
             img.like_or_not = 1
             img.save()
-        data = img.like_user.count()
+        a = img.like_user.count()
+        b = img.like_or_not
 
-        print("-----here-----")
-
-        return HttpResponse(data)
+        # data['status'] = b
+        data = {
+            'count_like': a,
+            'state_image': b
+        }
+        print(data)
+        print(a)
+        return JsonResponse(data)
 
 
 def list_of_user(request):
