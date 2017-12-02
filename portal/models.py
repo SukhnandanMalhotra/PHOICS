@@ -27,6 +27,7 @@ class Profile(models.Model):                # all details comming as user's prof
     City = models.CharField(max_length=30, blank=True)
     DOB = models.DateTimeField(null=True, blank=True)
     profile_pic = models.ImageField(upload_to=get_profile_name, default='profile_pic/default_profile.jpg')
+    bio = models.TextField(max_length=500, blank=True)
     email_confirmed = models.BooleanField(default=False)
 
     def __str__(self):                    # shows every object with username name

@@ -1,4 +1,5 @@
 from django import forms
+from django.forms import extras
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from datetime import datetime
@@ -19,11 +20,11 @@ class SignUpPage(UserCreationForm):                 # renders a signup form to u
         fields = ('username', 'email', 'password1', 'password2', )
 
 
-class Info(forms.ModelForm):                       # renders a form to user where he can fill his personal
-                                                   # details with the help of template
+class Info(forms.ModelForm):
+    DOB = forms.DateTimeField(widget=extras.SelectDateWidget(years=range(1947, 2018)))
     class Meta:
         model = Profile
-        fields = ('First_Name', 'Last_Name', 'City', 'profile_pic', )
+        fields = ('First_Name', 'Last_Name', 'City', 'DOB', 'bio', 'profile_pic', )
 
 
 class DocumentForm(forms.ModelForm):                   # to render to user a form where he can upload pictures
@@ -34,12 +35,12 @@ class DocumentForm(forms.ModelForm):                   # to render to user a for
         width = forms.IntegerField()
         height = forms.IntegerField()
         flip = forms.ModelChoiceField(queryset=Document.objects.filter(uploaded_at=datetime.now()), empty_label=None, widget =forms.Select(attrs={
-            "onChange":'loadPic()'}))
+            "onChange": 'loadPic()'}))
 
         rotate = forms.ModelChoiceField(queryset=Document.objects.filter(uploaded_at=datetime.now()), empty_label=None)
         blur = forms.ModelChoiceField(queryset=Document.objects.filter(uploaded_at=datetime.now()), empty_label=None)
         effect = forms.ModelChoiceField(queryset=Document.objects.filter(uploaded_at=datetime.now()), empty_label=None)
-        fields = ('document', 'status', 'width', 'height','rotate', 'flip', 'blur', 'effect')
+        fields = ('document', 'status', 'width', 'height', 'rotate', 'flip', 'blur', 'effect')
 
 
 class UpdateForm(forms.ModelForm):                     # renders a form update pictures uploaded

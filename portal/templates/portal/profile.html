@@ -2,6 +2,11 @@
 <!DOCTYPE html>
 <html>
 <head>
+      <style>
+          h5 {
+              word-spacing: 5px;
+          }
+      </style>
       <title>Profile Page</title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <link rel="stylesheet" type="text/css" href="{% static 'portal/profile.css' %}">
@@ -12,29 +17,31 @@
        	     <h2>PHOICS</h2>
              <a href="{% url 'search' %}"><i class="fa fa-search fa-2x" aria-hidden="true"></i> </a>
              <a href="{% url 'newsfeed' %}"><i class="fa fa-home fa-2x" aria-hidden="true"></i></a>
-{#             <a href="{% url 'profile' request.user.username %}"> <i class="fa fa-user fa-2x" aria-hidden="true"></i></a>#}
+             <a href="{% url 'profile' request.user.username %}"> <i class="fa fa-user fa-2x" aria-hidden="true"></i></a>
              <a href="{% url 'logout' %}"><i class="fa fa-sign-out fa-2x" aria-hidden="true"></i></a>
          </div>
 
          <div class="user-profile">
-
-             {% for obj in profile_pic %}
+                {% for obj in profile_pic %}
                      {% if obj.user.username == username %}
                          <div class="dp"> <a href="{{ obj.profile_pic.url }}">
                              <img src="{{ obj.profile_pic.url }}"></a>
                          </div>
+
+
+                         <div class="details"><h1 class="name">{{ username }}</h1>
+                         <h1>TOTAL POST : {{ user_image_count }}</h1>
+                         <h3>{{ post }}</h3>
+                         <h5>{{ obj.First_Name }}    {{ obj.bio }}</h5>
                      {% endif %}
-             {% endfor %}
-
-
-             <div class="details"><h1 class="name">{{ username }}</h1>
-                 <h1>TOTAL POST : {{ user_image_count }}</h1>
-                 <h3>{{ post }}</h3>
+                {% endfor %}
                  {% if username == request.user.username %}
                  <a href="{% url 'model_form_upload' user.username %}"><button>UPLOAD </button></a>
                  <a href="{% url 'user_info' user.username %}"><button class="edit-profile">EDIT PROFILE</button></a>
                  {% endif %}
              </div>
+
+
          </div>
          <div class="feeds">
              {% for obj in documents %}

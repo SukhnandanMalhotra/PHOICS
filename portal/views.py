@@ -40,7 +40,8 @@ def home(request, username):
     user = User.objects.get(username=username)
     user_image_count = user.document_set.all().count()
     documents = Document.objects.order_by('-uploaded_at')
-    profile_pic = Profile.objects.all
+    profile_pic = Profile.objects.filter(user=User.objects.get(username=username))
+    print(profile_pic)
     return render(request, 'portal/profile.html',
                   {'documents': documents,
                    'profile_pic': profile_pic,
@@ -59,17 +60,6 @@ def check_login(request):
 # front page function which return front page html
 def front_page(request):
     return render(request, 'portal/front_page.html')
-
-
-def my_view(request):
-    username = request.POST['username']
-    password = request.POST['password']
-    user = authenticate(username=username, password=password)
-    if user is not None:
-        login(request, user)
-        return redirect(reverse('profile', kwargs={'username': username}))
-    else:
-        return render(request, 'portal/login.html')
 
 
 def signup(request):

@@ -43,15 +43,39 @@
                  {% if user.is_authenticated %}
                      <form method='post' enctype="multipart/form-data" onchange="preview(event)">
                          {% csrf_token %}
-                         {% for field in form %}
-                             <div class="row">
-                                 <label for="name">{{ field.label_tag }}</label>
-                                 {{ field }}<br><br>
-                                  {% for error in field.errors %}
-                                     <p style="color: red">{{ error }}</p>
-                                 {% endfor %}
-                             </div>
-                         {% endfor %}
+
+                                 <div class="row">
+                                     <label for="name">{{ form.First_Name.label_tag }}</label>
+                                      {{ form.First_Name }}<br>
+                                      <p id="error_profile_First_name" style="color: #ff0000">{{ form.First_Name.errors }}
+                                 </div>
+                                 <div class="row">
+                                     <label for="name">{{ form.Last_Name.label_tag }}</label>
+                                      {{ form.Last_Name }}<br>
+                                      <p id="error_profile_Last_Name" style="color: #ff0000">{{ form.Last_Name.errors }}
+                                 </div>
+                                 <div class="row">
+                                     <label for="name">{{ form.City.label_tag }}</label>
+                                      {{ form.City }}<br>
+                                      <p id="error_profile_City" style="color: #ff0000">{{ form.City.errors }}
+                                 </div>
+                                 <div class="row">
+                                     <label for="name">{{ form.DOB.label_tag }}</label>
+                                      {{ form.DOB }}<br>
+                                      <p id="error_profile_DOB" style="color: #ff0000">{{ form.DOB.errors }}
+                                 </div>
+                                 <div class="row">
+                                     <label for="name">{{ form.bio.label_tag }}</label>
+                                      {{ form.bio }}<br>
+                                      <p id="error_profile_bio" style="color: #ff0000">{{ form.bio.errors }}
+                                 </div>
+                                 <div class="row">
+                                     <label for="name">{{ form.profile_pic.label_tag }}</label>
+                                      {{ form.profile_pic }}<br>
+                                      <p id="error_profile_profile_pic" style="color: #ff0000">{{ form.profile_pic.errors }}
+                                 </div>
+
+
                          <button class="button" type="submit">SUBMIT</button><br>
                      </form>
                  {% endif %}
