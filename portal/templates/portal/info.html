@@ -46,33 +46,44 @@
 
                                  <div class="row">
                                      <label for="name">{{ form.First_Name.label_tag }}</label>
-                                      {{ form.First_Name }}<br>
+{#                                      {{ form.First_Name }}<br>#}
+                   <input type="text" name="First_Name" maxlength="100" id="id_First_Name" value="{{ obj.First_Name }}"><br>
                                       <p id="error_profile_First_name" style="color: #ff0000">{{ form.First_Name.errors }}
                                  </div>
+
                                  <div class="row">
                                      <label for="name">{{ form.Last_Name.label_tag }}</label>
-                                      {{ form.Last_Name }}<br>
+                   <input type="text" name="Last_Name" maxlength="100" id="id_Last_Name" value="{{ obj.Last_Name }}"><br>
+
                                       <p id="error_profile_Last_Name" style="color: #ff0000">{{ form.Last_Name.errors }}
                                  </div>
+
                                  <div class="row">
                                      <label for="name">{{ form.City.label_tag }}</label>
-                                      {{ form.City }}<br>
+                   <input type="text" name="City" maxlength="100" id="id_City" value="{{ obj.City }}"><br>
                                       <p id="error_profile_City" style="color: #ff0000">{{ form.City.errors }}
                                  </div>
+
                                  <div class="row">
                                      <label for="name">{{ form.DOB.label_tag }}</label>
+{#                   <input type="text" name="DOB" maxlength="100" id="id_DOB"#}
+{#                          value="{{ obj.DOB.date.year }}-{{ obj.DOB.date.month }}-{{ obj.DOB.date.day }}" placeholder="yyyy-mm-dd"><br>#}
                                       {{ form.DOB }}<br>
-                                      <p id="error_profile_DOB" style="color: #ff0000">{{ form.DOB.errors }}
+{#                                     <p id="error_profile_DOB" style="color: #ff0000">{{ form.DOB.errors }}#}
                                  </div>
+
                                  <div class="row">
                                      <label for="name">{{ form.bio.label_tag }}</label>
-                                      {{ form.bio }}<br>
+                   <input type="text" name="bio" maxlength="100" id="id_bio" value="{{ obj.bio }}"><br>
                                       <p id="error_profile_bio" style="color: #ff0000">{{ form.bio.errors }}
                                  </div>
+
                                  <div class="row">
                                      <label for="name">{{ form.profile_pic.label_tag }}</label>
                                       {{ form.profile_pic }}<br>
-                                      <p id="error_profile_profile_pic" style="color: #ff0000">{{ form.profile_pic.errors }}
+{#                  <input type="text" name="profile_pic" maxlength="100" id="id_profile_pic"><br>#}
+
+                                      <p id="error_profile_profile_pic" style="color: #ff0000">
                                  </div>
 
 

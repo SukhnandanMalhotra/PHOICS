@@ -59,19 +59,8 @@ li{                                                      /*/////////////////////
 	cursor: pointer;
 
     }
-li.su{
-  -webkit-transition: all 1s ease-out;	/*////////////////////////////////////////animation-signup button//////////////*/
- }
-li.su:hover{
-	padding-right:20%;
-	padding-left:15%;
-}
-li.li{
-	-webkit-transition: all 1s ease-out;	/*/////////////////////////animation-login button////////////*/
-}
-li.li:hover{
-	padding-left: 20%;
-	padding-right:15%;
+li:hover{
+
 }
 a{
     text-decoration:none;
