@@ -18,6 +18,12 @@ class SignUpPage(UserCreationForm):                 # renders a signup form to u
         model = User
         fields = ('username', 'email', 'password1', 'password2', )
 
+class SearchUser(forms.Form):                 # renders a signup form to user with the help of template
+    username = forms.CharField(max_length=500, widget=forms.TextInput(
+        attrs={'placeholder': 'Enter name of user you need to search',}))
+
+    class Meta:
+        fields = ('username',)
 
 class Info(forms.ModelForm):                       # renders a form to user where he can fill his personal
                                                    # details with the help of template

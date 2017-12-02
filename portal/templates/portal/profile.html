@@ -5,71 +5,86 @@
       <title>Profile Page</title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <link rel="stylesheet" type="text/css" href="{% static 'portal/profile.css' %}">
+      <link rel="stylesheet" type="text/css" href="{% static 'portal/search.css' %}">
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
          <div id="top">
        	     <h2>PHOICS</h2>
-             <a href="{% url 'search' %}"><i class="fa fa-search fa-2x" aria-hidden="true"></i> </a>
+             <form name="SearchUser" method="post" enctype="multipart/form-data" novalidate>
+                 {% csrf_token %}
+                 {{ form.username }}
+                 <button class="button" type="submit">SUBMIT</button>
+             </form>
+{#             <a href="{% url 'search' %}"><i class="fa fa-search fa-2x" aria-hidden="true"></i> </a>#}
              <a href="{% url 'newsfeed' %}"><i class="fa fa-home fa-2x" aria-hidden="true"></i></a>
 {#             <a href="{% url 'profile' request.user.username %}"> <i class="fa fa-user fa-2x" aria-hidden="true"></i></a>#}
              <a href="{% url 'logout' %}"><i class="fa fa-sign-out fa-2x" aria-hidden="true"></i></a>
+         </div>
+         <div class="search-box">
+             <div class="results">
+             <div class="heading">Username</div>
+             <div class="heading">E-mail</div>
+             <div class="heading">Date Joined</div>
+             {% for user in names %}
+                 <a href="{% url 'profile' user.username %}"> <div class="ans">{{ user.username }}</div></a>
+                 <div class="ans">{{ user.email }}</div>
+                 <div class="ans">{{ user.date_joined }}</div>
+                 {% empty %}
+                 <div class="ans" style="color: red"><strong>SORRY, no such user on phoics account</strong></div>
+             {% endfor %}
+             </div>
          </div>
 
          <div class="user-profile">
 
              {% for obj in profile_pic %}
                      {% if obj.user.username == username %}
-                         <div class="dp"> <a href="{{ obj.profile_pic.url }}">
-                             <img src="{{ obj.profile_pic.url }}"></a>
-                         </div>
+                         <img src="{{ obj.profile_pic.url }}">
                      {% endif %}
              {% endfor %}
-
-
-             <div class="details"><h1 class="name">{{ username }}</h1>
-                 <h1>TOTAL POST : {{ user_image_count }}</h1>
-                 <h3>{{ post }}</h3>
-                 {% if username == request.user.username %}
+         </div>
+         <div class="details"><h1 class="name">{{ username }}</h1>
+             <h1>TOTAL POST : {{ user_image_count }}</h1>
+             <h3>{{ post }}</h3>
+             {% if username == request.user.username %}
                  <a href="{% url 'model_form_upload' user.username %}"><button>UPLOAD </button></a>
                  <a href="{% url 'user_info' user.username %}"><button class="edit-profile">EDIT PROFILE</button></a>
-                 {% endif %}
-             </div>
+             {% endif %}
          </div>
+
          <div class="feeds">
              {% for obj in documents %}
                  {% if obj.user.username == username %}
-                     {% if request.user.username == username %}
                      <div class="image">
-                         <a href="{{ obj.document.url }}"><img class="feed" src="{{ obj.document.url }}"></a>
-                         <div class="hide date">{{ obj.uploaded_at }}</div>
+                     {% if request.user.username == username %}
+{#                        <div class="image">#}
+                          <a href="{{ obj.document.url }}"><img class="feed" src="{{ obj.document.url }}"></a>
+                          <div class="hide date">{{ obj.uploaded_at }}</div>
                      {% endif %}
                      {% if request.user.username != username and obj.status == 'PUBLIC' %}
-                        <div class="image">
-                         <a href="{{ obj.document.url }}"><img class="feed" src="{{ obj.document.url }}"></a>
-                         <div class="hide date">{{ obj.uploaded_at }}</div>
-
+                            <a href="{{ obj.document.url }}"><img class="feed" src="{{ obj.document.url }}"></a>
+                            <div class="hide date">{{ obj.uploaded_at }}</div>
                      {% endif %}
-                             {% if request.user.username == username %}
-                                  {%  if obj.status == 'PUBLIC' %}
-                                      <div class="hide status">PUBLIC</div>
-                                  {% else %}
-                                      <div class="hide status">PRIVATE</div>
-                                  {% endif %}
-                             <div class="hide edit">
-                                 <a class="edit" href="{% url "Doc_edit" username obj.id %}">
-                                 <i class="fa fa-pencil-square-o fa-2x" aria-hidden="true"></i></a>
-                             </div>
-                             <div class="hide delete" onclick="alert_function()">
-                                 <a style="color: white;" href="{% url "Doc_delete" username obj.id %}">
-                                 <i class="fa fa-trash-o fa-2x" aria-hidden="true"></i>
-                                 </a>
-                             </div>
-                         {% endif %}
+                     {% if request.user.username == username %}
+                        {%  if obj.status == 'PUBLIC' %}
+                            <div class="hide status">PUBLIC</div>
+                        {% else %}
+                         <div class="hide status">PRIVATE</div>
+                     {% endif %}
+                     <div class="hide edit">
+                         <a class="edit" href="{% url "Doc_edit" username obj.id %}">
+                             <i class="fa fa-pencil-square-o fa-2x" aria-hidden="true"></i>
+                         </a>
+                     </div>
+                     <div class="hide delete" onclick="alert_function()">
+                         <a style="color: white;" href="{% url "Doc_delete" username obj.id %}">
+                             <i class="fa fa-trash-o fa-2x" aria-hidden="true"></i>
+                         </a>
                      </div>
                  {% endif %}
-
-
+                 </div>
+                 {% endif %}
              {% endfor %}<br>
          </div>
 

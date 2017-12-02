@@ -6,6 +6,7 @@
 	background-color: white;
 	width:50vw;
 	font-family: 'Raleway';
+	z-index: 2;
 
 }
 h1{

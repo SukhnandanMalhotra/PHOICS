@@ -6,7 +6,7 @@ from django.contrib.auth.views import password_reset
 from django.conf import settings
 from django.conf.urls.static import static
 from django_filters.views import FilterView
-from portal.filters import UserFilter
+
 
 
 urlpatterns = [
@@ -51,9 +51,6 @@ urlpatterns = [
     url(r'^profile/(?P<username>\w+)/edit/(?P<pk>\d+)$', views.doc_update, name='Doc_edit'),
 
     url(r'^profile/(?P<username>\w+)/delete/(?P<pk>\d+)$', views.doc_delete, name='Doc_delete'),
-
-    url(r'^search/$', FilterView.as_view(filterset_class=UserFilter,
-                                         template_name='portal/user_list.html'), name='search'),
     url(r'comment/$', views.comment, name='comment'),
 
     url(r'^like/$', views.like, name='like'),

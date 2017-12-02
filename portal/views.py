@@ -10,7 +10,7 @@ from phoics.settings import EMAIL_HOST_USER
 from .tokens import account_activation_token
 from django.shortcuts import render, redirect, get_object_or_404, reverse
 from .models import Document, Profile, Comments
-from .forms import DocumentForm, SignUpPage, Info, UpdateForm
+from .forms import DocumentForm, SignUpPage, Info, UpdateForm, SearchUser
 from django.contrib import messages
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.http import HttpResponseRedirect
@@ -36,7 +36,14 @@ from django.http import HttpResponse
 
 @login_required
 def home(request, username):
+    names2=[]
     # in order_by minus sign represent descending order
+    form = SearchUser(request.POST)
+    # user = User.objects.get(username=username)
+    if form.is_valid():
+        name = form.cleaned_data['username']
+        names1 = User.objects.all()
+        names2 = names1.filter(username__icontains=str(name))
     user = User.objects.get(username=username)
     user_image_count = user.document_set.all().count()
     documents = Document.objects.order_by('-uploaded_at')
@@ -45,32 +52,7 @@ def home(request, username):
                   {'documents': documents,
                    'profile_pic': profile_pic,
                    'username': username,
-                   'user_image_count': user_image_count})
-
-
-def check_login(request):
-    if request.user.is_authenticated:
-        return redirect('newsfeed')
-
-    return login(request, template_name='portal/login.html')
-
-
-
-# front page function which return front page html
-def front_page(request):
-    return render(request, 'portal/front_page.html')
-
-
-def my_view(request):
-    username = request.POST['username']
-    password = request.POST['password']
-    user = authenticate(username=username, password=password)
-    if user is not None:
-        login(request, user)
-        return redirect(reverse('profile', kwargs={'username': username}))
-    else:
-        return render(request, 'portal/login.html')
-
+                   'user_image_count': user_image_count, 'form':form, 'names':names2})
 
 def signup(request):
     if request.user.is_authenticated:
@@ -116,6 +98,32 @@ def signup(request):
     return render(request, 'portal/signup.html', {'form': form})
 
 
+def check_login(request):
+    if request.user.is_authenticated:
+        return redirect('newsfeed')
+
+    return login(request, template_name='portal/login.html')
+
+
+
+# front page function which return front page html
+def front_page(request):
+    return render(request, 'portal/front_page.html')
+
+
+def my_view(request):
+    username = request.POST['username']
+    password = request.POST['password']
+    user = authenticate(username=username, password=password)
+    if user is not None:
+        login(request, user)
+        return redirect(reverse('profile', kwargs={'username': username}))
+    else:
+        return render(request, 'portal/login.html')
+
+
+
+
 # when user click on email link then this function execute
 def activate(request, uidb64, token):
     try:
@@ -149,7 +157,14 @@ def activate(request, uidb64, token):
 
 @login_required
 def newsfeed(request):
-    # form1 = CommentForm(request.POST or None)
+    names2 = []
+    # in order_by minus sign represent descending order
+    form = SearchUser(request.POST)
+    # user = User.objects.get(username=username)
+    if form.is_valid():
+        name = form.cleaned_data['username']
+        names1 = User.objects.all()
+        names2 = names1.filter(username__icontains=str(name))
     documents = Document.objects.order_by('-uploaded_at')
     comments = Comments.objects.order_by('-uploaded_at')
     image = []
@@ -175,7 +190,8 @@ def newsfeed(request):
     after_show = current_page_no + 6 if current_page_no <= total_pages - 6 else total_pages
     page_range = paginator.page_range[before_show:after_show]
 
-    return render(request, 'portal/newsfeed.html', {'images': images, 'comments':comments, 'page_range': page_range})
+    return render(request, 'portal/newsfeed.html', {'images': images, 'comments':comments,
+                                                    'page_range': page_range, 'form':form, 'names':names2})
 
 def comment(request):
     img_id = 0
