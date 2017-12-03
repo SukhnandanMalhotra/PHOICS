@@ -10,7 +10,7 @@ from phoics.settings import EMAIL_HOST_USER
 from .tokens import account_activation_token
 from django.shortcuts import render, redirect, get_object_or_404, reverse
 from .models import Document, Profile, Comments
-from .forms import DocumentForm, SignUpPage, Info, UpdateForm
+from .forms import DocumentForm, SignUpPage, Info, UpdateForm, SearchUser
 from django.contrib import messages
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.http import HttpResponseRedirect
@@ -36,7 +36,14 @@ from django.http import HttpResponse
 
 @login_required
 def home(request, username):
+    names2=[]
     # in order_by minus sign represent descending order
+    form = SearchUser(request.POST)
+    # user = User.objects.get(username=username)
+    if form.is_valid():
+        name = form.cleaned_data['username']
+        names1 = User.objects.all()
+        names2 = names1.filter(username__icontains=str(name))
     user = User.objects.get(username=username)
     user_image_count = user.document_set.all().count()
     documents = Document.objects.order_by('-uploaded_at')
@@ -61,6 +68,8 @@ def check_login(request):
 def front_page(request):
     return render(request, 'portal/front_page.html')
 
+
+                   'user_image_count': user_image_count, 'form':form, 'names':names2})
 
 def signup(request):
     if request.user.is_authenticated:
@@ -139,7 +148,14 @@ def activate(request, uidb64, token):
 
 @login_required
 def newsfeed(request):
-    # form1 = CommentForm(request.POST or None)
+    names2 = []
+    # in order_by minus sign represent descending order
+    form = SearchUser(request.POST)
+    # user = User.objects.get(username=username)
+    if form.is_valid():
+        name = form.cleaned_data['username']
+        names1 = User.objects.all()
+        names2 = names1.filter(username__icontains=str(name))
     documents = Document.objects.order_by('-uploaded_at')
     user = User.objects.get(username=request.user.username)
     comments = Comments.objects.order_by('-uploaded_at')
@@ -173,6 +189,8 @@ def newsfeed(request):
                                                     'profile': profile,
                                                     'user': user})
 
+    return render(request, 'portal/newsfeed.html', {'images': images, 'comments':comments,
+                                                    'page_range': page_range, 'form':form, 'names':names2})
 
 def comment(request):
     img_id = 0
