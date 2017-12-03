@@ -141,6 +141,7 @@ def activate(request, uidb64, token):
 def newsfeed(request):
     # form1 = CommentForm(request.POST or None)
     documents = Document.objects.order_by('-uploaded_at')
+    user = User.objects.get(username=request.user.username)
     comments = Comments.objects.order_by('-uploaded_at')
     profile = Profile.objects.all()
     image = []
@@ -169,7 +170,9 @@ def newsfeed(request):
     return render(request, 'portal/newsfeed.html', {'images': images,
                                                     'comments': comments,
                                                     'page_range': page_range,
-                                                    'profile': profile})
+                                                    'profile': profile,
+                                                    'user': user})
+
 
 def comment(request):
     img_id = 0
@@ -253,6 +256,7 @@ def doc_update(request, username, pk, template_name='portal/edit_image.html'):
 #         return redirect('profile')
 #     return render(request, template_name, {'object': removex})
 
+
 def doc_delete(request, pk, username):
     removex = get_object_or_404(Document, id=pk)
     removex.delete()
@@ -294,6 +298,14 @@ def like(request):
             img.like_or_not = 1
             img.save()
         a = img.like_user.count()
+        x = img.like_user.all()
+        us = User.objects.get(username=request.user.username)
+        print(x)
+        print(img.like_user)
+        if us in x:
+            print("yes")
+        else:
+            print("no")
         b = img.like_or_not
         data = {
             'count_like': a,
@@ -404,7 +416,6 @@ def effect_image(request):
     effect = request.GET.get('effect')
     imgid = request.GET.get('imgid')
     img = Document.objects.get(id=int(imgid))
-
     img.effect = int(effect)
     img.save()
     data = {
