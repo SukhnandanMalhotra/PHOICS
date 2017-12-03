@@ -1,16 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Raleway');
 body{
-	background-color: #eee;
+	background-color: #fff;
 	margin: 0;
-}
-#top{
-	top:0;
-	margin: 0;
-	position:fixed;
-	width:100vw;
-    height:10vh;
-    background-color: #02b46d;
-    z-index: 1;
 }
 h2{
 	position: relative;
@@ -20,27 +11,7 @@ h2{
     font-family: Raleway medium;
    display: inline;
 }
-i.fa{
-	cursor: pointer;
-}
-i.fa:hover{
-	color:white;
-}
-i.fa-search{
-	margin-top:3vh;
-	margin-left:50%;
-}
-i.fa-home{
-	position: relative;
-	margin-top:3vh;
-	margin-left:2%;
-}
-i.fa-user{
-	margin-left:2%;
-}
-i.fa-sign-out{
-	margin-left:2%;
-}
+
 .container{
 	position:absolute;
 	margin-top:20vh;
@@ -189,4 +160,13 @@ i.fa{
 	i.fa-search{
 		margin-left:27%;
 	}
+}
+.navbar{
+    background-color: #000;
+    top:0;
+    position:fixed;
+
+}
+.top a{
+    color: #fff;
 }

@@ -4,8 +4,14 @@
 <head>
 	<title>upload file</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="{% static 'portal/Upload.css' %}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
      <script>
 
          function preview(evt)
@@ -23,13 +29,39 @@
     </script>
 </head>
 <body>
-    <div id="top">
-        <h2>PHOICS</h2>
-        <a href="{% url 'newsfeed' %}"><i class="fa fa-home fa-2x" aria-hidden="true"></i></a>
-        <a href="{% url 'profile' user.username %}">	<i class="fa fa-user fa-2x" aria-hidden="true"></i></a>
-        <a href="{% url 'logout' %}"><i class="fa fa-sign-out fa-2x" aria-hidden="true"></i></a>
+   <nav class="navbar">
+    <div class="container top">
+        <a class="navbar-brand" href="{% url 'newsfeed' %}">PHOICS</a>
+        <ul class="nav justify-content-end">
 
+{#<form name="SearchUser" method="post" enctype="multipart/form-data" novalidate>#}
+{#                 {% csrf_token %}#}
+{#                 {{ form.username }}#}
+{#                 <button class="button" type="submit" id ="show">SUBMIT</button>#}
+{#</form>#}
+{#            <li class="nav-item"><a href="{% url 'search' %}" class="nav-link"><i class="fa fa-search fa-2x" aria-hidden="true"></i></a></li>#}
+            <li class="nav-item"><a href="{% url 'newsfeed' %}" class="nav-link"><i class="fa fa-home fa-2x" aria-hidden="true"></i></a></li>
+        <li class="nav-item>"><a class="nav-link" href="{% url 'profile' user.username %}">	<i class="fa fa-user fa-2x" aria-hidden="true"></i></a></li>
+            <li class="nav-item"><a href="{% url 'logout' %}" class="nav-link"><i class="fa fa-sign-out fa-2x" aria-hidden="true"></i></a></li>
+        </ul>
     </div>
+</nav>
+{#<div class="search-box">#}
+{#             <div class="results">#}
+{#             <div class="heading">Username</div>#}
+{#             <div class="heading">E-mail</div>#}
+{#             <div class="heading">Date Joined</div>#}
+{#             {% for user in names %}#}
+{##}
+{#                 <a href="{% url 'profile' user.username %}"> <div class="ans">{{ user.username }}</div></a>#}
+{#                 <div class="ans">{{ user.email }}</div>#}
+{#                 <div class="ans">{{ user.date_joined }}</div>#}
+{#                 {% empty %}#}
+{#                 <div class="ans" style="color: red"><strong>SORRY, no such user on phoics account</strong></div>#}
+{#             {% endfor %}#}
+{##}
+{#             </div>#}
+{#</div>#}
     {% if request.user.is_authenticated %}
 
     <div class="container">
@@ -101,5 +133,12 @@
       </div>
     </div>
 {% endif %}
+<script
+  src="https://code.jquery.com/jquery-3.2.1.min.js"
+  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+
 </body>
 </html>

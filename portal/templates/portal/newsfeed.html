@@ -115,6 +115,15 @@
 
 </script>
 
+<script>
+    $(document).ready(
+    function(){
+        $("#show").click(function () {
+            $(".results").css("display","block");
+        });
+
+    });
+</script>
 
 
 </head>
@@ -127,7 +136,7 @@
 <form name="SearchUser" method="post" enctype="multipart/form-data" novalidate>
                  {% csrf_token %}
                  {{ form.username }}
-                 <button class="button" type="submit">SUBMIT</button>
+                 <button class="button" type="submit" id ="show">SUBMIT</button>
 </form>
 {#            <li class="nav-item"><a href="{% url 'search' %}" class="nav-link"><i class="fa fa-search fa-2x" aria-hidden="true"></i></a></li>#}
             <li class="nav-item"><a href="{% url 'newsfeed' %}" class="nav-link"><i class="fa fa-home fa-2x" aria-hidden="true"></i></a></li>
@@ -136,20 +145,22 @@
         </ul>
     </div>
 </nav>
-<div class="search-box">
-             <div class="results">
-             <div class="heading">Username</div>
-             <div class="heading">E-mail</div>
-             <div class="heading">Date Joined</div>
-             {% for user in names %}
-                 <a href="{% url 'profile' user.username %}"> <div class="ans">{{ user.username }}</div></a>
-                 <div class="ans">{{ user.email }}</div>
-                 <div class="ans">{{ user.date_joined }}</div>
-                 {% empty %}
-                 <div class="ans" style="color: red"><strong>SORRY, no such user on phoics account</strong></div>
-             {% endfor %}
-             </div>
-</div>
+{#<div class="search-box">#}
+{#             <div class="results">#}
+{#             <div class="heading">Username</div>#}
+{#             <div class="heading">E-mail</div>#}
+{#             <div class="heading">Date Joined</div>#}
+{#             {% for user in names %}#}
+{##}
+{#                 <a href="{% url 'profile' user.username %}"> <div class="ans">{{ user.username }}</div></a>#}
+{#                 <div class="ans">{{ user.email }}</div>#}
+{#                 <div class="ans">{{ user.date_joined }}</div>#}
+{#                 {% empty %}#}
+{#                 <div class="ans" style="color: red"><strong>SORRY, no such user on phoics account</strong></div>#}
+{#             {% endfor %}#}
+{##}
+{#             </div>#}
+{#</div>#}
     {% if request.user.is_authenticated %}
         {% csrf_token %}
         <div class="container">
@@ -163,7 +174,7 @@
                         <ul class="nav">
                           {% for obj in profile %}
                               {% if obj.user == img.user %}
-                                  <li class="nav-item"><img src="{{ obj.profile_pic.url }}" style="width:50px;height: 50px;border-radius: 50%"></li>
+                                  <li class="nav-item"><img src="{{ obj.profile_pic.url }}" style="width:50px;height: 50px;border-radius: 50%; padding:0.5rem"></li>
                               {% endif %}
                                   {% endfor %}
 
@@ -188,22 +199,24 @@
 {#                      <button type="submit">#}
 {#                      <i  class="display1 fa-thumbs-down" id="dislike{{ img.id }}" data-imgid="{{ img.id }}" onclick="myFunction2(this)"></i>#}
 
-{{ img.like_user }}
+{#{{{ img.like_user }}{ img.like_user }}#}
 
                      <ul class="nav">
                     <li class="nav-item">
+                    <span class="nav-link">
 {#                    {% ifequal 1 img.like_or_not %}#}
                         {% if user in img.like_user.all %}
 {##}
-                      <i  class="display1 fa fa-heart nav-link" aria-hidden="true" id="like{{ img.id }}" data-imgid="{{ img.id }}"></i>
+                      <i  class="display1 fa fa-heart nav-link" aria-hidden="true" id="like{{ img.id }}" data-imgid="{{ img.id }}"> Like</i>
                       <br><br>
 {#                            {% endif %}#}
 {#                    {% endifequal %}#}
 {#                    {% ifnotequal 1 img.like_or_not %}#}
                         {% else %}
-                        <i  class="display1 fa fa-heart-o nav-link" aria-hidden="true" id="like{{ img.id }}" data-imgid="{{ img.id }}"></i>
+                        <i  class="display1 fa fa-heart-o nav-link" aria-hidden="true" id="like{{ img.id }}" data-imgid="{{ img.id }}"> Like</i>
                         <br><br>
 {#                    {% endifnotequal %}#}
+                            </span>
                          {% endif %}
 
 
@@ -218,31 +231,32 @@
 {#                        <input class="comment" type="text" img_data="{{img.pk}}" placeholder="Enter a comment"><br>#}
                     </li>
                         <li class="nav-item">
-                            <a class="nav-link" data-toggle="collapse" href="#collapseExample{{img.pk }}" aria-expanded="false" aria-controls="collapseExample">
-                                <i class="fa fa-comment-o" aria-hidden="true"></i> Comment
-                            </a>
+                            <span class="nav-link" data-toggle="collapse" href="#collapseExample{{img.pk }}" aria-expanded="false" aria-controls="collapseExample">
+                                <i class="fa fa-comment-o" aria-hidden="true"> Comment</i>
+                            </span>
                         </li>
                     <li class="nav-item">
-                        <a href='#' class="nav-link">
-                        <i class="fa fa-share" aria-hidden="true"></i> Share
-                        </a>
+                        <span href='#' class="nav-link">
+                        <i class="fa fa-share" aria-hidden="true"> Share</i>
+                        </span>
                     </li>
                     </ul>
                         <div class="collapse" id="collapseExample{{ img.pk }}">
 
-                        <input  class="comment" type="text" img_data="{{img.pk}}" placeholder="Add a comment"><br>
+
 
                         <p id="show_user{{img.pk}}" style="display: inline"></p>
                         <p id="comma" style="display: inline" ></p>
-                        <p id="show_comment{{img.pk}}" style="display: inline"></p><br><br>
+                        <p id="show_comment{{img.pk}}" style="display: inline"></p>
 
                         {% for com in comments %}
 
                             {% if com.document == img %}
-                                <p>{{com.user}} : {{com.comment}}</p><br>
+                                <p class="cmmnt_view">{{com.user}} : {{com.comment}}</p>
                             {% endif %}
 
                         {% endfor %}
+                        <input  class="comment" type="text" img_data="{{img.pk}}" placeholder="Add a comment..."><br>
 {#                        <p style="text-align: center;" {% post_to_facebook img.document.url "Share to facebook!" %}></p>#}
                         </div>
                         </div>

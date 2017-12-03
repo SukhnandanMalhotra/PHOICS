@@ -1,246 +1,77 @@
 @import url('https://fonts.googleapis.com/css?family=Raleway');
 body{
-	background-color: #eee;
+
 	margin: 0;
 }
-#top{
-	top:0;
-	margin: 0;
-	position:fixed;
-	width:100vw;
-    height:10vh;
-    background-color: #02b46d;
-    z-index: 1;
+.navbar{
+	background-color: #000;
+	border-bottom: 1px solid #eee;
+
 }
-h2{
-	position: relative;
-    margin-top:3vh;
-    margin-left:10vw;
+.navbar a{
+	color:#fff;
+}
+
+form>.btn{
+	color:#fff;
+}
+.icon{
+	margin-left:10vw;
+	float: left;
+	border:3px solid black;
+	font-family: Raleway thin;
+	padding:0.5%;
+	letter-spacing: 0.2em;
+	margin-top:1.5vh;
+	margin-right: 0.2em;
+}
+h2.heading{
+    float:left;
+    margin-top:3vh;                             /*///////////////phoics heading////////////////*/
+    /*margin-left:10vw; */
 	letter-spacing: 0.5em;
-    font-family: 'Raleway';
-   display: inline;
+    font-family: Raleway medium;
+
 }
-i.fa{
-	cursor: pointer;
-}
-i.fa:hover{
-	color:white;
-}
-i.fa-search{
-	margin-top:3vh;
-	margin-left:50%;
-}
-i.fa-home{
-	position: relative;
-	margin-top:3vh;
-	margin-left:2%;
-}
-i.fa-user{
-	margin-left:2%;
-}
-i.fa-sign-out{
-	margin-left:2%;
-}
+.btn{
+			border-radius: 0;
+			background-color: transparent;
+			border:4px solid #000;
+			color:#000;
+		}
+		.btn:hover{
+			background-color: #000;
+			color:#fff;
+		}
+
 .user-profile{
-	position: relative;
-    margin-left:20%;
-    margin-top: 15vh;
-    width: 60vw;
-    display: grid;
-    grid-template-columns: 40% 60%;
-    grid-column-gap: 1em;
-
-}
-.user-profile >div{
-	font-family: 'Raleway';
-}
-.feeds{
-   position: relative;
-    margin-left:17%;
-    margin-top: 3vh;
-    width: 70vw;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-column-gap: 1em;
-    grid-row-gap:2em;
-}
-div.dp{
-   align-content:center;
-}
-img{
-	width:70%;
-    border-radius: 50%;
-    margin-left:15%;
-    /*height: 100%*/
-}
-
-button{
-	background-color:transparent;
-	box-shadow: none;
-	padding:2%;
-	width:10vw;
-	border:2px solid black;
-	border-radius: 2px;
-	cursor: pointer;
-}
-button:hover{
-	background-color: black;
-	color: white;
-}
-div.details{
-	grid-column:2/4;
-}
-.feed{
-	width:100%;
-	border-radius:0;
-    height:100%;
-    margin:0;
-}
-.image{
-	position: relative;
-}
-
-img.feed:hover{
-	filter: brightness(40%);
-}
-.image:hover >div.hide{
-	visibility: visible;
-    /*filter:brightness(100%);*/
-}
-.hide{
-	visibility: hidden;
-	cursor:pointer;
-	color:white;
-	font-family: 'Raleway';
-}
-.status{
-	position:absolute;
-	bottom:10%;
-	right:5%;
-
-}
-.edit{
-	position:absolute;
-	right:5%;
-	top:10%;
-}
-.reset{
-	position:absolute;
-	top:10%;
-	left:45%;
-}
-.date{
-	position: absolute;
-	bottom:10%;
-	left:5%;
-}
-.delete{
-
-	position: absolute;
-	top:10%;
-	left:5%;
-}
-a{
-	text-decoration: none;
-	color:black;
-}
-a.edit{
-	color:white;
-}
-#confirm-box {
-	top: 0;
-	display: none;
-	position: fixed;
-	background-color: white;
 	text-align: center;
-	padding: 1%;
-	width: 30vw;
-	/*height:15vh;*/
-	margin-top: 40vh;
-	margin-left: 25vw;
-	border: 1px solid black;
-
-}
-body{
-	background-color: #eee;
-	margin: 0;
-}
-#top{
-	top:0;
-	margin: 0;
-	position:fixed;
-	width:100vw;
-    height:10vh;
-    background-color: #02b46d;
-    z-index: 1;
-}
-h2{
-	position: relative;
-    margin-top:3vh;
-    margin-left:10vw;
-	letter-spacing: 0.5em;
-    font-family: 'Raleway';
-   display: inline;
-}
-i.fa{
-	cursor: pointer;
-}
-i.fa:hover{
-	color:white;
-}
-i.fa-search{
-	margin-top:3vh;
-	margin-left:50%;
-}
-i.fa-home{
-	position: relative;
-	margin-top:3vh;
-	margin-left:2%;
-}
-i.fa-user{
-	margin-left:2%;
-}
-i.fa-sign-out{
-	margin-left:2%;
-}
-.user-profile{
-	position: relative;
-    margin-left:20%;
-    margin-top: 15vh;
-    width: 60vw;
-    display: grid;
-    grid-template-columns: 40% 60%;
-    grid-column-gap: 1em;
 
 }
 .user-profile >div{
-	font-family: Raleway;
+	font-family: 'Raleway';
 }
-.feeds{
-   position: relative;
-    margin-left:17%;
-    margin-top: 3vh;
-    width: 70vw;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-column-gap: 1em;
-    grid-row-gap:2em;
+.details{
+	grid-column:2/4;            /*//////////////////////div containing user name and upload and aedit button//////////*/
 }
-div.dp{
+
+.dp{
    align-content:center;
 }
 img{
-	width:70%;
+	width:200px;
+	height:200px;
+	overflow: hidden;
     border-radius: 50%;
-    margin-left:15%;
+ /*   margin-left:15%; */                          /*////////////////profile pic////////////////*/
     /*height: 100%*/
 }
 
-button{
+/*button{
 	background-color:transparent;
 	box-shadow: none;
 	padding:2%;
-	width:10vw;
+	width:10vw;                                   ////////////////////buttons////////////////
 	border:2px solid black;
 	border-radius: 2px;
 	cursor: pointer;
@@ -248,176 +79,133 @@ button{
 button:hover{
 	background-color: black;
 	color: white;
+}*/
+.feeds{
+	margin-top: 1rem;
+	margin-right: 0;
 }
-div.details{
-	grid-column:2/4;
+.user-detail{
+	text-align: center;
+	justify-content: center;
+	padding-top: 30px;
 }
 .feed{
+	/*position: absolute;*/
 	width:100%;
-	border-radius:0;
-    height:100%;
+	border-radius:0;             /*////////img tag for individual image uploaded/////////*/
+    /*height:100%;*/
     margin:0;
 }
 .image{
 	position: relative;
 }
 
-img.feed:hover{
-	filter: brightness(40%);
+.hide{
+	position: absolute;
+	width:0%;
+	height: 100%;
+	background-color:rgba(0,0,0,0.5);
+	overflow: hidden;
+    transition: all  1s;
 }
 .image:hover >div.hide{
-	visibility: visible;
-    /*filter:brightness(100%);*/
+	width:100%;
 }
-.hide{
+/*.hide{
 	visibility: hidden;
 	cursor:pointer;
 	color:white;
 	font-family: 'Raleway';
-}
-.status{
-	position:absolute;
-	bottom:10%;
-	right:5%;
-}
+}*/                                         /*//////////////////////icons over images for delete, edit and reset//////////////*/
 
 .edit{
 	position:absolute;
 	right:5%;
-	top:10%;
+	top:45%;
+	color:white;
 }
-.reset{
+.status{
 	position:absolute;
-	top:10%;
+	top:45%;
 	left:45%;
+	color:white;
 }
 .date{
 	position: absolute;
 	bottom:10%;
 	left:5%;
+	color:white;
 }
 .delete{
 
 	position: absolute;
-	top:10%;
+	top:45%;
 	left:5%;
+	color:white;
 }
 a{
 	text-decoration: none;
 	color:black;
 }
 #confirm-box{
-	top:0;
+
 	display: none;
 	position:fixed;
-	background-color: white;
+	background-color: white;                        /*/////////////////////////confirmation box////////////////*/
 	text-align: center;
     padding:1%;
 	width:30vw;
-	/*height:15vh;*/
-	margin-top:40vh;
-	margin-left:25vw;
+	height: 20vh;
+	top:0;bottom:0;left:0;right:0;
+    margin:auto;
 	border:1px solid  black;
-	box-shadow: 2%;
+	box-shadow: 10px 3px 9px 1px #333;
 
 }
-@media only screen and (max-width:1050px){
-i.fa-search{
-        margin-left:45%;
+.mr-auto {
+     margin-right: 0!important;
 }
+.btn-search{
+	border:none;
+	background-color: transparent;
+	color:#fff;
 }
-@media only screen and (max-width:830px){
-	button{
-		width:15vw;
-	}
+.navbar-inverse .navbar-nav .nav-link {
+    color: rgba(255,255,255,1);
 }
-@media only screen and (max-width:780px){
-    i.fa-search{
-        margin-left:30%;
+.col{
+	padding-right:0;
+	padding-left: 0;
 }
+.gallery-wrapper {
+           overflow: hidden;
+           }
+
+       .grid-item {
+        padding-bottom: 0rem;
+        }
+@media only screen and (max-width:768px){
+
+    .hidden{
+    	display: none;
+    }
 }
-@media only screen and (max-width:520px){
-	button{
-		width:20vw;
-	}
-	h1{
-		font-size:90%;
-	}
-	button{
-		font-size:90%;
-	}
-}
-@media only screen and (max-width:450px){
-i.fa-search{
-      margin-left:10%;
-}
-h1{
-		font-size:75%;
-	}
-	button{
-		font-size:75%;
-	}
-}
-@media only screen and (max-width:360px){
-	h2{
-		font-size:95%;
-	}
-i.fa{
-		font-size:90%;
-	}
-	i.fa-search{
-		margin-left:27%;
+@media only screen and (max-width:576px){
+	/*.form-inline .form-control{
+        display:none;
+    }*/
+	.user-detail{
+		padding-top: 0;
 	}
 
-}
 
+}
+@media (max-width: 575px){}
 
-@media only screen and (max-width:1050px){
-i.fa-search{
-        margin-left:45%;
+.navbar-toggleable-md>.container {
+   margin-left:20px;
+   margin-right: 20px;
 }
-}
-@media only screen and (max-width:830px){
-	button{
-		width:15vw;
-	}
-}
-@media only screen and (max-width:780px){
-    i.fa-search{
-        margin-left:30%;
-}
-}
-@media only screen and (max-width:520px){
-	button{
-		width:20vw;
-	}
-	h1{
-		font-size:90%;
-	}
-	button{
-		font-size:90%;
-	}
-}
-@media only screen and (max-width:450px){
-i.fa-search{
-      margin-left:10%;
-}
-h1{
-		font-size:75%;
-	}
-	button{
-		font-size:75%;
-	}
-}
-@media only screen and (max-width:360px){
-	h2{
-		font-size:95%;
-	}
-i.fa{
-		font-size:90%;
-	}
-	i.fa-search{
-		margin-left:27%;
-	}
-
+.user-profile{
+	padding-top: 20px;
 }
