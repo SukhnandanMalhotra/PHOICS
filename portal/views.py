@@ -295,8 +295,6 @@ def like(request):
             img.save()
         a = img.like_user.count()
         b = img.like_or_not
-
-        # data['status'] = b
         data = {
             'count_like': a,
             'state_image': b
