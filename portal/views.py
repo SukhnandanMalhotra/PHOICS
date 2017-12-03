@@ -64,12 +64,10 @@ def check_login(request):
 
 
 
-# front page function which return front page html
 def front_page(request):
     return render(request, 'portal/front_page.html')
 
 
-                   'user_image_count': user_image_count, 'form':form, 'names':names2})
 
 def signup(request):
     if request.user.is_authenticated:
@@ -187,10 +185,9 @@ def newsfeed(request):
                                                     'comments': comments,
                                                     'page_range': page_range,
                                                     'profile': profile,
+                                                    'form': form, 'names': names2,
                                                     'user': user})
 
-    return render(request, 'portal/newsfeed.html', {'images': images, 'comments':comments,
-                                                    'page_range': page_range, 'form':form, 'names':names2})
 
 def comment(request):
     img_id = 0

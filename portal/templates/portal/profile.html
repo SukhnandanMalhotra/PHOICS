@@ -58,7 +58,7 @@
                  {% if username == request.user.username %}
                          <img src="{{ obj.profile_pic.url }}">
                      {% endif %}
-             {% endfor %}
+{#             {% endfor %}#}
          </div>
          <div class="details"><h1 class="name">{{ username }}</h1>
              <h1>TOTAL POST : {{ user_image_count }}</h1>
@@ -70,7 +70,7 @@
              </div>
 
 
-             {% endif %}
+{#             {% endif %}#}
          </div>
 
          <div class="feeds">
