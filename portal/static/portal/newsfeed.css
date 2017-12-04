@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Raleway');
 body{
-	background-color: #eee;
+	background-color:#fff;
 	margin: 0;
 }
 
@@ -65,42 +65,42 @@ footer{
     margin-bottom: 0;
     bottom: 0;
 }
-@media only screen and (max-width:1050px){
+/*@media only screen and (max-width:1050px){*/
 
 
-}
-@media only screen and (max-width:780px){
+/*}*/
+/*@media only screen and (max-width:780px){*/
 
-p{
-		font-size:90%;
-	}
+/*p{*/
+		/*font-size:90%;*/
+	/*}*/
 
-}
-@media only screen and (max-width:560px){
+/*}*/
+/*@media only screen and (max-width:560px){*/
 
-}
-@media only screen and (max-width:490px){
-	p{
-		font-size:60%;
-	}
+/*}*/
+/*@media only screen and (max-width:490px){*/
+	/*p{*/
+		/*font-size:60%;*/
+	/*}*/
 
-    p.name{
-		font-size:90%;
-	}
+    /*p.name{*/
+		/*font-size:90%;*/
+	/*}*/
 
-}
-@media only screen and (max-width:360px){
-	h2{
-		font-size:95%;
-	}
-	p{
-		font-size:50%;
-	}
-	p.name{
-		font-size:100%;
-	}
+/*}*/
+/*@media only screen and (max-width:360px){*/
+	/*h2{*/
+		/*font-size:95%;*/
+	/*}*/
+	/*p{*/
+		/*font-size:50%;*/
+	/*}*/
+	/*p.name{*/
+		/*font-size:100%;*/
+	/*}*/
 
-}
+/*}*/
 button{
 	background-color:transparent;
 	box-shadow: none;
@@ -120,19 +120,19 @@ button:hover{
 .card{
 	border:2px solid rgba(0,0,0,0.125);
 }
-.navbar{
-    background-color: #000;
-    top:0;
-    position:fixed;
+/*.navbar{*/
+    /*background-color: #000;*/
+    /*top:0;*/
+    /*position:fixed;*/
 
-}
-.top a{
-    color: #fff;
-}
+/*}*/
+/*.top a{*/
+    /*color: #fff;*/
+/*}*/
 
-.nav-link{
-	cursor:pointer;
-}
+/*.nav-link{*/
+	/*cursor:pointer;*/
+/*}*/
 .comment{
 	width: 100%;
 	border-radius: 0;
@@ -149,4 +149,16 @@ background-color: #eee;
 }
 .card-body{
 	padding-bottom: 0.25rem;
+}
+.bg-dark {
+    background-color: #000 !important;
+}
+.navbar-dark .navbar-nav .nav-link {
+    color: rgba(255,255,255, 1);
+}
+.sticky-top {
+    position: -webkit-sticky;
+    position: fixed;
+    top: 0;
+    z-index: 1020;
 }

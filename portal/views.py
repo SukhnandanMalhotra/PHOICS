@@ -211,14 +211,9 @@ def model_form_upload(request, username):
         if request.method == 'POST':
             form = DocumentForm(request.POST, request.FILES)
             if form.is_valid():
-                width = form.cleaned_data.get('width')
-                height = form.cleaned_data.get('height')
                 upload_details = form.save(commit=False)
                 upload_details.user = request.user
                 upload_details.save()
-                if width < 0 or height < 0:
-                    messages.error(request, 'Enter valid width and height')
-                    return redirect('model_form_upload')
                 return redirect(reverse('profile', kwargs={'username': username}))
         else:
             form = DocumentForm()

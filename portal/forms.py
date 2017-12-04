@@ -46,7 +46,7 @@ class DocumentForm(forms.ModelForm):                   # to render to user a for
         rotate = forms.ModelChoiceField(queryset=Document.objects.filter(uploaded_at=datetime.now()), empty_label=None)
         blur = forms.ModelChoiceField(queryset=Document.objects.filter(uploaded_at=datetime.now()), empty_label=None)
         effect = forms.ModelChoiceField(queryset=Document.objects.filter(uploaded_at=datetime.now()), empty_label=None)
-        fields = ('document', 'status', 'width', 'height', 'rotate', 'flip', 'blur', 'effect')
+        fields = ('document', 'status')
 
 
 class UpdateForm(forms.ModelForm):                     # renders a form update pictures uploaded

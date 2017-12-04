@@ -90,7 +90,14 @@
                  {% if obj.user.username == username %}
                      <div class="col col-lg-4 col-md-6 grid-item image">
 
+{% if request.user.username != username and obj.status == 'PUBLIC' %}
+
+    <div class="hide">
+        <div class="date">{{ obj.uploaded_at }}</div></div>
+    <a href="{{ obj.document.url }}"><img class="feed img-thumbnail" src="{{ obj.document.url }}"></a>
+                    {% endif %}
                      <div class="hide">
+
                           <div class=" date">{{ obj.uploaded_at }}</div>
 
 
