@@ -2,15 +2,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>upload file</title>
+	<title>User Info</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="{% static 'portal/Upload.css' %}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-{#    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">#}
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-{#<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>#}
+
 
      <script>
 
@@ -34,88 +33,58 @@
         <a class="navbar-brand" href="{% url 'newsfeed' %}">PHOICS</a>
         <ul class="nav justify-content-end">
 
-{#<form name="SearchUser" method="post" enctype="multipart/form-data" novalidate>#}
-{#                 {% csrf_token %}#}
-{#                 {{ form.username }}#}
-{#                 <button class="button" type="submit" id ="show">SUBMIT</button>#}
-{#</form>#}
-{#            <li class="nav-item"><a href="{% url 'search' %}" class="nav-link"><i class="fa fa-search fa-2x" aria-hidden="true"></i></a></li>#}
             <li class="nav-item"><a href="{% url 'newsfeed' %}" class="nav-link"><i class="fa fa-home" aria-hidden="true"></i> Newsfeed</a></li>
         <li class="nav-item>"><a class="nav-link" href="{% url 'profile' user.username %}">	<i class="fa fa-user" aria-hidden="true"></i> Profile</a> </li>
             <li class="nav-item"><a href="{% url 'logout' %}" class="nav-link"><i class="fa fa-sign-out" aria-hidden="true"></i> Logout</a></li>
         </ul>
     </div>
 </nav>
-{#<div class="search-box">#}
-{#             <div class="results">#}
-{#             <div class="heading">Username</div>#}
-{#             <div class="heading">E-mail</div>#}
-{#             <div class="heading">Date Joined</div>#}
-{#             {% for user in names %}#}
-{##}
-{#                 <a href="{% url 'profile' user.username %}"> <div class="ans">{{ user.username }}</div></a>#}
-{#                 <div class="ans">{{ user.email }}</div>#}
-{#                 <div class="ans">{{ user.date_joined }}</div>#}
-{#                 {% empty %}#}
-{#                 <div class="ans" style="color: red"><strong>SORRY, no such user on phoics account</strong></div>#}
-{#             {% endfor %}#}
-{##}
-{#             </div>#}
-{#</div>#}
+
     {% if request.user.is_authenticated %}
+        <div class="container main justify-content-center">
+          <div class="row">
+         <div class="col-md-4 preview">
+                <img src="{{ obj.profile_pic.url }}" alt="..." class="img-thumbnail" id="output"><br>
+                        <h4>{{ user.username }}</h4><br>
 
-    <div class="container">
-
-         <div class="content heading"><p class="upload"><p style="text-align: center; font-size: 200%">
-            {{ user.username }}</p><br><br>YOUR INFO</div>
-
-         <div class="content form">
-             <div class="Form">
-                 {% if user.is_authenticated %}
-                     <form method='post' enctype="multipart/form-data" onchange="preview(event)">
+{#         <button class="btn">Change Profile Picture</button><br><br>#}
+        </div>
+        <div class=" col-md-8 edit-detail">
+            {% if user.is_authenticated %}
+                     <form method='post' enctype="multipart/form-data" onchange="preview(event)" class="">
                          {% csrf_token %}
 
-                                 <div class="row">
-                                     <label for="name">{{ form.First_Name.label_tag }}</label>
-{#                                      {{ form.First_Name }}<br>#}
-                   <input type="text" name="First_Name" maxlength="100" id="id_First_Name" value="{{ obj.First_Name }}"><br>
-                                      <p id="error_profile_First_name" style="color: #ff0000">{{ form.First_Name.errors }}
+                             <div class="form-group row">
+                                 <label for="name" class="col-sm-3 col-form-label"><strong><label for="id_First_Name">First Name:</label></strong></label>
+                                 <div class="col-sm-8">
+                                     <input class="form-control" type="text" name="First_Name" maxlength="100" id="id_First_Name" value="{{ obj.First_Name }}"><br>
                                  </div>
 
-                                 <div class="row">
-                                     <label for="name">{{ form.Last_Name.label_tag }}</label>
-                   <input type="text" name="Last_Name" maxlength="100" id="id_Last_Name" value="{{ obj.Last_Name }}"><br>
+                             </div>
 
-                                      <p id="error_profile_Last_Name" style="color: #ff0000">{{ form.Last_Name.errors }}
+                             <div class="form-group row">
+                                 <label for="name" class="col-sm-3 col-form-label"><strong><label for="id_Last_Name">Last Name:</label></strong></label>
+                                 <div class="col-sm-8">
+                                     <input class="form-control" type="text" name="Last_Name" maxlength="100" id="id_Last_Name"  value="{{ obj.Last_Name }}">
                                  </div>
 
-                                 <div class="row">
-                                     <label for="name">{{ form.City.label_tag }}</label>
-                   <input type="text" name="City" maxlength="100" id="id_City" value="{{ obj.City }}"><br>
-                                      <p id="error_profile_City" style="color: #ff0000">{{ form.City.errors }}
+                             </div>
+                          <div class="form-group row">
+                                 <label for="name" class="col-sm-3 col-form-label"><strong><label for="id_bio">About:</label></strong></label>
+                                 <div class="col-sm-8">
+                                     <textarea  class="form-control" name="bio" cols="40" rows="10" maxlength="500" id="id_bio" value="{{ obj.bio }}">
+</textarea>
                                  </div>
 
-                                 <div class="row">
-                                     <label for="name">{{ form.DOB.label_tag }}</label>
-{#                   <input type="text" name="DOB" maxlength="100" id="id_DOB"#}
-{#                          value="{{ obj.DOB.date.year }}-{{ obj.DOB.date.month }}-{{ obj.DOB.date.day }}" placeholder="yyyy-mm-dd"><br>#}
-                                      {{ form.DOB }}<br><br>
-{#                                     <p id="error_profile_DOB" style="color: #ff0000">{{ form.DOB.errors }}#}
+                             </div>
+
+                             <div class="form-group row">
+                                 <label for="name" class="col-sm-3 col-form-label"><strong><label for="id_profile_pic">Change Picture:</label></strong></label>
+                                 <div class="col-sm-8">
+                                     <input class="form-control"type="file" name="profile_pic" id="id_profile_pic" />
                                  </div>
 
-                                 <div class="row">
-                                     <label for="name">{{ form.bio.label_tag }}</label>
-                   <input type="text" name="bio" maxlength="100" id="id_bio" value="{{ obj.bio }}"><br>
-                                      <p id="error_profile_bio" style="color: #ff0000">{{ form.bio.errors }}
-                                 </div>
-
-                                 <div class="row">
-                                     <label for="name">{{ form.profile_pic.label_tag }}</label>
-                                      {{ form.profile_pic }}<br>
-{#                  <input type="text" name="profile_pic" maxlength="100" id="id_profile_pic"><br>#}
-
-                                      <p id="error_profile_profile_pic" style="color: #ff0000">
-                                 </div>
+                             </div>
 
 
                          <button class="button" type="submit">SUBMIT</button><br>
@@ -123,16 +92,7 @@
                  {% endif %}
              </div>
          </div>
-    <div class="content preview">
-         <div class="image">
-                        <h3>Current profile pic</h3>
-              <div class="image"><img id="output"></div>
-
-           <img src="{{ obj.profile_pic.url }}" style="width: 200px; height: 200px;">
-      </div>
-      </div>
-    </div>
-{% endif %}
+        {% endif %}
 
 <script
   src="https://code.jquery.com/jquery-3.2.1.min.js"

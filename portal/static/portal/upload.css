@@ -156,9 +156,7 @@ a{
     top:0;
 
 }
-.top a{
-    color: #fff;
-}
+
 .btn{
 			border-radius: 0;
 			background-color: transparent;
@@ -190,3 +188,42 @@ a{
 			overflow-x: hidden;
 			overflow-y: auto;
 		}
+
+		.top a{
+			color:#fff;
+		}
+		.preview{
+			text-align: center;
+		}
+		.edit-detail{
+		    padding-top: 30px;
+			padding-left: 20px;
+			border-left:1px solid #eee;
+		}
+		.btn{
+			border-radius: 0;
+			background-color: transparent;
+			border:4px solid #000;
+			color:#000;
+		}
+		.btn:hover{
+			background-color: #000;
+			color:#fff;
+		}
+		.main{
+			margin-top:70px;
+		}
+		@media only screen and (max-width:768px){
+			.main{
+				margin-top: 20px;
+			}
+		}
+.img-thumbnail {
+    padding: .25rem;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: .25rem;
+    transition: all .2s ease-in-out;
+    max-width: 100%;
+    max-height:300px;
+}

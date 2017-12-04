@@ -27,7 +27,6 @@ class SearchUser(forms.Form):                 # renders a signup form to user wi
         fields = ('username',)
 
 class Info(forms.ModelForm):
-    DOB = forms.DateTimeField(widget=extras.SelectDateWidget(years=range(1947, 2018)))
     class Meta:
         model = Profile
         fields = ('First_Name', 'Last_Name', 'City', 'DOB', 'bio', 'profile_pic', )
