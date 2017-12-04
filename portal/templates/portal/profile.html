@@ -9,8 +9,50 @@
       <link rel="stylesheet" type="text/css" href="{% static 'portal/profile.css' %}">
 {#      <link rel="stylesheet" type="text/css" href="{% static 'portal/search.css' %}">#}
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
 {#    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>#}
 {#<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>#}
+    <script>
+    $(document).ready(function(){
+
+        $("#showji").click(function () {
+            var search_data = $('#user-search-here').val();
+             console.log(search_data);
+               $.ajax({
+                url: '{% url 'search' %}',
+                data: {
+
+                    'search_data': search_data
+                },
+
+                success: function (data) {
+                    var a ;
+                          console.log(data);
+                          for (x in data) {
+                              a = data[x];
+{#                              <a href="{% url 'profile' username %}">data[x]</a>#}
+{#                              url = "profile " + a;#}
+{#                   $('.searching').append("<a href=\"{% url 'newsfeed' %}\"> " + "<h6>" + data[x] + "</h6>" + "</a>" );#}
+               $('.searching').append("<a href=\"http://127.0.0.1:8000/phoics/profile/"+ a +"/\">"+ "<h6>" + data[x] + "</h6>" + "</a>" );
+{#            $('.searching').append("<a href=\"\p\/profile\/"  + data[x] + "\/>"+ "<h6>" + data[x] + "</h6>" + "</a>" );#}
+    }
+
+
+
+                }
+
+            })
+
+
+{#            $("document").onload(function() {#}
+{#                            $(".results").css("display","block");#}
+{#            })#}
+        });
+    });
+</script>
 </head>
 <body>
 <nav class="navbar navbar-toggleable-md  navbar-inverse bg-inverse sticky-top">
@@ -27,12 +69,9 @@
   <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
-          <form class="form-inline my-2 my-lg-0" name="SearchUser" method="post" enctype="multipart/form-data" novalidate class="form-inline my-2 my-lg-0">
-{#      <input class="form-control mr-sm-2" type="search" aria-label="Search">#}
-              {% csrf_token %}
-                 {{ form.username }}
-      <button class="btn-search my-2 my-sm-0" type="submit"><i class="fa fa-search " aria-hidden="true"></i></button>
-    </form>
+                               <input id="user-search-here">
+                 <button class="button" type="submit" id ="showji">SUBMIT</button>
+
       </li>
      <li class="nav-item">
          <a href="{% url 'newsfeed' %}" class="nav-link"><i class="fa fa-home " aria-hidden="true"></i> Newsfeed</a>
@@ -52,22 +91,23 @@
   </div>
     </div>
 </nav>
-<div class="search-box">
-             <div class="results">
-             <div class="heading">Username</div>
-             <div class="heading">E-mail</div>
-             <div class="heading">Date Joined</div>
-             {% for user in names %}
-
-                 <a href="{% url 'profile' user.username %}"> <div class="ans">{{ user.username }}</div></a>
-                 <div class="ans">{{ user.email }}</div>
-                 <div class="ans">{{ user.date_joined }}</div>
-                 {% empty %}
-                 <div class="ans" style="color: red"><strong>SORRY, no such user on phoics account</strong></div>
-             {% endfor %}
-
-             </div>
-</div>
+ <h6 class="searching"></h6>
+{#<div class="search-box">#}
+{#             <div class="results">#}
+{#             <div class="heading">Username</div>#}
+{#             <div class="heading">E-mail</div>#}
+{#             <div class="heading">Date Joined</div>#}
+{#             {% for user in names %}#}
+{##}
+{#                 <a href="{% url 'profile' user.username %}"> <div class="ans">{{ user.username }}</div></a>#}
+{#                 <div class="ans">{{ user.email }}</div>#}
+{#                 <div class="ans">{{ user.date_joined }}</div>#}
+{#                 {% empty %}#}
+{#                 <div class="ans" style="color: red"><strong>SORRY, no such user on phoics account</strong></div>#}
+{#             {% endfor %}#}
+{##}
+{#             </div>#}
+{#</div>#}
     <div class="container">
          <div class="user-profile row">
                 {% for obj in profile_pic %}
@@ -236,6 +276,11 @@ function alert_function() {
 <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+
+
+
+
+
 
 </body>
 </html>
