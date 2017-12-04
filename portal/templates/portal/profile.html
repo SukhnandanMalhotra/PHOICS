@@ -9,7 +9,7 @@
       <link rel="stylesheet" type="text/css" href="{% static 'portal/profile.css' %}">
 {#      <link rel="stylesheet" type="text/css" href="{% static 'portal/search.css' %}">#}
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+{#    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>#}
 {#<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>#}
 </head>
 <body>
@@ -84,7 +84,57 @@
 {#                         <h3>{{ post }}</h3>#}
                          <p class="text-muted"><strong>{{ obj.First_Name }} {{ obj.Last_Name }}</strong>    {{ obj.bio }} <span><strong>{{ user_image_count }} posts</strong></span> </p>
                           {% if username == request.user.username %}
-                 <a href="{% url 'model_form_upload' user.username %}"><button class="btn">UPLOAD </button></a>
+{#                 <a href="{% url 'model_form_upload' user.username %}">#}
+                              <button class="btn" type="button" data-toggle="modal" data-target="#uploadModal">UPLOAD </button>
+                 <div class="modal fade" id="uploadModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content ">
+      <div class="modal-header">
+        <h5 class="modal-title"  id="exampleModalLabel"><strong>UPLOAD</strong></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+             <form style="text-align: center;" method='post' enctype="multipart/form-data" novalidate onchange="preview(event)">
+                                     {% csrf_token %}
+                  <div class="form-group">
+                 <label for="name" style="margin-right: 5px;"><strong>Picture:</strong></label>
+                                      {{ form.document }}
+                                      <p id="error_image_document" style="color: #ff0000">{{ form.document.errors }}
+                                      </p>
+
+                  </div>
+
+                  <div class="form-group">
+                                     <label for="name"><strong>{{ form.status.label_tag }}</strong></label>
+                                      {{ form.status }}<br>
+                      <p id="error_image_status" style="color: #ff0000">{{ form.status.errors }}</p></div>
+
+                 {% if messages %}
+                                        <ul class="messages" style="color: red;list-style-type: none">
+                                   {% for message in messages %}
+                                        {% endfor %}
+                                                </ul>
+                                        <li{% if messages.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                                       {% endif %}
+                     <button type="submit" class="btn" >UPLOAD</button>
+{#                                 </div>#}
+             </form>
+
+             <br>
+            <div class="text-center">
+           <img id="output" class="rounded" alt="...">
+</div>
+      </div>
+      <div class="modal-footer justify-content-center">
+{#        <button type="submit" class="btn" >UPLOAD</button>#}
+
+      </div>
+    </div>
+  </div>
+</div>
                  <a href="{% url 'user_info' user.username %}"><button class="edit-profile btn">EDIT PROFILE</button></a>
                  {% endif %}
                      {% endif %}
@@ -165,6 +215,18 @@
     $grid.masonry();
   });
 </script>
+<script >
+        function preview(event)
+        {
+            var reader = new FileReader();
+            reader.onload = function()
+            {
+                var output = document.getElementById('output');
+                output.src = reader.result;
+            }
+            reader.readAsDataURL(event.target.files[0]);
+        }
+    </script>
 
 <script>
 function alert_function() {

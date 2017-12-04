@@ -4,9 +4,15 @@
 
 
 <head>
-       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <title>Edit Image</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{% static 'portal/Upload.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+
 
 
     <script>
@@ -160,74 +166,131 @@
             reader.readAsDataURL(event.target.files[0]);
         }
     </script>
-
-	<title>upload file</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="{% static 'portal/Upload.css' %}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
-<body>
-    <div id="top">
-        <h2>PHOICS</h2>
-{#        <a href="{% url 'search' %}"><i class="fa fa-search fa-2x" aria-hidden="true"></i></a>#}
-        <a href="{% url 'newsfeed' %}"><i class="fa fa-home fa-2x" aria-hidden="true"></i></a>
-        <a href="{% url 'profile' user.username %}">	<i class="fa fa-user fa-2x" aria-hidden="true"></i></a>
-        <a href="{% url 'logout' %}"><i class="fa fa-sign-out fa-2x" aria-hidden="true"></i></a>
+    <body>
+   <nav class="navbar sticky-top">
+    <div class="container top">
+        <a class="navbar-brand" href="{% url 'newsfeed' %}">PHOICS</a>
+        <ul class="nav justify-content-end">
+
+            <li class="nav-item"><a href="{% url 'newsfeed' %}" class="nav-link"><i class="fa fa-home" aria-hidden="true"></i> Newsfeed</a></li>
+        <li class="nav-item>"><a class="nav-link" href="{% url 'profile' user.username %}">	<i class="fa fa-user" aria-hidden="true"></i> Profile</a> </li>
+            <li class="nav-item"><a href="{% url 'logout' %}" class="nav-link"><i class="fa fa-sign-out" aria-hidden="true"></i> Logout</a></li>
+        </ul>
     </div>
-    <div class="container">
-        <div class="content heading"><p class="upload" ><p style="text-align: center; font-size: 200%">
-            {{ user.username }}</p><br><br>{{ title }}</div>
-        <div class="content form">
-             <div class="Form" id="{{ updatex.id }}">
+</nav>
+   {% if request.user.is_authenticated %}
+        <div class="container main justify-content-center">
+          <div class="row">
+         <div class="col-md-4 preview">
+                <img src="{{ updatex.document.url }}" alt="..." class="img-thumbnail image-display" id="{{ updatex.document.url }}"><br>
+                        <h4>{{ user.username }}</h4><br>
+         </div>
+        <div class=" col-md-8 edit-detail Form" id="{{ updatex.id }}">
+            {% if user.is_authenticated %}
+                     <form method='post' enctype="multipart/form-data" onchange="preview(event)" class="">
+                         {% csrf_token %}
+{#    <div class="container">#}
+{#        <div class="content heading"><p class="upload" ><p style="text-align: center; font-size: 200%">#}
+{#            {{ user.username }}</p><br><br>{{ title }}</div>#}
+{#        <div class="content form">#}
+{#             <div class="Form" id="{{ updatex.id }}">#}
+{##}
+{#                    {% if request.user.is_authenticated %}#}
+{##}
+{#                         <form method='post' enctype="multipart/form-data" novalidate onsubmit="preview(event)">#}
+{##}
+{#                                {% csrf_token %}#}
 
-                    {% if request.user.is_authenticated %}
-
-                         <form method='post' enctype="multipart/form-data" novalidate onsubmit="preview(event)">
-
-                                {% csrf_token %}
 
 
+                                 <div class="form-group row">
+                                     <label for="name" class="col-sm-3 col-form-label"><strong>{{ form.status.label_tag }}</strong></label>
+                                     <div class="col-sm-8">
 
-                                 <div class="row">
-                                     <label for="name">{{ form.status.label_tag }}</label>
-                                      {{ form.status }}<br>
+<select name="status" id="id_status" class="form-control">
+  <option value="PRIVATE" selected="">Private</option>
+
+  <option value="PUBLIC">Public</option>
+
+</select>                                     </div><br>
                                       <p id="error_image_status" style="color: #ff0000">{{ form.status.errors }}
                                  </div>
 
-                                 <div class="row">
-                                     <label for="name">{{ form.width.label_tag }}</label>
-                                      {{ form.width }}<br>
-                                      <p id="error_image_width" style="color: #ff0000">{{ form.width.errors }}
+                                 <div class="form-group row">
+                                     <label for="name" class="col-sm-3 col-form-label"><strong>{{ form.width.label_tag }}</strong></label>
+                                     <div class="col-sm-8">
+                                    <input type="number" name="width" value="500" id="id_width" class="form-control">
+                                 </div><br>
+                                      <p id="error_image_width" style="color: #ff0000">
+                                      </p>
                                  </div>
 
-                                 <div class="row">
-                                     <label for="name">{{ form.height.label_tag }}</label>
-                                      {{ form.height }}<br>
-                                      <p id="error_image_height" style="color: #ff0000">{{ form.height.errors }}
+                                 <div class="form-group row" >
+                                     <label for="name" class="col-sm-3 col-form-label"><strong>{{ form.height.label_tag }}</strong></label>
+                                      <div class="col-sm-8">
+                                          <input type="number" name="height" value="500" id="id_height" class="form-control"></div><br>
+                                      <p id="error_image_height" style="color: #ff0000">
                                  </div>
 
-                                 <div class="row">
-                                     <label for="name">{{ form.rotate.label_tag }}</label>
-                                      {{ form.rotate }}<br>
-                                      <p id="error_image_rotate" style="color: #ff0000">{{ form.rotate.errors }}
+                                 <div class=" form-group row" >
+                                     <label for="name" class="col-sm-3 col-form-label"><strong>{{ form.rotate.label_tag }}</strong></label>
+                                      <div class="col-sm-8"><select name="rotate" id="id_rotate" class="form-control">
+  <option value="clock">Clockwise</option>
+
+  <option value="anti">Anticlockwise</option>
+
+  <option value="NONE" selected>None</option>
+
+                                      </select></div><br>
+                                      <p id="error_image_rotate" style="color: #ff0000">
                                  </div>
 
-                                 <div class="row">
-                                     <label for="name">{{ form.flip.label_tag }}</label>
-                                      {{ form.flip }}<br>
-                                      <p id="error_image_flip" style="color: #ff0000">{{ form.flip.errors }}
+                                 <div class="form-group row">
+                                     <label for="name" class="col-sm-3 col-form-label"><strong>{{ form.flip.label_tag }}</strong></label>
+                                     <div class="col-sm-8"><select name="flip" id="id_flip" class="form-control">
+  <option value="horizon">Flip Horizontally</option>
+
+  <option value="vertical">Flip Vertically</option>
+
+  <option value="NONE" selected>None</option>
+
+                                     </select></div><br>
+                                      <p id="error_image_flip" style="color: #ff0000">
                                  </div>
 
-                                 <div class="row">
-                                     <label for="name">{{ form.blur.label_tag }}</label>
-                                      {{ form.blur }}<br>
-                                      <p id="error_image_blur" style="color: #ff0000">{{ form.blur.errors }}
+                                 <div class="form-group row" >
+                                     <label for="name" class="col-sm-3 col-form-label"><strong>{{ form.blur.label_tag }}</strong></label>
+                                       <div class="col-sm-8"><select name="blur" id="id_blur" class="form-control">
+  <option value="y">Yes</option>
+
+  <option value="n" selected>No</option>
+
+                                 </select></div><br>
+                                      <p id="error_image_blur" style="color: #ff0000">
                                  </div>
 
-                                 <div class="row">
-                                     <label for="name">{{ form.effect.label_tag }}</label>
-                                      {{ form.effect }}<br>
-                                      <p id="error_image_effect" style="color: #ff0000">{{ form.effect.errors }}
+                                 <div class="form-group row">
+                                     <label for="name" class="col-sm-3 col-form-label"><strong>{{ form.effect.label_tag }}</strong></label>
+                                     <div class="col-sm-8"><select name="effect" id="id_effect" class="form-control">
+  <option value="1" selected>None</option>
+
+  <option value="2">Aqua</option>
+
+  <option value="3">Seaform</option>
+
+  <option value="4">Grayscale</option>
+
+  <option value="5">Retro</option>
+
+  <option value="6">Edges</option>
+
+  <option value="7">Negative</option>
+
+  <option value="8">Sepia</option>
+
+                                     </select></div><br>
+                                      <p id="error_image_effect" style="color: #ff0000">
                                  </div>
                             <button class="button" type="submit">SUBMIT</button><br>
                          </form>
@@ -237,11 +300,12 @@
 
                  </div>
             </div>
-
-        <div class="content preview">
-                <h3>current photo</h3>
-                <div><img id="{{ updatex.document.url }}" class="image-display" src="{{ updatex.document.url }}"></div>
-            </div>
-        </div>
+    {% endif %}
+    <script
+  src="https://code.jquery.com/jquery-3.2.1.min.js"
+  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
 </body>
 </html>

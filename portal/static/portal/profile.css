@@ -12,9 +12,7 @@ body{
 	color:#fff;
 }
 
-form>.btn{
-	color:#fff;
-}
+
 .icon{
 	margin-left:10vw;
 	float: left;
@@ -209,3 +207,29 @@ a{
 .user-profile{
 	padding-top: 20px;
 }
+.btn{
+			border-radius: 0;
+			background-color: transparent;
+			border:4px solid #000;
+			color:#000;
+		}
+		.btn:hover{
+			background-color: #000;
+			color:#fff;
+		}
+		.modal-header{
+			text-align: center;
+		}
+		.text-center{
+			margin-top: 10px;
+			width:100%;
+			max-height:600px;
+			overflow: hidden;
+		}
+		.rounded{
+			width:100%;
+			max-height: 600px;
+		}
+		.modal-body{
+			text-align: center;
+		}

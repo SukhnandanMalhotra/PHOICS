@@ -37,6 +37,18 @@ from django.http import HttpResponse
 @login_required
 def home(request, username):
     names2 = []
+    names2=[]
+    form1 = DocumentForm(request.POST, request.FILES)
+    if username == request.user.username:
+        if request.method == 'POST':
+
+            if form1.is_valid():
+                upload_details = form1.save(commit=False)
+                upload_details.user = request.user
+                upload_details.save()
+                return redirect(reverse('profile', kwargs={'username': username}))
+        else:
+            form1 = DocumentForm()
     # in order_by minus sign represent descending order
     form = SearchUser(request.POST)
     # user = User.objects.get(username=username)
@@ -53,9 +65,8 @@ def home(request, username):
                   {'documents': documents,
                    'profile_pic': profile_pic,
                    'username': username,
-                   'user_image_count': user_image_count,
-                   'form': form,
-                   'names': names2})
+                   'user_image_count': user_image_count,'form':form1})
+
 
 
 def check_login(request):
@@ -219,8 +230,8 @@ def model_form_upload(request, username):
                 return redirect(reverse('profile', kwargs={'username': username}))
         else:
             form = DocumentForm()
-        return render(request, 'portal/model_form_upload.html', {
-            'form': form, 'title': 'Upload Image'
+        return render(request, 'portal/profile.html', {
+            'form': form,
                   })
 
 
