@@ -65,22 +65,7 @@
 
     </script>
 <script>
-{#    $(document).ready(function() {#}
-{#    $('.display1').on('click', function () {#}
-{#        var imgid;#}
-{#        console.log("from like to dislike");#}
-{##}
-{#        imgid = $(this).attr("data-imgid");#}
-{##}
-{##}
-{#         $.get('/phoics/like/', {'imgid': imgid}, function (data) {#}
-{#             data1 = data.parse(data);#}
-{#             console.log(data['like_count']);#}
-{#             $('#count_like' + imgid).html(data['like_count']);#}
-{#         })#}
-{#       })#}
-{##}
-{#    });#}
+
                $(document).ready(function() {
              $(".display1").on('click', function () {
             var imgid = $(this).attr("data-imgid");
@@ -116,12 +101,43 @@
 </script>
 
 <script>
-    $(document).ready(
-    function(){
-        $("#show").click(function () {
-            $(".results").css("display","block");
-        });
+    $(document).ready(function(){
 
+        $("#show").click(function () {
+            var search_data = $('#user-searching').val();
+            var url = '';
+             console.log("search");
+               $.ajax({
+                url: '{% url 'search' %}',
+                data: {
+
+                    'search_data': search_data
+                },
+
+                success: function (data) {
+                    var a = "";
+                          console.log(data);
+                          for (x in data) {
+                              a = data[x];
+{#                              <a href="{% url 'profile' username %}">data[x]</a>#}
+{#                              url = "profile " + a;#}
+{#                   $('.searching').append("<a href=\"{% url 'newsfeed' %}\"> " + "<h6>" + data[x] + "</h6>" + "</a>" );#}
+
+                     $('.searching').append("<a href=\"http://127.0.0.1:8000/phoics/profile/"+ a +"/\">"+ "<h6>" + data[x] + "</h6>" + "</a>" );
+{#                              $('.searching').append("<a href=\"\p\/profile\/"  + data[x] + "\/>"+ "<h6>" + data[x] + "</h6>" + "</a>" );#}
+    }
+
+
+
+                }
+
+            })
+
+
+{#            $("document").onload(function() {#}
+{#                            $(".results").css("display","block");#}
+{#            })#}
+        });
     });
 </script>
 
@@ -139,11 +155,11 @@
            <div class="collapse navbar-collapse " id="navbarSupportedContent">
         <ul class="navbar-nav my-2 my-lg-0" style="float:right">
 <li>
-<form name="SearchUser" method="post" enctype="multipart/form-data" novalidate class="form-inline my-2 my-lg-0">
-                 {% csrf_token %}
-                 {{ form.username }}
+{#<form novalidate class="form-inline my-2 my-lg-0">#}
+{#                 {% csrf_token %}#}
+                 <input id="user-searching">
                  <button class="button" type="submit" id ="show">SUBMIT</button>
-</form>
+{#</form>#}
 </li>
 {#            <li class="nav-item"><a href="{% url 'search' %}" class="nav-link"><i class="fa fa-search fa-2x" aria-hidden="true"></i></a></li>#}
             <li class="nav-item"><a href="{% url 'newsfeed' %}" class="nav-link"><i class="fa fa-home" aria-hidden="true"></i> Newsfeed</a></li>
@@ -153,22 +169,25 @@
                </div>
     </div>
 </nav>
-<div class="search-box">
-             <div class="results">
-             <div class="heading">Username</div>
-             <div class="heading">E-mail</div>
-             <div class="heading">Date Joined</div>
-             {% for user in names %}
+  <h6 class="searching"></h6>
 
-                 <a href="{% url 'profile' user.username %}"> <div class="ans">{{ user.username }}</div></a>
-                 <div class="ans">{{ user.email }}</div>
-                 <div class="ans">{{ user.date_joined }}</div>
-                 {% empty %}
-                 <div class="ans" style="color: red"><strong>SORRY, no such user on phoics account</strong></div>
-             {% endfor %}
-
-             </div>
-</div>
+{#<div class="search-box">#}
+{#             <div class="results">#}
+{#             <div class="heading">Username</div>#}
+{#             <div class="heading">E-mail</div>#}
+{#             <div class="heading">Date Joined</div>#}
+{##}
+{#             {% for user in names %}#}
+{##}
+{#                 <a href="{% url 'profile' user.username %}"> <div class="ans">{{ user.username }}</div></a>#}
+{#                 <div class="ans">{{ user.email }}</div>#}
+{#                 <div class="ans">{{ user.date_joined }}</div>#}
+{#                 {% empty %}#}
+{#                 <div class="ans" style="color: red"><strong>SORRY, no such user on phoics account</strong></div>#}
+{#             {% endfor %}#}
+{##}
+{#             </div>#}
+{#</div>#}
     {% if request.user.is_authenticated %}
         {% csrf_token %}
         <div class="container">
@@ -199,7 +218,6 @@
                         </div>
                         </div>
                     <p id="user{{ img.id }}"></p>
-
 
 
 

@@ -36,7 +36,7 @@ from django.http import HttpResponse
 
 @login_required
 def home(request, username):
-    names2=[]
+    names2 = []
     # in order_by minus sign represent descending order
     form = SearchUser(request.POST)
     # user = User.objects.get(username=username)
@@ -53,7 +53,9 @@ def home(request, username):
                   {'documents': documents,
                    'profile_pic': profile_pic,
                    'username': username,
-                   'user_image_count': user_image_count})
+                   'user_image_count': user_image_count,
+                   'form': form,
+                   'names': names2})
 
 
 def check_login(request):
@@ -146,14 +148,14 @@ def activate(request, uidb64, token):
 
 @login_required
 def newsfeed(request):
-    names2 = []
-    # in order_by minus sign represent descending order
-    form = SearchUser(request.POST)
-    # user = User.objects.get(username=username)
-    if form.is_valid():
-        name = form.cleaned_data['username']
-        names1 = User.objects.all()
-        names2 = names1.filter(username__icontains=str(name))
+    # names2 = []
+    # # in order_by minus sign represent descending order
+    # form = SearchUser(request.POST)
+    # # user = User.objects.get(username=username)
+    # if form.is_valid():
+    #     name = form.cleaned_data['username']
+    #     names1 = User.objects.all()
+    #     names2 = names1.filter(username__icontains=str(name))
     documents = Document.objects.order_by('-uploaded_at')
     user = User.objects.get(username=request.user.username)
     comments = Comments.objects.order_by('-uploaded_at')
@@ -185,7 +187,7 @@ def newsfeed(request):
                                                     'comments': comments,
                                                     'page_range': page_range,
                                                     'profile': profile,
-                                                    'form': form, 'names': names2,
+                                                    # 'form': form, 'names': names2,
                                                     'user': user})
 
 
@@ -433,4 +435,17 @@ def effect_image(request):
     }
     print("kya hua be")
     return JsonResponse(data)
+
+
+def search(request):
+    search_user1 = dict()
+    search_data = request.GET.get('search_data')
+    all_user = User.objects.all()
+    search_user = all_user.filter(username__icontains=str(search_data))
+    print("-----", search_user)
+    for i in range(search_user.count()):
+        print(search_user[i])
+        search_user1[str(search_user[i])]=str(search_user[i])
+    print(search_user1)
+    return JsonResponse(search_user1)
 

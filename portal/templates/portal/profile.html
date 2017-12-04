@@ -19,12 +19,18 @@
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-
+{#<form name="SearchUser" method="post" enctype="multipart/form-data" novalidate class="form-inline my-2 my-lg-0">#}
+{#                 {% csrf_token %}#}
+{#                 {{ form.username }}#}
+{#                 <button class="button" type="submit" id ="show">SUBMIT</button>#}
+</form>
   <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
-          <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+          <form class="form-inline my-2 my-lg-0" name="SearchUser" method="post" enctype="multipart/form-data" novalidate class="form-inline my-2 my-lg-0">
+{#      <input class="form-control mr-sm-2" type="search" aria-label="Search">#}
+              {% csrf_token %}
+                 {{ form.username }}
       <button class="btn-search my-2 my-sm-0" type="submit"><i class="fa fa-search " aria-hidden="true"></i></button>
     </form>
       </li>
@@ -46,7 +52,22 @@
   </div>
     </div>
 </nav>
+<div class="search-box">
+             <div class="results">
+             <div class="heading">Username</div>
+             <div class="heading">E-mail</div>
+             <div class="heading">Date Joined</div>
+             {% for user in names %}
 
+                 <a href="{% url 'profile' user.username %}"> <div class="ans">{{ user.username }}</div></a>
+                 <div class="ans">{{ user.email }}</div>
+                 <div class="ans">{{ user.date_joined }}</div>
+                 {% empty %}
+                 <div class="ans" style="color: red"><strong>SORRY, no such user on phoics account</strong></div>
+             {% endfor %}
+
+             </div>
+</div>
     <div class="container">
          <div class="user-profile row">
                 {% for obj in profile_pic %}
