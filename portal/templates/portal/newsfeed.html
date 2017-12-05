@@ -103,7 +103,7 @@
   <script>
     $(document).ready(function(){
 
-        $("#user-search-here").change(function () {
+        $("#user-search-here").keyup(function () {
             var search_data = $('#user-search-here').val();
             var url = '';
              console.log("search");
@@ -165,8 +165,8 @@
 <li>
 {#<form novalidate class="form-inline my-2 my-lg-0">#}
 {#                 {% csrf_token %}#}
-                <div class="dropdown show">
-                               <input id="user-search-here" class="dropdown-toggle" placeholder="search" data-toggle="dropdown" aria-haspopup="true" aeia-expanded="false">
+                <div class="dropdown show form-group ">
+                               <input id="user-search-here" class="dropdown-toggle form-control"  placeholder="search" data-toggle="dropdown" aria-haspopup="true" aeia-expanded="false">
                               <div class="printhere dropdown-menu" aria-labelledby="user-search-here">
 
                               </div>
