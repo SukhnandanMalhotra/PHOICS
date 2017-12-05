@@ -32,12 +32,12 @@
                 success: function (data) {
                     var a = "";
                           console.log(data);
-                          $('.use').empty();
+                          $('.printhere').empty();
                           for (x in data) {
                               a = data[x];
 
 {#                     $('.searching').append("<a href=\"http://127.0.0.1:8000/phoics/profile/"+ a +"/\">"+ "<h6>" + data[x] + "</h6>" + "</a>" );#}
-                     $('#something').append( "<option value=\"" + data[x] + "\">" + "<a href=\"http://127.0.0.1:8000/phoics/profile/"+ a +"/\">" + "</a>"+ "<\/option>" );
+                     $('.printhere').append( "<a class=\"dropdown-item\" href=\"http://127.0.0.1:8000/phoics/profile/"+ a +"/\">" + data[x] +"</a>");
 {#                              $('.searching').append("<a href=\"\p\/profile\/"  + data[x] + "\/>"+ "<h6>" + data[x] + "</h6>" + "</a>" );#}
     }
 
@@ -72,10 +72,12 @@
   <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
-                               <input id="user-search-here" list="something">
-                               <datalist id="something">
-                                   <option class="use"></option>
-                               </datalist>
+                 <div class="dropdown show">
+                               <input id="user-search-here" class="dropdown-toggle" placeholder="search" data-toggle="dropdown" aria-haspopup="true" aeia-expanded="false">
+                              <div class="printhere dropdown-menu" aria-labelledby="user-search-here">
+
+                              </div>
+                 </div>
 
       </li>
      <li class="nav-item">

@@ -36,7 +36,25 @@ from django.http import HttpResponse
 
 @login_required
 def home(request, username):
+    names2=[]
+    form1 = DocumentForm(request.POST, request.FILES)
+    if username == request.user.username:
+        if request.method == 'POST':
 
+            if form1.is_valid():
+                upload_details = form1.save(commit=False)
+                upload_details.user = request.user
+                upload_details.save()
+                return redirect(reverse('profile', kwargs={'username': username}))
+        else:
+            form1 = DocumentForm()
+    # in order_by minus sign represent descending order
+    form = SearchUser(request.POST)
+    # user = User.objects.get(username=username)
+    if form.is_valid():
+        name = form.cleaned_data['username']
+        names1 = User.objects.all()
+        names2 = names1.filter(username__icontains=str(name))
     user = User.objects.get(username=username)
     user_image_count = user.document_set.all().count()
     documents = Document.objects.order_by('-uploaded_at')
@@ -46,7 +64,7 @@ def home(request, username):
                   {'documents': documents,
                    'profile_pic': profile_pic,
                    'username': username,
-                   'user_image_count': user_image_count})
+                   'user_image_count': user_image_count,'form':form1})
 
 
 
