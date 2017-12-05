@@ -103,7 +103,7 @@
 <script>
     $(document).ready(function(){
 
-        $("#show").click(function () {
+        $("#user-searching").change(function () {
             var search_data = $('#user-searching').val();
             var url = '';
              console.log("search");
@@ -117,6 +117,7 @@
                 success: function (data) {
                     var a = "";
                           console.log(data);
+                          $('.searching').empty();
                           for (x in data) {
                               a = data[x];
 {#                              <a href="{% url 'profile' username %}">data[x]</a>#}

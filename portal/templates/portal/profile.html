@@ -15,12 +15,13 @@
 
 {#    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>#}
 {#<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>#}
-    <script>
+   <script>
     $(document).ready(function(){
 
-        $("#showji").click(function () {
+        $("#user-search-here").change(function () {
             var search_data = $('#user-search-here').val();
-             console.log(search_data);
+            var url = '';
+             console.log("search");
                $.ajax({
                 url: '{% url 'search' %}',
                 data: {
@@ -29,15 +30,15 @@
                 },
 
                 success: function (data) {
-                    var a ;
+                    var a = "";
                           console.log(data);
+                          $('.use').empty();
                           for (x in data) {
                               a = data[x];
-{#                              <a href="{% url 'profile' username %}">data[x]</a>#}
-{#                              url = "profile " + a;#}
-{#                   $('.searching').append("<a href=\"{% url 'newsfeed' %}\"> " + "<h6>" + data[x] + "</h6>" + "</a>" );#}
-               $('.searching').append("<a href=\"http://127.0.0.1:8000/phoics/profile/"+ a +"/\">"+ "<h6>" + data[x] + "</h6>" + "</a>" );
-{#            $('.searching').append("<a href=\"\p\/profile\/"  + data[x] + "\/>"+ "<h6>" + data[x] + "</h6>" + "</a>" );#}
+
+{#                     $('.searching').append("<a href=\"http://127.0.0.1:8000/phoics/profile/"+ a +"/\">"+ "<h6>" + data[x] + "</h6>" + "</a>" );#}
+                     $('#something').append( "<option value=\"" + data[x] + "\">" + "<a href=\"http://127.0.0.1:8000/phoics/profile/"+ a +"/\">" + "</a>"+ "<\/option>" );
+{#                              $('.searching').append("<a href=\"\p\/profile\/"  + data[x] + "\/>"+ "<h6>" + data[x] + "</h6>" + "</a>" );#}
     }
 
 
@@ -53,6 +54,8 @@
         });
     });
 </script>
+
+
 </head>
 <body>
 <nav class="navbar navbar-toggleable-md  navbar-inverse bg-inverse sticky-top">
@@ -69,8 +72,10 @@
   <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
-                               <input id="user-search-here">
-                 <button class="button" type="submit" id ="showji">SUBMIT</button>
+                               <input id="user-search-here" list="something">
+                               <datalist id="something">
+                                   <option class="use"></option>
+                               </datalist>
 
       </li>
      <li class="nav-item">
@@ -280,6 +285,12 @@ function alert_function() {
 
 
 
+<script
+  src="https://code.jquery.com/jquery-3.2.1.min.js"
+  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
 
 
 </body>
