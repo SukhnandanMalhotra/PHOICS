@@ -4,6 +4,10 @@ function validateForm() {
     var z = document.forms["signForm"]["password1"].value;
     var w = document.forms["signForm"]["password2"].value;
     var email_check = /^([a-zA-Z0-9_.-])+@(([a-zA-Z0-9-])+.)+([a-zA-Z0-9]{2,4})+$/;
+    document.getElementById('error_signup_username').innerHTML="";
+    document.getElementById('error_signup_email').innerHTML="";
+    document.getElementById('error_signup_password').innerHTML="";
+    document.getElementById('error_signup_conf_password').innerHTML="";
 
     if (x == "") {
         document.getElementById('error_signup_username').innerHTML="Name must be filled out";

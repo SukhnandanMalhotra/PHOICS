@@ -12,6 +12,7 @@
     $(document).ready(function() {
         $("#id_username").change(function () {
             var username = $(this).val();
+            $('#error_signup_username').empty();
             console.log("tgtgtgt");
             $.ajax({
                 url: '{% url 'validate_username' %}',
@@ -31,6 +32,7 @@
         $("#id_email").change(function () {
             var email = $(this).val();
             console.log("tgtgtgt");
+            $('#error_signup_email').empty();
             $.ajax({
                 url: '{% url 'validate_email' %}',
                 data: {
@@ -49,6 +51,13 @@
 
     })
     </script>
+    <script>
+        $(document).ready(function(){
+            $('id_username').click(function(){
+                $('error_signup_username').empty();
+            })
+        })
+     </script>
 </head>
 <body>
     <canvas id="drawing_area"></canvas>
@@ -96,15 +105,6 @@
                                 <p id="error_signup_conf_password" style="color: #ff0000">{{ form.password2.errors }}</p>
                         </div>
 
-{#                        {% for field in form %}#}
-{#                        <div class="row"> <label for="name">{{ field.label_tag }}</label><br>#}
-{#                            {{ field }}<br>#}
-{#                            {% for error in field.errors %}#}
-{#                                <p style="color: red">{{ error }}</p>#}
-{#                            {% endfor %}#}
-{#                        </div>#}
-{#                        <br>#}
-{#                        {% endfor %}#}
                         {% if messages %}
                             <ul class="messages" style="color: red;list-style-type: none">
                             {% for message in messages %}
