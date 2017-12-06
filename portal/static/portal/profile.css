@@ -67,7 +67,9 @@ img{
  /*   margin-left:15%; */                          /*////////////////profile pic////////////////*/
     /*height: 100%*/
 }
-
+/*.show {*/
+    /*display: block!important;*/
+/*}*/
 /*button{
 	background-color:transparent;
 	box-shadow: none;

@@ -15,12 +15,12 @@
 
 {#    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>#}
 {#<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>#}
-   <script>
+
+  <script>
     $(document).ready(function(){
 
         $("#user-search-here").keyup(function () {
             var search_data = $('#user-search-here').val();
-
             var url = '';
              console.log("search");
                $.ajax({
@@ -33,19 +33,29 @@
                 success: function (data) {
                     var a = "";
                           console.log(data);
+
                           $('.printhere').empty();
                           for (x in data) {
                               a = data[x];
 
+{#                     $('.searching').append("<a href=\"http://127.0.0.1:8000/phoics/profile/"+ a +"/\">"+ "<h6>" + data[x] + "</h6>" + "</a>" );#}
                      $('.printhere').append( "<a class=\"dropdown-item\" href=\"http://127.0.0.1:8000/phoics/profile/"+ a +"/\">" + data[x] +"</a>");
-                 }
+{#                              $('.searching').append("<a href=\"\p\/profile\/"  + data[x] + "\/>"+ "<h6>" + data[x] + "</h6>" + "</a>" );#}
+    }
+
+
+
                 }
-              })
 
-           });
-         });
+            })
+
+
+{#            $("document").onload(function() {#}
+{#                            $(".results").css("display","block");#}
+{#            })#}
+        });
+    });
 </script>
-
 
 </head>
 <body>
@@ -59,12 +69,12 @@
 {#                 {% csrf_token %}#}
 {#                 {{ form.username }}#}
 {#                 <button class="button" type="submit" id ="show">SUBMIT</button>#}
-</form>
+{#</form>#}
   <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
-                 <div class="dropdown show from-group">
-                               <input id="user-search-here" class="dropdown-toggle form-control" placeholder="search" data-toggle="dropdown" aria-haspopup="true" aeia-expanded="false">
+                 <div class="dropdown show form-group">
+                               <input id="user-search-here" class="dropdown-toggle form-control" placeholder="search" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                               <div class="printhere dropdown-menu" aria-labelledby="user-search-here">
 
                               </div>
@@ -271,9 +281,9 @@ function alert_function() {
     alert("Are you sure you want to delete it");
     }
 </script>
-<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+{#<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>#}
+{#<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>#}
+{#<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>#}
 
 
 
