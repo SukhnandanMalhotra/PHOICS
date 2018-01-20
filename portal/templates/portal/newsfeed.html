@@ -44,13 +44,14 @@
                     if (comment != ''){
                         $.get('/phoics/comment/', {'imgid': imgid, 'comment': comment}, function (data) {
                         var data1 =  JSON.parse(data);
-                        $('#show_user' + imgid).html(data1['user']);
-                        $('#comma').html(':');
-                        $('#show_comment' + imgid).html(data1['comment']);
+                        for (x in data1) {
+                            $('#show_user' + imgid).append(data1[x]);
+                            $('#show_user' + imgid).append("&nbsp;&nbsp;&nbsp;&nbsp;");
+    }
+    $('#show_user' + imgid).append("<br>");
                     })
                     }
                 }
-
             })
         });
 

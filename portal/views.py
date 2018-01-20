@@ -203,8 +203,8 @@ def comment(request):
         image = Document.objects.get(pk=img_id)
         user = User.objects.get(username=str(request.user))
         com = request.GET['comment']
-        d['comment'] = com
         d['user'] = user.username
+        d['comment'] = com
         comm = Comments.objects.create(user=request.user, document=image, comment=com)
         x = json.dumps(d)
         return HttpResponse(x)
