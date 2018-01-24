@@ -1,0 +1,1 @@
+web: gunicorn phoics.wsgi --log-file -

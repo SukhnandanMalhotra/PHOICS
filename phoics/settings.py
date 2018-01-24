@@ -21,12 +21,12 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/1.10/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '6%$91go)kwbnx(p)74=d$=txgqn+9+)5swxa^v-4qywfa#0$&y'
-
+# SECRET_KEY = '6%$91go)kwbnx(p)74=d$=txgqn+9+)5swxa^v-4qywfa#0$&y'
+SECRET_KEY = os.environ.get('SECRET_KEY',  '6%$91go)kwbnx(p)74=d$=txgqn+9+)5swxa^v-4qywfa#0$&y')
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['phoics-project.herokuapp.com']
 
 
 # Application definition
@@ -107,8 +107,13 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 
-
+# Extra places for collectstatic to find static files.
+STATICFILES_DIRS = (
+    os.path.join(PROJECT_ROOT, 'static'),
+)
+STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 # Internationalization
 # https://docs.djangoproject.com/en/1.10/topics/i18n/
 
@@ -121,6 +126,11 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
+
+import dj_database_url
+db_from_env = dj_database_url.config()
+DATABASES['default'].update(db_from_env)
+DATABASES['default']['CONN_MAX_AGE'] = 500
 
 
 # Static files (CSS, JavaScript, Images)
@@ -136,7 +146,8 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_HOST_USER = 'phoics100@gmail.com'
-EMAIL_HOST_PASSWORD = 'pythonproject'
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
+# EMAIL_HOST_PASSWORD = 'pythonproject'
 EMAIL_USE_TLS = True
 
 MEDIA_URL = '/media/'
