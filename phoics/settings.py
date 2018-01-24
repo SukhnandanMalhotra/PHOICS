@@ -24,9 +24,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # SECRET_KEY = '6%$91go)kwbnx(p)74=d$=txgqn+9+)5swxa^v-4qywfa#0$&y'
 SECRET_KEY = os.environ.get('SECRET_KEY',  '6%$91go)kwbnx(p)74=d$=txgqn+9+)5swxa^v-4qywfa#0$&y')
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['phoics-project.herokuapp.com']
+ALLOWED_HOSTS = ['phoics-project.herokuapp.com','127.0.0.1']
 
 
 # Application definition
