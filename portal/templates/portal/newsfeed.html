@@ -282,13 +282,13 @@
                         <p id="comma" style="display: inline" ></p>
                         <p id="show_comment{{img.pk}}" style="display: inline"></p>
 
-                        {% for com in comments %}
-
-                            {% if com.document == img %}
-                                <p class="cmmnt_view">{{com.user}} : {{com.comment}}</p>
-                            {% endif %}
-
-                        {% endfor %}
+{#                        {% for com in comments %}#}
+{##}
+{#                            {% if com.document == img %}#}
+{#                                <p class="cmmnt_view">{{com.user}} : {{com.comment}}</p>#}
+{#                            {% endif %}#}
+{##}
+{#                        {% endfor %}#}
                         <input  class="comment" type="text" img_data="{{img.pk}}" placeholder="Add a comment..."><br>
 {#                        <p style="text-align: center;" {% post_to_facebook img.document.url "Share to facebook!" %}></p>#}
                         </div>
