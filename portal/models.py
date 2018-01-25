@@ -155,14 +155,15 @@ def document_post_delete_handler(sender, **kwargs):
     if (path != '.') and (path != '/') and (path != 'photo/') and (path != 'document/.'):
         storage.delete(path)
 
-# class Comments(models.Model):
-#     user = models.ForeignKey(User)
-#     document = models.ForeignKey(Document)
-#     comment = models.TextField(max_length=225)
-#     uploaded_at = models.DateTimeField(auto_now_add=True)
-#
-#     def __str__(self):
-#         return self.comment
+
+class Comments(models.Model):
+    user = models.ForeignKey(User)
+    document = models.ForeignKey(Document)
+    comment = models.TextField(max_length=225)
+    uploaded_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.comment
 
 @receiver(post_save,sender=User)
 def update_user_profile(sender, instance, created, **kwargs):
