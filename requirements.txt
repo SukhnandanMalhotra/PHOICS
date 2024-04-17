@@ -4,7 +4,7 @@ django-cleanup==1.0.1
 django-filter==1.0.4
 django-filters==0.2.1
 django-widget-tweaks==1.4.1
-gunicorn==19.7.1
+gunicorn==22.0.0
 olefile==0.44
 Pillow==4.2.1
 psycopg2==2.7.3.2
